@@ -1,0 +1,1100 @@
+/* ==========================================================================
+   PUNJAB BIJLI - Official Figma Mobile Design System (Master-SH)
+   Exact match to the 5-Row UI/UX specification (Clean Royal Blue & White)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Gurmukhi:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Official Figma Colors */
+  --primary-blue: #1a56db;
+  --primary-blue-hover: #1e429f;
+  --primary-blue-light: #ebf5ff;
+  --primary-blue-gradient: linear-gradient(180deg, #1a56db 0%, #2563eb 60%, #3b82f6 100%);
+  
+  --bg-app: #f4f6fa;
+  --bg-card: #ffffff;
+  --bg-input: #f8fafc;
+  
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+  --text-white: #ffffff;
+  
+  --color-success: #10b981;
+  --color-success-light: #d1fae5;
+  --color-warning: #f59e0b;
+  --color-warning-light: #fef3c7;
+  --color-danger: #ef4444;
+  --color-danger-light: #fee2e2;
+  
+  --border-color: #e2e8f0;
+  
+  /* Fonts */
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-punjabi: 'Noto Sans Gurmukhi', sans-serif;
+
+  /* Shadows */
+  --shadow-card: 0 2px 10px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(15, 23, 42, 0.03);
+  --shadow-phone: 0 25px 70px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  --shadow-float-btn: 0 10px 25px rgba(26, 86, 219, 0.35);
+  
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: #0b111e;
+  color: var(--text-main);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body.lang-pa {
+  font-family: var(--font-punjabi), var(--font-body);
+}
+
+/* ==========================================================================
+   Header Toolbar (Controls & Presentation Mode)
+   ========================================================================== */
+
+.figma-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background: #090e17;
+  border-bottom: 1px solid #1f2937;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+}
+
+.toolbar-inner {
+  max-width: 1700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.figma-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.figma-logo-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-blue);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.figma-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.figma-tag {
+  font-size: 0.65rem;
+  background: rgba(26, 86, 219, 0.25);
+  color: #60a5fa;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  font-weight: 700;
+}
+
+.toolbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.flow-select {
+  background: #111827;
+  border: 1px solid #374151;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-figma-mode {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: #1f2937;
+  border: 1px solid #374151;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.btn-figma-mode.active {
+  background: var(--primary-blue);
+  color: #fff;
+  border-color: var(--primary-blue);
+  box-shadow: 0 2px 10px rgba(26, 86, 219, 0.4);
+}
+
+/* ==========================================================================
+   Workspace Stage
+   ========================================================================== */
+
+.figma-workspace {
+  padding: 2rem 1.5rem 5rem 1.5rem;
+  max-width: 1700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================================================
+   MODE 1: SINGLE INTERACTIVE PHONE MOCKUP
+   ========================================================================== */
+
+.phone-wrapper {
+  width: 100%;
+  max-width: 390px;
+  height: 840px;
+  background: #000;
+  border-radius: 50px;
+  padding: 11px;
+  box-shadow: var(--shadow-phone);
+  border: 4px solid #1e293b;
+  position: relative;
+  overflow: hidden;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  background: var(--bg-app);
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
+}
+
+.phone-screen::-webkit-scrollbar {
+  display: none;
+}
+
+/* Top Notch */
+.phone-notch {
+  position: sticky;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 26px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.notch-cam {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #111e2e;
+}
+
+.notch-sensor {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #0b1522;
+}
+
+.screen-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 18px 4px 18px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-main);
+  font-family: var(--font-display);
+}
+
+.screen-view {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 1rem 5.5rem 1rem;
+  animation: fadeSlide 0.25s ease-out;
+}
+
+.screen-view.active {
+  display: flex;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   UI COMPONENTS & SCREEN ELEMENTS MATCHING FIGMA EXACTLY
+   ========================================================================== */
+
+/* 1. HERO BLUE HEADER WITH ELECTRIC TOWER (Screen 1: Home) */
+.home-hero-banner {
+  background: var(--primary-blue-gradient);
+  margin: -0.5rem -1rem 1rem -1rem;
+  padding: 1.25rem 1.25rem 2.25rem 1.25rem;
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-tower-illustration {
+  position: absolute;
+  right: 12px;
+  top: 15px;
+  width: 100px;
+  height: 110px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.hero-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.hero-user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.hero-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.82rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+.hero-welcome-text {
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+
+.hero-app-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+/* Floating Consumer Due Card */
+.consumer-due-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-color);
+  margin-top: -1.75rem;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 1rem;
+}
+
+.consumer-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.ca-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.ca-number {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.status-badge-due {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.status-badge-paid {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.amount-due-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-color);
+}
+
+.due-amount-big {
+  font-family: var(--font-display);
+  font-size: 1.95rem;
+  font-weight: 900;
+  color: var(--text-main);
+  line-height: 1;
+}
+
+.btn-pay-now-primary {
+  background: var(--primary-blue);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(26, 86, 219, 0.35);
+  transition: all 0.2s;
+}
+
+.btn-pay-now-primary:hover {
+  background: var(--primary-blue-hover);
+  transform: translateY(-1px);
+}
+
+/* Quick Services 4-Grid */
+.services-4grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 1.15rem;
+}
+
+.service-pill-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 0.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s;
+}
+
+.service-pill-item:hover {
+  border-color: var(--primary-blue);
+  transform: translateY(-2px);
+}
+
+.service-icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-blue-light);
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+}
+
+.service-label-text {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-align: center;
+}
+
+/* Page Navigation Header */
+.page-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  margin-bottom: 0.75rem;
+}
+
+.back-btn-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-main);
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-card);
+}
+
+.page-title-text {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+/* Search Bar */
+.search-input-box {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 0.65rem 1rem;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-card);
+}
+
+.search-input-field {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  font-family: inherit;
+}
+
+/* List Items */
+.provider-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.provider-row-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: all 0.2s;
+}
+
+.provider-row-card:hover {
+  border-color: var(--primary-blue);
+}
+
+.provider-info-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.provider-logo-sq {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--primary-blue-light);
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.provider-name-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.provider-state-text {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* Form Input Card */
+.form-input-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 1.25rem;
+}
+
+.input-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.field-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.text-input-styled {
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.text-input-styled:focus {
+  border-color: var(--primary-blue);
+  background: #fff;
+}
+
+/* Bill Breakdown Card */
+.breakdown-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 1rem;
+}
+
+.breakdown-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.breakdown-line.total {
+  border-top: 1.5px dashed var(--border-color);
+  margin-top: 0.4rem;
+  padding-top: 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+/* Payment Option Card */
+.payment-option-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.65rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.payment-option-card.selected {
+  border-color: var(--primary-blue);
+  background: var(--primary-blue-light);
+}
+
+.payment-opt-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.radio-circle-select {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-option-card.selected .radio-circle-select {
+  border-color: var(--primary-blue);
+}
+
+.payment-option-card.selected .radio-circle-select::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+}
+
+/* UPI Keypad Screen */
+.upi-pin-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.pin-dots-row {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.pin-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  transition: all 0.2s;
+}
+
+.pin-dot.filled {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  transform: scale(1.15);
+}
+
+.numeric-keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.keypad-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  transition: all 0.1s;
+  user-select: none;
+}
+
+.keypad-btn:active {
+  background: var(--primary-blue-light);
+  transform: scale(0.95);
+}
+
+/* Success Card */
+.success-screen-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.success-icon-big {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--color-success-light);
+  color: var(--color-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 1.25rem;
+}
+
+.success-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+/* Usage Highlights */
+.usage-highlight-card {
+  background: linear-gradient(135deg, #1a56db 0%, #3b82f6 100%);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 25px rgba(26, 86, 219, 0.3);
+}
+
+.usage-big-number {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin: 0.25rem 0;
+}
+
+.bar-chart-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 1rem;
+}
+
+.chart-bar-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 120px;
+  padding: 0.5rem 0 0.25rem 0;
+}
+
+.chart-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.col-fill {
+  width: 16px;
+  border-radius: 4px;
+  background: #cbd5e1;
+  transition: height 0.4s;
+}
+
+.chart-col.active .col-fill {
+  background: var(--primary-blue);
+}
+
+.col-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Live Chat */
+.chat-conversation-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 0.5rem 0 1rem 0;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.chat-bubble {
+  max-width: 82%;
+  padding: 0.75rem 1rem;
+  border-radius: 18px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.chat-bubble.user {
+  align-self: flex-end;
+  background: var(--primary-blue);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-bubble.assistant {
+  align-self: flex-start;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-bottom-left-radius: 4px;
+  box-shadow: var(--shadow-card);
+}
+
+/* Grievance Timeline Stepper */
+.stepper-pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.stepper-pipeline::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 14px;
+  width: 2px;
+  background: var(--border-color);
+}
+
+.step-node {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  position: relative;
+}
+
+.step-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  z-index: 2;
+}
+
+.step-node.completed .step-circle {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #fff;
+}
+
+.step-node.active .step-circle {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(26, 86, 219, 0.4);
+}
+
+.step-content-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.step-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Bottom Navigation Dock (With Floating Blue Pay Button)
+   ========================================================================== */
+
+.figma-bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 10px 8px 10px;
+  z-index: 500;
+}
+
+.nav-item-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: var(--text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 0.65rem;
+  font-weight: 700;
+  transition: color 0.15s;
+}
+
+.nav-item-btn.active {
+  color: var(--primary-blue);
+}
+
+.nav-item-btn .nav-icon {
+  font-size: 1.25rem;
+}
+
+/* Elevated Floating Center Pay Button */
+.floating-pay-btn {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--primary-blue);
+  color: #fff;
+  border: 4px solid var(--bg-app);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: var(--shadow-float-btn);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.floating-pay-btn:hover {
+  transform: translateX(-50%) scale(1.08);
+}
+
+/* Primary Action Button */
+.btn-primary-block {
+  width: 100%;
+  background: var(--primary-blue);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.92rem;
+  padding: 0.85rem;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(26, 86, 219, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.btn-primary-block:hover {
+  background: var(--primary-blue-hover);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   MODE 2: FIGMA 5-ROW ARTBOARD GALLERY (Exact Match to Figma Screenshot)
+   ========================================================================== */
+
+.figma-board-gallery {
+  display: none;
+  flex-direction: column;
+  gap: 3.5rem;
+  width: 100%;
+}
+
+.figma-board-gallery.active {
+  display: flex;
+}
+
+.board-row-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.board-row-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #60a5fa;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.board-screens-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 0 1.5rem 0;
+  scrollbar-width: thin;
+}
+
+.board-screen-card {
+  flex: 0 0 310px;
+  height: 680px;
+  background: #000;
+  border-radius: 36px;
+  padding: 8px;
+  border: 2px solid #334155;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.board-screen-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}

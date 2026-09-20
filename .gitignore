@@ -1,0 +1,41 @@
+# ===================================================
+# Punjab Bijli — .gitignore
+# ===================================================
+
+# 1. Dependency Directories
+# External packages downloaded via npm/yarn. Never commit these;
+# they can be re-installed at any time using package.json.
+node_modules/
+
+# 2. Build Outputs
+# Files created by bundlers/compilers when preparing for deployment.
+dist/
+build/
+
+# 3. Environment Variables & Secrets
+# Files containing sensitive credentials or machine-specific configs.
+.env
+.env.local
+.env.*.local
+
+# 4. Logs & Debugging
+# Files written automatically when errors or operations are logged.
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 5. Operating System Files
+# Hidden metadata created by Windows or macOS file explorers.
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 6. Editor & IDE Settings
+# Personal editor workspace settings that shouldn't be forced on others.
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+powershell.cmd

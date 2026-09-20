@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Extract Video Frame</title>
+  <style>
+    body { background: #121212; color: white; font-family: sans-serif; padding: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .card { background: #1e1e1e; padding: 15px; border-radius: 12px; }
+    video, canvas, img { width: 100%; border-radius: 8px; display: block; }
+    textarea { width: 100%; height: 100px; background: #000; color: #0f0; font-family: monospace; font-size: 10px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Video Frame Extractor</h1>
+  <div id="status" style="font-size: 18px; color: #ee4b2b; margin-bottom: 20px;">Loading videos...</div>
+  <div class="grid">
+    <div class="card">
+      <h3>1. Floral Sandals</h3>
+      <video id="v1" src="Works/Product Videography/Floral Sandals.mp4" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <canvas id="c1"></canvas>
+      <textarea id="t1"></textarea>
+    </div>
+    <div class="card">
+      <h3>2. Beige Pearl Loafers</h3>
+      <video id="v2" src="Works/Product Videography/Beige Pearl Loafers.mp4" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <canvas id="c2"></canvas>
+      <textarea id="t2"></textarea>
+    </div>
+    <div class="card">
+      <h3>3. Purple Lace Heeled Shoe</h3>
+      <video id="v3" src="Works/Product Videography/Purple Lace Heeled Shoe.mp4" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <canvas id="c3"></canvas>
+      <textarea id="t3"></textarea>
+    </div>
+    <div class="card">
+      <h3>4. Gold Bracelet</h3>
+      <video id="v4" src="Works/Product Videography/Gold Bracelet.mp4" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <canvas id="c4"></canvas>
+      <textarea id="t4"></textarea>
+    </div>
+  </div>
+
+  <script>
+    async function extract(videoId, canvasId, textareaId, time) {
+      const v = document.getElementById(videoId);
+      const c = document.getElementById(canvasId);
+      const t = document.getElementById(textareaId);
+      
+      return new Promise((resolve) => {
+        const onLoaded = () => {
+          v.currentTime = time;
+        };
+        const onSeeked = () => {
+          c.width = v.videoWidth || 1080;
+          c.height = v.videoHeight || 1920;
+          const ctx = c.getContext('2d');
+          ctx.drawImage(v, 0, 0, c.width, c.height);
+          const data = c.toDataURL('image/jpeg', 0.92);
+          t.value = data;
+          resolve({ id: videoId, data: data, width: c.width, height: c.height });
+        };
+
+        v.addEventListener('loadeddata', onLoaded, { once: true });
+        v.addEventListener('seeked', onSeeked, { once: true });
+        v.load();
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const p1 = extract('v1', 'c1', 't1', 1.5);
+        const p2 = extract('v2', 'c2', 't2', 1.5);
+        const p3 = extract('v3', 'c3', 't3', 1.5);
+        const p4 = extract('v4', 'c4', 't4', 1.5);
+
+        const results = await Promise.all([p1, p2, p3, p4]);
+        document.getElementById('status').innerText = 'All 4 frames extracted successfully!';
+        window.extractedFrames = results;
+      } catch (err) {
+        document.getElementById('status').innerText = 'Error: ' + err.message;
+      }
+    });
+  </script>
+</body>
+</html>

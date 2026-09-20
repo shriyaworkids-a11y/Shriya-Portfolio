@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Extract Real Video Frames</title>
+  <style>
+    body { background: #121212; color: white; font-family: sans-serif; padding: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .card { background: #1e1e1e; padding: 15px; border-radius: 12px; }
+    video, canvas, img { width: 100%; border-radius: 8px; display: block; margin-top: 10px; }
+    #status { margin-top: 20px; font-size: 18px; font-weight: bold; color: #4ade80; }
+  </style>
+</head>
+<body>
+  <h1>Extracting Real Frames from User Videos</h1>
+  <div id="status">Initializing...</div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>1. Floral Sandals</h3>
+      <video id="v1" src="/Works/Product%20Videography/Floral%20Sandals.mp4" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <canvas id="c1"></canvas>
+    </div>
+    <div class="card">
+      <h3>2. Beige Pearl Loafers</h3>
+      <video id="v2" src="/Works/Product%20Videography/Beige%20Pearl%20Loafers.mp4" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <canvas id="c2"></canvas>
+    </div>
+    <div class="card">
+      <h3>3. Purple Lace Heeled Shoe</h3>
+      <video id="v3" src="/Works/Product%20Videography/Purple%20Lace%20Heeled%20Shoe.mp4" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <canvas id="c3"></canvas>
+    </div>
+    <div class="card">
+      <h3>4. Gold Bracelet</h3>
+      <video id="v4" src="/Works/Product%20Videography/Gold%20Bracelet.mp4" muted playsinline preload="auto" crossorigin="anonymous"></video>
+      <canvas id="c4"></canvas>
+    </div>
+  </div>
+
+  <script>
+    async function extractAndPost(videoId, canvasId, name, seekTime) {
+      return new Promise((resolve, reject) => {
+        const v = document.getElementById(videoId);
+        const c = document.getElementById(canvasId);
+
+        const onSeeked = async () => {
+          v.removeEventListener('seeked', onSeeked);
+          c.width = v.videoWidth || 1080;
+          c.height = v.videoHeight || 1920;
+          const ctx = c.getContext('2d');
+          ctx.drawImage(v, 0, 0, c.width, c.height);
+          const dataUrl = c.toDataURL('image/jpeg', 0.95);
+
+          try {
+            const res = await fetch('/save', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name: name, data: dataUrl })
+            });
+            const text = await res.text();
+            resolve({ name, text });
+          } catch (e) {
+            reject(e);
+          }
+        };
+
+        v.addEventListener('loadeddata', () => {
+          v.currentTime = seekTime;
+        });
+
+        v.addEventListener('seeked', onSeeked);
+
+        v.addEventListener('error', (e) => {
+          reject(e);
+        });
+
+        v.load();
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      document.getElementById('status').innerText = 'Extracting frames...';
+      try {
+        await extractAndPost('v1', 'c1', 'floral-sandals-real-frame', 1.2);
+        await extractAndPost('v2', 'c2', 'beige-pearl-loafers-real-frame', 1.2);
+        await extractAndPost('v3', 'c3', 'purple-lace-heeled-shoe-real-frame', 1.2);
+        await extractAndPost('v4', 'c4', 'gold-bracelet-real-frame', 1.2);
+        document.getElementById('status').innerText = '🎉 ALL 4 FRAMES SUCCESSFULLY EXTRACTED & SAVED TO WORKS/MOCKUPS!';
+      } catch (err) {
+        document.getElementById('status').innerText = 'Error: ' + err.message;
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>

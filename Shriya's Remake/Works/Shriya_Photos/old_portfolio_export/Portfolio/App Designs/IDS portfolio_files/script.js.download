@@ -1,0 +1,55 @@
+(function($) {
+
+  "use strict";
+
+  $(document).ready(function() {
+
+    initIsotope();
+
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'fitImagesInViewport': true
+    });
+
+    var testimonialSwiper = new Swiper(".testimonial-swiper", {
+      spaceBetween: 20,
+      pagination: {
+        el: ".testimonial-swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        0: { slidesPerView: 1 },
+        800: { slidesPerView: 3 },
+        1400: { slidesPerView: 3 }
+      },
+    });
+
+  });
+
+  var initIsotope = function() {
+    var $container = $('.portfolio-container');
+
+    if ($container.length > 0) {
+      var $buttonGroup = $('.button-group');
+      var $checked = $buttonGroup.find('.is-checked');
+      var filterValue = $checked.attr('data-filter');
+
+      var $grid = $container.isotope({
+        itemSelector: '.thumb',
+        filter: filterValue,
+        layoutMode: 'fitRows' // Optional; fitRows keeps rows aligned
+      });
+
+      $buttonGroup.on('click', 'a', function(e) {
+        e.preventDefault();
+        filterValue = $(this).attr('data-filter');
+        $grid.isotope({ filter: filterValue });
+
+        $buttonGroup.find('.is-checked').removeClass('is-checked');
+        $(this).addClass('is-checked');
+      });
+    }
+  };
+
+})(jQuery);

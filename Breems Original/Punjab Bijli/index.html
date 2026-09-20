@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punjab Bijli - Official Mobile Application Suite (Figma Master)</title>
+  <meta name="description" content="Exact implementation of the Punjab Bijli Figma mobile design flows including bill payment, usage analytics, support chat, outage tracking, and profile." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+Gurmukhi:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ==========================================================================
+       FIGMA MASTER TOOLBAR & CONTROLS
+       ========================================================================== -->
+  <header class="figma-toolbar">
+    <div class="toolbar-inner">
+      
+      <div class="figma-brand">
+        <div class="figma-logo-icon">⚡</div>
+        <div class="figma-title">
+          <span>Punjab Bijli</span>
+          <span class="figma-tag">MASTER-SH (FIGMA EXACT)</span>
+        </div>
+      </div>
+
+      <!-- Flow Selector Dropdown -->
+      <div class="toolbar-controls">
+        <select id="flowScreenSelector" class="flow-select" onchange="navigateTo(this.value)">
+          <optgroup label="1. HOME + BILL PAYMENT FLOW">
+            <option value="home">01. Home Dashboard</option>
+            <option value="provider">02. Select Provider</option>
+            <option value="enter-details">03. Enter Consumer Details</option>
+            <option value="fetch-summary">04. Fetch Bill Summary</option>
+            <option value="bill-breakdown">05. Bill Breakdown</option>
+            <option value="payment-method">06. Select Payment Method</option>
+            <option value="payment-processing">07. Payment Processing</option>
+            <option value="payment-success">08. Payment Successful</option>
+          </optgroup>
+          <optgroup label="2. PAYMENT DETAILS + BILL HISTORY">
+            <option value="payment-receipt">09. Detailed Tax Receipt</option>
+            <option value="bill-history">10. Past Bill Statements</option>
+            <option value="upi-pin">11. Enter 6-Digit UPI PIN</option>
+          </optgroup>
+          <optgroup label="3. USAGE FLOW + REPORT A PROBLEM">
+            <option value="current-usage">12. Current Usage (742.8 kWh)</option>
+            <option value="usage-history">13. Usage History Chart</option>
+            <option value="consumption-trends">14. Consumption Trends</option>
+            <option value="report-problem">15. Report Problem Selector</option>
+            <option value="report-form">16. Submit Complaint Form</option>
+            <option value="outage-radar">17. Power Outage Feeder Map</option>
+          </optgroup>
+          <optgroup label="4. SUPPORT + COMPLAINTS">
+            <option value="support-home">18. Support Help Center</option>
+            <option value="submit-request">19. Submit Request</option>
+            <option value="chat-user">20. Live Chat (User Query)</option>
+            <option value="chat-assistant">21. Live Chat (AI Resolution)</option>
+            <option value="my-complaints">22. My Complaints List</option>
+            <option value="track-complaint">23. Track Complaint Timeline</option>
+          </optgroup>
+          <optgroup label="5. PROFILE + SETTINGS + FAQS">
+            <option value="profile">24. Consumer Profile</option>
+            <option value="settings">25. App Settings</option>
+            <option value="app-info">26. App Information</option>
+            <option value="faqs">27. FAQs & Knowledge Base</option>
+            <option value="manage-connections">28. Multi-Connection Manager</option>
+          </optgroup>
+        </select>
+
+        <button id="langToggleBtn" class="btn-figma-mode" onclick="toggleLanguage()">
+          <span>🌐</span> ਪੰਜਾਬੀ
+        </button>
+
+        <button id="btnSinglePhone" class="btn-figma-mode active" onclick="setPresentationMode('single')">
+          📱 Phone Simulator
+        </button>
+
+        <button id="btnFigmaBoard" class="btn-figma-mode" onclick="setPresentationMode('board')">
+          🖼️ Figma 5-Row Board
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN WORKSPACE CANVAS
+       ========================================================================== -->
+  <main class="figma-workspace">
+    
+    <!-- =======================================================================
+         VIEW 1: SINGLE INTERACTIVE PHONE MOCKUP
+         ======================================================================= -->
+    <div id="phoneWrapperContainer" class="phone-wrapper">
+      
+      <!-- Top Notch -->
+      <div class="phone-notch">
+        <div class="notch-cam"></div>
+        <div class="notch-sensor"></div>
+      </div>
+
+      <!-- Inner Phone Screen -->
+      <div class="phone-screen">
+        
+        <!-- Status Bar -->
+        <div class="screen-status-bar">
+          <span>9:41</span>
+          <div style="display:flex; gap:5px; font-size:0.65rem;">
+            <span>5G</span>
+            <span>📶</span>
+            <span>🔋 100%</span>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             FLOW 1: HOME + BILL PAYMENT FLOW (Screens 1 to 8)
+             =================================================================== -->
+        
+        <!-- Screen 1: Home Dashboard -->
+        <div id="screen-home" class="screen-view active">
+          
+          <!-- Hero Blue Header with Electric Tower Graphic -->
+          <div class="home-hero-banner">
+            <svg class="hero-tower-illustration" viewBox="0 0 100 120" fill="currentColor">
+              <!-- Electrical Transmission Tower SVG -->
+              <path d="M50 5 L42 25 L58 25 Z M42 25 L30 65 L70 65 L58 25 Z M30 65 L15 115 L85 115 L70 65 Z M35 45 L65 45 M25 85 L75 85 M10 40 L90 40 M5 80 L95 80" stroke="#fff" stroke-width="2" fill="none"/>
+            </svg>
+
+            <div class="hero-top-row">
+              <div class="hero-user-info" onclick="navigateTo('profile')">
+                <div class="hero-avatar">GS</div>
+                <div>
+                  <div class="hero-welcome-text">Welcome to</div>
+                  <div class="hero-app-title">Punjab Bijli</div>
+                </div>
+              </div>
+              <div style="display:flex; gap:6px;">
+                <div class="back-btn-arrow" style="width:30px; height:30px; font-size:0.9rem;" onclick="showToast('⚡ No power cut alerts for Sector 70 today', '🔔')">🔔</div>
+                <div class="back-btn-arrow" style="width:30px; height:30px; font-size:0.9rem;" onclick="navigateTo('settings')">⚙️</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Consumer Bill Due Card -->
+          <div class="consumer-due-card">
+            <div class="consumer-card-header">
+              <div>
+                <span class="ca-label">Consumer Account Number</span>
+                <div class="ca-number">CA #3004928174</div>
+                <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Sector 70, SAS Nagar (Mohali)</div>
+              </div>
+              <span class="status-badge-due">Due: 28 Feb</span>
+            </div>
+
+            <div class="amount-due-row">
+              <div>
+                <span class="ca-label">Total Amount Due</span>
+                <div class="due-amount-big">₹1,965</div>
+              </div>
+              <button class="btn-pay-now-primary" onclick="navigateTo('bill-breakdown')">
+                Pay Now ➔
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Services 4-Grid -->
+          <div style="font-size:0.8rem; font-weight:800; color:var(--text-main); margin-bottom:0.6rem;">Quick Services</div>
+          <div class="services-4grid">
+            <div class="service-pill-item" onclick="navigateTo('provider')">
+              <div class="service-icon-box">💳</div>
+              <span class="service-label-text">Pay Bill</span>
+            </div>
+            <div class="service-pill-item" onclick="navigateTo('current-usage')">
+              <div class="service-icon-box">📊</div>
+              <span class="service-label-text">Usage History</span>
+            </div>
+            <div class="service-pill-item" onclick="navigateTo('report-problem')">
+              <div class="service-icon-box">📡</div>
+              <span class="service-label-text">Report Outage</span>
+            </div>
+            <div class="service-pill-item" onclick="showToast('Rooftop Solar Net-Metering active: 340 kWh surplus (+₹1,020)', '☀️')">
+              <div class="service-icon-box">☀️</div>
+              <span class="service-label-text">Solar Net</span>
+            </div>
+          </div>
+
+          <!-- Recent Activity Card -->
+          <div class="breakdown-card" style="padding:1rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.65rem;">
+              <span style="font-size:0.8rem; font-weight:800;">Recent Transaction</span>
+              <span style="font-size:0.72rem; color:var(--primary-blue); font-weight:700; cursor:pointer;" onclick="navigateTo('bill-history')">View All ➔</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.78rem;">
+              <div>
+                <div style="font-weight:700;">PSPCL Jan 2026 Bill</div>
+                <div style="font-size:0.68rem; color:var(--text-muted);">Paid via UPI • 15 Jan 2026</div>
+              </div>
+              <span style="font-weight:800; color:var(--color-success);">₹1,820 ✓</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Screen 2: Select Provider -->
+        <div id="screen-provider" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('home')">‹</div>
+            <span class="page-title-text">Select Electricity Board</span>
+          </div>
+
+          <div class="search-input-box">
+            <span>🔍</span>
+            <input type="text" class="search-input-field" placeholder="Search Electricity Board or State..." />
+          </div>
+
+          <div class="provider-list">
+            <div class="provider-row-card" onclick="navigateTo('enter-details')">
+              <div class="provider-info-left">
+                <div class="provider-logo-sq">PSPCL</div>
+                <div>
+                  <div class="provider-name-text">Punjab State Power Corp Ltd (PSPCL)</div>
+                  <div class="provider-state-text">Punjab • All Circles (Urban & Rural)</div>
+                </div>
+              </div>
+              <span>➔</span>
+            </div>
+
+            <div class="provider-row-card" onclick="navigateTo('enter-details')">
+              <div class="provider-info-left">
+                <div class="provider-logo-sq" style="background:#fef3c7; color:#d97706;">CHD</div>
+                <div>
+                  <div class="provider-name-text">Chandigarh Electricity Dept</div>
+                  <div class="provider-state-text">UT Chandigarh</div>
+                </div>
+              </div>
+              <span>➔</span>
+            </div>
+
+            <div class="provider-row-card" onclick="navigateTo('enter-details')">
+              <div class="provider-info-left">
+                <div class="provider-logo-sq" style="background:#e0e7ff; color:#4338ca;">DHBVN</div>
+                <div>
+                  <div class="provider-name-text">DHBVN Haryana Bijli</div>
+                  <div class="provider-state-text">Haryana State</div>
+                </div>
+              </div>
+              <span>➔</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 3: Enter Consumer Details -->
+        <div id="screen-enter-details" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('provider')">‹</div>
+            <span class="page-title-text">Enter Consumer Details</span>
+          </div>
+
+          <div class="form-input-card">
+            <div style="font-size:0.8rem; font-weight:800; color:var(--text-main); margin-bottom:1rem;">PSPCL Punjab Connection</div>
+            
+            <div class="input-field-group">
+              <label class="field-label">10-Digit Consumer Account (CA) No</label>
+              <input type="text" class="text-input-styled" value="3004928174" placeholder="e.g. 3004928174" />
+            </div>
+
+            <div class="input-field-group">
+              <label class="field-label">Sub-Division / Circle</label>
+              <select class="text-input-styled">
+                <option selected>SAS Nagar Mohali (Division 1)</option>
+                <option>Ludhiana West Circle</option>
+                <option>Amritsar Cantt Division</option>
+                <option>Jalandhar Model Town</option>
+              </select>
+            </div>
+
+            <button class="btn-primary-block" onclick="navigateTo('fetch-summary')">
+              Fetch Bill Details ➔
+            </button>
+          </div>
+        </div>
+
+        <!-- Screen 4: Fetch Bill Summary -->
+        <div id="screen-fetch-summary" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('enter-details')">‹</div>
+            <span class="page-title-text">Bill Summary</span>
+          </div>
+
+          <div class="breakdown-card">
+            <div style="font-size:0.9rem; font-weight:800; margin-bottom:0.85rem;">Consumer Verified</div>
+            <div class="breakdown-line"><span>Name:</span><b style="color:var(--text-main);">Gurpreet Singh</b></div>
+            <div class="breakdown-line"><span>Consumer CA:</span><span style="font-family:var(--font-mono);">3004928174</span></div>
+            <div class="breakdown-line"><span>Bill Cycle:</span><span>Jan – Feb 2026</span></div>
+            <div class="breakdown-line"><span>Due Date:</span><span style="color:var(--color-danger); font-weight:700;">28 Feb 2026</span></div>
+            <div class="breakdown-line total"><span>Amount Due:</span><span style="color:var(--primary-blue);">₹1,965.00</span></div>
+          </div>
+
+          <button class="btn-primary-block" onclick="navigateTo('bill-breakdown')">
+            Proceed to Payment ➔
+          </button>
+        </div>
+
+        <!-- Screen 5: Bill Breakdown -->
+        <div id="screen-bill-breakdown" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('home')">‹</div>
+            <span class="page-title-text">Bill Breakdown</span>
+          </div>
+
+          <div class="breakdown-card">
+            <div style="font-size:0.85rem; font-weight:800; margin-bottom:0.75rem;">Tariff & Surcharge Slabs (348 Units)</div>
+            <div class="breakdown-line"><span>Energy Charges (Slab 1 & 2):</span><span>₹1,520.00</span></div>
+            <div class="breakdown-line"><span>Sanctioned Load Fixed (4 kW):</span><span>₹200.00</span></div>
+            <div class="breakdown-line"><span>Electricity Duty (ED 13%):</span><span>₹223.60</span></div>
+            <div class="breakdown-line"><span>Infrastructure Dev Fund (IDF 5%):</span><span>₹86.00</span></div>
+            <div class="breakdown-line"><span>Cow Cess / Municipal Tax:</span><span>₹6.96</span></div>
+            <div class="breakdown-line" style="color:var(--color-danger); font-weight:700;">
+              <span>Subsidy Status:</span><span>Exceeded 300U (+48u)</span>
+            </div>
+            <div class="breakdown-line total">
+              <span>Total Payable:</span>
+              <span style="color:var(--primary-blue);">₹1,965.00</span>
+            </div>
+          </div>
+
+          <button class="btn-primary-block" onclick="navigateTo('payment-method')">
+            Select Payment Method ➔
+          </button>
+        </div>
+
+        <!-- Screen 6: Select Payment Method -->
+        <div id="screen-payment-method" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('bill-breakdown')">‹</div>
+            <span class="page-title-text">Select Payment Method</span>
+          </div>
+
+          <div class="payment-option-card selected" onclick="navigateTo('upi-pin')">
+            <div class="payment-opt-left">
+              <div class="radio-circle-select"></div>
+              <div>
+                <div style="font-weight:700; font-size:0.85rem;">UPI (Google Pay, PhonePe, Paytm)</div>
+                <div style="font-size:0.7rem; color:var(--text-muted);">Instant 0% Convenience Fee</div>
+              </div>
+            </div>
+            <span>📱</span>
+          </div>
+
+          <div class="payment-option-card" onclick="navigateTo('upi-pin')">
+            <div class="payment-opt-left">
+              <div class="radio-circle-select"></div>
+              <div>
+                <div style="font-weight:700; font-size:0.85rem;">Debit / Credit Cards</div>
+                <div style="font-size:0.7rem; color:var(--text-muted);">Visa, MasterCard, RuPay</div>
+              </div>
+            </div>
+            <span>💳</span>
+          </div>
+
+          <div class="payment-option-card" onclick="navigateTo('upi-pin')">
+            <div class="payment-opt-left">
+              <div class="radio-circle-select"></div>
+              <div>
+                <div style="font-weight:700; font-size:0.85rem;">Net Banking (SBI, HDFC, PNB)</div>
+                <div style="font-size:0.7rem; color:var(--text-muted);">All Indian Banks Supported</div>
+              </div>
+            </div>
+            <span>🏦</span>
+          </div>
+
+          <button class="btn-primary-block" style="margin-top:1rem;" onclick="navigateTo('upi-pin')">
+            Pay ₹1,965 via UPI ➔
+          </button>
+        </div>
+
+        <!-- Screen 7: Payment Processing -->
+        <div id="screen-payment-processing" class="screen-view">
+          <div class="success-screen-card" style="padding-top:4rem;">
+            <div style="width:70px; height:70px; border-radius:50%; border:4px solid #e2e8f0; border-top-color:var(--primary-blue); animation:spin 1s linear infinite; margin-bottom:1.5rem;"></div>
+            <style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
+            <div class="success-title">Processing Payment...</div>
+            <p style="font-size:0.82rem; color:var(--text-muted); max-width:260px; margin-top:0.5rem;">
+              Connecting to PSPCL Bank Gateway. Please do not press back or close the app.
+            </p>
+            <div style="margin-top:2rem; font-family:var(--font-mono); font-size:1.2rem; font-weight:800; color:var(--primary-blue);">
+              ₹1,965.00
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 8: Payment Successful -->
+        <div id="screen-payment-success" class="screen-view">
+          <div class="success-screen-card">
+            <div class="success-icon-big">✓</div>
+            <div class="success-title">Payment Successful!</div>
+            <div style="font-size:0.85rem; color:var(--color-success); font-weight:700; margin-bottom:1.25rem;">
+              ₹1,965.00 Paid to PSPCL
+            </div>
+
+            <div class="breakdown-card" style="width:100%; text-align:left; font-size:0.8rem; margin-bottom:1.25rem;">
+              <div class="breakdown-line"><span>Transaction ID:</span><b style="font-family:var(--font-mono);">PSPCL/2026/TXN8912</b></div>
+              <div class="breakdown-line"><span>Consumer CA:</span><span style="font-family:var(--font-mono);">3004928174</span></div>
+              <div class="breakdown-line"><span>Payment Mode:</span><span>UPI (Google Pay)</span></div>
+              <div class="breakdown-line"><span>Date & Time:</span><span>Today, 9:41 AM</span></div>
+            </div>
+
+            <button class="btn-primary-block" onclick="navigateTo('payment-receipt')">
+              Download Tax Receipt 📄
+            </button>
+            <button class="btn-pay-now-primary" style="background:none; border:1px solid var(--border-color); color:var(--text-main); width:100%; margin-top:0.6rem;" onclick="navigateTo('home')">
+              Back to Home
+            </button>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             FLOW 2: PAYMENT DETAILS + BILL HISTORY (Screens 9 to 11)
+             =================================================================== -->
+        
+        <!-- Screen 9: Payment Receipt -->
+        <div id="screen-payment-receipt" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('payment-success')">‹</div>
+            <span class="page-title-text">Official Tax Receipt</span>
+          </div>
+
+          <div class="breakdown-card" style="font-size:0.8rem;">
+            <div style="text-align:center; border-bottom:1px solid var(--border-color); padding-bottom:0.75rem; margin-bottom:0.75rem;">
+              <div style="font-weight:800; font-size:0.95rem; color:var(--primary-blue);">PUNJAB STATE POWER CORP LTD</div>
+              <div style="font-size:0.68rem; color:var(--text-muted);">GSTIN: 03AACCP0345K1Z6 • Receipt #PB-8921</div>
+            </div>
+            <div class="breakdown-line"><span>Consumer:</span><b>Gurpreet Singh</b></div>
+            <div class="breakdown-line"><span>Account CA:</span><span>3004928174</span></div>
+            <div class="breakdown-line"><span>Cycle:</span><span>Jan - Feb 2026</span></div>
+            <div class="breakdown-line"><span>Units:</span><span>348 kWh</span></div>
+            <div class="breakdown-line total"><span>Amount Paid:</span><span style="color:var(--color-success);">₹1,965.00 ✓</span></div>
+          </div>
+
+          <button class="btn-primary-block" onclick="window.print()">
+            🖨️ Print / Save PDF Receipt
+          </button>
+        </div>
+
+        <!-- Screen 10: Bill History -->
+        <div id="screen-bill-history" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('home')">‹</div>
+            <span class="page-title-text">Payment History</span>
+          </div>
+
+          <div class="provider-list">
+            <div class="provider-row-card" onclick="navigateTo('payment-receipt')">
+              <div>
+                <div style="font-weight:700; font-size:0.85rem;">Feb 2026 Statement</div>
+                <div style="font-size:0.68rem; color:var(--text-muted);">348 Units • Paid via UPI</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-weight:800; font-size:0.9rem;">₹1,965</div>
+                <span class="status-badge-paid">PAID</span>
+              </div>
+            </div>
+
+            <div class="provider-row-card" onclick="navigateTo('payment-receipt')">
+              <div>
+                <div style="font-weight:700; font-size:0.85rem;">Dec 2025 Statement</div>
+                <div style="font-size:0.68rem; color:var(--text-muted);">320 Units • Paid via GPay</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-weight:800; font-size:0.9rem;">₹1,820</div>
+                <span class="status-badge-paid">PAID</span>
+              </div>
+            </div>
+
+            <div class="provider-row-card" onclick="navigateTo('payment-receipt')">
+              <div>
+                <div style="font-weight:700; font-size:0.85rem;">Oct 2025 Statement</div>
+                <div style="font-size:0.68rem; color:var(--text-muted);">260 Units • 300U Subsidy</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-weight:800; font-size:0.9rem; color:var(--color-success);">₹0.00</div>
+                <span class="status-badge-paid" style="background:#dbeafe; color:#1d4ed8;">SUBSIDY FREE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 11: Enter 6-Digit UPI PIN Screen -->
+        <div id="screen-upi-pin" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('payment-method')">‹</div>
+            <span class="page-title-text">Enter UPI PIN</span>
+          </div>
+
+          <div class="upi-pin-container">
+            <div style="font-size:0.82rem; color:var(--text-muted);">Paying PSPCL Punjab Electricity</div>
+            <div style="font-family:var(--font-display); font-size:1.8rem; font-weight:800; color:var(--text-main); margin:0.25rem 0;">
+              ₹1,965.00
+            </div>
+
+            <div style="font-size:0.75rem; font-weight:700; color:var(--text-muted); margin-top:1rem;">Enter Your 6-Digit UPI PIN</div>
+            <div class="pin-dots-row">
+              <div class="pin-dot"></div>
+              <div class="pin-dot"></div>
+              <div class="pin-dot"></div>
+              <div class="pin-dot"></div>
+              <div class="pin-dot"></div>
+              <div class="pin-dot"></div>
+            </div>
+
+            <!-- Numeric Keypad -->
+            <div class="numeric-keypad-grid">
+              <button class="keypad-btn" onclick="pressPinKey('1')">1</button>
+              <button class="keypad-btn" onclick="pressPinKey('2')">2</button>
+              <button class="keypad-btn" onclick="pressPinKey('3')">3</button>
+              <button class="keypad-btn" onclick="pressPinKey('4')">4</button>
+              <button class="keypad-btn" onclick="pressPinKey('5')">5</button>
+              <button class="keypad-btn" onclick="pressPinKey('6')">6</button>
+              <button class="keypad-btn" onclick="pressPinKey('7')">7</button>
+              <button class="keypad-btn" onclick="pressPinKey('8')">8</button>
+              <button class="keypad-btn" onclick="pressPinKey('9')">9</button>
+              <button class="keypad-btn" style="color:var(--color-danger);" onclick="deletePinKey()">⌫</button>
+              <button class="keypad-btn" onclick="pressPinKey('0')">0</button>
+              <button class="keypad-btn" style="color:var(--color-success);" onclick="submitUpiPayment()">✓</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             FLOW 3: USAGE FLOW + REPORT A PROBLEM (Screens 12 to 17)
+             =================================================================== -->
+        
+        <!-- Screen 12: Current Usage (742.8 kWh) -->
+        <div id="screen-current-usage" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('home')">‹</div>
+            <span class="page-title-text">Current Usage</span>
+          </div>
+
+          <div class="usage-highlight-card">
+            <div style="font-size:0.75rem; opacity:0.85;">Total Cumulative Consumption</div>
+            <div class="usage-big-number">742.8 kWh</div>
+            <div style="display:flex; justify-content:space-between; font-size:0.72rem; opacity:0.9; margin-top:0.4rem;">
+              <span>Active Draw: <b>10.2 kW</b></span>
+              <span>Voltage: <b>234 V</b></span>
+              <span>PF: <b>0.98</b></span>
+            </div>
+          </div>
+
+          <div class="bar-chart-card">
+            <div style="font-size:0.82rem; font-weight:800; margin-bottom:0.5rem;">Daily Hourly Load Curve</div>
+            <div class="chart-bar-container">
+              <div class="chart-col"><div class="col-fill" style="height:30%;"></div><span class="col-label">12A</span></div>
+              <div class="chart-col"><div class="col-fill" style="height:20%;"></div><span class="col-label">4A</span></div>
+              <div class="chart-col"><div class="col-fill" style="height:60%;"></div><span class="col-label">8A</span></div>
+              <div class="chart-col active"><div class="col-fill" style="height:90%;"></div><span class="col-label">12P</span></div>
+              <div class="chart-col"><div class="col-fill" style="height:55%;"></div><span class="col-label">4P</span></div>
+              <div class="chart-col active"><div class="col-fill" style="height:95%;"></div><span class="col-label">8P</span></div>
+            </div>
+          </div>
+
+          <div class="services-4grid">
+            <div class="service-pill-item" onclick="navigateTo('usage-history')">
+              <div class="service-icon-box">📈</div>
+              <span class="service-label-text">History</span>
+            </div>
+            <div class="service-pill-item" onclick="navigateTo('consumption-trends')">
+              <div class="service-icon-box">📊</div>
+              <span class="service-label-text">Trends</span>
+            </div>
+            <div class="service-pill-item" onclick="navigateTo('outage-radar')">
+              <div class="service-icon-box">📡</div>
+              <span class="service-label-text">Feeder Map</span>
+            </div>
+            <div class="service-pill-item" onclick="navigateTo('report-problem')">
+              <div class="service-icon-box">🛠️</div>
+              <span class="service-label-text">Report</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 13: Usage History -->
+        <div id="screen-usage-history" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('current-usage')">‹</div>
+            <span class="page-title-text">Usage History</span>
+          </div>
+
+          <div class="bar-chart-card">
+            <div style="font-size:0.82rem; font-weight:800; margin-bottom:0.75rem;">Monthly Energy Consumption (kWh)</div>
+            <div class="chart-bar-container" style="height:140px;">
+              <div class="chart-col"><div class="col-fill" style="height:45%;"></div><span class="col-label">Jan</span></div>
+              <div class="chart-col"><div class="col-fill" style="height:40%;"></div><span class="col-label">Feb</span></div>
+              <div class="chart-col"><div class="col-fill" style="height:55%;"></div><span class="col-label">Mar</span></div>
+              <div class="chart-col"><div class="col-fill" style="height:75%;"></div><span class="col-label">Apr</span></div>
+              <div class="chart-col active"><div class="col-fill" style="height:95%;"></div><span class="col-label">May</span></div>
+              <div class="chart-col active"><div class="col-fill" style="height:90%;"></div><span class="col-label">Jun</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 14: Consumption Trends -->
+        <div id="screen-consumption-trends" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('current-usage')">‹</div>
+            <span class="page-title-text">Consumption Trends</span>
+          </div>
+
+          <div class="breakdown-card">
+            <div style="font-size:0.85rem; font-weight:800; margin-bottom:0.75rem;">Appliance / Sub-Meter Load Breakdown</div>
+            <div class="breakdown-line"><span>Air Conditioner (1.5 Ton Inverter):</span><b>42% (146 u)</b></div>
+            <div class="breakdown-line"><span>Water Heater & Geyser:</span><b>22% (76 u)</b></div>
+            <div class="breakdown-line"><span>Refrigerator & Kitchen:</span><b>18% (62 u)</b></div>
+            <div class="breakdown-line"><span>Lighting & Entertainment:</span><b>18% (64 u)</b></div>
+          </div>
+        </div>
+
+        <!-- Screen 15: Report a Problem -->
+        <div id="screen-report-problem" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('home')">‹</div>
+            <span class="page-title-text">Report a Problem</span>
+          </div>
+
+          <div class="provider-list">
+            <div class="provider-row-card" onclick="navigateTo('report-form')">
+              <div class="provider-info-left">
+                <div class="provider-logo-sq" style="background:#fee2e2; color:#ef4444;">⚡</div>
+                <div>
+                  <div class="provider-name-text">No Power / Total Blackout</div>
+                  <div class="provider-state-text">Feeder or Pole fuse blown</div>
+                </div>
+              </div>
+              <span>➔</span>
+            </div>
+
+            <div class="provider-row-card" onclick="navigateTo('report-form')">
+              <div class="provider-info-left">
+                <div class="provider-logo-sq" style="background:#fef3c7; color:#d97706;">⚠️</div>
+                <div>
+                  <div class="provider-name-text">Low Voltage / Phase Missing</div>
+                  <div class="provider-state-text">Voltage fluctuating below 180V</div>
+                </div>
+              </div>
+              <span>➔</span>
+            </div>
+
+            <div class="provider-row-card" onclick="navigateTo('report-form')">
+              <div class="provider-info-left">
+                <div class="provider-logo-sq" style="background:#dbeafe; color:#1d4ed8;">📟</div>
+                <div>
+                  <div class="provider-name-text">Smart Meter Defect / Burnt</div>
+                  <div class="provider-state-text">Display dead or sparking</div>
+                </div>
+              </div>
+              <span>➔</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 16: Submit Complaint Form -->
+        <div id="screen-report-form" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('report-problem')">‹</div>
+            <span class="page-title-text">Submit Complaint</span>
+          </div>
+
+          <div class="form-input-card">
+            <div class="input-field-group">
+              <label class="field-label">Category</label>
+              <input type="text" class="text-input-styled" value="Low Voltage / Phase Fluctuation" readonly />
+            </div>
+
+            <div class="input-field-group">
+              <label class="field-label">Address & Landmark</label>
+              <input type="text" class="text-input-styled" value="House 428, Sector 70, Mohali" />
+            </div>
+
+            <div class="input-field-group">
+              <label class="field-label">Describe Problem</label>
+              <textarea class="text-input-styled" rows="3" placeholder="Explain the power issue..."></textarea>
+            </div>
+
+            <button class="btn-primary-block" onclick="navigateTo('track-complaint'); showToast('Grievance Ticket #PB-98214 registered!', '📝');">
+              Register Complaint ➔
+            </button>
+          </div>
+        </div>
+
+        <!-- Screen 17: Power Outage Feeder Map -->
+        <div id="screen-outage-radar" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('home')">‹</div>
+            <span class="page-title-text">Grid Feeder Status</span>
+          </div>
+
+          <div class="breakdown-card">
+            <div style="font-size:0.85rem; font-weight:800; margin-bottom:0.5rem;">PSPCL 66kV Sub-Station Mohali</div>
+            <div style="font-size:0.75rem; color:var(--color-success); font-weight:700;">● Grid Healthy & Stable (50.02 Hz)</div>
+            <div style="font-size:0.72rem; color:var(--text-muted); margin-top:0.35rem;">Connected Feeder: 11kV Sector 70 Express Feeder</div>
+          </div>
+
+          <div class="breakdown-card" style="border-left:4px solid var(--color-warning);">
+            <div style="font-size:0.8rem; font-weight:800; color:var(--color-warning);">Scheduled Maintenance</div>
+            <div style="font-size:0.75rem; color:var(--text-main); margin-top:2px;">Tomorrow, 10:00 AM – 1:00 PM (Tree trimming along 11kV line)</div>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             FLOW 4: SUPPORT + COMPLAINTS (Screens 18 to 23)
+             =================================================================== -->
+        
+        <!-- Screen 18: Support Help Center -->
+        <div id="screen-support-home" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('home')">‹</div>
+            <span class="page-title-text">Support & Help</span>
+          </div>
+
+          <div class="provider-list">
+            <div class="provider-row-card" onclick="navigateTo('chat-user')">
+              <div class="provider-info-left">
+                <div class="provider-logo-sq" style="background:#d1fae5; color:#059669;">💬</div>
+                <div>
+                  <div class="provider-name-text">Live Chat with Assistant</div>
+                  <div class="provider-state-text">Instant AI resolution & ticket status</div>
+                </div>
+              </div>
+              <span>➔</span>
+            </div>
+
+            <div class="provider-row-card" onclick="navigateTo('track-complaint')">
+              <div class="provider-info-left">
+                <div class="provider-logo-sq">⏱️</div>
+                <div>
+                  <div class="provider-name-text">Track Active Grievance</div>
+                  <div class="provider-state-text">Ticket #PB-98214 Dispatched</div>
+                </div>
+              </div>
+              <span>➔</span>
+            </div>
+
+            <div class="provider-row-card" onclick="showToast('Calling PSPCL Toll Free Helpline 1912...', '📞')">
+              <div class="provider-info-left">
+                <div class="provider-logo-sq" style="background:#fee2e2; color:#ef4444;">📞</div>
+                <div>
+                  <div class="provider-name-text">PSPCL 24x7 Toll-Free 1912</div>
+                  <div class="provider-state-text">Direct telephone helpline</div>
+                </div>
+              </div>
+              <span>➔</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 19: Submit Request -->
+        <div id="screen-submit-request" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('support-home')">‹</div>
+            <span class="page-title-text">Submit Request</span>
+          </div>
+          <div class="form-input-card">
+            <div class="input-field-group">
+              <label class="field-label">Subject</label>
+              <input type="text" class="text-input-styled" placeholder="e.g. Meter reading verification" />
+            </div>
+            <button class="btn-primary-block" onclick="navigateTo('chat-user')">
+              Start Conversation ➔
+            </button>
+          </div>
+        </div>
+
+        <!-- Screens 20 & 21: Live Chat -->
+        <div id="screen-chat-user" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('support-home')">‹</div>
+            <span class="page-title-text">PSPCL 24x7 Assistant</span>
+          </div>
+
+          <div id="chatContainer" class="chat-conversation-container">
+            <!-- Messages rendered dynamically -->
+          </div>
+
+          <div style="display:flex; gap:6px; margin-top:auto;">
+            <input type="text" id="chatInput" class="text-input-styled" style="flex:1;" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendSupportMessage()" />
+            <button class="btn-pay-now-primary" onclick="sendSupportMessage()">Send</button>
+          </div>
+        </div>
+
+        <!-- Screen 22: My Complaints -->
+        <div id="screen-my-complaints" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('support-home')">‹</div>
+            <span class="page-title-text">My Complaints</span>
+          </div>
+
+          <div class="provider-list">
+            <div class="provider-row-card" onclick="navigateTo('track-complaint')">
+              <div>
+                <div style="font-weight:700; font-size:0.85rem;">#PB-98214: Low Voltage</div>
+                <div style="font-size:0.68rem; color:var(--text-muted);">Registered Today 10:45 AM</div>
+              </div>
+              <span class="status-badge-due" style="background:#dbeafe; color:#1d4ed8;">DISPATCHED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 23: Track Complaint Stepper Timeline -->
+        <div id="screen-track-complaint" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('support-home')">‹</div>
+            <span class="page-title-text">Track Complaint #PB-98214</span>
+          </div>
+
+          <div class="breakdown-card">
+            <div style="font-weight:800; font-size:0.9rem;">Low Voltage Phase Fluctuation</div>
+            <div style="font-size:0.72rem; color:var(--text-muted);">Assigned to Mohali Division JE</div>
+
+            <div class="stepper-pipeline">
+              <div class="step-node completed">
+                <div class="step-circle">✓</div>
+                <div class="step-content-box">
+                  <div class="step-title">Complaint Registered</div>
+                  <div class="step-desc">Today, 10:45 AM via App</div>
+                </div>
+              </div>
+              <div class="step-node completed">
+                <div class="step-circle">✓</div>
+                <div class="step-content-box">
+                  <div class="step-title">Acknowledged by Sub-Station</div>
+                  <div class="step-desc">10:48 AM • SDO Mohali</div>
+                </div>
+              </div>
+              <div class="step-node active">
+                <div class="step-circle">⚡</div>
+                <div class="step-content-box">
+                  <div class="step-title">Lineman Dispatched</div>
+                  <div class="step-desc">Surjit Singh (JE-II) on site (ETA ~25m)</div>
+                </div>
+              </div>
+              <div class="step-node">
+                <div class="step-circle">4</div>
+                <div class="step-content-box">
+                  <div class="step-title">Resolution & Close</div>
+                  <div class="step-desc">Pending site inspection</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             FLOW 5: PROFILE + SETTINGS + FAQS (Screens 24 to 28)
+             =================================================================== -->
+        
+        <!-- Screen 24: Profile -->
+        <div id="screen-profile" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('home')">‹</div>
+            <span class="page-title-text">Consumer Profile</span>
+          </div>
+
+          <div class="breakdown-card" style="text-align:center; padding:1.5rem;">
+            <div class="hero-avatar" style="width:60px; height:60px; font-size:1.4rem; margin:0 auto 0.75rem auto; background:var(--primary-blue); color:#fff;">GS</div>
+            <div style="font-family:var(--font-display); font-size:1.2rem; font-weight:800;">Gurpreet Singh</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); font-family:var(--font-mono);">+91 98765 43210 • CA #3004928174</div>
+            <div style="font-size:0.72rem; color:var(--color-success); font-weight:700; margin-top:4px;">● Domestic Connection (DS) • 4.0 kW Load</div>
+          </div>
+
+          <div class="provider-list">
+            <div class="provider-row-card" onclick="navigateTo('manage-connections')">
+              <span>🏠 Linked Connections (3)</span>
+              <span>➔</span>
+            </div>
+            <div class="provider-row-card" onclick="navigateTo('settings')">
+              <span>⚙️ App Settings</span>
+              <span>➔</span>
+            </div>
+            <div class="provider-row-card" onclick="navigateTo('faqs')">
+              <span>❓ FAQs & Knowledge Base</span>
+              <span>➔</span>
+            </div>
+            <div class="provider-row-card" onclick="navigateTo('app-info')">
+              <span>ℹ️ App Information & PSPCL Info</span>
+              <span>➔</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 25: Settings -->
+        <div id="screen-settings" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('profile')">‹</div>
+            <span class="page-title-text">Settings</span>
+          </div>
+
+          <div class="provider-list">
+            <div class="provider-row-card" onclick="toggleLanguage()">
+              <span>🌐 Language (English / ਪੰਜਾਬੀ)</span>
+              <span style="font-weight:700; color:var(--primary-blue);">Switch</span>
+            </div>
+            <div class="provider-row-card" onclick="showToast('Biometric Fingerprint / FaceID Active', '🔒')">
+              <span>🔒 Biometric Security</span>
+              <span style="color:var(--color-success); font-weight:700;">Enabled</span>
+            </div>
+            <div class="provider-row-card" onclick="showToast('Push Notifications enabled for Bill Dues & Outages', '🔔')">
+              <span>🔔 Outage & Bill Alerts</span>
+              <span style="color:var(--color-success); font-weight:700;">On</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 26: App Information -->
+        <div id="screen-app-info" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('profile')">‹</div>
+            <span class="page-title-text">App Information</span>
+          </div>
+
+          <div class="breakdown-card">
+            <div style="font-weight:800; font-size:0.95rem; color:var(--primary-blue);">Punjab Bijli v3.4.2</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin:0.5rem 0;">
+              Official Smart Consumer Application for Punjab State Power Corporation Limited (PSPCL). Built for AMI Smart Metering rollouts and zero-bill subsidy monitoring.
+            </div>
+            <div class="breakdown-line"><span>AMI Smart Firmware:</span><span>v2.8-GPRS</span></div>
+            <div class="breakdown-line"><span>Helpline:</span><b>1912</b></div>
+          </div>
+        </div>
+
+        <!-- Screen 27: FAQs -->
+        <div id="screen-faqs" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('profile')">‹</div>
+            <span class="page-title-text">FAQs</span>
+          </div>
+
+          <div class="provider-list">
+            <div class="breakdown-card" style="padding:1rem;">
+              <div style="font-weight:700; font-size:0.85rem; color:var(--primary-blue);">How does the Punjab 300-unit free power work?</div>
+              <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">
+                Domestic consumers consuming up to 300 units per month (600 units bimonthly) receive 100% subsidy waiver on energy, fixed charges, and taxes (₹0 Zero Bill).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 28: Manage Multiple Connections -->
+        <div id="screen-manage-connections" class="screen-view">
+          <div class="page-header-nav">
+            <div class="back-btn-arrow" onclick="navigateTo('profile')">‹</div>
+            <span class="page-title-text">Manage Connections</span>
+          </div>
+
+          <div class="provider-list">
+            <div class="provider-row-card" style="border-color:var(--primary-blue);" onclick="navigateTo('home'); showToast('Switched to Home Sector 70!', '🏠');">
+              <div>
+                <div style="font-weight:700; font-size:0.85rem;">🏠 Home - Sector 70, Mohali</div>
+                <div style="font-size:0.68rem; color:var(--text-muted);">CA #3004928174 • Domestic (DS)</div>
+              </div>
+              <span class="status-badge-paid">ACTIVE</span>
+            </div>
+
+            <div class="provider-row-card" onclick="navigateTo('home'); showToast('Switched to Tubewell Farm Khanna!', '🚜');">
+              <div>
+                <div style="font-weight:700; font-size:0.85rem;">🚜 Tubewell Farm - Khanna</div>
+                <div style="font-size:0.68rem; color:var(--text-muted);">CA #4001928371 • Agriculture (AP)</div>
+              </div>
+              <span>Switch</span>
+            </div>
+
+            <div class="provider-row-card" onclick="navigateTo('home'); showToast('Switched to Urban Store Ludhiana!', '🏬');">
+              <div>
+                <div style="font-weight:700; font-size:0.85rem;">🏬 Urban Retail Store - Ludhiana</div>
+                <div style="font-size:0.68rem; color:var(--text-muted);">CA #5008291482 • Commercial (NRS)</div>
+              </div>
+              <span>Switch</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Elevated Floating Bottom Navigation Bar -->
+      <div class="figma-bottom-nav">
+        <button class="nav-item-btn active" data-nav="home" onclick="navigateTo('home')">
+          <span class="nav-icon">🏠</span>
+          <span>Home</span>
+        </button>
+        <button class="nav-item-btn" data-nav="current-usage" onclick="navigateTo('current-usage')">
+          <span class="nav-icon">📊</span>
+          <span>Usage</span>
+        </button>
+        
+        <!-- Floating Center Pay Button -->
+        <div class="floating-pay-btn" onclick="navigateTo('provider')">
+          ⚡
+        </div>
+
+        <button class="nav-item-btn" data-nav="support-home" onclick="navigateTo('support-home')">
+          <span class="nav-icon">💬</span>
+          <span>Support</span>
+        </button>
+        <button class="nav-item-btn" data-nav="profile" onclick="navigateTo('profile')">
+          <span class="nav-icon">👤</span>
+          <span>Profile</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- =======================================================================
+         VIEW 2: FIGMA 5-ROW ARTBOARD GALLERY (Matching Screenshot 100%)
+         ======================================================================= -->
+    <div id="figmaBoardContainer" class="figma-board-gallery">
+      
+      <!-- ROW 1: HOME + BILL PAYMENT FLOW -->
+      <div class="board-row-section">
+        <div class="board-row-title">
+          <span>🔵 1. HOME + BILL PAYMENT FLOW (8 SCREENS)</span>
+        </div>
+        <div class="board-screens-track">
+          <div class="board-screen-card">
+            <div class="board-screen-label">01. Home Dashboard</div>
+            <iframe src="index.html?screen=home" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">02. Select Provider</div>
+            <iframe src="index.html?screen=provider" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">03. Enter Consumer Details</div>
+            <iframe src="index.html?screen=enter-details" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">04. Fetch Bill Summary</div>
+            <iframe src="index.html?screen=fetch-summary" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">05. Bill Breakdown</div>
+            <iframe src="index.html?screen=bill-breakdown" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">06. Select Payment Method</div>
+            <iframe src="index.html?screen=payment-method" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">07. Payment Processing</div>
+            <iframe src="index.html?screen=payment-processing" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">08. Payment Successful</div>
+            <iframe src="index.html?screen=payment-success" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 2: PAYMENT DETAILS + BILL HISTORY -->
+      <div class="board-row-section">
+        <div class="board-row-title">
+          <span>💳 2. PAYMENT DETAILS + BILL HISTORY (3 SCREENS)</span>
+        </div>
+        <div class="board-screens-track">
+          <div class="board-screen-card">
+            <div class="board-screen-label">09. Official Tax Receipt</div>
+            <iframe src="index.html?screen=payment-receipt" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">10. Past Bill Statements</div>
+            <iframe src="index.html?screen=bill-history" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">11. Enter 6-Digit UPI PIN</div>
+            <iframe src="index.html?screen=upi-pin" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 3: USAGE FLOW + REPORT A PROBLEM -->
+      <div class="board-row-section">
+        <div class="board-row-title">
+          <span>📊 3. USAGE FLOW + REPORT A PROBLEM (6 SCREENS)</span>
+        </div>
+        <div class="board-screens-track">
+          <div class="board-screen-card">
+            <div class="board-screen-label">12. Current Usage (742.8 kWh)</div>
+            <iframe src="index.html?screen=current-usage" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">13. Usage History Chart</div>
+            <iframe src="index.html?screen=usage-history" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">14. Consumption Trends</div>
+            <iframe src="index.html?screen=consumption-trends" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">15. Report Problem Selector</div>
+            <iframe src="index.html?screen=report-problem" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">16. Submit Complaint Form</div>
+            <iframe src="index.html?screen=report-form" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">17. Power Outage Feeder Map</div>
+            <iframe src="index.html?screen=outage-radar" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 4: SUPPORT + COMPLAINTS -->
+      <div class="board-row-section">
+        <div class="board-row-title">
+          <span>💬 4. SUPPORT + COMPLAINTS (6 SCREENS)</span>
+        </div>
+        <div class="board-screens-track">
+          <div class="board-screen-card">
+            <div class="board-screen-label">18. Support Help Center</div>
+            <iframe src="index.html?screen=support-home" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">19. Submit Request</div>
+            <iframe src="index.html?screen=submit-request" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">20. Live Chat (User Query)</div>
+            <iframe src="index.html?screen=chat-user" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">21. Live Chat (AI Resolution)</div>
+            <iframe src="index.html?screen=chat-user" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">22. My Complaints List</div>
+            <iframe src="index.html?screen=my-complaints" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">23. Track Complaint Timeline</div>
+            <iframe src="index.html?screen=track-complaint" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW 5: PROFILE + SETTINGS + FAQS -->
+      <div class="board-row-section">
+        <div class="board-row-title">
+          <span>👤 5. PROFILE + SETTINGS + FAQS (5 SCREENS)</span>
+        </div>
+        <div class="board-screens-track">
+          <div class="board-screen-card">
+            <div class="board-screen-label">24. Consumer Profile</div>
+            <iframe src="index.html?screen=profile" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">25. App Settings</div>
+            <iframe src="index.html?screen=settings" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">26. App Information</div>
+            <iframe src="index.html?screen=app-info" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">27. FAQs & Knowledge Base</div>
+            <iframe src="index.html?screen=faqs" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+          <div class="board-screen-card">
+            <div class="board-screen-label">28. Multi-Connection Manager</div>
+            <iframe src="index.html?screen=manage-connections" style="width:100%; height:100%; border:none;"></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

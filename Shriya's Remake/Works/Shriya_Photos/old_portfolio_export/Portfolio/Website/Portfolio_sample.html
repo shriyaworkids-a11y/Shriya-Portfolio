@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Interactive Portfolio - Demo</title>
+<style>
+  :root{
+    --bg:#f7f8fb;
+    --card:#ffffff;
+    --muted:#7b8794;
+    --accent:#2484E4;
+    --radius:14px;
+    --hero-image: linear-gradient(90deg, rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('hero.jpg');
+    --shadow: 0 6px 20px rgba(17,24,39,0.08);
+    --glass: rgba(255,255,255,0.65);
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  html,body{height:100%;margin:0;background:var(--bg);color:#111;}
+  a{color:inherit;text-decoration:none}
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:40;
+    backdrop-filter: blur(6px);
+    background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+    border-bottom:1px solid rgba(16,24,40,0.04);
+  }
+  .container{max-width:1150px;margin:0 auto;padding:0 24px;}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:34px}
+  .contact{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}
+  .hero{
+    margin:24px auto;
+    background:var(--hero-image);
+    background-size:cover;background-position:center;
+    border-radius:40px;
+    overflow:hidden;
+    position:relative;
+    color:white;
+    height:260px;
+    display:flex;
+    align-items:center;
+  }
+  .hero-inner{padding:36px;max-width:1100px;margin:0 auto;display:flex;align-items:flex-start;gap:28px;width:100%}
+  .hero-left{flex:1}
+  .eyebrow{display:flex;gap:10px;align-items:center;font-size:13px;opacity:0.95}
+  .hero h1{margin:6px 0 12px;font-size:28px;letter-spacing:-0.3px}
+  .hero p{margin:0 0 18px;max-width:640px;opacity:0.95}
+  .cta-row{display:flex;gap:12px}
+  .btn{background:var(--accent);color:white;padding:10px 16px;border-radius:10px;border:none;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(36,132,228,0.18);transform:translateZ(0);position:relative;overflow:hidden}
+  .btn.secondary{background:transparent;color:white;border:1px solid rgba(255,255,255,0.22)}
+  .btn:active{transform:translateY(1px)}
+  /* counters */
+  .counters{display:flex;gap:18px;margin-top:18px}
+  .counter{background:var(--glass);padding:16px 18px;border-radius:10px;color:#000;backdrop-filter:blur(6px);box-shadow:var(--shadow);min-width:110px;text-align:center}
+  .counter h3{margin:0;font-size:20px}
+  .counter p{margin:6px 0 0;font-size:12px;color:#3f4b57}
+  /* Portfolio area */
+  .section{padding:36px 0}
+  .section h2{font-size:28px;margin:0 0 18px;text-align:center}
+  .tabs{display:flex;gap:28px;justify-content:center;margin-bottom:18px}
+  .tab{position:relative;padding:8px 6px;color:var(--muted);cursor:pointer;font-weight:600}
+  .tab.active{color:#111}
+  .tab.active::after{content:"";position:absolute;height:3px;background:var(--accent);left:0;right:0;bottom:-8px;border-radius:2px;transform:translateY(0);transition:all .28s cubic-bezier(.2,.9,.3,1)}
+  /* grid */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
+  @media (max-width:980px){ .grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:640px){ .grid{grid-template-columns:repeat(1,1fr)}}
+  .card{background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:transform .28s cubic-bezier(.2,.9,.3,1),box-shadow .28s;cursor:pointer}
+  .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(17,24,39,0.12)}
+  .thumb{height:200px;border-radius:10px;background:linear-gradient(135deg,#e6f0ff,#fff);display:block;overflow:hidden;position:relative}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.25));opacity:0;transition:opacity .22s}
+  .card:hover .overlay{opacity:1}
+  .proj-meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+  .meta-title{font-weight:700}
+  /* overlay action */
+  .overlay-actions{position:absolute;right:12px;bottom:12px;display:flex;gap:8px;transform:translateY(16px);opacity:0;transition:all .22s}
+  .card:hover .overlay-actions{transform:translateY(0);opacity:1}
+  .circle{width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,0.95);display:inline-grid;place-items:center;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(17,24,39,0.08)}
+  /* pagination */
+  .pagination{display:flex;gap:8px;justify-content:center;margin-top:20px}
+  .page{width:36px;height:36px;border-radius:8px;background:white;display:grid;place-items:center;cursor:pointer;border:1px solid rgba(16,24,40,0.04)}
+  .page.active{background:var(--accent);color:white;box-shadow:0 10px 20px rgba(36,132,228,0.16)}
+  /* modal */
+  .modal-backdrop{position:fixed;inset:0;background:rgba(8,10,12,0.6);display:none;place-items:center;z-index:60;padding:20px}
+  .modal{background:white;border-radius:12px;max-width:920px;width:100%;box-shadow:0 30px 80px rgba(2,6,23,0.6);overflow:hidden;transform:translateY(30px) scale(.98);transition:all .28s}
+  .modal.show{transform:translateY(0) scale(1)}
+  .modal-body{display:flex;gap:12px}
+  .modal-left{flex:1;background:#f6f8fb;padding:18px}
+  .modal-left img{width:100%;height:360px;object-fit:cover;border-radius:8px}
+  .modal-right{flex:1;padding:18px}
+  .close-btn{position:absolute;right:16px;top:12px;background:#fff;border-radius:9px;border:none;padding:8px;cursor:pointer}
+  /* small micro interactions */
+  .btn:before{content:"";position:absolute;inset:0;border-radius:8px;opacity:0;transform:scale(.95);transition:all .28s}
+  .btn:hover:before{opacity:0.06;transform:scale(1)}
+  .filter-count{font-size:12px;color:var(--muted);margin-left:8px}
+  footer{padding:30px 0;background:#071023;color:#fff;text-align:center;margin-top:28px}
+  /* subtle scroll reveal */
+  .reveal{opacity:0;transform:translateY(12px);transition:all .6s cubic-bezier(.2,.9,.3,1)}
+  .reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container topbar">
+    <div class="brand">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='130' height='34'><rect rx='6' width='130' height='34' fill='%232484E4'/><text x='12' y='22' font-family='Arial' font-size='16' fill='white'>IDS</text></svg>" alt="logo">
+      <div style="font-size:13px;color:var(--muted)">Enabling Success</div>
+    </div>
+    <div class="contact">
+      <div>idstechsolutions.com</div>
+      <div>(+91) 172 509 8475</div>
+    </div>
+  </div>
+</header>
+
+<main class="container" role="main">
+  <!-- Hero -->
+  <section class="hero" aria-label="Hero section" style="--hero-image: linear-gradient(90deg, rgba(4,8,10,0.45), rgba(4,8,10,0.45)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=9b9e3b7f88d85b9b4a6d4a3f5e1dd0d6')">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="eyebrow reveal" style="--d:.05s">
+          <div style="padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.22)">Creativity</div>
+          <div style="padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.22)">Innovation</div>
+          <div style="padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.22)">Strategy</div>
+        </div>
+        <h1 class="reveal" style="--d:.12s">IDS Emphasis on Creativity, Innovation & Strategy</h1>
+        <p class="reveal" style="--d:.18s">Delivering tailored digital solutions with seamless end-to-end execution — driving innovation and business growth across industries.</p>
+        <div class="cta-row reveal" style="--d:.24s">
+          <button class="btn" onclick="scrollToSection('portfolio')">View Portfolio</button>
+          <button class="btn secondary" onclick="alert('Contact action')">Contact Us</button>
+        </div>
+
+        <div class="counters reveal" style="--d:.30s">
+          <div class="counter"><h3 class="count" data-target="35">0</h3><p>Years of Experience</p></div>
+          <div class="counter"><h3 class="count" data-target="70">0</h3><p>Long Standing Clients (%)</p></div>
+          <div class="counter"><h3 class="count" data-target="10">0</h3><p>Avg Customer Tenure</p></div>
+          <div class="counter"><h3 class="count" data-target="800">0</h3><p>Projects Delivered</p></div>
+        </div>
+      </div>
+      <div style="width:360px;display:flex;align-items:center;justify-content:center;">
+        <!-- optional right hero visual -->
+        <div style="width:320px;height:200px;border-radius:14px;background:linear-gradient(135deg,#fff,#f1f6ff);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;color:var(--muted)">
+          <div style="text-align:center;padding:12px">
+            <div style="font-weight:700">Award-winning</div>
+            <div style="font-size:12px;margin-top:8px">Solutions & Delivery</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="section">
+    <h2 class="reveal">Our Portfolio</h2>
+    <div class="tabs reveal" role="tablist" aria-label="portfolio categories">
+      <div class="tab active" data-filter="all" onclick="filterGrid(event)">All</div>
+      <div class="tab" data-filter="healthcare" onclick="filterGrid(event)">Healthcare</div>
+      <div class="tab" data-filter="ecommerce" onclick="filterGrid(event)">Ecommerce</div>
+      <div class="tab" data-filter="it" onclick="filterGrid(event)">IT & Services</div>
+      <div class="tab" data-filter="other" onclick="filterGrid(event)">Others</div>
+    </div>
+
+    <div id="grid" class="grid">
+      <!-- cards (use data-category to filter). replace src with real thumbnails -->
+      <!-- I'll include 12 sample cards -->
+      <!-- card template -->
+      <script id="card-template" type="text/template">
+        <div class="card reveal" data-category="{{cat}}">
+          <div class="thumb">
+            <img src="{{img}}" alt="{{title}}">
+            <div class="overlay"></div>
+            <div class="overlay-actions">
+              <div class="circle" onclick="openPreview('{{img}}','{{title}}','{{desc}}')">🔍</div>
+            </div>
+          </div>
+          <div class="proj-meta">
+            <div class="meta-title">{{title}}</div>
+            <div class="meta-cat" style="font-size:12px;color:var(--muted)">{{catLabel}}</div>
+          </div>
+        </div>
+      </script>
+    </div>
+
+    <div class="pagination" aria-label="pagination">
+      <div class="page active" data-page="1" onclick="changePage(1)">1</div>
+      <div class="page" data-page="2" onclick="changePage(2)">2</div>
+      <div class="page" data-page="3" onclick="changePage(3)">3</div>
+      <div class="page" data-page="4" onclick="changePage(4)">4</div>
+      <div class="page" data-page="next" onclick="changePage('next')">Next</div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Modal Preview -->
+<div id="modal" class="modal-backdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" id="modalCard">
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <div class="modal-body">
+      <div class="modal-left">
+        <img id="modalImg" src="" alt="project image">
+      </div>
+      <div class="modal-right">
+        <h3 id="modalTitle">Project Title</h3>
+        <p id="modalDesc">Project description and case summary goes here. Include challenge, solution and results for best effect.</p>
+        <div style="margin-top:14px">
+          <button class="btn" onclick="alert('Start project')">Start a Project</button>
+          <button class="btn secondary" style="margin-left:8px" onclick="alert('Request case study')">Request Case Study</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  ©2025 IDS Infotech Ltd. All rights reserved. | idstechsolutions.com
+</footer>
+
+<script>
+  // small dataset for demo; replace images with real thumbnails
+  const demoItems = [
+    {title:'Mental Wellness',cat:'healthcare',catLabel:'Healthcare',img:'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop'},
+    {title:'Social App',cat:'ecommerce',catLabel:'Ecommerce',img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop'},
+    {title:'Dietary Platform',cat:'healthcare',catLabel:'Healthcare',img:'https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?q=80&w=1200&auto=format&fit=crop'},
+    {title:'Mobile Service UI',cat:'it',catLabel:'IT & Services',img:'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop'},
+    {title:'Doctor Portal',cat:'healthcare',catLabel:'Healthcare',img:'https://images.unsplash.com/photo-1580281657521-2b7a0ac029a9?q=80&w=1200&auto=format&fit=crop'},
+    {title:'Child Care App',cat:'other',catLabel:'Others',img:'https://images.unsplash.com/photo-1523978591478-c753949ff840?q=80&w=1200&auto=format&fit=crop'},
+    {title:'Booking App',cat:'ecommerce',catLabel:'Ecommerce',img:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop'},
+    {title:'Travel Landing',cat:'it',catLabel:'IT & Services',img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop'},
+    {title:'Food Delivery',cat:'ecommerce',catLabel:'Ecommerce',img:'https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?q=80&w=1200&auto=format&fit=crop'},
+    {title:'Finance App',cat:'it',catLabel:'IT & Services',img:'https://images.unsplash.com/photo-1518459031867-a89b944bffe4?q=80&w=1200&auto=format&fit=crop'},
+    {title:'Dental Care',cat:'other',catLabel:'Others',img:'https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=1200&auto=format&fit=crop'},
+    {title:'Restaurant UI',cat:'ecommerce',catLabel:'Ecommerce',img:'https://images.unsplash.com/photo-1542444459-db6f9f5d9f0d?q=80&w=1200&auto=format&fit=crop'}
+  ];
+
+  // render cards
+  const grid = document.getElementById('grid');
+  const template = document.getElementById('card-template').textContent;
+  function render(list){
+    grid.innerHTML = '';
+    list.forEach(it=>{
+      let html = template.replace('{{cat}}',it.cat).replace('{{img}}',it.img).replace('{{title}}',it.title).replace('{{desc}}','A short case description goes here.').replace('{{catLabel}}',it.catLabel);
+      grid.insertAdjacentHTML('beforeend',html);
+    });
+    attachReveal(); // reapply reveal observers to new nodes
+  }
+  render(demoItems);
+
+  // filter
+  function filterGrid(e){
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+    const f = e.currentTarget.getAttribute('data-filter');
+    document.querySelectorAll('#grid .card').forEach(card=>{
+      if(f==='all' || card.dataset.category===f){ card.style.display='block'; card.classList.add('reveal') }
+      else card.style.display='none';
+    });
+  }
+
+  // simple pagination (demo only)
+  let currentPage = 1;
+  function changePage(p){
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(pg=>pg.classList.remove('active'));
+    if(p==='next'){ currentPage = Math.min(currentPage+1, 4); document.querySelector('.page[data-page="'+currentPage+'"]').classList.add('active'); return; }
+    currentPage = p;
+    document.querySelector('.page[data-page="'+p+'"]').classList.add('active');
+    // for demo, no real paging change of items
+  }
+
+  // modal
+  const modal = document.getElementById('modal');
+  const modalCard = document.getElementById('modalCard');
+  function openPreview(img, title, desc){
+    document.getElementById('modalImg').src = img;
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalDesc').textContent = desc || 'Case study summary with challenge, solution and results.';
+    modal.style.display = 'grid';
+    setTimeout(()=>{ modalCard.classList.add('show'); modal.setAttribute('aria-hidden','false'); },10);
+  }
+  function closeModal(){
+    modalCard.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+    setTimeout(()=>{ modal.style.display='none'; },240);
+  }
+  modal.addEventListener('click', e=>{ if(e.target === modal) closeModal(); });
+
+  // animated counters when visible
+  function animateCounts(){
+    const counts = document.querySelectorAll('.count');
+    counts.forEach(c=>{
+      if(c.dataset.animated) return;
+      const rect = c.getBoundingClientRect();
+      if(rect.top < window.innerHeight - 80){
+        c.dataset.animated = '1';
+        const target = +c.dataset.target;
+        const start = 0;
+        const duration = 1200;
+        let startTime = null;
+        function step(ts){
+          if(!startTime) startTime = ts;
+          const progress = Math.min((ts-startTime)/duration,1);
+          const val = Math.floor(progress * (target - start) + start);
+          c.textContent = val + (target>100?'+':'');
+          if(progress<1) requestAnimationFrame(step);
+          else c.textContent = target + (target>100?'+':'');
+        }
+        requestAnimationFrame(step);
+      }
+    });
+  }
+  window.addEventListener('scroll', animateCounts);
+  window.addEventListener('load', ()=>{ animateCounts(); attachReveal(); });
+
+  // reveal on scroll
+  function attachReveal(){
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(r=>{
+      // small stagger via CSS var
+      if(!r.style.transitionDelay) r.style.transitionDelay = (r.style.getPropertyValue('--d') || '0s');
+    });
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(ent=>{
+        if(ent.isIntersecting) ent.target.classList.add('visible');
+      });
+    },{threshold:.12});
+    reveals.forEach(r=>obs.observe(r));
+  }
+
+  // small helper scroll to section
+  function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  // keyboard accessibility: close modal on ESC
+  window.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+  // microinteraction: simple ripple on click (for CTA)
+  document.querySelectorAll('.btn').forEach(b=>{
+    b.addEventListener('click', e=>{
+      const el = e.currentTarget;
+      const circle = document.createElement('span');
+      circle.style.position='absolute';circle.style.borderRadius='50%';
+      circle.style.transform='scale(0)';circle.style.background='rgba(255,255,255,0.3)';
+      circle.style.width = circle.style.height = Math.max(el.offsetWidth,el.offsetHeight) + 'px';
+      circle.style.left = (e.offsetX - el.offsetWidth/2) + 'px';
+      circle.style.top = (e.offsetY - el.offsetHeight/2) + 'px';
+      circle.style.transition='transform .45s,opacity .45s';
+      el.appendChild(circle);
+      requestAnimationFrame(()=>circle.style.transform='scale(1)');
+      setTimeout(()=>{ circle.style.opacity='0'; },300);
+      setTimeout(()=>{ circle.remove(); },700);
+    });
+  });
+
+  // initial focus goodie: reveal header
+  document.addEventListener('DOMContentLoaded', ()=>{ setTimeout(()=>document.querySelector('header').classList.add('visible'),200) });
+
+  // slight improvement: allow clicking the image overlay to preview
+  grid.addEventListener('click', e=>{
+    const card = e.target.closest('.card');
+    if(!card) return;
+    // only open if clicked image or overlay
+    if(e.target.tagName==='IMG' || e.target.classList.contains('overlay') || e.target.closest('.overlay-actions')){
+      const img = card.querySelector('img').src;
+      const title = card.querySelector('.meta-title').textContent;
+      openPreview(img, title, 'This is a short description for '+title+'. Replace with real case study copy.');
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Web Design &amp; Webflow Development | Breems</title>
+  <meta content="Certified Webflow partner for growing companies. Fully tailored websites that align your ambitions with your image." name="description"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69fca8abfb87527cb92c17c2_webclip_breems.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69fca8abdd98dd99e1445ee1_webclip_breems.png"/>
+
+  <!-- Main Design System & Styles -->
+  <link rel="stylesheet" href="css/main.css"/>
+
+  <!-- GSAP & Lenis Smooth Scroll -->
+  <script src="https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js"></script>
+  <script src="https://cdn.prod.website-files.com/gsap/3.15.0/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.prod.website-files.com/gsap/3.15.0/CustomEase.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"></script>
+</head>
+<body class="body">
+
+  <!-- PAGE PRELOADER -->
+  <div class="page-loader-wrapper">
+    <div class="preload-animation-items-wrapper">
+      <div class="page-loader-img-wrapper">
+        <div class="preload-img-wrapper _1">
+          <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69e78a9b496324354948597e_preload_img1.avif" alt="LIVELIGHT website mockup"/>
+        </div>
+        <div class="preload-img-wrapper _2">
+          <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69e78a9bcfa4b72b1577cfe9_preload_img2.avif" alt="Real estate website mockup"/>
+        </div>
+        <div class="preload-img-wrapper _3">
+          <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69e78a9b2c76f3ef3f6e730c_preload_img3.avif" alt="Move to Dream mockup"/>
+        </div>
+        <div class="preload-img-wrapper _4">
+          <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69e78a9ce42aa246f225db79_preload_img4.avif" alt="Industrial electrolyzers mockup"/>
+        </div>
+      </div>
+      <div class="page-load-counter-wrapper">
+        <div data-counter="true" class="text-size-medium text-align-center italic">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOM DYNAMIC CURSOR -->
+  <div data-cursor="" class="cursor">
+    <div class="cursor-bubble">
+      <span data-cursor-text-target="" class="cursor-bubble__text">View</span>
+    </div>
+  </div>
+
+  <!-- TOP ABSOLUTE NAVIGATION -->
+  <header class="nav_absolute">
+    <div class="padding-global">
+      <div class="nav_container">
+        <a href="index.html" class="nav_brand w--current">
+          <div class="navbar-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="7.4375em" height="2.375em" viewBox="0 0 112 38" fill="none">
+              <path d="M41.728 14.216C41.28 16.568 39.684 17.66 37.948 18.22L37.752 18.276C39.768 18.64 41.336 20.236 40.748 23.344C40.02 27.124 37.08 29 32.936 29H23.752L27.644 8.98H36.156C40.272 8.98 42.372 10.912 41.728 14.216ZM29.38 17.268H34.448C36.828 17.268 38.004 16.232 38.368 14.356C38.704 12.704 37.864 11.808 35.848 11.808H30.444L29.38 17.268ZM28.904 19.76L27.644 26.172H33.048C35.904 26.172 37.136 24.744 37.528 22.756C37.892 20.796 36.94 19.76 34.84 19.76H28.904ZM49.7469 14.356C50.3349 14.356 50.6989 14.384 51.0909 14.468L50.6429 17.212C47.8989 16.764 45.2109 18.752 44.6229 21.776L43.1949 29H40.2549L43.0549 14.692H45.9949L45.4629 17.38L45.5189 17.296C46.6109 15.504 47.9549 14.356 49.7469 14.356ZM55.1706 27.012C57.6906 27.012 59.0066 25.416 59.3706 24.52H62.4226C61.1906 27.46 58.6426 29.42 55.0586 29.42C50.4946 29.42 48.2826 26.06 49.2066 21.412C50.1306 16.876 53.2666 14.3 57.4666 14.3C62.1706 14.3 63.9346 17.604 62.9266 22.672H51.9506C51.4746 25.108 52.6506 27.012 55.1706 27.012ZM57.3266 16.624C54.8626 16.624 52.8186 18.332 52.3706 20.516H60.4346C60.8546 18.136 59.7346 16.624 57.3266 16.624ZM68.8097 27.012C71.3297 27.012 72.6457 25.416 73.0097 24.52H76.0617C74.8297 27.46 72.2817 29.42 68.6977 29.42C64.1337 29.42 61.9217 26.06 62.8457 21.412C63.7697 16.876 66.9057 14.3 71.1057 14.3C75.8097 14.3 77.5737 17.604 76.5657 22.672H65.5897C65.1137 25.108 66.2897 27.012 68.8097 27.012ZM70.9657 16.624C68.5017 16.624 66.4577 18.332 66.0097 20.516H74.0737C74.4937 18.136 73.3737 16.624 70.9657 16.624ZM94.2928 14.3C97.2608 14.3 98.4928 16.12 97.9048 19.228L95.9728 29H93.0048L94.7968 19.872C95.1608 17.912 95.1048 16.792 93.1448 16.792C91.0728 16.792 89.4768 18.248 89.0568 20.376L87.3768 29H84.4088L86.1728 19.872C86.5648 17.912 86.5088 16.792 84.5488 16.792C82.4768 16.792 80.8808 18.248 80.4608 20.376L78.7528 29H75.8128L78.6128 14.692H81.5528L81.1888 16.54L81.2448 16.456C82.1968 15.336 83.7088 14.3 85.7808 14.3C87.8528 14.3 88.9168 15.308 89.1968 16.876L89.2528 16.708C90.5968 15.336 92.1648 14.3 94.2928 14.3ZM104.805 20.432C107.409 21.216 110.041 22.308 109.565 25.416C109.201 28.244 106.737 29.42 103.741 29.42C99.2334 29.42 97.1614 27.18 97.1614 24.324H100.017C99.9614 25.864 101.053 27.096 103.797 27.096C105.561 27.096 106.513 26.396 106.653 25.388C106.905 23.708 105.505 23.316 103.433 22.728C101.249 22.084 98.3654 21.02 98.8134 17.884C99.0654 15.644 101.249 14.3 104.441 14.3C108.501 14.3 110.237 16.512 110.237 18.808H107.437C107.465 17.688 106.569 16.624 104.357 16.624C102.789 16.624 101.809 17.128 101.697 17.996C101.501 19.536 102.817 19.844 104.805 20.432Z" fill="currentColor"/>
+              <path d="M20.7139 28.998H15V29C12.3386 28.9999 10.1634 26.9198 10.0098 24.2969V26.5C10.0097 27.8807 8.89049 29 7.50977 29C6.12909 28.9999 5.0098 27.8807 5.00977 26.5V24H5V24.002H2.5C1.1194 24.002 -6.03542e-08 22.8826 0 21.502C0.00015209 20.1215 1.1195 19.0029 2.5 19.0029H5V19H2.5C1.11931 19 6.84901e-08 17.8807 0 16.5C6.03586e-08 15.1193 1.11931 14 2.5 14H5V11.5C5.00003 10.1193 6.11932 9.00005 7.5 9C8.88072 9 9.99997 10.1193 10 11.5V13.9951C10.0024 11.236 12.2403 9.00002 15 9H24.2852L20.7139 28.998ZM9.99316 14.2598C9.86031 16.8835 7.70476 18.9726 5.05469 19.001C7.79066 19.0303 10 21.2571 10 24C10.0011 21.2398 12.2395 19.003 15 19.0029V18.9951C12.325 18.995 10.1406 16.8937 10.0068 14.252L10 14.0029L9.99316 14.2598Z" fill="#EE4B2B"/>
+            </svg>
+          </div>
+        </a>
+        <nav class="nav_menu">
+          <a href="index.html" class="nav-menu-link-block w--current">
+            <div data-link-hover="true" class="nav_menu_link">Home</div>
+            <div class="star-svg"><svg xmlns="http://www.w3.org/2000/svg" width="0.75em" height="0.75em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg></div>
+          </a>
+          <a href="about.html" class="nav-menu-link-block">
+            <div data-link-hover="true" class="nav_menu_link">About</div>
+            <div class="star-svg"><svg xmlns="http://www.w3.org/2000/svg" width="0.75em" height="0.75em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg></div>
+          </a>
+          <a href="work.html" class="nav-menu-link-block">
+            <div data-link-hover="true" class="nav_menu_link">Work</div>
+            <div class="star-svg"><svg xmlns="http://www.w3.org/2000/svg" width="0.75em" height="0.75em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg></div>
+          </a>
+          <a href="contact.html" class="nav-menu-link-block">
+            <div data-link-hover="true" class="nav_menu_link">Contact</div>
+            <div class="star-svg"><svg xmlns="http://www.w3.org/2000/svg" width="0.75em" height="0.75em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg></div>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- FLOATING MENU BUTTON -->
+  <div class="nav_fixed">
+    <div class="padding-global">
+      <div class="fixed-menu-button-wrapper">
+        <div data-link-hover="true" class="fixed-menu-button-text">Menu</div>
+        <div class="star-svg"><svg xmlns="http://www.w3.org/2000/svg" width="0.75em" height="0.75em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDE DRAWER NAVIGATION -->
+  <div class="nav-fixed-menu">
+    <div class="fixed-nav-navigation-wrapper">
+      <div class="fixed-navigation-link-wrapper">
+        <a href="index.html" class="fixed-navbar-link w--current">
+          <div class="star-svg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 12 10" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg></div>
+          <div class="nav-text-link">Home</div>
+        </a>
+        <a href="about.html" class="fixed-navbar-link">
+          <div class="star-svg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 12 10" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg></div>
+          <div class="nav-text-link">About</div>
+        </a>
+        <a href="work.html" class="fixed-navbar-link">
+          <div class="star-svg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 12 10" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg></div>
+          <div class="nav-text-link">Work</div>
+        </a>
+        <a href="contact.html" class="fixed-navbar-link">
+          <div class="star-svg"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 12 10" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg></div>
+          <div class="nav-text-link">Contact</div>
+        </a>
+      </div>
+    </div>
+    <div class="fixed-nav-socials-wrapper">
+      <div class="footer-socials">Socials</div>
+      <div class="text-links-wrapper-fixed-menu">
+        <a href="https://www.linkedin.com/in/bram-van-vugt-9607301b9/" target="_blank" class="nav-fixed-social-links">LinkedIn</a>
+        <a href="https://www.instagram.com/breems.design/" target="_blank" class="nav-fixed-social-links">Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-overlay"></div>
+
+  <!-- MAIN PAGE WRAPPER -->
+  <main class="main-wrapper">
+
+    <!-- HERO SECTION (DESKTOP) -->
+    <section data-menu="white" class="section_hero desktop">
+      <div class="hero-image-wrapper">
+        <img class="hero-img" src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/6978e49d5a8df2869f67b345_IMG_2945%203.webp" alt="Breems hero portrait"/>
+        <div class="opacity-gradient"></div>
+      </div>
+
+      <div class="hero-heading-text">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1405 264" fill="none">
+          <path d="M227.267 71.5099C221.603 101.246 201.425 115.052 179.477 122.132L176.999 122.84C202.487 127.442 222.311 147.62 214.877 186.914C205.673 234.704 168.503 258.422 116.111 258.422H-0.00149981L49.2045 5.31186H156.821C208.859 5.31186 235.409 29.7379 227.267 71.5099ZM71.1525 110.096H135.227C165.317 110.096 180.185 96.9979 184.787 73.2799C189.035 52.3939 178.415 41.0659 152.927 41.0659H84.6045L71.1525 110.096ZM65.1345 141.602L49.2045 222.668H117.527C153.635 222.668 169.211 204.614 174.167 179.48C178.768 154.7 166.733 141.602 140.183 141.602H65.1345ZM229.2 258.422L278.406 5.31186H385.314C437.352 5.31186 466.734 32.9239 457.884 80.3599C450.804 114.344 430.272 134.168 400.182 141.248L397.35 141.956C453.636 152.93 412.926 252.05 426.024 256.298L426.378 258.422L383.19 257.714C373.632 247.094 414.696 160.718 353.808 160.718H290.442L271.326 258.422H229.2ZM313.806 41.0659L297.522 124.61H353.1C379.296 124.61 407.97 118.592 415.758 80.3599C422.484 45.3139 397.704 41.0659 371.862 41.0659H313.806ZM521.604 109.742H645.15L638.424 145.85H514.524L499.656 222.668H644.088L637.008 258.422H450.45L499.656 5.31186H682.674L675.948 41.0659H535.056L521.604 109.742ZM741.471 109.742H865.017L858.291 145.85H734.391L719.523 222.668H863.955L856.875 258.422H670.317L719.523 5.31186H902.541L895.815 41.0659H754.923L741.471 109.742ZM890.184 258.422L939.39 5.31186H993.906L1026.47 200.012H1027.18L1135.86 5.31186H1190.38L1141.17 258.422H1100.11L1137.63 66.5539H1137.28L1032.85 258.422H999.57L969.48 66.5539H968.772L931.248 258.422H890.184ZM1305.08 108.326C1358.54 128.858 1395 145.142 1386.15 200.366C1380.13 240.014 1345.09 263.732 1287.38 263.732C1224.37 263.732 1179.06 230.456 1184.02 175.232H1225.43C1223.31 207.446 1246.32 227.624 1289.86 227.624C1322.43 227.624 1340.84 218.42 1344.73 196.826C1349.69 169.568 1330.93 160.364 1284.2 142.664C1246.32 128.504 1205.26 111.158 1214.11 61.5979C1221.54 19.1179 1261.9 0.00186825 1311.46 0.00186825C1368.1 0.00186825 1404.56 30.0919 1400.66 79.6519H1359.25C1361.02 50.6239 1342.96 36.1099 1308.98 36.1099C1282.43 36.1099 1259.42 43.1899 1255.88 62.6599C1251.28 89.2099 1273.58 96.2899 1305.08 108.326Z" fill="#FBFBFB"/>
+        </svg>
+      </div>
+
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="relative-hero-wrapper">
+            <a button="hover" href="contact.html" class="get-in-touch-button">
+              <div class="get-in-touch-button-link">Coffee?</div>
+              <div class="inner-hover-color"></div>
+            </a>
+            <div class="hero-text-grid">
+              <div class="hero-text-wrapper">
+                <h1 data-load-animate="true" class="hero-intro-text italic">Web design &amp; development <br/>for growing companies</h1>
+                <h2 data-load-animate="true" class="hero-intro-text">Certified Webflow partner</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO SECTION (MOBILE) -->
+    <section data-menu="white" class="section_hero-mobile">
+      <div class="section_hero-mobile-img">
+        <img class="hero-img-mobile" src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69e738b2cc198bf8e032149a_mobile-hero.avif" alt="Breems hero mobile"/>
+        <div class="opacity-gradient"></div>
+      </div>
+      <div class="section-hero-mobile-text-wrapper">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="hero-text-wrapper">
+              <h1 data-load-animate="true" class="hero-intro-text italic">Web design &amp; development for growing companies</h1>
+              <h2 data-load-animate="true" class="hero-intro-text">Certified Webflow partner</h2>
+            </div>
+          </div>
+        </div>
+        <div class="padding-global">
+          <a button="hover" href="contact.html" class="get-in-touch-button">
+            <div class="get-in-touch-button-link">Coffee?</div>
+            <div class="inner-hover-color"></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT TEASER SECTION -->
+    <div data-menu="black" class="section_about">
+      <div class="padding-global padding-section-large">
+        <div class="container-large">
+          <div class="about-grid">
+            <div class="title-tag-wrapper">
+              <div class="tag-wrapper">
+                <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69f320e071ba4f256c25e442_Breems_star_orange.svg" alt="star" class="tag-icon"/>
+                <div class="section-tag">Recognizable?</div>
+              </div>
+            </div>
+            <div class="grid-title-wrapper">
+              <h2 data-word-reveal="true" class="heading-style-h3">You already have a website, but it no longer matches what you want to project. I design and build fully customized websites so your <span class="word-highlight">ambitions</span> actually match your image.</h2>
+              <div class="grid-paragraph-wrapper">
+                <a mainbutton="hover" href="about.html" class="main-button-wrapper">
+                  <div class="button-text">More about me</div>
+                  <div class="button-circle">
+                    <div class="main-button-star-svg">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="0.5em" height="0.5em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg>
+                    </div>
+                  </div>
+                  <div class="inner-hover-color extra-height"></div>
+                </a>
+              </div>
+            </div>
+            <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69d5039afb425583830d33f0_star.svg" alt="star icon" class="star-icon"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <div data-menu="black" class="section_projects">
+      <div class="medium-spacer desktop"></div>
+      <div class="padding-global padding-section-large no-padding-top">
+        <div class="section-line"></div>
+        <div class="container-large">
+          <div class="title-wrapper-homepage">
+            <div class="title-text-wrapper">
+              <div class="tag-wrapper">
+                <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69f320e071ba4f256c25e442_Breems_star_orange.svg" alt="star" class="tag-icon"/>
+                <div class="section-tag">Projects</div>
+              </div>
+              <h2 class="heading-style-h2 projecten">A selection of striking projects</h2>
+            </div>
+            <div class="project-fixed-description-wrapper">
+              <div class="tag-wrapper-number">
+                <div class="section-tag number">04</div>
+                <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69e0f06360cbc339a124715b_Breems-star-icon-grey.svg" alt="star" class="tag-icon number"/>
+              </div>
+            </div>
+          </div>
+
+          <!-- Staggered Project Cards -->
+          <div class="project-list-home">
+
+            <!-- Item 0: Punjab Bijli -->
+            <div class="project">
+              <a data-cursor-text="View" data-cursor-hover="" href="projecten/punjab-bijli.html" class="project-link-block">
+                <div class="video-embed">
+                  <div class="video-wrapper">
+                    <iframe src="Punjab Bijli/index.html" style="width:100%; height:320px; border:none; border-radius:12px; pointer-events:none; overflow:hidden;" scrolling="no"></iframe>
+                  </div>
+                </div>
+                <div class="project-img-wrapper">
+                  <div class="home-projects-text-wrapper">
+                    <div class="project-service-tag">Fintech & Utility App</div>
+                  </div>
+                  <div class="project-opacity"></div>
+                  <img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69e78a29872916b6140de4ad_thumbnail.avif" alt="Punjab Bijli" class="project-thumbnail-img"/>
+                </div>
+                <div class="project-title-container">
+                  <div class="project-title-year-wrapper">
+                    <h3 class="project-title">Punjab Bijli</h3>
+                    <div class="project-year-text">2026</div>
+                  </div>
+                  <div class="section-line projects"></div>
+                  <div class="project-description dark">Smart Power Utility, 300-Unit Subsidy & Roommate Bill-Splitting</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Item 1: Ausems -->
+            <div class="project">
+              <a data-cursor-text="View" data-cursor-hover="" href="projecten/ausems.html" class="project-link-block">
+                <div class="video-embed">
+                  <div class="video-wrapper">
+                    <video width="75%" height="auto" autoplay muted loop playsinline>
+                      <source src="https://s3.amazonaws.com/webflow-prod-assets/6978dadfad803d74561d3cfc/69c3b63093bba377aae3c4a1_Schermopname%202026-03-23%20om%2016%20(1).mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+                <div class="project-img-wrapper">
+                  <div class="home-projects-text-wrapper">
+                    <div class="project-service-tag">Development</div>
+                  </div>
+                  <div class="project-opacity"></div>
+                  <img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69c16252a58c4dc49251d142_Free%20MacBook%20Pro%20on%20Chair%20Mockup%20(1)%20kopie.avif" alt="Ausems" class="project-thumbnail-img"/>
+                </div>
+                <div class="project-title-container">
+                  <div class="project-title-year-wrapper">
+                    <h3 class="project-title">Ausems</h3>
+                    <div class="project-year-text">2025</div>
+                  </div>
+                  <div class="section-line projects"></div>
+                  <div class="project-description dark">Making real estate simple and future-proof</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Item 2: Limelight -->
+            <div class="project">
+              <a data-cursor-text="View" data-cursor-hover="" href="projecten/limelight.html" class="project-link-block">
+                <div class="video-embed">
+                  <div class="video-wrapper">
+                    <video width="75%" height="auto" autoplay muted loop playsinline>
+                      <source src="https://s3.amazonaws.com/webflow-prod-assets/6978dadfad803d74561d3cfc/69e22254849753506ace9507_Schermopname%202026-04-17%20om%2014.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+                <div class="project-img-wrapper">
+                  <div class="home-projects-text-wrapper">
+                    <div class="project-service-tag">Development</div>
+                  </div>
+                  <div class="project-opacity"></div>
+                  <img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69e78a29872916b6140de4ad_thumbnail.avif" alt="Limelight" class="project-thumbnail-img"/>
+                </div>
+                <div class="project-title-container">
+                  <div class="project-title-year-wrapper">
+                    <h3 class="project-title">Limelight</h3>
+                    <div class="project-year-text">2026</div>
+                  </div>
+                  <div class="section-line projects"></div>
+                  <div class="project-description dark">Keep the powerful in check</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Item 3: Alquion -->
+            <div class="project">
+              <a data-cursor-text="View" data-cursor-hover="" href="projecten/alquion.html" class="project-link-block">
+                <div class="video-embed">
+                  <div class="video-wrapper">
+                    <video width="75%" height="auto" autoplay muted loop playsinline>
+                      <source src="https://s3.amazonaws.com/webflow-prod-assets/6978dadfad803d74561d3cfc/69e788cf1096e49340b5881b_Schermopname%202026-04-14%20om%2016.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+                <div class="project-img-wrapper">
+                  <div class="home-projects-text-wrapper">
+                    <div class="project-service-tag">Development</div>
+                  </div>
+                  <div class="project-opacity"></div>
+                  <img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69e78979b59a84b4068ff5f1_thumbnail.avif" alt="Alquion" class="project-thumbnail-img"/>
+                </div>
+                <div class="project-title-container">
+                  <div class="project-title-year-wrapper">
+                    <h3 class="project-title">Alquion</h3>
+                    <div class="project-year-text">2026</div>
+                  </div>
+                  <div class="section-line projects"></div>
+                  <div class="project-description dark">Securing Europe's energy future</div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Item 4: Move to Dream -->
+            <div class="project">
+              <a data-cursor-text="View" data-cursor-hover="" href="projecten/move-to-dream.html" class="project-link-block">
+                <div class="video-embed">
+                  <div class="video-wrapper">
+                    <video width="75%" height="auto" autoplay muted loop playsinline>
+                      <source src="https://s3.amazonaws.com/webflow-prod-assets/6978dadfad803d74561d3cfc/69babe00502e73e16f413619_Schermopname%202026-03-18%20om%2015.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+                <div class="project-img-wrapper">
+                  <div class="home-projects-text-wrapper">
+                    <div class="project-service-tag">Development</div>
+                  </div>
+                  <div class="project-opacity"></div>
+                  <img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69beb5713d288b4031b8d9a0_01%20Free%20Macbook%20Pro%20Mockup%20On%20Sofa.avif" alt="Move to Dream" class="project-thumbnail-img"/>
+                </div>
+                <div class="project-title-container">
+                  <div class="project-title-year-wrapper">
+                    <h3 class="project-title">Move to Dream</h3>
+                    <div class="project-year-text">2025</div>
+                  </div>
+                  <div class="section-line projects"></div>
+                  <div class="project-description dark">An initiative led by Demi Vollering</div>
+                </div>
+              </a>
+            </div>
+
+          </div>
+
+          <div class="projects-button-wrapper">
+            <a mainbutton="hover" href="work.html" class="main-button-wrapper">
+              <div class="button-text">All projects</div>
+              <div class="button-circle">
+                <div class="main-button-star-svg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="0.5em" height="0.5em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg>
+                </div>
+              </div>
+              <div class="inner-hover-color extra-height"></div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIALS SECTION -->
+    <div data-menu="black" class="section_testimonials">
+      <div class="horizontal-line-wrapper">
+        <div class="horizontal-line"></div>
+      </div>
+      <div class="padding-global padding-section-large">
+        <div class="container-large">
+          <div class="testimonials-grid">
+            <div class="title-tag-wrapper desktop">
+              <div class="tag-wrapper">
+                <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69f320e071ba4f256c25e442_Breems_star_orange.svg" alt="star" class="tag-icon"/>
+                <div class="section-tag">What clients say</div>
+              </div>
+            </div>
+            <div class="grid-testimonial-counter-wrapper">
+              <div class="testimonial-counter-text"><span class="testimonial-item-count">01</span> / 03</div>
+            </div>
+            <div class="grid-testimonial-button-wrapper">
+              <button class="main-button-wrapper grey-2 arrow-prev" aria-label="Previous testimonial">
+                <div class="button-circle grey-4">
+                  <div class="arrow-button"><svg xmlns="http://www.w3.org/2000/svg" width="0.75em" height="0.75em" viewBox="0 0 12 12" fill="none"><path d="M6 12L7.0575 10.9425L2.8725 6.75L12 6.75L12 5.25L2.8725 5.25L7.0575 1.0575L6 5.24537e-07L-5.24537e-07 6L6 12Z" fill="currentColor"/></svg></div>
+                </div>
+              </button>
+              <button class="main-button-wrapper grey-2 arrow-next" aria-label="Next testimonial">
+                <div class="button-circle grey-4">
+                  <div class="arrow-button"><svg xmlns="http://www.w3.org/2000/svg" width="0.75em" height="0.75em" viewBox="0 0 12 12" fill="none"><path d="M6 0L4.9425 1.0575L9.1275 5.25L0 5.25L0 6.75L9.1275 6.75L4.9425 10.9425L6 12L12 6L6 0Z" fill="currentColor"/></svg></div>
+                </div>
+              </button>
+            </div>
+
+            <!-- Testimonial Slider Collection -->
+            <div class="testimonial-collection-wrapper">
+              <div class="testimonial_collection">
+
+                <!-- Slide 1 -->
+                <div class="testimonial-item-wrapper">
+                  <div class="grid-testimonial-wrapper">
+                    <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69f36ea5cf9426046a8a69b1_quotation.svg" alt="quotation" class="quote-icon"/>
+                    <h2 class="heading-style-h3">Bram has a wide skillset within Webflow, across both design and development. Together with Bram, we've successfully delivered multiple websites, from basic websites to complex platforms. Working with Bram is a pleasure: he thinks along, comes up with great solutions, and ensures the websites exceed client expectations!</h2>
+                    <div class="grid-testimonial-person-wrapper">
+                      <img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/6a704a202b29c42eea3afac8_zuid_pf.svg" alt="ZUID" class="testimonial-profile-picture"/>
+                      <div class="testimonial-person-name-wrapper">
+                        <div class="persona-name">ZUID</div>
+                        <div class="text-size-medium grey">Client Lead</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="testimonial-item-wrapper">
+                  <div class="grid-testimonial-wrapper">
+                    <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69f36ea5cf9426046a8a69b1_quotation.svg" alt="quotation" class="quote-icon"/>
+                    <h2 class="heading-style-h3">Looking for a beautiful, high-performing website? You're in good hands with Bram. From start to finish, the collaboration felt great. He picks things up quickly, handles changes seamlessly, and is on top of the latest developments.</h2>
+                    <div class="grid-testimonial-person-wrapper">
+                      <img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/6a685ce2ac13a63e613d805e_Ausems_140525_KevinCanales-39%201.avif" alt="Yarne Sluimer" class="testimonial-profile-picture"/>
+                      <div class="testimonial-person-name-wrapper">
+                        <div class="persona-name">Yarne Sluimer</div>
+                        <div class="text-size-medium grey">UX &amp; Brand designer, YSCO</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="testimonial-item-wrapper">
+                  <div class="grid-testimonial-wrapper">
+                    <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69f36ea5cf9426046a8a69b1_quotation.svg" alt="quotation" class="quote-icon"/>
+                    <h2 class="heading-style-h3">Bram designed and built my website. I had a wonderful experience collaborating with him. He listens attentively to your needs and brings creative ideas to make your website even better. Bram keeps his promises and communicates clearly. I'd recommend working with Bram to anyone!</h2>
+                    <div class="grid-testimonial-person-wrapper">
+                      <img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/6a704bc99d2a71023a915441_Hilde_profielfoto.avif" alt="Hilde van Vugt" class="testimonial-profile-picture"/>
+                      <div class="testimonial-person-name-wrapper">
+                        <div class="persona-name">Hilde van Vugt</div>
+                        <div class="text-size-medium grey">Yoga Teacher, Hilde</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHOWROOM INFINITE MARQUEE SLIDER -->
+    <section data-menu="black" class="section_home-discover">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="discover-title-grid">
+            <div class="title-tag-wrapper">
+              <div class="tag-wrapper">
+                <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69f320e071ba4f256c25e442_Breems_star_orange.svg" alt="star" class="tag-icon"/>
+                <div class="section-tag">Showroom</div>
+              </div>
+            </div>
+            <h2 class="heading-style-h3 text-align-center">Discover how I elevate your website to the next level</h2>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div class="medium-spacer"></div>
+      <div class="full-width-slider-wrapper">
+        <div class="partner-slider">
+          <div class="werkwijze-item-wrapper"><img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69dcd74b7e1d01ad379578a1_Scherm%C2%ADafbeelding%202026-03-23%20om%2016.19.15%205.avif" alt="Showroom 1" class="werkwijze-image"/></div>
+          <div class="werkwijze-item-wrapper"><img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69dcd78769cd853da9da1790_Scherm%C2%ADafbeelding%202026-03-23%20om%2016.19.15%205.avif" alt="Showroom 2" class="werkwijze-image"/></div>
+          <div class="werkwijze-item-wrapper"><img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69dcd2f5942a6b30cb0be39b_Scherm%C2%ADafbeelding%202026-03-23%20om%2016.19.15%202.avif" alt="Showroom 3" class="werkwijze-image"/></div>
+          <div class="werkwijze-item-wrapper"><img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69dcd2e51edfa1462fc3d868_Scherm%C2%ADafbeelding%202026-03-23%20om%2016.19.15%201.avif" alt="Showroom 4" class="werkwijze-image"/></div>
+          <!-- Clones for seamless infinite marquee -->
+          <div class="werkwijze-item-wrapper"><img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69dcd74b7e1d01ad379578a1_Scherm%C2%ADafbeelding%202026-03-23%20om%2016.19.15%205.avif" alt="Showroom 1" class="werkwijze-image"/></div>
+          <div class="werkwijze-item-wrapper"><img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69dcd78769cd853da9da1790_Scherm%C2%ADafbeelding%202026-03-23%20om%2016.19.15%205.avif" alt="Showroom 2" class="werkwijze-image"/></div>
+          <div class="werkwijze-item-wrapper"><img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69dcd2f5942a6b30cb0be39b_Scherm%C2%ADafbeelding%202026-03-23%20om%2016.19.15%202.avif" alt="Showroom 3" class="werkwijze-image"/></div>
+          <div class="werkwijze-item-wrapper"><img src="https://cdn.prod.website-files.com/6979e150d2970deafb0619de/69dcd2e51edfa1462fc3d868_Scherm%C2%ADafbeelding%202026-03-23%20om%2016.19.15%201.avif" alt="Showroom 4" class="werkwijze-image"/></div>
+        </div>
+      </div>
+      <div class="medium-spacer"></div>
+    </section>
+
+    <!-- PARALLAX STICKY FOOTER -->
+    <div data-footer-parallax="" class="section_footer">
+      <footer data-footer-parallax-inner="" class="footer-fixed-wrapper">
+        <div class="padding-global padding-section-large no-padding-bottom">
+          <div class="container-large">
+            <div class="footer-wrapper">
+
+              <div class="footer-top-wrapper">
+                <div class="footer-img-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/6979ead3b10a3cca85c1cf7e_foioter-img.avif" alt="Bram portrait" class="footer-img-normal"/>
+                  <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/6a58db37f87eb46e19f0cd98_00000009.avif" alt="Portrait frame 1" class="footer-img-hover _1" style="display:none;"/>
+                  <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/6a58d88d32a8bef4e1ba905e_00000004.avif" alt="Portrait frame 2" class="footer-img-hover _2" style="display:none;"/>
+                  <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/6a58db36cca86f6dd1840045_00000011.avif" alt="Portrait frame 3" class="footer-img-hover _3" style="display:none;"/>
+                  <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/6a58db36e669e730a7667305_00000012.avif" alt="Portrait frame 4" class="footer-img-hover _4" style="display:none;"/>
+                  <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/6a58db369b94300dc427d16d_00000013.avif" alt="Portrait frame 5" class="footer-img-hover _5" style="display:none;"/>
+                  <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/6a58db36e44848c6f278e0d7_00000014.avif" alt="Portrait frame 6" class="footer-img-hover _6" style="display:none;"/>
+                  <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/6a58db369b48c34d586b26a8_00000015.avif" alt="Portrait frame 7" class="footer-img-hover _7" style="display:none;"/>
+                  <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/6a58db3640c67b91dce331d7_00000016.avif" alt="Portrait frame 8" class="footer-img-hover _8" style="display:none;"/>
+                  <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/6a58db36296b8b85dbe2b14e_00000017.avif" alt="Portrait frame 9" class="footer-img-hover _9" style="display:none;"/>
+                </div>
+                <h2 class="footer-heading">Ready to stand<br/>— out?</h2>
+              </div>
+
+              <div class="footer-bottom-wrapper">
+                <a mainbutton="hover" href="mailto:Hello@bramvanvugt.com" class="main-button-wrapper w-variant-a8c88042-9262-59ed-8e1d-ffe36bb3bdc4">
+                  <div class="button-text">Hello@bramvanvugt.com</div>
+                  <div class="button-circle w-variant-a8c88042-9262-59ed-8e1d-ffe36bb3bdc4">
+                    <div class="main-button-star-svg">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="0.5em" height="0.5em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg>
+                    </div>
+                  </div>
+                  <div class="inner-hover-color extra-height"></div>
+                </a>
+
+                <div class="footer-socials-wrapper">
+                  <div class="footer-legal-warpper">
+                    <div class="footer-links-small">© 2026 - Breems</div>
+                    <a href="privacy-statement.html" class="privacy-link">Privacy Policy</a>
+                  </div>
+                  <div class="footer-social-links-wrapper">
+                    <div class="footer-socials">Socials</div>
+                    <div class="social-links-wrapper">
+                      <a href="https://www.linkedin.com/in/bram-van-vugt-9607301b9/" target="_blank" class="social-link">LinkedIn</a>
+                      <a href="https://www.instagram.com/breems.design/" target="_blank" class="social-link">Instagram</a>
+                      <a href="https://dribbble.com/BreemsDesign" target="_blank" class="social-link">Dribbble</a>
+                      <a href="https://www.behance.net/bramvanvugt1" target="_blank" class="social-link">Behance</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+  </main>
+
+  <!-- Main JavaScript Logic -->
+  <script src="js/main.js"></script>
+</body>
+</html>
