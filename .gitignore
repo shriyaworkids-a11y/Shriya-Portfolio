@@ -70,3 +70,6 @@ __pycache__/
 powershell.cmd
 *.tmp
 *.temp
+scratch/
+**/scratch/
+

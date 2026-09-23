@@ -1,0 +1,29 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/Shriya's Remake/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/Shriya's Remake/about.html"
+    },
+    {
+      "source": "/work",
+      "destination": "/Shriya's Remake/work.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/Shriya's Remake/contact.html"
+    },
+    {
+      "source": "/privacy-statement",
+      "destination": "/Shriya's Remake/privacy-statement.html"
+    },
+    {
+      "source": "/((?!Shriya's Remake/).*)",
+      "destination": "/Shriya's Remake/$1"
+    }
+  ]
+}

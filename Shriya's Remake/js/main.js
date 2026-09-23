@@ -248,18 +248,33 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (heroText) {
-        tl.fromTo(
-          heroText,
-          { xPercent: -50, yPercent: -35, opacity: 0 },
-          {
-            xPercent: -50,
-            yPercent: -50,
-            opacity: 1,
-            duration: 0.8,
-            ease: 'power2.out',
-          },
-          '-=0.5'
-        );
+        if (window.innerWidth > 991) {
+          tl.fromTo(
+            heroText,
+            { xPercent: -50, yPercent: -35, opacity: 0 },
+            {
+              xPercent: -50,
+              yPercent: -50,
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power2.out',
+            },
+            '-=0.5'
+          );
+        } else {
+          tl.fromTo(
+            heroText,
+            { y: 15, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              ease: 'power2.out',
+              clearProps: 'transform',
+            },
+            '-=0.5'
+          );
+        }
       }
     } else {
       completeLoader();
@@ -320,11 +335,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!timerEls.length) return;
 
     function updateTime() {
-      const timeStr = new Intl.DateTimeFormat('nl-NL', {
-        timeZone: 'Europe/Amsterdam',
+      const timeStr = new Intl.DateTimeFormat('en-IN', {
+        timeZone: 'Asia/Kolkata',
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
+        hour12: false,
       }).format(new Date());
 
       timerEls.forEach((el) => (el.textContent = timeStr));
@@ -516,18 +532,31 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.set(inner, { y: '100%' });
 
       button.addEventListener('mouseenter', () => {
+        gsap.killTweensOf(inner);
+        if (textLink) gsap.killTweensOf(textLink);
+
+        const curY = gsap.getProperty(inner, 'y');
+        if (curY === '-100%' || curY === -inner.offsetHeight) {
+          gsap.set(inner, { y: '100%' });
+        }
+
         const tl = gsap.timeline({ defaults: { overwrite: 'auto' } });
-        tl.to(inner, { y: '0%', duration: 0.38, ease: 'power2.inOut' });
-        if (textLink) tl.to(textLink, { color: '#ffffff', duration: 0.22, ease: 'power2.in' }, 0);
+        tl.to(inner, { y: '0%', duration: 0.35, ease: 'power2.out' });
+        if (textLink) tl.to(textLink, { color: '#ffffff', duration: 0.2, ease: 'power2.out' }, 0);
       });
 
       button.addEventListener('mouseleave', () => {
+        gsap.killTweensOf(inner);
+        if (textLink) gsap.killTweensOf(textLink);
+
         const tl = gsap.timeline({
           defaults: { overwrite: 'auto' },
-          onComplete: () => gsap.set(inner, { y: '100%' }),
+          onComplete: () => {
+            gsap.set(inner, { y: '100%' });
+          },
         });
-        tl.to(inner, { y: '-100%', duration: 0.38, ease: 'power2.inOut' });
-        if (textLink) tl.to(textLink, { color: '', duration: 0.22, ease: 'power2.out' }, 0.05);
+        tl.to(inner, { y: '-100%', duration: 0.35, ease: 'power2.inOut' });
+        if (textLink) tl.to(textLink, { color: '#121212', duration: 0.25, ease: 'power2.out' }, 0.05);
       });
     }
   });
@@ -1037,6 +1066,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.querySelector('.fixed-menu-button-wrapper');
     const brandLogo = document.querySelector('.nav_brand');
 
+    function updateColors(colorType) {
+      const isWhite = colorType === 'white';
+      if (menuBtn) {
+        gsap.to(menuBtn, { color: isWhite ? '#ffffff' : '#121212', duration: 0.3, ease: 'power2.out' });
+      }
+      if (brandLogo) {
+        gsap.to(brandLogo, { color: isWhite ? '#ffffff' : '#121212', duration: 0.3, ease: 'power2.out' });
+      }
+    }
+
     sections.forEach((section) => {
       if (getComputedStyle(section).display === 'none') return;
       const menuColor = section.getAttribute('data-menu');
@@ -1049,20 +1088,62 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    function updateColors(colorType) {
-      const isWhite = colorType === 'white';
-      if (menuBtn) {
-        gsap.to(menuBtn, { color: isWhite ? '#ffffff' : '#121212', duration: 0.25 });
+    // Determine initial color smoothly on load, refresh, or route return
+    const evaluateActiveColor = () => {
+      let activeColor = 'white';
+      if (window.scrollY > 25) {
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 90 && rect.bottom >= 40) {
+            activeColor = section.getAttribute('data-menu') || 'black';
+          }
+        });
+      } else {
+        const topSection = document.querySelector('[data-menu]');
+        if (topSection) activeColor = topSection.getAttribute('data-menu') || 'white';
       }
-      if (brandLogo && window.scrollY > 50) {
-        gsap.to(brandLogo, { color: isWhite ? '#ffffff' : '#121212', duration: 0.25 });
+      updateColors(activeColor);
+    };
+
+    evaluateActiveColor();
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 20) {
+        evaluateActiveColor();
       }
-    }
+    }, { passive: true });
+    window.addEventListener('pageshow', evaluateActiveColor);
   }
 
-  // --- CONTACT FORM INTERACTIVITY ---
+  // --- CONTACT FORM INTERACTIVITY & ROBUST EMAIL SUBMISSION ---
   function initContactForm() {
+    const form = document.querySelector('form#email-form');
+    const submitBtn = document.querySelector('[data-form-submit="true"]');
+    const submitBtnText = document.getElementById('submitBtnText');
+    const successMsg = document.querySelector('.success-message');
+    const errorMsg = document.querySelector('.error-message');
     const checkboxes = document.querySelectorAll('.checkbox_field');
+    const budgetSlider = document.getElementById('Budget');
+    const budgetBadge = document.getElementById('budgetValueBadge');
+    const hiddenBudgetInput = document.getElementById('hiddenBudgetAmount');
+    const hiddenServicesInput = document.getElementById('hiddenServicesInput');
+    const formRedirectUrl = document.getElementById('formRedirectUrl');
+    const sendAnotherBtn = document.getElementById('sendAnotherBtn');
+
+    // Set dynamic return URL for native POST fallback
+    if (formRedirectUrl) {
+      formRedirectUrl.value = window.location.href.split('?')[0] + '?sent=true';
+    }
+
+    // Check if returning from a successful native submission
+    if (window.location.search.includes('sent=true')) {
+      if (form) form.style.display = 'none';
+      if (successMsg) successMsg.style.display = 'block';
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.pathname);
+      }
+    }
+
+    // Checkbox toggles
     checkboxes.forEach((field) => {
       const input = field.querySelector('input');
       field.addEventListener('click', () => {
@@ -1070,18 +1151,114 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    const form = document.querySelector('form#email-form');
-    const submitBtn = document.querySelector('[data-form-submit="true"]');
-    const successMsg = document.querySelector('.success-message');
+    // Budget range slider interaction
+    const updateSliderTrack = () => {
+      if (!budgetSlider || !budgetBadge) return;
+      const min = parseFloat(budgetSlider.min) || 5000;
+      const max = parseFloat(budgetSlider.max) || 30000;
+      const val = parseFloat(budgetSlider.value) || 15000;
+      const percent = ((val - min) / (max - min)) * 100;
+      
+      budgetSlider.style.background = `linear-gradient(to right, #ee4b2b 0%, #ee4b2b ${percent}%, #d9d9d9 ${percent}%, #d9d9d9 100%)`;
+      const formatted = '₹' + Number(val).toLocaleString('en-IN') + ' INR';
+      budgetBadge.textContent = formatted;
+      if (hiddenBudgetInput) hiddenBudgetInput.value = formatted;
+    };
 
-    if (form && submitBtn) {
-      submitBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (form.checkValidity()) {
-          form.style.display = 'none';
-          if (successMsg) successMsg.style.display = 'block';
-        } else {
+    if (budgetSlider) {
+      budgetSlider.addEventListener('input', updateSliderTrack);
+      updateSliderTrack();
+    }
+
+    // "Send another message" reset button
+    if (sendAnotherBtn && form && successMsg) {
+      sendAnotherBtn.addEventListener('click', () => {
+        form.reset();
+        checkboxes.forEach((field) => {
+          const input = field.querySelector('input');
+          field.classList.toggle('is-active', input ? input.checked : false);
+        });
+        form.style.display = 'flex';
+        successMsg.style.display = 'none';
+        if (errorMsg) errorMsg.style.display = 'none';
+        if (submitBtn) submitBtn.style.pointerEvents = 'auto';
+        if (submitBtnText) submitBtnText.textContent = 'Send message';
+        if (budgetSlider) {
+          budgetSlider.value = 15000;
+          updateSliderTrack();
+        }
+      });
+    }
+
+    // Form Submission
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        if (!form.checkValidity()) {
           form.reportValidity();
+          return;
+        }
+
+        e.preventDefault();
+
+        // Compile selected services
+        const selectedServices = [];
+        if (form.querySelector('#UI-UX-Design')?.checked) selectedServices.push('UI/UX Design');
+        if (form.querySelector('#Graphic-Design')?.checked) selectedServices.push('Graphic Design');
+        if (form.querySelector('#Vibe-Code')?.checked) selectedServices.push('Vibe Code');
+        if (form.querySelector('#Product-Videos')?.checked) selectedServices.push('Product Videos');
+        
+        const servicesString = selectedServices.length > 0 ? selectedServices.join(', ') : 'None specified';
+        if (hiddenServicesInput) hiddenServicesInput.value = servicesString;
+
+        if (submitBtn) submitBtn.style.pointerEvents = 'none';
+        if (submitBtnText) submitBtnText.textContent = 'Sending message...';
+        if (errorMsg) errorMsg.style.display = 'none';
+
+        // Check if running on file: protocol (where AJAX is blocked by FormSubmit)
+        const isFileProtocol = window.location.protocol === 'file:';
+
+        if (isFileProtocol) {
+          // Direct native POST submission
+          form.submit();
+          return;
+        }
+
+        try {
+          const formData = new FormData(form);
+          formData.set('Services_Requested', servicesString);
+          formData.set('Budget_Range', hiddenBudgetInput ? hiddenBudgetInput.value : '₹15,000 INR');
+
+          const response = await fetch('https://formsubmit.co/ajax/shriyasharmachd@gmail.com', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json'
+            },
+            body: formData
+          });
+
+          const result = await response.json().catch(() => ({}));
+
+          if (response.ok && (result.success === true || result.success === 'true')) {
+            form.style.display = 'none';
+            if (successMsg) successMsg.style.display = 'block';
+          } else if (result.message && (result.message.includes('needs Activation') || result.message.includes('Activation'))) {
+            // FormSubmit sent one-time activation email to Shriya
+            form.style.display = 'none';
+            if (successMsg) {
+              successMsg.style.display = 'block';
+              const activationNotice = document.getElementById('activationNotice');
+              if (activationNotice) activationNotice.style.display = 'block';
+            }
+          } else if (result.message && result.message.includes('HTML files')) {
+            // Fallback to native submission if AJAX rejected file protocol
+            form.submit();
+          } else {
+            throw new Error(result.message || 'Submission failed');
+          }
+        } catch (err) {
+          console.warn('AJAX submission failed, attempting native POST fallback:', err);
+          // Automatic native POST fallback
+          form.submit();
         }
       });
     }

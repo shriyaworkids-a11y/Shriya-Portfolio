@@ -12,7 +12,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/shriya/shriya-butterfly-logo-cropped.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="images/shriya/shriya-butterfly-logo-cropped.png"/>
 
-  <!-- Main Design System & Styles -->
+  <!-- Google Fonts & Main Design System -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css"/>
 
   <!-- GSAP & Lenis Smooth Scroll -->
@@ -139,12 +142,13 @@
                     <img src="images/shriya/footer-frame-9.jpg" alt="Shriya portrait frame 9" class="footer-img-hover _9" style="display:none;"/>
                   </div>
                   <div class="contact-person-text-wrapper">
-                    <p class="text-size-medium">Email Me</p>
-                    <div class="text-link-small">
-                      <div class="star-text-link-animation">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="0.75em" height="0.75em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg>
-                      </div>
-                      <div class="text-link-text">shriyasharmachd@gmail.com</div>
+                    <p class="text-size-medium" style="color: var(--grey);">Email Me</p>
+                    <div class="text-link-small" style="display: flex; align-items: center; gap: 0.6em; margin-top: 0.25em;">
+                      <svg class="contact-channel-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="20" height="16" rx="3"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                      </svg>
+                      <div class="text-link-text" style="font-weight: 500; font-size: 1.15em;">shriyasharmachd@gmail.com</div>
                     </div>
                   </div>
                 </a>
@@ -152,10 +156,12 @@
                 <a href="https://www.instagram.com/shriya.shrm?stkn=MW05MnhrdWJvNGdhMw==" target="_blank" class="contact-title-person-wrapper" style="text-decoration: none;">
                   <div class="contact-person-text-wrapper">
                     <p class="text-size-medium" style="color: var(--grey);">Instagram DM</p>
-                    <div class="text-link-small">
-                      <div class="star-text-link-animation">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="0.75em" height="0.75em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg>
-                      </div>
+                    <div class="text-link-small" style="display: flex; align-items: center; gap: 0.6em; margin-top: 0.25em;">
+                      <svg class="contact-channel-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                      </svg>
                       <div class="text-link-text" style="font-weight: 500; font-size: 1.15em;">@shriya.shrm</div>
                     </div>
                   </div>
@@ -165,20 +171,28 @@
 
             <!-- Interactive Inquiry Form -->
             <div class="contact-form-wrapper">
-              <form id="email-form" class="form">
+              <form id="email-form" action="https://formsubmit.co/shriyasharmachd@gmail.com" method="POST" class="form">
+                <input type="hidden" name="_next" id="formRedirectUrl" value=""/>
+                <input type="hidden" name="_subject" id="formSubject" value="New Client Inquiry - Shriya Sharma Portfolio"/>
+                <input type="hidden" name="_template" value="table"/>
+                <input type="hidden" name="_captcha" value="false"/>
+                <input type="hidden" name="_autoresponse" value="Thank you for reaching out to Shriya Sharma! I have received your inquiry and will review your project details and get back to you shortly."/>
+                <input type="hidden" name="Services_Requested" id="hiddenServicesInput" value=""/>
+                <input type="hidden" name="Budget_Range" id="hiddenBudgetAmount" value="₹15,000 INR"/>
+
                 <div class="input-field-wrapper">
                   <label for="name" class="text-size-medium form">What's your name?</label>
-                  <input type="text" id="name" name="name" class="text-field" placeholder="John Doe" required=""/>
+                  <input type="text" id="name" name="Client_Name" class="text-field" placeholder="John Doe" required=""/>
                 </div>
 
                 <div class="input-field-wrapper">
                   <label for="Email" class="text-size-medium form">What's your email address?</label>
-                  <input type="email" id="Email" name="Email" class="text-field" placeholder="yourname@gmail.com" required=""/>
+                  <input type="email" id="Email" name="Client_Email" class="text-field" placeholder="yourname@gmail.com" required=""/>
                 </div>
 
                 <div class="input-field-wrapper">
                   <label for="Bedrijfsnaam" class="text-size-medium form">What's your company or project name?</label>
-                  <input type="text" id="Bedrijfsnaam" name="Bedrijfsnaam" class="text-field" placeholder="Company / Project" required=""/>
+                  <input type="text" id="Bedrijfsnaam" name="Company_or_Brand" class="text-field" placeholder="Company / Project" required=""/>
                 </div>
 
                 <div class="input-field-wrapper">
@@ -204,44 +218,70 @@
                 </div>
 
                 <div class="input-field-wrapper">
-                  <label for="Budget" class="text-size-medium form">What is your budget?</label>
-                  <select id="Budget" name="Budget" class="dropdown-field" required="">
-                    <option value="Select budget">Select budget</option>
-                    <option value="₹10,000 – ₹25,000">₹10,000 – ₹25,000</option>
-                    <option value="₹25,000 – ₹50,000">₹25,000 – ₹50,000</option>
-                    <option value="₹50,000 – ₹1,00,000">₹50,000 – ₹1,00,000</option>
-                    <option value="₹1,00,000 or more">₹1,00,000 or more</option>
-                  </select>
+                  <div class="budget-range-header">
+                    <label for="Budget" class="text-size-medium form">What is your budget?</label>
+                    <div class="budget-value-badge" id="budgetValueBadge">₹15,000 INR</div>
+                  </div>
+                  <div class="budget-slider-wrapper">
+                    <input type="range" id="Budget" name="Budget_Slider" min="5000" max="30000" step="1000" value="15000" class="budget-range-slider"/>
+                    <div class="budget-range-labels">
+                      <span>₹5,000 INR</span>
+                      <span>₹30,000 INR</span>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="input-field-wrapper">
                   <label for="Deadline" class="text-size-medium form">Do you have a deadline in mind?</label>
-                  <input type="text" id="Deadline" name="Deadline" class="text-field" placeholder="Yesterday" required=""/>
+                  <input type="text" id="Deadline" name="Project_Deadline" class="text-field" placeholder="e.g. 3-4 Weeks" required=""/>
                 </div>
 
                 <div class="input-field-wrapper">
                   <label for="project-beschrijving" class="text-size-medium form">Tell me a bit more about your project:</label>
-                  <textarea id="project-beschrijving" name="project-beschrijving" class="text-area" placeholder="Project description"></textarea>
+                  <textarea id="project-beschrijving" name="Project_Brief" class="text-area" placeholder="Tell me about your goals, timeline, and vision..."></textarea>
                 </div>
 
                 <div class="form-button-wrapper">
-                  <a data-form-submit="true" mainbutton="hover" href="#" class="main-button-wrapper">
-                    <div class="button-text">Send message</div>
+                  <button type="submit" data-form-submit="true" mainbutton="hover" class="main-button-wrapper">
+                    <div class="button-text" id="submitBtnText">Send message</div>
                     <div class="button-circle">
                       <div class="main-button-star-svg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="0.5em" height="0.5em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg>
                       </div>
                     </div>
                     <div class="inner-hover-color extra-height"></div>
-                  </a>
+                  </button>
                 </div>
               </form>
 
-              <div class="success-message">
-                Thank you! I'll get back to you as soon as possible.
+              <div class="success-message" id="contactSuccessCard">
+                <div class="success-message-header">
+                  <div class="tag-wrapper">
+                    <img src="https://cdn.prod.website-files.com/6978dadfad803d74561d3cfc/69f320e071ba4f256c25e442_Breems_star_orange.svg" alt="star" class="tag-icon"/>
+                    <div class="section-tag" style="color: var(--accent-color); font-weight: 600;">Message Sent</div>
+                  </div>
+                </div>
+                <h3 class="success-heading">Thank you for reaching out!</h3>
+                <p class="success-description">Your inquiry has been sent directly to Shriya (<strong>shriyasharmachd@gmail.com</strong>). I reply quickly and look forward to collaborating with you.</p>
+
+                <div class="activation-hint-box" id="activationNotice" style="display: none; margin-top: 1.25em; padding: 1.15em 1.35em; border-radius: 0.8em; background: #fff8f5; border: 1px solid rgba(238, 75, 43, 0.25); font-size: 0.95em; color: var(--dark); line-height: 1.5;">
+                  <strong style="color: var(--accent-color);">First-Time Setup Note:</strong> FormSubmit has sent a one-time activation email to <strong>shriyasharmachd@gmail.com</strong>. Please check your <strong>Spam / Junk / Promotions</strong> folder for an email from <em>FormSubmit</em> and click <strong>"Activate Form"</strong> so all submissions route directly to your inbox.
+                </div>
+
+                <div class="success-action-wrap" style="margin-top: 1.5em; display: flex; gap: 1em; flex-wrap: wrap;">
+                  <button type="button" id="sendAnotherBtn" class="main-button-wrapper grey-2" style="font-size: 0.95em;">
+                    <div class="button-text">Send another message</div>
+                    <div class="button-circle grey-4" style="width: 2em; height: 2em; min-width: 2em; min-height: 2em;">
+                      <div class="main-button-star-svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="0.5em" height="0.5em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg>
+                      </div>
+                    </div>
+                    <div class="inner-hover-color extra-height"></div>
+                  </button>
+                </div>
               </div>
               <div class="error-message">
-                Oops — something went wrong. Please try again or drop me an email directly.
+                Oops — something went wrong sending your message. Please try again or email me directly at <a href="mailto:shriyasharmachd@gmail.com" style="text-decoration: underline; color: inherit; font-weight: 600;">shriyasharmachd@gmail.com</a>.
               </div>
             </div>
 
