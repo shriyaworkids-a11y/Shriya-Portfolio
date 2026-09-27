@@ -1015,16 +1015,40 @@ h1, h2, h3, h4, h5, h6 {
 /* ==========================================================================
    BUTTONS & BADGES
    ========================================================================== */
+/* Google Material Symbols Global Alignment */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
 .tag-wrapper {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
   background-color: transparent;
+  vertical-align: middle;
 }
 
 .tag-icon {
   width: 0.85em;
   height: 0.85em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  vertical-align: middle;
 }
 
 .section-tag {
@@ -1032,6 +1056,9 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   text-transform: lowercase;
   color: var(--dark);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
 
 .section-tag.w-variant-34e989c2-6246-a477-755d-2192ce799646 {
@@ -1043,6 +1070,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.4em;
   color: var(--grey-dark);
+  vertical-align: middle;
 }
 
 .section-tag.number {
@@ -1050,12 +1078,20 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
   font-weight: 500;
   color: inherit;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
 
 .tag-icon.number {
   width: 0.75em;
   height: 0.75em;
   opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  vertical-align: middle;
 }
 
 /* Main Interactive Button (Uiverse-Inspired Premium Pill) */
@@ -1657,6 +1693,12 @@ button.main-button-wrapper {
   border-radius: 2em;
   color: var(--dark);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
 .video-embed {

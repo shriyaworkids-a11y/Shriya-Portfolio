@@ -1,0 +1,810 @@
+/**
+ * GOOGLE MATERIAL DESIGN 3 (M3) — PORTAL ARCHITECTURE & LAYOUT
+ * Exactly modeled after https://m3.material.io/
+ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--md-ref-typeface-plain);
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.5;
+  transition: background-color var(--pixel-transition-fast), color var(--pixel-transition-fast);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   1. M3 TOP APP BAR
+   ========================================================================== */
+.portal-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 64px;
+  background-color: var(--md-sys-color-surface);
+  border-bottom: 1px solid var(--md-sys-color-surface-container-high);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pixel-space-6);
+  transition: background-color var(--pixel-transition-fast);
+}
+
+.portal-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pixel-space-3);
+  text-decoration: none;
+  color: var(--md-sys-color-on-surface);
+}
+
+.portal-brand__icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--md-sys-elevation-level1);
+  flex-shrink: 0;
+}
+.portal-brand__icon .material-symbols-outlined {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.portal-brand__title {
+  font-family: var(--md-ref-typeface-brand);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.portal-brand__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  height: 20px;
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  padding: 0 8px;
+  border-radius: var(--md-sys-shape-corner-full);
+  vertical-align: middle;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.portal-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Dynamic Theme Color Palette Seed Picker */
+.m3-seed-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  background-color: var(--md-sys-color-surface-container-high);
+  padding: 0 10px;
+  border-radius: var(--md-sys-shape-corner-full);
+  box-sizing: border-box;
+}
+
+.m3-seed-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 2px;
+}
+
+.m3-seed-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--pixel-transition-fast);
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+.m3-seed-dot:hover {
+  transform: scale(1.15);
+}
+.m3-seed-dot.is-active {
+  border-color: var(--md-sys-color-on-surface);
+  box-shadow: 0 0 0 2px var(--md-sys-color-surface);
+}
+
+.m3-seed-dot--blue   { background-color: #1A73E8; box-shadow: 0 0 8px rgba(26, 115, 232, 0.4); }
+.m3-seed-dot--teal   { background-color: #0284C7; }
+.m3-seed-dot--purple { background-color: #7C3AED; }
+.m3-seed-dot--amber  { background-color: #D97706; }
+.m3-seed-dot--rose   { background-color: #E11D48; }
+
+/* ==========================================================================
+   2. M3 NAVIGATION DRAWER / RAIL (SIDEBAR)
+   ========================================================================== */
+.portal-layout {
+  display: flex;
+  flex: 1;
+  position: relative;
+  min-height: calc(100vh - 64px);
+}
+
+.portal-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background-color: var(--md-sys-color-surface);
+  border-right: 1px solid var(--md-sys-color-surface-container-high);
+  padding: 16px 12px;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 50;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.portal-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.portal-sidebar::-webkit-scrollbar-thumb {
+  background: var(--md-sys-color-outline-variant);
+  border-radius: 4px;
+}
+
+.portal-nav-group-title {
+  font-family: var(--md-ref-typeface-plain);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--md-sys-color-on-surface-variant);
+  padding: 0 16px;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+/* Signature M3 Pill Navigation Link */
+.portal-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 44px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--md-sys-color-on-surface-variant);
+  border-radius: var(--md-sys-shape-corner-full);
+  text-decoration: none;
+  transition: all var(--pixel-transition-fast);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.portal-nav-link .material-symbols-outlined {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.portal-nav-link span:last-child {
+  line-height: 1.2;
+}
+
+.portal-nav-link:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) var(--md-sys-state-hover-opacity), transparent);
+  color: var(--md-sys-color-on-surface);
+}
+
+.portal-nav-link.is-active {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  font-weight: 600;
+}
+.portal-nav-link.is-active .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1;
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/* Sidebar Backdrop on Mobile */
+.portal-sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 45;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.portal-sidebar-backdrop.is-visible {
+  display: block;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   3. M3 CONTENT VIEWPORT & BREADCRUMB TOOLBAR
+   ========================================================================== */
+.portal-content {
+  flex: 1;
+  min-width: 0;
+  padding: 24px 36px 64px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* M3 Sticky Breadcrumb Toolbar */
+.portal-tab-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-full);
+  min-height: 48px;
+  padding: 6px 18px;
+  margin-bottom: var(--pixel-space-6);
+  position: sticky;
+  top: 72px;
+  z-index: 30;
+  backdrop-filter: blur(10px);
+  flex-wrap: wrap;
+  gap: 12px;
+  box-shadow: var(--md-sys-elevation-level1);
+  box-sizing: border-box;
+}
+
+.portal-tab-toolbar__left {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+
+.portal-tab-toolbar__cat {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--md-sys-color-on-surface-variant);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.portal-tab-toolbar__divider {
+  color: var(--md-sys-color-outline-variant);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.portal-tab-toolbar__current {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  line-height: 1;
+}
+
+.portal-tab-toolbar__current .material-symbols-outlined {
+  font-size: 18px;
+  line-height: 1;
+  color: var(--md-sys-color-primary);
+}
+
+.portal-tab-toolbar__badge {
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  height: 22px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  box-sizing: border-box;
+}
+
+.portal-tab-toolbar__nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.portal-tab-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--md-sys-color-on-surface);
+  background-color: var(--md-sys-color-surface-container-high);
+  border: none;
+  border-radius: var(--md-sys-shape-corner-full);
+  cursor: pointer;
+  transition: all var(--pixel-transition-fast);
+  box-sizing: border-box;
+}
+.portal-tab-nav-btn .material-symbols-outlined {
+  font-size: 18px;
+  line-height: 1;
+}
+.portal-tab-nav-btn:hover:not(:disabled) {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+.portal-tab-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   4. M3 TAB PANELS & MOTIONS
+   ========================================================================== */
+.portal-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(16px);
+  will-change: opacity, transform;
+}
+
+.portal-section.is-active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: m3SectionEntrance 0.35s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+@keyframes m3SectionEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portal-section-header {
+  margin-bottom: var(--pixel-space-6);
+  padding-bottom: var(--pixel-space-4);
+  border-bottom: 1px solid var(--md-sys-color-surface-container-high);
+}
+
+.portal-section-title {
+  font-family: var(--md-ref-typeface-brand);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  letter-spacing: -0.015em;
+}
+
+.portal-section-desc {
+  font-size: 15px;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.6;
+  max-width: 900px;
+}
+
+/* M3 Card Container */
+.portal-card {
+  background-color: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  padding: 28px;
+  margin-bottom: var(--pixel-space-6);
+  box-shadow: var(--md-sys-elevation-level1);
+  transition: box-shadow var(--pixel-transition-fast), transform var(--pixel-transition-fast);
+}
+.portal-card:hover {
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+/* Tab Footer Pager Navigation */
+.portal-tab-footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--md-sys-color-surface-container-high);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Mobile Toggle in Header */
+.portal-mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: var(--md-sys-color-on-surface);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--pixel-transition-fast);
+}
+.portal-mobile-menu-btn:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+/* ==========================================================================
+   5. M3 COLOR TOKENS EXPLORER & SWATCHES
+   ========================================================================== */
+.token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.token-swatch {
+  border-radius: var(--md-sys-shape-corner-medium);
+  overflow: hidden;
+  background-color: var(--md-sys-color-surface-container);
+  cursor: pointer;
+  transition: transform var(--pixel-transition-fast), box-shadow var(--pixel-transition-fast);
+  box-shadow: var(--md-sys-elevation-level1);
+}
+.token-swatch:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.token-swatch__preview {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 8px;
+}
+
+.token-swatch__copy-hint {
+  background: rgba(0, 0, 0, 0.4);
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--pixel-transition-fast);
+}
+.token-swatch:hover .token-swatch__copy-hint {
+  opacity: 1;
+}
+
+.token-swatch__meta {
+  padding: 10px 12px;
+}
+.token-swatch__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+}
+.token-swatch__value {
+  font-size: 11px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-ref-typeface-mono);
+}
+
+/* ==========================================================================
+   6. M3 TYPOGRAPHY & SPACING SPECIMENS
+   ========================================================================== */
+.type-tester-input {
+  width: 100%;
+  height: 52px;
+  padding: 0 18px;
+  font-family: var(--md-ref-typeface-plain);
+  font-size: 15px;
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-full);
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: 20px;
+  outline: none;
+  transition: all var(--pixel-transition-fast);
+}
+.type-tester-input:focus {
+  border-color: var(--md-sys-color-primary);
+  border-width: 2px;
+}
+
+.type-scale-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.type-scale-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  min-height: 72px;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-large);
+  transition: all var(--pixel-transition-fast);
+  cursor: pointer;
+  box-sizing: border-box;
+  gap: 16px;
+}
+.type-scale-item:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+  transform: translateX(4px);
+}
+
+.type-scale-left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.type-scale-role {
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--md-sys-color-primary);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+}
+
+.type-scale-text {
+  color: var(--md-sys-color-on-surface);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.25;
+}
+
+.type-scale-meta {
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 11px;
+  color: var(--md-sys-color-on-surface-variant);
+  text-align: right;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  line-height: 1.3;
+}
+
+/* Spacing Scale Bars */
+.spacing-scale-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.spacing-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  height: 42px;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-medium);
+  transition: all var(--pixel-transition-fast);
+  cursor: pointer;
+  box-sizing: border-box;
+  gap: 12px;
+}
+.spacing-item:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.spacing-item__label {
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  width: 85px;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.spacing-item__val {
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 11px;
+  color: var(--md-sys-color-primary);
+  width: 55px;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.spacing-item__bar-track {
+  flex: 1;
+  background-color: var(--md-sys-color-surface-container-highest);
+  height: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: 0 12px;
+}
+
+.spacing-item__bar {
+  background-color: var(--md-sys-color-primary);
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.spacing-item__usage {
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+  width: 200px;
+  text-align: right;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Shape & Elevation Grid */
+.radius-grid, .elevation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.shape-card {
+  padding: 14px;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-large);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--pixel-transition-fast);
+}
+.shape-card:hover {
+  transform: translateY(-2px);
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.shape-box-preview {
+  height: 52px;
+  width: 52px;
+  margin: 0 auto 8px;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.elevation-box-preview {
+  height: 52px;
+  width: 52px;
+  margin: 0 auto 8px;
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
+/* ==========================================================================
+   7. CODE SNIPPET INSPECTOR
+   ========================================================================== */
+.portal-code-box {
+  background-color: #141218;
+  color: #E6E1E5;
+  padding: 20px;
+  border-radius: var(--md-sys-shape-corner-large);
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 13px;
+  position: relative;
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+.portal-copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: none;
+  padding: 6px 14px;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--pixel-transition-fast);
+}
+.portal-copy-btn:hover {
+  background-color: rgba(255, 255, 255, 0.24);
+}
+
+/* ==========================================================================
+   8. RESPONSIVE DESIGN (M3 BREAKPOINTS)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .portal-mobile-menu-btn {
+    display: inline-flex;
+  }
+  .portal-sidebar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    bottom: 0;
+    height: calc(100vh - 64px);
+    transform: translateX(-100%);
+    box-shadow: var(--md-sys-elevation-level4);
+  }
+  .portal-sidebar.is-open {
+    transform: translateX(0);
+  }
+  .portal-content {
+    padding: 16px;
+  }
+  .portal-tab-toolbar {
+    top: 64px;
+  }
+  .type-scale-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .type-scale-meta {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .spacing-item__usage {
+    display: none;
+  }
+}

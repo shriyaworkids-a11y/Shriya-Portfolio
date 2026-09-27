@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Designing PIXEL: A Scalable Enterprise Product Design System | shriya.s</title>
+  <meta content="An enterprise product design system case study for B2B SaaS operations: 3-tier token architecture, 30+ accessible components with 8-state coverage, WCAG 2.1 AA/AAA compliance, and interactive coded prototyping. Designed by Shriya Sharma." name="description"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/shriya/shriya-butterfly-logo-cropped.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/shriya/shriya-butterfly-logo-cropped.png"/>
+
+  <!-- Google Fonts & Design Tokens -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:ital,wght@0,200..900;1,200..900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="../css/main.css"/>
+
+  <!-- GSAP & Lenis Smooth Scroll -->
+  <script src="https://cdn.prod.website-files.com/gsap/3.15.0/gsap.min.js"></script>
+  <script src="https://cdn.prod.website-files.com/gsap/3.15.0/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.prod.website-files.com/gsap/3.15.0/CustomEase.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"></script>
+
+  <style>
+    /* Google Material Symbols base styling */
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined' !important;
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      flex-shrink: 0;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Custom High-Fidelity Design System Case Study Additions */
+    .pixel-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      border-radius: 9999px;
+      background: rgba(99, 102, 241, 0.14);
+      color: #93C5FD;
+      border: 1px solid rgba(147, 197, 253, 0.35);
+      margin-bottom: 12px;
+      vertical-align: middle;
+    }
+    .pixel-badge-pill .material-symbols-outlined {
+      font-size: 16px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pixel-badge-pill span {
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+    .cs-back-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1;
+      vertical-align: middle;
+    }
+    .cs-back-nav .material-symbols-outlined {
+      font-size: 16px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cs-back-nav span {
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+    }
+    .pixel-stat-highlight {
+      font-family: 'JetBrains Mono', monospace;
+      color: #38BDF8;
+    }
+    .cs-live-demo-card {
+      background: linear-gradient(135deg, #0F172A 0%, #172554 100%);
+      border: 1px solid rgba(147, 197, 253, 0.3);
+      border-radius: 24px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+    }
+    .cs-live-demo-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cs-audit-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 14px;
+    }
+    .cs-audit-table th {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      color: #94A3B8;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      vertical-align: middle;
+    }
+    .cs-audit-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #E2E8F0;
+      vertical-align: middle;
+    }
+    .token-tier-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .token-tier-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+  </style>
+</head>
+<body class="body">
+
+  <!-- TOP ABSOLUTE NAVIGATION -->
+  <header class="nav_absolute">
+    <div class="padding-global">
+      <div class="nav_container">
+        <a href="../index.html" class="nav_brand">
+          <div class="navbar-logo">
+            <svg class="brand-logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 858 833" fill="currentColor" fill-rule="evenodd">
+              <path d="M 225 25 L 228 22 L 231 19 L 234 17 L 237 15 L 240 14 L 243 13 L 246 11 L 249 11 L 252 10 L 255 9 L 258 9 L 261 8 L 264 8 L 267 8 L 270 8 L 273 8 L 276 8 L 279 9 L 282 9 L 285 9 L 288 10 L 291 10 L 294 11 L 297 12 L 300 13 L 303 14 L 306 15 L 309 16 L 312 17 L 315 18 L 318 20 L 321 21 L 324 23 L 327 24 L 330 26 L 333 28 L 336 30 L 339 32 L 342 34 L 345 36 L 348 39 L 351 41 L 354 44 L 357 47 L 360 50 L 363 53 L 366 56 L 369 59 L 371 62 L 373 65 L 376 68 L 378 71 L 380 74 L 382 77 L 384 80 L 385 83 L 387 86 L 389 89 L 390 92 L 392 95 L 393 98 L 394 101 L 396 104 L 397 107 L 398 110 L 399 113 L 400 116 L 401 119 L 402 122 L 403 125 L 404 128 L 405 131 L 405 134 L 406 137 L 406 140 L 407 143 L 408 146 L 408 149 L 409 152 L 409 155 L 409 158 L 409 161 L 410 164 L 410 167 L 410 170 L 410 173 L 410 176 L 410 179 L 410 182 L 410 185 L 409 188 L 409 191 L 409 194 L 408 197 L 407 200 L 407 203 L 406 206 L 404 209 L 403 212 L 401 215 L 398 218 L 395 220 L 392 220 L 389 220 L 386 218 L 384 215 L 382 212 L 381 209 L 380 206 L 379 203 L 378 200 L 376 197 L 375 194 L 374 191 L 372 188 L 371 185 L 370 182 L 368 179 L 367 176 L 365 173 L 363 170 L 362 167 L 360 164 L 358 161 L 357 158 L 355 155 L 353 152 L 351 149 L 349 146 L 347 143 L 345 140 L 343 137 L 340 134 L 338 131 L 336 128 L 333 125 L 330 122 L 328 119 L 325 116 L 322 113 L 319 110 L 316 107 L 313 104 L 310 102 L 307 99 L 304 97 L 301 95 L 298 93 L 295 91 L 292 89 L 289 87 L 286 85 L 283 84 L 280 83 L 277 81 L 274 80 L 271 79 L 268 79 L 265 78 L 262 77 L 259 77 L 256 76 L 253 76 L 250 75 L 247 74 L 244 73 L 241 72 L 238 71 L 235 69 L 232 67 L 229 65 L 226 62 L 224 59 L 222 56 L 221 53 L 220 50 L 220 47 L 219 44 L 219 41 L 220 38 L 220 35 L 221 32 L 223 29 L 225 26 Z"/>
+            </svg>
+            <span class="brand-name-text">shriya.s</span>
+          </div>
+        </a>
+        <nav class="nav_menu">
+          <a href="../index.html" class="nav-menu-link-block"><div data-link-hover="true" class="nav_menu_link">Home</div></a>
+          <a href="../about.html" class="nav-menu-link-block"><div data-link-hover="true" class="nav_menu_link">About</div></a>
+          <a href="../work.html" class="nav-menu-link-block w--current"><div data-link-hover="true" class="nav_menu_link">Work</div></a>
+          <a href="../contact.html" class="nav-menu-link-block"><div data-link-hover="true" class="nav_menu_link">Contact</div></a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN EDITORIAL CASE STUDY WRAPPER -->
+  <main class="main-wrapper">
+
+    <!-- 1. HERO SECTION -->
+    <section class="cs-editorial-hero">
+      <div class="padding-global">
+        <div class="container-large">
+          <a href="../work.html" class="cs-back-nav">
+            <span class="material-symbols-outlined" style="font-size: 16px;">arrow_back</span>
+            <span>Back to selected works</span>
+          </a>
+
+          <div class="pixel-badge-pill">
+            <span class="material-symbols-outlined" style="font-size: 16px;">auto_awesome</span>
+            <span>Enterprise SaaS Design System · Dynamic Theming &amp; Telemetry</span>
+          </div>
+          <h1 class="cs-hero-heading">Designing PIXEL: A Next-Generation Enterprise Product Design System</h1>
+          <p class="cs-hero-lead">
+            An original, token-driven enterprise design system engineered by Shriya Sharma for complex B2B SaaS operations. Powered by Pixel's signature electric blue palette, multi-tier token architecture, dynamic seed-based theming, 8-state component telemetry, WCAG 2.1 AA/AAA compliance, and an interactive coded operations console.
+          </p>
+
+          <!-- Project Details Meta Bar -->
+          <dl class="cs-meta-grid-bar" aria-label="Project details">
+            <div class="cs-meta-cell">
+              <dt>Role</dt>
+              <dd>Lead Design Systems Designer</dd>
+            </div>
+            <div class="cs-meta-cell">
+              <dt>Scope</dt>
+              <dd>Tokens Architecture, 30+ Components, 8 States, Code Engine</dd>
+            </div>
+            <div class="cs-meta-cell">
+              <dt>Target Product</dt>
+              <dd>Pixel Operations Platform (B2B SaaS / SOC Console)</dd>
+            </div>
+            <div class="cs-meta-cell">
+              <dt>Status</dt>
+              <dd class="is-live">v2.0.0 Live &amp; Documented · 2026</dd>
+            </div>
+          </dl>
+
+          <!-- Interactive Live Portal Launch Banner -->
+          <div class="cs-live-demo-card">
+            <div style="max-width: 680px; position: relative; z-index: 2;">
+              <span class="pixel-badge-pill" style="background: rgba(56, 189, 248, 0.15); color: #38BDF8; border-color: rgba(56, 189, 248, 0.4);">
+                <span class="material-symbols-outlined" style="font-size: 16px;">terminal</span>
+                Interactive System Portal &amp; Prototype
+              </span>
+              <h2 style="font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: #FFFFFF; margin: 0.5rem 0 1rem; line-height: 1.2;">
+                Explore the Live Coded System &amp; Operations Prototype
+              </h2>
+              <p style="color: #94A3B8; font-size: 15px; line-height: 1.6; margin-bottom: 1.8rem;">
+                Recruiters and engineers can interactively test the live system: toggle light/dark modes, stress-test buttons across all 8 states, filter and sort the live enterprise data table, export CSV telemetry, and inspect production CSS token variables.
+              </p>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="../pixel-design-system/index.html" target="_blank" class="main-button-wrapper" style="padding: 0.85em 2em; background: #1A56DB;">
+                  <span class="button-text" style="color: #FFFFFF; display: inline-flex; align-items: center; gap: 6px;">
+                    <span class="material-symbols-outlined">rocket_launch</span>
+                    <span>Launch Interactive Portal ↗</span>
+                  </span>
+                </a>
+                <a href="../pixel-design-system/PIXEL_DESIGN_SYSTEM_FIGMA_SPEC.md" target="_blank" class="main-button-wrapper" style="padding: 0.85em 2em; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);">
+                  <span class="button-text" style="color: #FFFFFF; display: inline-flex; align-items: center; gap: 6px;">
+                    <span class="material-symbols-outlined">menu_book</span>
+                    <span>View Design System Specs ❖</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Desktop Device Mockup Showcase -->
+          <div class="cs-hero-devices-showcase" style="justify-content: center; margin-top: 2.5rem;">
+            <div class="cs-desktop-shell" style="max-width: 860px; width: 100%;">
+              <div class="cs-desktop-bar">
+                <div class="cs-desktop-dot"></div>
+                <div class="cs-desktop-dot"></div>
+                <div class="cs-desktop-dot"></div>
+                <div class="cs-desktop-url">pixel-design-system.internal.net</div>
+              </div>
+              <div class="cs-desktop-viewport">
+                <img src="../Works/Mockups/pixel-mockup.jpg" alt="PIXEL Enterprise Product Design System Architecture" class="cs-desktop-screen" loading="eager" style="width: 100%; height: auto; display: block;"/>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. CONTEXT & THE PROBLEM -->
+    <section class="cs-story-section">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="cs-section-header">
+            <span class="cs-section-tag">01 / Context &amp; Challenge</span>
+            <h2 class="cs-section-title">Scaling Beyond Component Fragmentation</h2>
+            <p class="cs-section-desc">
+              Why enterprise B2B products fail when they treat a design system as merely a "Figma UI sticker sheet".
+            </p>
+          </div>
+
+          <div class="cs-editorial-split">
+            <div class="cs-editorial-prose">
+              <p class="cs-prose-lead">
+                The <strong>Pixel Operations Platform</strong> serves complex operational roles: System Administrators, Dispatch Managers, and Site Reliability Engineers monitoring mission-critical cluster infrastructure.
+              </p>
+              <p>
+                As rapid feature delivery accelerated across distributed teams, velocity outpaced coordination. New screens introduced ad-hoc colors, divergent button paddings, disparate table densities, and keyboard accessibility gaps.
+              </p>
+              <p>
+                Developers were forced to guess CSS values, leading to a bloated stylesheet and severe UI drift between design concepts and shipped code.
+              </p>
+            </div>
+
+            <div class="cs-stats-column">
+              <div class="cs-stat-block">
+                <span class="cs-stat-number pixel-stat-highlight">14</span>
+                <span class="cs-stat-label">Inconsistent button implementations found during audit</span>
+              </div>
+              <div class="cs-stat-block">
+                <span class="cs-stat-number pixel-stat-highlight">42%</span>
+                <span class="cs-stat-label">CSS bundle reduction achieved after token standardization</span>
+              </div>
+              <div class="cs-stat-block">
+                <span class="cs-stat-number pixel-stat-highlight">0</span>
+                <span class="cs-stat-label">WCAG AA contrast defects remaining across all 30+ components</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Audit Before vs. After Visual Table -->
+          <div style="margin-top: 3rem; background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 2rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 600; color: #FFFFFF; margin-bottom: 1rem;">System Audit: Before vs. After PIXEL Standardization</h3>
+            <table class="cs-audit-table">
+              <thead>
+                <tr>
+                  <th>Component Dimension</th>
+                  <th>Before (Fragmented Legacy UI)</th>
+                  <th>After (PIXEL Design System)</th>
+                  <th>Measurable Impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Action Buttons</strong></td>
+                  <td>14 ad-hoc variations, hardcoded hex codes (`#1a73e8`, `#2563eb`, `#0052cc`), 4 radii.</td>
+                  <td><strong>1 Master Button Primitive</strong> supporting 5 semantic variants, 3 size tiers, and 8 states.</td>
+                  <td><span style="color: #34D399;">Eliminated redundant CSS rules</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Accessibility &amp; Focus</strong></td>
+                  <td>Zero focus rings; light grey text on white (2.8:1 contrast) failing WCAG AA.</td>
+                  <td><strong>100% WCAG 2.1 AA/AAA compliance</strong> with 3px focus-visible keyboard outlines.</td>
+                  <td><span style="color: #34D399;">Passed enterprise accessibility audit</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Data Tables</strong></td>
+                  <td>4 distinct table structures across orders, hosts, and incident logs.</td>
+                  <td><strong>Unified Enterprise Table Engine</strong> with density tiers (36px, 48px, 56px) and sorting.</td>
+                  <td><span style="color: #34D399;">Consistent scanability across all modules</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Dark Mode Theming</strong></td>
+                  <td>Ad-hoc dark theme CSS overrides requiring duplicate stylesheets.</td>
+                  <td><strong>Automated Token Remapping</strong> via `[data-theme="dark"]` custom properties.</td>
+                  <td><span style="color: #34D399;">Instant multi-mode without changing markup</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TOKEN ARCHITECTURE & FOUNDATIONS -->
+    <section class="cs-story-section">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="cs-section-header">
+            <span class="cs-section-tag">02 / Architecture &amp; Foundations</span>
+            <h2 class="cs-section-title">The 3-Tier Design Token Engine</h2>
+            <p class="cs-section-desc">
+              Building a single source of truth connecting Figma Variables directly to production CSS variables.
+            </p>
+          </div>
+
+          <div class="cs-craft-grid">
+            <div class="token-tier-card">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #93C5FD; margin-bottom: 6px;">M3 ROLE 01 · TONAL PALETTES</div>
+              <h3 style="font-size: 1.15rem; color: #FFFFFF; margin-bottom: 8px;">Primary, Secondary &amp; Tertiary Tones</h3>
+              <p style="font-size: 13px; color: #94A3B8; line-height: 1.6;">
+                Calibrated Google Material 3 tonal groups providing paired containers: `primary` &amp; `primary-container`, `secondary` for filter chips, and `tertiary` for system telemetry.
+              </p>
+              <code style="display: block; background: rgba(0,0,0,0.4); padding: 8px 12px; border-radius: 6px; font-size: 11px; color: #93C5FD; margin-top: 10px;">
+                --md-sys-color-primary: #1A56DB;
+              </code>
+            </div>
+
+            <div class="token-tier-card">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6EE7B7; margin-bottom: 6px;">M3 ROLE 02 · SURFACE CONTAINERS</div>
+              <h3 style="font-size: 1.15rem; color: #FFFFFF; margin-bottom: 8px;">Tonal Elevation Without Harsh Shadows</h3>
+              <p style="font-size: 13px; color: #94A3B8; line-height: 1.6;">
+                Replaces arbitrary black drop shadows with 5 Material Surface Container tiers (`surface-container-low` to `surface-container-highest`) that naturally tint with primary tones.
+              </p>
+              <code style="display: block; background: rgba(0,0,0,0.4); padding: 8px 12px; border-radius: 6px; font-size: 11px; color: #6EE7B7; margin-top: 10px;">
+                --md-sys-color-surface-container: #EAEFF5;
+              </code>
+            </div>
+
+            <div class="token-tier-card">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #FCD34D; margin-bottom: 6px;">M3 ROLE 03 · STATE LAYERS</div>
+              <h3 style="font-size: 1.15rem; color: #FFFFFF; margin-bottom: 8px;">Google State Layer Physics</h3>
+              <p style="font-size: 13px; color: #94A3B8; line-height: 1.6;">
+                Governed micro-state opacity overlays: 8% hover, 12% focus ring, and 12% pressed down-state applied uniformly across buttons, chips, and table rows.
+              </p>
+              <code style="display: block; background: rgba(0,0,0,0.4); padding: 8px 12px; border-radius: 6px; font-size: 11px; color: #FCD34D; margin-top: 10px;">
+                --md-sys-state-hover-opacity: 0.08;
+              </code>
+            </div>
+          </div>
+
+          <!-- Typography & Spacing Logic -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+            <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.75rem;">
+              <span class="cs-craft-badge">Foundations 01 · Typography</span>
+              <h4 style="color: #FFFFFF; font-size: 1.2rem; margin: 8px 0 12px;">Inter &amp; JetBrains Mono Mathematical Scale</h4>
+              <p style="font-size: 13px; color: #94A3B8; line-height: 1.6; margin-bottom: 1rem;">
+                Calibrated for dense enterprise dashboards. Every font size has a mathematically paired line height to guarantee perfect baseline alignment:
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
+                <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">Display</strong>
+                  <span style="color: #93C5FD; font-family: 'JetBrains Mono', monospace;">36px / 44px · Bold 700 (-0.02em)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">H1 (Hero)</strong>
+                  <span style="color: #93C5FD; font-family: 'JetBrains Mono', monospace;">28px / 36px · Bold 700 (-0.015em)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">H2 (Section)</strong>
+                  <span style="color: #93C5FD; font-family: 'JetBrains Mono', monospace;">22px / 28px · Semibold 600 (-0.01em)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">H3 (Card Title)</strong>
+                  <span style="color: #93C5FD; font-family: 'JetBrains Mono', monospace;">18px / 24px · Semibold 600</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">Body (Base)</strong>
+                  <span style="color: #93C5FD; font-family: 'JetBrains Mono', monospace;">14px / 20px · Regular 400</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">Caption</strong>
+                  <span style="color: #93C5FD; font-family: 'JetBrains Mono', monospace;">11px / 14px · Medium 500 (+0.01em)</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">Mono (Telemetry)</strong>
+                  <span style="color: #34D399; font-family: 'JetBrains Mono', monospace;">12px / 16px · Fixed Char Width</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.75rem;">
+              <span class="cs-craft-badge">Foundations 02 · Spatial Scale</span>
+              <h4 style="color: #FFFFFF; font-size: 1.2rem; margin: 8px 0 12px;">4px / 8px Grid Rhythm Without Arbitrary Offsets</h4>
+              <p style="font-size: 13px; color: #94A3B8; line-height: 1.6; margin-bottom: 1rem;">
+                Eliminates designer guesswork and front-end magic numbers. Every layout, card, button padding, and table margin maps to strict mathematical tokens:
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">space.1 (4px)</strong>
+                  <span style="color: #94A3B8;">Micro-gap, badge inline padding</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">space.2 (8px)</strong>
+                  <span style="color: #94A3B8;">Icon-to-text gap, compact button</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">space.4 (16px)</strong>
+                  <span style="color: #94A3B8;">Standard component inset, button padding</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">space.6 (24px)</strong>
+                  <span style="color: #94A3B8;">Card internal gutters, table margins</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">space.8 (32px)</strong>
+                  <span style="color: #94A3B8;">Module blocks, dashboard card separation</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">space.12 (48px)</strong>
+                  <span style="color: #94A3B8;">Major layout column gutters</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 6px;">
+                  <strong style="color: #FFFFFF;">space.20 (80px)</strong>
+                  <span style="color: #94A3B8;">Page hero &amp; major section rhythm</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. COMPONENT ANATOMY & THE 8-STATE RULE -->
+    <section class="cs-story-section">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="cs-section-header">
+            <span class="cs-section-tag">03 / Component Deep Dive</span>
+            <h2 class="cs-section-title">The Button Case Study &amp; The 8-State Architecture</h2>
+            <p class="cs-section-desc">
+              Why senior design systems are defined by state predictability, not just static visual aesthetics.
+            </p>
+          </div>
+
+          <div class="cs-editorial-split">
+            <div class="cs-editorial-prose">
+              <p>
+                Junior design systems frequently stop at <em>Default</em> and <em>Hover</em>. In mission-critical enterprise environments, an ambiguous state can cause catastrophic errors — such as an operator double-clicking a containment trigger because the loading state failed to indicate ongoing processing.
+              </p>
+              <p>
+                In PIXEL, every interactive control is required to support the universal <strong>8-State Coverage Model</strong>:
+              </p>
+              <ol style="font-size: 14px; color: #CBD5E1; line-height: 1.8; padding-left: 20px;">
+                <li><strong>Default (Rest)</strong>: Optimized contrast and clear visual boundaries.</li>
+                <li><strong>Hover</strong>: Pointer focus with subtle elevation and color shift.</li>
+                <li><strong>Active (Pressed)</strong>: Down-state tactile feedback with <code>transform: scale(0.98)</code>.</li>
+                <li><strong>Focus-Visible</strong>: 3px high-contrast keyboard navigation ring for WCAG 2.4.7.</li>
+                <li><strong>Disabled</strong>: Reduced opacity (0.45), <code>cursor: not-allowed</code>, inert pointer events.</li>
+                <li><strong>Loading</strong>: Preserves exact layout dimensions with integrated animated SVG spinner to eliminate layout shift.</li>
+                <li><strong>Selected / Checked</strong>: Active toggle or selected table row indication.</li>
+                <li><strong>Error / Invalid</strong>: Layout-preserving inline error alerts with accessible text.</li>
+              </ol>
+            </div>
+
+            <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 2rem; display: flex; flex-direction: column; justify-content: center;">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #818CF8; margin-bottom: 8px;">AUTO LAYOUT SPECIFICATION</div>
+              <h3 style="color: #FFFFFF; font-size: 1.25rem; margin-bottom: 12px;">Button / Primary / Medium (40px)</h3>
+              <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: #CBD5E1;">
+                <div><strong>Height:</strong> 40px fixed</div>
+                <div><strong>Padding:</strong> 10px 16px (`space.4`)</div>
+                <div><strong>Corner Radius:</strong> 6px (`radius.md`)</div>
+                <div><strong>Typography:</strong> Inter 14px / 600 Semibold</div>
+                <div><strong>Icon Gap:</strong> 8px (`space.2`)</div>
+                <div><strong>Loading Mechanism:</strong> CSS keyframe spinner, zero layout shift</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ENTERPRISE PATTERNS & PROTOTYPE -->
+    <section class="cs-story-section">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="cs-section-header">
+            <span class="cs-section-tag">04 / Enterprise UX Patterns</span>
+            <h2 class="cs-section-title">Composing Components into Critical Workflows</h2>
+            <p class="cs-section-desc">
+              Moving beyond isolated UI elements to solve complex operational challenges.
+            </p>
+          </div>
+
+          <div class="cs-craft-grid">
+            <article class="cs-craft-card">
+              <span class="cs-craft-badge">Pattern 01</span>
+              <h3 style="color: #FFFFFF; font-size: 1.2rem; margin: 8px 0;">Search &amp; Multi-Facet Filter Bar</h3>
+              <p style="font-size: 13px; color: #94A3B8; line-height: 1.6;">
+                Debounced search input with instant clear controls paired with dynamic status facet dropdowns and floating active chip indicators.
+              </p>
+            </article>
+
+            <article class="cs-craft-card">
+              <span class="cs-craft-badge">Pattern 02</span>
+              <h3 style="color: #FFFFFF; font-size: 1.2rem; margin: 8px 0;">High-Density Data Table Engine</h3>
+              <p style="font-size: 13px; color: #94A3B8; line-height: 1.6;">
+                Column sorting with aria-sort telemetry, master/individual row multi-selection, hover row highlights, and floating bulk containment actions.
+              </p>
+            </article>
+
+            <article class="cs-craft-card">
+              <span class="cs-craft-badge">Pattern 03</span>
+              <h3 style="color: #FFFFFF; font-size: 1.2rem; margin: 8px 0;">Host Containment Approval Drawer</h3>
+              <p style="font-size: 13px; color: #94A3B8; line-height: 1.6;">
+                Two-man rule confirmation workflow: Impact assessment warning -> Modal confirmation dialog -> Real-time status update to prevent accidental downtime.
+              </p>
+            </article>
+          </div>
+
+          <!-- Direct Embedded Link to Interactive Prototype -->
+          <div style="margin-top: 3rem; text-align: center; background: rgba(15, 23, 42, 0.4); border: 1px dashed rgba(129, 140, 248, 0.4); border-radius: 16px; padding: 2.5rem;">
+            <h3 style="color: #FFFFFF; font-size: 1.3rem; margin-bottom: 8px;">Experience the System in Action</h3>
+            <p style="color: #94A3B8; font-size: 14px; max-width: 600px; margin: 0 auto 1.5rem;">
+              The interactive portal contains the live working Operations Console, dynamic 8-state button simulator, token color visualizer, and code inspector.
+            </p>
+            <a href="../pixel-design-system/index.html" target="_blank" class="main-button-wrapper" style="display: inline-flex; padding: 0.85em 2.2em; background: #1E40AF;">
+              <span class="button-text" style="color: #FFFFFF;">Open Live System Portal ↗</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ACCESSIBILITY & GOVERNANCE -->
+    <section class="cs-story-section">
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="cs-section-header">
+            <span class="cs-section-tag">05 / Quality &amp; Governance</span>
+            <h2 class="cs-section-title">Accessibility Compliance &amp; System Governance</h2>
+            <p class="cs-section-desc">
+              Designing for rigorous standards: WCAG 2.1 AA/AAA compliance and living contribution models.
+            </p>
+          </div>
+
+          <div class="cs-craft-grid">
+            <div style="background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem;">
+              <span class="cs-craft-badge" style="color: #34D399; border-color: rgba(52, 211, 153, 0.3);">WCAG 2.1 AA/AAA Audit</span>
+              <h4 style="color: #FFFFFF; font-size: 1.1rem; margin: 8px 0;">Color Contrast &amp; Focus Visibility</h4>
+              <p style="font-size: 13px; color: #94A3B8; line-height: 1.6;">
+                Every foreground/background color pair was audited: Primary headings achieve >= 14:1 (AAA), body text achieves >= 5.8:1 (AA), and all interactive elements maintain a 3px offset focus ring.
+              </p>
+            </div>
+
+            <div style="background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem;">
+              <span class="cs-craft-badge" style="color: #38BDF8; border-color: rgba(56, 189, 248, 0.3);">Living Governance</span>
+              <h4 style="color: #FFFFFF; font-size: 1.1rem; margin: 8px 0;">Contribution &amp; Review Lifecycle</h4>
+              <p style="font-size: 13px; color: #94A3B8; line-height: 1.6;">
+                Established a 6-step contribution lifecycle: Propose -> Evaluate -> Tokenize in Figma -> Accessibility Audit -> Code Handoff -> Release &amp; Changelog.
+              </p>
+            </div>
+
+            <div style="background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem;">
+              <span class="cs-craft-badge" style="color: #FBBF24; border-color: rgba(251, 191, 36, 0.3);">AI-Assisted Workflow</span>
+              <h4 style="color: #FFFFFF; font-size: 1.1rem; margin: 8px 0;">Figma to Code Acceleration</h4>
+              <p style="font-size: 13px; color: #94A3B8; line-height: 1.6;">
+                Leveraged AI coding workflows to translate Figma token JSON definitions directly into CSS custom properties, cutting development handoff friction by over 70%.
+              </p>
+            </div>
+          </div>
+
+          <!-- Key Reflections -->
+          <div style="margin-top: 3rem;">
+            <h3 style="color: #FFFFFF; font-size: 1.25rem; margin-bottom: 1rem;">Key Product Design Reflections</h3>
+            <ul class="cs-reflection-list">
+              <li class="cs-reflection-item">
+                <span class="cs-reflection-item-num">01</span>
+                <div class="cs-reflection-item-text">
+                  <strong>Tokens are the contract between design and code:</strong>
+                  Without semantic tokens, dark mode and accessibility fixes require tedious manual re-work. With tokens, a palette shift takes seconds.
+                </div>
+              </li>
+              <li class="cs-reflection-item">
+                <span class="cs-reflection-item-num">02</span>
+                <div class="cs-reflection-item-text">
+                  <strong>States prevent critical human error:</strong>
+                  In enterprise tools, loading indicators and clear disabled boundaries are not decorative — they prevent accidental double-execution in production systems.
+                </div>
+              </li>
+              <li class="cs-reflection-item">
+                <span class="cs-reflection-item-num">03</span>
+                <div class="cs-reflection-item-text">
+                  <strong>Constraint breeds velocity:</strong>
+                  Restricting designers to an approved palette and spacing scale increases creative focus on complex workflows rather than reinventing buttons.
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Next Project Banner -->
+          <div class="cs-next-project-banner" style="margin-top: 4rem;">
+            <div>
+              <span class="cs-next-label">Next Case Study</span>
+              <div><a href="ids-argus.html" class="cs-next-title">Aegis Health Enterprise Security SOC Platform →</a></div>
+            </div>
+            <a href="../work.html" class="main-button-wrapper" style="padding: 0.8em 1.8em;">
+              <span class="button-text">View all work</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- GLOBAL UNIFIED FOOTER -->
+  <footer class="footer">
+    <div class="padding-global">
+      <div class="container-large">
+        <div class="footer-top-wrapper" style="margin-bottom: 2.5rem;">
+          <div class="footer-img-wrapper">
+            <img src="../images/shriya/footer-normal.jpg" alt="Shriya Sharma portrait" class="footer-img-normal"/>
+          </div>
+          <div class="footer-title-wrapper">
+            <div class="text-size-large" style="font-size: clamp(1.6rem, 3.5vw, 2.5rem); font-weight: 500; color: var(--light-bg); line-height: 1.2;">Let's build something extraordinary together.</div>
+          </div>
+        </div>
+        <div class="footer-bottom-wrapper" style="border-top: 1px solid var(--border-color); padding-top: 3rem; margin-top: 2rem;">
+          <a mainbutton="hover" href="mailto:shriyasharmachd@gmail.com" class="main-button-wrapper">
+            <div class="button-text">shriyasharmachd@gmail.com</div>
+            <div class="button-circle">
+              <div class="main-button-star-svg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="0.5em" height="0.5em" viewBox="0 0 12 12" fill="none"><path d="M7.2 4.8L6 0L4.8 4.8L0 6L4.8 7.2L6 12L7.2 7.2L12 6L7.2 4.8Z" fill="currentColor"/></svg>
+              </div>
+            </div>
+            <div class="inner-hover-color extra-height"></div>
+          </a>
+
+          <div class="footer-socials-wrapper">
+            <div class="footer-legal-warpper">
+              <div class="footer-links-small">© 2026 - shriya.s</div>
+              <a href="../privacy-statement.html" class="privacy-link">Privacy Policy</a>
+            </div>
+            <div class="footer-social-links-wrapper">
+              <div class="footer-socials">Socials &amp; Contact</div>
+              <div class="social-links-wrapper">
+                <a href="https://www.linkedin.com/in/shriya-sharma-0a4835272" target="_blank" class="social-link">LinkedIn</a>
+                <a href="https://www.instagram.com/shriya.shrm?stkn=MW05MnhrdWJvNGdhMw==" target="_blank" class="social-link">Instagram</a>
+                <a href="mailto:shriyasharmachd@gmail.com" class="social-link">Email</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Logic -->
+  <script src="../js/main.js"></script>
+</body>
+</html>

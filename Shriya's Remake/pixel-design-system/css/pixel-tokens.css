@@ -1,0 +1,489 @@
+/**
+ * GOOGLE MATERIAL DESIGN 3 (M3) — PRODUCTION TOKEN ENGINE
+ * Inspired 1:1 by https://m3.material.io/
+ * Includes full M3 Tonal Palettes, Surface Containers, Shape Scale, and Dynamic Theme Seeds
+ */
+
+:root {
+  /* ==========================================================================
+     1. TYPOGRAPHY (M3 SPECIFICATION)
+     ========================================================================== */
+  --md-ref-typeface-brand: 'Plus Jakarta Sans', 'Google Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --md-ref-typeface-plain: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --md-ref-typeface-mono:  'JetBrains Mono', 'Google Sans Mono', monospace;
+
+  --pixel-font-family: var(--md-ref-typeface-plain);
+  --pixel-font-mono:   var(--md-ref-typeface-mono);
+
+  /* M3 Typescale Tokens */
+  --md-sys-typescale-display-large:  400 57px/64px var(--md-ref-typeface-brand);
+  --md-sys-typescale-display-medium: 400 45px/52px var(--md-ref-typeface-brand);
+  --md-sys-typescale-display-small:  400 36px/44px var(--md-ref-typeface-brand);
+
+  --md-sys-typescale-headline-large:  400 32px/40px var(--md-ref-typeface-brand);
+  --md-sys-typescale-headline-medium: 400 28px/36px var(--md-ref-typeface-brand);
+  --md-sys-typescale-headline-small:  400 24px/32px var(--md-ref-typeface-brand);
+
+  --md-sys-typescale-title-large:  400 22px/28px var(--md-ref-typeface-brand);
+  --md-sys-typescale-title-medium: 500 16px/24px var(--md-ref-typeface-plain);
+  --md-sys-typescale-title-small:  500 14px/20px var(--md-ref-typeface-plain);
+
+  --md-sys-typescale-body-large:  400 16px/24px var(--md-ref-typeface-plain);
+  --md-sys-typescale-body-medium: 400 14px/20px var(--md-ref-typeface-plain);
+  --md-sys-typescale-body-small:  400 12px/16px var(--md-ref-typeface-plain);
+
+  --md-sys-typescale-label-large:  500 14px/20px var(--md-ref-typeface-plain);
+  --md-sys-typescale-label-medium: 500 12px/16px var(--md-ref-typeface-plain);
+  --md-sys-typescale-label-small:  500 11px/16px var(--md-ref-typeface-plain);
+
+  /* Legacy Aliases */
+  --pixel-text-display: var(--md-sys-typescale-display-small);
+  --pixel-text-h1:      var(--md-sys-typescale-headline-large);
+  --pixel-text-h2:      var(--md-sys-typescale-headline-medium);
+  --pixel-text-h3:      var(--md-sys-typescale-title-large);
+  --pixel-text-title:   var(--md-sys-typescale-title-medium);
+  --pixel-text-body-lg: var(--md-sys-typescale-body-large);
+  --pixel-text-body-md: var(--md-sys-typescale-body-medium);
+  --pixel-text-body-sm: var(--md-sys-typescale-body-small);
+  --pixel-text-caption: var(--md-sys-typescale-label-small);
+
+  /* ==========================================================================
+     2. M3 SHAPE SCALE
+     ========================================================================== */
+  --md-sys-shape-corner-none:        0px;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small:       8px;
+  --md-sys-shape-corner-medium:      12px;
+  --md-sys-shape-corner-large:       16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full:        9999px;
+
+  --pixel-radius-none: var(--md-sys-shape-corner-none);
+  --pixel-radius-xs:   var(--md-sys-shape-corner-extra-small);
+  --pixel-radius-sm:   var(--md-sys-shape-corner-small);
+  --pixel-radius-md:   var(--md-sys-shape-corner-medium);
+  --pixel-radius-lg:   var(--md-sys-shape-corner-large);
+  --pixel-radius-xl:   var(--md-sys-shape-corner-extra-large);
+  --pixel-radius-full: var(--md-sys-shape-corner-full);
+
+  /* ==========================================================================
+     3. M3 SPACING SCALE (4px / 8px Grid Rhythm)
+     ========================================================================== */
+  --pixel-space-0:  0px;
+  --pixel-space-1:  4px;
+  --pixel-space-2:  8px;
+  --pixel-space-3:  12px;
+  --pixel-space-4:  16px;
+  --pixel-space-5:  20px;
+  --pixel-space-6:  24px;
+  --pixel-space-8:  32px;
+  --pixel-space-10: 40px;
+  --pixel-space-12: 48px;
+  --pixel-space-16: 64px;
+  --pixel-space-20: 80px;
+
+  /* ==========================================================================
+     4. M3 STATE LAYERS & ELEVATION
+     ========================================================================== */
+  --md-sys-state-hover-opacity:   0.08;
+  --md-sys-state-focus-opacity:   0.12;
+  --md-sys-state-pressed-opacity: 0.12;
+  --md-sys-state-dragged-opacity: 0.16;
+
+  --md-sys-elevation-level0: none;
+  --md-sys-elevation-level1: 0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  --md-sys-elevation-level2: 0 2px 6px 2px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  --md-sys-elevation-level3: 0 4px 8px 3px rgba(0, 0, 0, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  --md-sys-elevation-level4: 0 6px 10px 4px rgba(0, 0, 0, 0.08), 0 2px 3px 0 rgba(0, 0, 0, 0.12);
+  --md-sys-elevation-level5: 0 8px 12px 6px rgba(0, 0, 0, 0.08), 0 4px 4px 0 rgba(0, 0, 0, 0.12);
+
+  --pixel-elevation-1: var(--md-sys-elevation-level1);
+  --pixel-elevation-2: var(--md-sys-elevation-level2);
+  --pixel-elevation-3: var(--md-sys-elevation-level3);
+  --pixel-elevation-4: var(--md-sys-elevation-level4);
+
+  --pixel-transition-fast: 150ms cubic-bezier(0.2, 0, 0, 1);
+  --pixel-transition-normal: 250ms cubic-bezier(0.2, 0, 0, 1);
+
+  /* ==========================================================================
+     5. PIXEL FOUNDATIONAL COLOR ROLES — LIGHT THEME (DEFAULT: PIXEL BLUE)
+     ========================================================================== */
+  --md-sys-color-primary:                  #1A73E8;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #D4E3FF;
+  --md-sys-color-on-primary-container:     #001C3B;
+
+  --md-sys-color-secondary:                #0284C7;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #E0F2FE;
+  --md-sys-color-on-secondary-container:   #0369A1;
+
+  --md-sys-color-tertiary:                 #6366F1;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #EEF2FF;
+  --md-sys-color-on-tertiary-container:    #1E1B4B;
+
+  --md-sys-color-error:                    #DC2626;
+  --md-sys-color-on-error:                 #FFFFFF;
+  --md-sys-color-error-container:           #FEE2E2;
+  --md-sys-color-on-error-container:        #7F1D1D;
+
+  --md-sys-color-background:               #F8FAFC;
+  --md-sys-color-on-background:            #0F172A;
+
+  --md-sys-color-surface:                  #FFFFFF;
+  --md-sys-color-on-surface:               #0F172A;
+  --md-sys-color-surface-variant:          #E2E8F0;
+  --md-sys-color-on-surface-variant:       #475569;
+
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #F8FAFC;
+  --md-sys-color-surface-container:        #F1F5F9;
+  --md-sys-color-surface-container-high:   #E2E8F0;
+  --md-sys-color-surface-container-highest:#CBD5E1;
+
+  --md-sys-color-outline:                  #94A3B8;
+  --md-sys-color-outline-variant:          #E2E8F0;
+  --md-sys-color-shadow:                   rgba(15, 23, 42, 0.08);
+  --md-sys-color-scrim:                    rgba(15, 23, 42, 0.6);
+  --md-sys-color-inverse-surface:          #0F172A;
+  --md-sys-color-inverse-on-surface:       #F8FAFC;
+  --md-sys-color-inverse-primary:          #93C5FD;
+
+  /* ==========================================================================
+     PIXEL ORIGINAL BRAND PRIMITIVES (Core Electric Blue DNA)
+     ========================================================================== */
+  --pixel-primitive-blue-50:  #EFF6FF;
+  --pixel-primitive-blue-100: #DBEAFE;
+  --pixel-primitive-blue-200: #BFDBFE;
+  --pixel-primitive-blue-300: #93C5FD;
+  --pixel-primitive-blue-400: #60A5FA;
+  --pixel-primitive-blue-500: #3B82F6;
+  --pixel-primitive-blue-600: #2563EB;
+  --pixel-primitive-blue-700: #1D4ED8;
+  --pixel-primitive-blue-800: #1E40AF;
+  --pixel-primitive-blue-900: #1E3A8A;
+  --pixel-primitive-blue-950: #0F172A;
+
+  --pixel-primitive-cyan-500:    #06B6D4;
+  --pixel-primitive-emerald-600: #059669;
+  --pixel-primitive-amber-600:   #D97706;
+  --pixel-primitive-rose-600:    #E11D48;
+
+  /* Semantic Aliases for Compatibility */
+  --pixel-bg-canvas:         var(--md-sys-color-surface-container-lowest);
+  --pixel-bg-surface:        var(--md-sys-color-surface-container-lowest);
+  --pixel-bg-surface-subtle: var(--md-sys-color-surface-container);
+  --pixel-bg-surface-hover:  var(--md-sys-color-surface-container-high);
+  --pixel-bg-surface-active: var(--md-sys-color-surface-container-highest);
+  --pixel-bg-inverse:        var(--md-sys-color-inverse-surface);
+
+  --pixel-text-primary:      var(--md-sys-color-on-surface);
+  --pixel-text-secondary:    var(--md-sys-color-on-surface-variant);
+  --pixel-text-muted:        var(--md-sys-color-outline);
+  --pixel-text-inverse:      var(--md-sys-color-inverse-on-surface);
+  --pixel-text-brand:        var(--md-sys-color-primary);
+
+  --pixel-border-subtle:     var(--md-sys-color-outline-variant);
+  --pixel-border-default:    var(--md-sys-color-outline-variant);
+  --pixel-border-strong:     var(--md-sys-color-outline);
+  --pixel-border-focus:      var(--md-sys-color-primary);
+  --pixel-focus-ring:        0 0 0 3px color-mix(in srgb, var(--md-sys-color-primary) 30%, transparent);
+
+  --pixel-action-primary:         var(--md-sys-color-primary);
+  --pixel-action-primary-hover:   #1557B0;
+  --pixel-action-primary-active:  #0D47A1;
+  --pixel-action-primary-text:    var(--md-sys-color-on-primary);
+
+  --pixel-action-tonal-bg:        var(--md-sys-color-secondary-container);
+  --pixel-action-tonal-text:      var(--md-sys-color-on-secondary-container);
+  --pixel-action-tonal-hover:     color-mix(in srgb, var(--md-sys-color-secondary-container) 90%, black);
+
+  --pixel-action-secondary-bg:    var(--md-sys-color-surface-container-low);
+  --pixel-action-secondary-border:var(--md-sys-color-outline);
+  --pixel-action-secondary-text:  var(--md-sys-color-on-surface);
+  --pixel-action-secondary-hover: var(--md-sys-color-surface-container-high);
+
+  --pixel-status-success-bg:      #ECFDF5;
+  --pixel-status-success-text:    #065F46;
+  --pixel-status-success-border:  #A7F3D0;
+
+  --pixel-status-warning-bg:      #FFFBEB;
+  --pixel-status-warning-text:    #92400E;
+  --pixel-status-warning-border:  #FDE68A;
+
+  --pixel-status-danger-bg:       var(--md-sys-color-error-container);
+  --pixel-status-danger-text:     var(--md-sys-color-on-error-container);
+  --pixel-status-danger-border:   var(--md-sys-color-error);
+}
+
+/* ==========================================================================
+   DYNAMIC COLOR SEED: PIXEL SIGNATURE BLUE (Default: #1A73E8 / #005FB0)
+   ========================================================================== */
+[data-seed="blue"] {
+  --md-sys-color-primary:                  #1A73E8;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #D4E3FF;
+  --md-sys-color-on-primary-container:     #001C3B;
+
+  --md-sys-color-secondary:                #0284C7;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #E0F2FE;
+  --md-sys-color-on-secondary-container:   #0369A1;
+
+  --md-sys-color-tertiary:                 #6366F1;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #EEF2FF;
+  --md-sys-color-on-tertiary-container:    #1E1B4B;
+
+  --md-sys-color-background:               #F8FAFF;
+  --md-sys-color-surface:                  #F8FAFF;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #F1F4FD;
+  --md-sys-color-surface-container:        #EBF0FA;
+  --md-sys-color-surface-container-high:   #E4EAF5;
+  --md-sys-color-surface-container-highest:#DDE4F0;
+}
+
+/* ==========================================================================
+   DYNAMIC COLOR SEED: CYBER VIOLET (Source: #7C3AED / #6750A4)
+   ========================================================================== */
+[data-seed="purple"] {
+  --md-sys-color-primary:                  #7C3AED;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #EDE9FE;
+  --md-sys-color-on-primary-container:     #2E1065;
+
+  --md-sys-color-secondary:                #6D28D9;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #F5F3FF;
+  --md-sys-color-on-secondary-container:   #3B0764;
+
+  --md-sys-color-tertiary:                 #9333EA;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #FAE8FF;
+  --md-sys-color-on-tertiary-container:    #581C87;
+
+  --md-sys-color-background:               #FAF7FD;
+  --md-sys-color-surface:                  #FAF7FD;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #F5EFFB;
+  --md-sys-color-surface-container:        #EEE5F7;
+  --md-sys-color-surface-container-high:   #E7DCF2;
+  --md-sys-color-surface-container-highest:#E0D3ED;
+}
+
+
+/* ==========================================================================
+   DYNAMIC COLOR SEED: FOREST TEAL (Source: #006A60)
+   ========================================================================== */
+[data-seed="teal"] {
+  --md-sys-color-primary:                  #006A60;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #74F8E5;
+  --md-sys-color-on-primary-container:     #00201C;
+
+  --md-sys-color-secondary:                #4A635F;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #CCE8E2;
+  --md-sys-color-on-secondary-container:   #05201C;
+
+  --md-sys-color-tertiary:                 #456179;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #CCE5FF;
+  --md-sys-color-on-tertiary-container:    #001D32;
+
+  --md-sys-color-background:               #F4FBF7;
+  --md-sys-color-surface:                  #F4FBF7;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #EEF5F2;
+  --md-sys-color-surface-container:        #E8EFEA;
+  --md-sys-color-surface-container-high:   #E2EAE6;
+  --md-sys-color-surface-container-highest:#DCE4E0;
+}
+
+/* ==========================================================================
+   DYNAMIC COLOR SEED: WARM AMBER (Source: #825500)
+   ========================================================================== */
+[data-seed="amber"] {
+  --md-sys-color-primary:                  #825500;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #FFDDB3;
+  --md-sys-color-on-primary-container:     #291800;
+
+  --md-sys-color-secondary:                #6F5B40;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #FADEBC;
+  --md-sys-color-on-secondary-container:   #271904;
+
+  --md-sys-color-tertiary:                 #516440;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #D4EABA;
+  --md-sys-color-on-tertiary-container:    #102004;
+
+  --md-sys-color-background:               #FFF8F4;
+  --md-sys-color-surface:                  #FFF8F4;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #FAF2EB;
+  --md-sys-color-surface-container:        #F4ECE4;
+  --md-sys-color-surface-container-high:   #EEE6DF;
+  --md-sys-color-surface-container-highest:#E8E0D9;
+}
+
+/* ==========================================================================
+   DYNAMIC COLOR SEED: CORAL ROSE (Source: #9C4146)
+   ========================================================================== */
+[data-seed="rose"] {
+  --md-sys-color-primary:                  #9C4146;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #FFDADA;
+  --md-sys-color-on-primary-container:     #41000A;
+
+  --md-sys-color-secondary:                #775656;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #FFDAD9;
+  --md-sys-color-on-secondary-container:   #2C1516;
+
+  --md-sys-color-tertiary:                 #755A2F;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #FFDEAA;
+  --md-sys-color-on-tertiary-container:    #281800;
+
+  --md-sys-color-background:               #FFF8F7;
+  --md-sys-color-surface:                  #FFF8F7;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #FAF1F0;
+  --md-sys-color-surface-container:        #F4EBEA;
+  --md-sys-color-surface-container-high:   #EFE5E4;
+  --md-sys-color-surface-container-highest:#E9DFDE;
+}
+
+/* ==========================================================================
+   PIXEL DARK THEME — TONAL SURFACE SYSTEM (OLED & ENTERPRISE BLUE)
+   ========================================================================== */
+[data-theme="dark"] {
+  --md-sys-color-primary:                  #60A5FA;
+  --md-sys-color-on-primary:               #031E48;
+  --md-sys-color-primary-container:        #1D4ED8;
+  --md-sys-color-on-primary-container:     #DBEAFE;
+
+  --md-sys-color-secondary:                #38BDF8;
+  --md-sys-color-on-secondary:             #082F49;
+  --md-sys-color-secondary-container:      #0369A1;
+  --md-sys-color-on-secondary-container:   #E0F2FE;
+
+  --md-sys-color-tertiary:                 #818CF8;
+  --md-sys-color-on-tertiary:              #1E1B4B;
+  --md-sys-color-tertiary-container:       #3730A3;
+  --md-sys-color-on-tertiary-container:    #EEF2FF;
+
+  --md-sys-color-error:                    #F87171;
+  --md-sys-color-on-error:                 #450A0A;
+  --md-sys-color-error-container:           #7F1D1D;
+  --md-sys-color-on-error-container:        #FEE2E2;
+
+  --md-sys-color-background:               #0B0F19;
+  --md-sys-color-on-background:            #F8FAFC;
+
+  --md-sys-color-surface:                  #0B0F19;
+  --md-sys-color-on-surface:               #F8FAFC;
+  --md-sys-color-surface-variant:          #1E293B;
+  --md-sys-color-on-surface-variant:       #94A3B8;
+
+  --md-sys-color-surface-container-lowest: #070A10;
+  --md-sys-color-surface-container-low:    #111827;
+  --md-sys-color-surface-container:        #1E293B;
+  --md-sys-color-surface-container-high:   #26354D;
+  --md-sys-color-surface-container-highest:#334155;
+
+  --md-sys-color-outline:                  #64748B;
+  --md-sys-color-outline-variant:          #334155;
+  --md-sys-color-inverse-surface:          #F8FAFC;
+  --md-sys-color-inverse-on-surface:       #0F172A;
+  --md-sys-color-inverse-primary:          #1D4ED8;
+
+  /* Semantic Aliases for Dark Mode */
+  --pixel-bg-canvas:         var(--md-sys-color-background);
+  --pixel-bg-surface:        var(--md-sys-color-surface-container-low);
+  --pixel-bg-surface-subtle: var(--md-sys-color-surface-container);
+  --pixel-bg-surface-hover:  var(--md-sys-color-surface-container-high);
+  --pixel-bg-surface-active: var(--md-sys-color-surface-container-highest);
+  --pixel-bg-inverse:        var(--md-sys-color-inverse-surface);
+
+  --pixel-text-primary:      var(--md-sys-color-on-surface);
+  --pixel-text-secondary:    var(--md-sys-color-on-surface-variant);
+  --pixel-text-muted:        var(--md-sys-color-outline);
+  --pixel-text-inverse:      var(--md-sys-color-inverse-on-surface);
+  --pixel-text-brand:        var(--md-sys-color-primary);
+
+  --pixel-border-subtle:     var(--md-sys-color-outline-variant);
+  --pixel-border-default:    var(--md-sys-color-outline-variant);
+  --pixel-border-strong:     var(--md-sys-color-outline);
+  --pixel-border-focus:      var(--md-sys-color-primary);
+
+  --pixel-action-primary:         var(--md-sys-color-primary);
+  --pixel-action-primary-hover:   color-mix(in srgb, var(--md-sys-color-primary) 90%, white);
+  --pixel-action-primary-active:  color-mix(in srgb, var(--md-sys-color-primary) 80%, white);
+  --pixel-action-primary-text:    var(--md-sys-color-on-primary);
+
+  --pixel-action-tonal-bg:        var(--md-sys-color-secondary-container);
+  --pixel-action-tonal-text:      var(--md-sys-color-on-secondary-container);
+
+  --pixel-status-success-bg:      #1B3A26;
+  --pixel-status-success-text:    #81C784;
+  --pixel-status-success-border:  #2E7D32;
+
+  --pixel-status-warning-bg:      #3E2723;
+  --pixel-status-warning-text:    #FFE082;
+  --pixel-status-warning-border:  #FFB300;
+
+  --pixel-status-danger-bg:       var(--md-sys-color-error-container);
+  --pixel-status-danger-text:     var(--md-sys-color-on-error-container);
+  --pixel-status-danger-border:   var(--md-sys-color-error);
+}
+
+/* Dark Seed Overrides */
+[data-theme="dark"][data-seed="blue"] {
+  --md-sys-color-primary:              #60A5FA;
+  --md-sys-color-on-primary:           #031E48;
+  --md-sys-color-primary-container:    #1D4ED8;
+  --md-sys-color-on-primary-container: #DBEAFE;
+  --md-sys-color-secondary-container:  #0369A1;
+  --md-sys-color-on-secondary-container:#E0F2FE;
+}
+
+[data-theme="dark"][data-seed="purple"] {
+  --md-sys-color-primary:              #D0BCFF;
+  --md-sys-color-on-primary:           #381E72;
+  --md-sys-color-primary-container:    #4F378B;
+  --md-sys-color-on-primary-container: #EADDFF;
+  --md-sys-color-secondary-container:  #4A4458;
+  --md-sys-color-on-secondary-container:#E8DEF8;
+}
+
+[data-theme="dark"][data-seed="teal"] {
+  --md-sys-color-primary:              #53DBC9;
+  --md-sys-color-on-primary:           #003731;
+  --md-sys-color-primary-container:    #005048;
+  --md-sys-color-on-primary-container: #74F8E5;
+  --md-sys-color-secondary-container:  #334B47;
+  --md-sys-color-on-secondary-container:#CCE8E2;
+}
+
+[data-theme="dark"][data-seed="amber"] {
+  --md-sys-color-primary:              #FFBA28;
+  --md-sys-color-on-primary:           #452B00;
+  --md-sys-color-primary-container:    #633F00;
+  --md-sys-color-on-primary-container: #FFDDB3;
+  --md-sys-color-secondary-container:  #56442A;
+  --md-sys-color-on-secondary-container:#FADEBC;
+}
+
+[data-theme="dark"][data-seed="rose"] {
+  --md-sys-color-primary:              #FFB3B4;
+  --md-sys-color-on-primary:           #5F121C;
+  --md-sys-color-primary-container:    #7E2930;
+  --md-sys-color-on-primary-container: #FFDADA;
+  --md-sys-color-secondary-container:  #5D3F40;
+  --md-sys-color-on-secondary-container:#FFDAD9;
+}

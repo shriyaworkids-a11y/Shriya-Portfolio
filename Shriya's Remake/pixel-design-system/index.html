@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>PIXEL — Enterprise Product Design System &amp; Interactive Prototype</title>
+  <meta name="description" content="A comprehensive, token-governed enterprise design system for complex SaaS workflows. Engineered by Shriya Sharma."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono (M3 Specification) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Google Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Core System Stylesheets -->
+  <link rel="stylesheet" href="css/pixel-tokens.css"/>
+  <link rel="stylesheet" href="css/pixel-components.css"/>
+  <link rel="stylesheet" href="css/pixel-portal.css"/>
+
+  <!-- Interactive System Script -->
+  <script defer src="js/pixel-system.js"></script>
+</head>
+<body>
+
+  <!-- 1. TOP PORTAL HEADER (PIXEL DESIGN SYSTEM APP BAR) -->
+  <header class="portal-header">
+    <div class="portal-brand">
+      <div class="portal-brand__icon" style="background: linear-gradient(135deg, #1A73E8 0%, #0052CC 100%);">
+        <span class="material-symbols-outlined" style="font-size: 22px;">grid_view</span>
+      </div>
+      <div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="portal-brand__title" style="letter-spacing: -0.02em;">PIXEL</span>
+          <span class="portal-brand__badge">v2.4 Production</span>
+        </div>
+        <div style="font-size: 11px; color: var(--md-sys-color-on-surface-variant); margin-top: 1px;">
+          Enterprise SaaS Design System · By Shriya Sharma
+        </div>
+      </div>
+    </div>
+
+    <div class="portal-header-actions">
+      <!-- Pixel Dynamic Seed Color Switcher -->
+      <div class="m3-seed-picker" title="Pixel Dynamic Palette Engine">
+        <span class="m3-seed-label">Brand Seed:</span>
+        <button class="m3-seed-dot m3-seed-dot--blue is-active" data-seed="blue" aria-label="Pixel Blue (Signature Brand)"></button>
+        <button class="m3-seed-dot m3-seed-dot--teal" data-seed="teal" aria-label="Electric Cyan / Teal"></button>
+        <button class="m3-seed-dot m3-seed-dot--purple" data-seed="purple" aria-label="Cyber Violet"></button>
+        <button class="m3-seed-dot m3-seed-dot--amber" data-seed="amber" aria-label="Sunburst Amber"></button>
+        <button class="m3-seed-dot m3-seed-dot--rose" data-seed="rose" aria-label="Coral Crimson"></button>
+      </div>
+
+      <a href="../projecten/pixel-design-system.html" class="pixel-btn pixel-btn--ghost pixel-btn--sm">
+        <span class="material-symbols-outlined" style="font-size: 16px;">auto_stories</span>
+        <span>Case Study</span>
+      </a>
+      <a href="PIXEL_DESIGN_SYSTEM_FIGMA_SPEC.md" target="_blank" class="pixel-btn pixel-btn--secondary pixel-btn--sm">
+        <span class="material-symbols-outlined" style="font-size: 16px;">menu_book</span>
+        <span>Design Specs</span>
+      </a>
+      <button id="theme-toggle-btn" class="pixel-btn pixel-btn--secondary pixel-btn--sm" aria-label="Toggle Theme">
+        <span class="material-symbols-outlined" style="font-size: 16px;">dark_mode</span>
+        <span>Dark Mode</span>
+      </button>
+      <button id="mobile-menu-toggle" class="portal-mobile-menu-btn" aria-label="Toggle navigation drawer">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 2. MAIN LAYOUT WITH SIDEBAR NAVIGATION -->
+  <div class="portal-layout">
+    <div id="portal-sidebar-backdrop" class="portal-sidebar-backdrop"></div>
+    <aside class="portal-sidebar" id="portal-sidebar">
+      <div>
+        <div class="portal-nav-group-title">Foundations</div>
+        <a href="#overview" class="portal-nav-link is-active" data-tab-id="overview">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span>Overview</span>
+        </a>
+        <a href="#token-architecture" class="portal-nav-link" data-tab-id="token-architecture">
+          <span class="material-symbols-outlined">layers</span>
+          <span>Token Architecture</span>
+        </a>
+        <a href="#color-tokens" class="portal-nav-link" data-tab-id="color-tokens">
+          <span class="material-symbols-outlined">palette</span>
+          <span>Color Tokens</span>
+        </a>
+        <a href="#typography" class="portal-nav-link" data-tab-id="typography">
+          <span class="material-symbols-outlined">format_size</span>
+          <span>Typography &amp; Spacing</span>
+        </a>
+      </div>
+
+      <div>
+        <div class="portal-nav-group-title">Components</div>
+        <a href="#playground-actions" class="portal-nav-link" data-tab-id="playground-actions">
+          <span class="material-symbols-outlined">smart_button</span>
+          <span>Buttons &amp; 8 States</span>
+        </a>
+        <a href="#playground-chips" class="portal-nav-link" data-tab-id="playground-chips">
+          <span class="material-symbols-outlined">label</span>
+          <span>Chips &amp; Controls</span>
+        </a>
+        <a href="#playground-forms" class="portal-nav-link" data-tab-id="playground-forms">
+          <span class="material-symbols-outlined">edit_note</span>
+          <span>Form Inputs</span>
+        </a>
+      </div>
+
+      <div>
+        <div class="portal-nav-group-title">Enterprise Workflows</div>
+        <a href="#operations-prototype" class="portal-nav-link" data-tab-id="operations-prototype" style="color: var(--pixel-text-brand); font-weight: 600;">
+          <span class="material-symbols-outlined">terminal</span>
+          <span>Operations Console</span>
+        </a>
+        <a href="#audit-before-after" class="portal-nav-link" data-tab-id="audit-before-after">
+          <span class="material-symbols-outlined">compare_arrows</span>
+          <span>Before vs. After Audit</span>
+        </a>
+        <a href="#code-inspector" class="portal-nav-link" data-tab-id="code-inspector">
+          <span class="material-symbols-outlined">code</span>
+          <span>Developer Handoff</span>
+        </a>
+      </div>
+
+      <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid var(--pixel-border-subtle);">
+        <a href="../index.html" class="portal-nav-link" style="font-size: 12px; color: var(--pixel-text-muted);">
+          <span class="material-symbols-outlined" style="font-size: 16px;">arrow_back</span>
+          <span>Return to Portfolio</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- 3. MAIN PORTAL CONTENT AREA -->
+    <main class="portal-content">
+
+      <!-- STICKY TAB TOOLBAR & BREADCRUMB -->
+      <nav class="portal-tab-toolbar" aria-label="Tab Module Navigation">
+        <div class="portal-tab-toolbar__left">
+          <span class="portal-tab-toolbar__cat" id="tab-cat-badge">Foundations</span>
+          <span class="portal-tab-toolbar__divider">/</span>
+          <div class="portal-tab-toolbar__current">
+            <span class="material-symbols-outlined" id="tab-current-icon">dashboard</span>
+            <span id="tab-current-title">Overview</span>
+          </div>
+          <span class="portal-tab-toolbar__badge" id="tab-counter-badge">Tab 1 of 10</span>
+        </div>
+        <div class="portal-tab-toolbar__nav">
+          <button id="toolbar-prev-tab-btn" class="portal-tab-nav-btn" title="Previous Module" disabled>
+            <span class="material-symbols-outlined" style="font-size: 18px;">chevron_left</span>
+            <span class="tab-nav-label">Prev Module</span>
+          </button>
+          <button id="toolbar-next-tab-btn" class="portal-tab-nav-btn" title="Next Module">
+            <span class="tab-nav-label">Next Module</span>
+            <span class="material-symbols-outlined" style="font-size: 18px;">chevron_right</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- SECTION 1: OVERVIEW -->
+      <section id="overview" class="portal-section is-active">
+        <div class="portal-section-header">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;">
+            <span class="pixel-badge pixel-badge--info">
+              <span class="material-symbols-outlined" style="font-size: 14px;">auto_awesome</span>
+              PIXEL Enterprise System v2.4
+            </span>
+            <span class="pixel-badge pixel-badge--success">100% WCAG 2.1 AA/AAA</span>
+            <span class="pixel-badge pixel-badge--neutral">Dynamic Seed Theming &amp; Tonal Telemetry</span>
+          </div>
+          <h1 class="portal-section-title">
+            <span class="material-symbols-outlined" style="font-size: 36px; color: var(--md-sys-color-primary);">grid_view</span>
+            PIXEL — Enterprise Product Design System
+          </h1>
+          <p class="portal-section-desc">
+            An original, production-grade enterprise design system engineered for mission-critical SaaS workflows and data-dense dashboards. Built around Pixel's signature electric blue palette, multi-tier token governance, dynamic seed theming, 8-state component telemetry, and modern tonal surface elevation.
+          </p>
+        </div>
+
+        <!-- Pixel Interactive Component Showcase Bar -->
+        <div class="portal-card" style="background-color: var(--md-sys-color-surface-container); border: none; margin-bottom: 24px;">
+          <div style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--md-sys-color-on-surface-variant); margin-bottom: 14px; letter-spacing: 0.05em;">
+            Interactive Controls Showcase (Test Dynamic Palette &amp; State Reactivity):
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <button class="pixel-btn pixel-btn--primary">
+              <span class="material-symbols-outlined" style="font-size: 18px;">check</span>
+              <span>Filled Button</span>
+            </button>
+            <button class="pixel-btn pixel-btn--secondary">
+              <span class="material-symbols-outlined" style="font-size: 18px;">tune</span>
+              <span>Filled Tonal</span>
+            </button>
+            <button class="pixel-btn pixel-btn--elevated">
+              <span class="material-symbols-outlined" style="font-size: 18px;">star</span>
+              <span>Elevated</span>
+            </button>
+            <button class="pixel-btn pixel-btn--outline">
+              <span>Outlined</span>
+            </button>
+            <div class="pixel-chip pixel-chip--interactive is-active">
+              <span class="material-symbols-outlined chip-check-icon" data-default-icon="tune">check</span>
+              <span>Filter Chip</span>
+            </div>
+            <div class="pixel-switch is-checked" onclick="this.classList.toggle('is-checked')">
+              <div class="pixel-switch__thumb">
+                <span class="material-symbols-outlined" style="font-size: 14px;">check</span>
+              </div>
+            </div>
+            <button class="m3-fab m3-fab--extended">
+              <span class="material-symbols-outlined">add</span>
+              <span>Extended FAB</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pixel Core Architectural Pillars Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px;">
+          <div class="portal-card" style="margin-bottom: 0;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--md-sys-color-primary); text-transform: uppercase; margin-bottom: 8px;">
+              <span class="material-symbols-outlined" style="font-size: 18px;">palette</span>
+              Pixel Cobalt &amp; Dynamic Theming
+            </div>
+            <p style="font-size: 14px; color: var(--md-sys-color-on-surface-variant); line-height: 1.6;">
+              Engineered with Pixel's iconic electric cobalt foundation (`#1A73E8` / `#2563EB`) plus live mathematical color seeds (Blue, Cyan, Violet, Amber, Rose) ensuring accessible contrast ratios across all container roles.
+            </p>
+          </div>
+
+          <div class="portal-card" style="margin-bottom: 0;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--md-sys-color-primary); text-transform: uppercase; margin-bottom: 8px;">
+              <span class="material-symbols-outlined" style="font-size: 18px;">layers</span>
+              Tonal Surface Elevation
+            </div>
+            <p style="font-size: 14px; color: var(--md-sys-color-on-surface-variant); line-height: 1.6;">
+              Replaces harsh artificial drop shadows with 5 subtle surface container tiers (`surface-container-low` to `surface-container-highest`) that naturally tint with primary tones.
+            </p>
+          </div>
+
+          <div class="portal-card" style="margin-bottom: 0;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--md-sys-color-primary); text-transform: uppercase; margin-bottom: 8px;">
+              <span class="material-symbols-outlined" style="font-size: 18px;">touch_app</span>
+              8-State Telemetry &amp; Physics
+            </div>
+            <p style="font-size: 14px; color: var(--md-sys-color-on-surface-variant); line-height: 1.6;">
+              Governed micro-state opacity overlays: 8% hover, 12% focus ring, and 12% pressed down-state applied uniformly across buttons, chips, and table rows.
+            </p>
+          </div>
+        </div>
+
+        <div class="portal-card" style="background-color: var(--md-sys-color-surface-container-low);">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--md-sys-color-error); text-transform: uppercase; margin-bottom: 6px;">
+                <span class="material-symbols-outlined" style="font-size: 16px;">report_problem</span>
+                The Enterprise Challenge
+              </div>
+              <div style="font-size: 14px; color: var(--md-sys-color-on-surface); line-height: 1.6;">
+                The Operations Platform grew across multi-disciplinary teams (Admins, Operators, SREs), accumulating 14 conflicting button styles, arbitrary spacing, and critical accessibility contrast defects.
+              </div>
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--md-sys-color-primary); text-transform: uppercase; margin-bottom: 6px;">
+                <span class="material-symbols-outlined" style="font-size: 16px;">task_alt</span>
+                The PIXEL Solution
+              </div>
+              <div style="font-size: 14px; color: var(--md-sys-color-on-surface); line-height: 1.6;">
+                A unified 3-tier token architecture, 30+ accessible components satisfying the 8-state model, an 8pt layout rhythm, dynamic color seeds, and automated dark theme variable mapping.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: 3-TIER TOKEN ARCHITECTURE -->
+      <section id="token-architecture" class="portal-section">
+        <div class="portal-section-header">
+          <h2 class="portal-section-title">
+            <span class="material-symbols-outlined" style="color: var(--pixel-text-brand);">schema</span>
+            3-Tier Token Architecture &amp; Hierarchy
+          </h2>
+          <p class="portal-section-desc">
+            How PIXEL decouples raw visual primitives from contextual semantic meaning, enabling multi-theme switching without modifying component markup.
+          </p>
+        </div>
+
+        <div class="portal-card">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="padding: 14px 16px; background-color: var(--pixel-bg-surface-subtle); border-left: 4px solid var(--pixel-action-primary); border-radius: var(--pixel-radius-sm);">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 13px; font-weight: 700; color: var(--pixel-text-brand);">1. Primitive Token</span>
+                <code style="font-size: 12px; color: var(--pixel-text-secondary);">--pixel-primitive-blue-800: #1E40AF</code>
+              </div>
+              <div style="font-size: 13px; color: var(--pixel-text-secondary); margin-top: 4px;">
+                Raw mathematical hex value representing the unopinionated brand cobalt hue.
+              </div>
+            </div>
+
+            <div style="padding: 14px 16px; background-color: var(--pixel-bg-surface-subtle); border-left: 4px solid var(--pixel-primitive-emerald-600); border-radius: var(--pixel-radius-sm);">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 13px; font-weight: 700; color: var(--pixel-primitive-emerald-600);">2. Semantic Token</span>
+                <code style="font-size: 12px; color: var(--pixel-text-secondary);">--pixel-action-primary: var(--pixel-primitive-blue-800)</code>
+              </div>
+              <div style="font-size: 13px; color: var(--pixel-text-secondary); margin-top: 4px;">
+                Contextual role representing the primary clickable action. In Dark Mode, dynamically remaps to <code style="font-size: 12px;">#2563EB</code>.
+              </div>
+            </div>
+
+            <div style="padding: 14px 16px; background-color: var(--pixel-bg-surface-subtle); border-left: 4px solid var(--pixel-primitive-amber-600); border-radius: var(--pixel-radius-sm);">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-size: 13px; font-weight: 700; color: var(--pixel-primitive-amber-600);">3. Component Token Binding</span>
+                <code style="font-size: 12px; color: var(--pixel-text-secondary);">.pixel-btn--primary { background: var(--pixel-action-primary); }</code>
+              </div>
+              <div style="font-size: 13px; color: var(--pixel-text-secondary); margin-top: 4px;">
+                Components consume semantic tokens exclusively, ensuring zero hardcoded hex codes across the UI.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: COLOR TOKENS EXPLORER (CLICK TO COPY) -->
+      <!-- SECTION 3: COLOR SYSTEM & PIXEL BLUE FOUNDATION -->
+      <section id="color-tokens" class="portal-section">
+        <div class="portal-section-header">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+            <span class="pixel-badge pixel-badge--info">Core Brand Identity</span>
+            <span class="pixel-badge pixel-badge--success">WCAG AAA Certified</span>
+          </div>
+          <h2 class="portal-section-title">
+            <span class="material-symbols-outlined" style="color: var(--pixel-text-brand);">palette</span>
+            Pixel Brand Color System &amp; Semantic Telemetry
+          </h2>
+          <p class="portal-section-desc">
+            Pixel's visual signature is rooted in high-chroma electric cobalt blues and tonal surface illumination. <strong>Click any swatch</strong> to copy its CSS token directly to your clipboard.
+          </p>
+        </div>
+
+        <!-- 1. Full 10-Step Pixel Signature Blue Palette -->
+        <div class="portal-card" style="margin-bottom: 24px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--pixel-text-brand); display: flex; align-items: center; gap: 6px;">
+              <span class="material-symbols-outlined" style="font-size: 18px;">water_drop</span>
+              Pixel Signature Blue Scale (Blue 50 → Blue 950)
+            </div>
+            <span style="font-size: 12px; color: var(--pixel-text-muted);">10 Mathematical Steps · Click to Copy Token</span>
+          </div>
+
+          <div class="token-grid" style="grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));">
+            <div class="token-swatch" data-var-name="--pixel-primitive-blue-50">
+              <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-blue-50); border: 1px solid var(--pixel-border-subtle);">
+                <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #1E40AF;">content_copy</span></span>
+              </div>
+              <div class="token-swatch__meta">
+                <div class="token-swatch__name">Blue 50</div>
+                <div class="token-swatch__value">#EFF6FF</div>
+              </div>
+            </div>
+
+            <div class="token-swatch" data-var-name="--pixel-primitive-blue-100">
+              <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-blue-100); border: 1px solid var(--pixel-border-subtle);">
+                <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #1E40AF;">content_copy</span></span>
+              </div>
+              <div class="token-swatch__meta">
+                <div class="token-swatch__name">Blue 100</div>
+                <div class="token-swatch__value">#DBEAFE</div>
+              </div>
+            </div>
+
+            <div class="token-swatch" data-var-name="--pixel-primitive-blue-200">
+              <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-blue-200);">
+                <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #1E40AF;">content_copy</span></span>
+              </div>
+              <div class="token-swatch__meta">
+                <div class="token-swatch__name">Blue 200</div>
+                <div class="token-swatch__value">#BFDBFE</div>
+              </div>
+            </div>
+
+            <div class="token-swatch" data-var-name="--pixel-primitive-blue-300">
+              <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-blue-300);">
+                <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #1E40AF;">content_copy</span></span>
+              </div>
+              <div class="token-swatch__meta">
+                <div class="token-swatch__name">Blue 300</div>
+                <div class="token-swatch__value">#93C5FD</div>
+              </div>
+            </div>
+
+            <div class="token-swatch" data-var-name="--pixel-primitive-blue-400">
+              <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-blue-400);">
+                <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #FFFFFF;">content_copy</span></span>
+              </div>
+              <div class="token-swatch__meta">
+                <div class="token-swatch__name">Blue 400 (Dark Primary)</div>
+                <div class="token-swatch__value">#60A5FA</div>
+              </div>
+            </div>
+
+            <div class="token-swatch" data-var-name="--pixel-primitive-blue-500">
+              <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-blue-500);">
+                <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #FFFFFF;">content_copy</span></span>
+              </div>
+              <div class="token-swatch__meta">
+                <div class="token-swatch__name">Blue 500</div>
+                <div class="token-swatch__value">#3B82F6</div>
+              </div>
+            </div>
+
+            <div class="token-swatch" data-var-name="--pixel-primitive-blue-600" style="outline: 2px solid var(--pixel-action-primary); border-radius: var(--pixel-radius-sm);">
+              <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-blue-600);">
+                <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #FFFFFF;">content_copy</span></span>
+              </div>
+              <div class="token-swatch__meta">
+                <div class="token-swatch__name" style="font-weight: 700; color: var(--pixel-text-brand);">Blue 600 (Primary CTA)</div>
+                <div class="token-swatch__value">#2563EB</div>
+              </div>
+            </div>
+
+            <div class="token-swatch" data-var-name="--pixel-primitive-blue-700">
+              <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-blue-700);">
+                <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #FFFFFF;">content_copy</span></span>
+              </div>
+              <div class="token-swatch__meta">
+                <div class="token-swatch__name">Blue 700 (Hover)</div>
+                <div class="token-swatch__value">#1D4ED8</div>
+              </div>
+            </div>
+
+            <div class="token-swatch" data-var-name="--pixel-primitive-blue-800">
+              <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-blue-800);">
+                <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #FFFFFF;">content_copy</span></span>
+              </div>
+              <div class="token-swatch__meta">
+                <div class="token-swatch__name">Blue 800 (Deep Brand)</div>
+                <div class="token-swatch__value">#1E40AF</div>
+              </div>
+            </div>
+
+            <div class="token-swatch" data-var-name="--pixel-primitive-blue-900">
+              <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-blue-900);">
+                <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #FFFFFF;">content_copy</span></span>
+              </div>
+              <div class="token-swatch__meta">
+                <div class="token-swatch__name">Blue 900</div>
+                <div class="token-swatch__value">#1E3A8A</div>
+              </div>
+            </div>
+
+            <div class="token-swatch" data-var-name="--pixel-primitive-blue-950">
+              <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-blue-950);">
+                <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #94A3B8;">content_copy</span></span>
+              </div>
+              <div class="token-swatch__meta">
+                <div class="token-swatch__name">Blue 950 (Canvas Dark)</div>
+                <div class="token-swatch__value">#0F172A</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Active Semantic Roles & Functional Spectrum -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 24px;">
+          <!-- Active Semantic Roles -->
+          <div class="portal-card" style="margin-bottom: 0;">
+            <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--pixel-text-secondary); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+              <span class="material-symbols-outlined" style="font-size: 16px;">tune</span>
+              Active Semantic Roles (Theme-Adaptive)
+            </div>
+            <div class="token-grid" style="grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));">
+              <div class="token-swatch" data-var-name="--pixel-action-primary">
+                <div class="token-swatch__preview" style="background-color: var(--pixel-action-primary);">
+                  <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span></span>
+                </div>
+                <div class="token-swatch__meta">
+                  <div class="token-swatch__name">action-primary</div>
+                  <div class="token-swatch__value">High-Emphasis CTA</div>
+                </div>
+              </div>
+
+              <div class="token-swatch" data-var-name="--pixel-action-tonal-bg">
+                <div class="token-swatch__preview" style="background-color: var(--pixel-action-tonal-bg); border: 1px solid var(--pixel-border-default);">
+                  <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span></span>
+                </div>
+                <div class="token-swatch__meta">
+                  <div class="token-swatch__name">action-tonal</div>
+                  <div class="token-swatch__value">Medium Surface CTA</div>
+                </div>
+              </div>
+
+              <div class="token-swatch" data-var-name="--pixel-bg-surface">
+                <div class="token-swatch__preview" style="background-color: var(--pixel-bg-surface); border: 1px solid var(--pixel-border-default);">
+                  <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span></span>
+                </div>
+                <div class="token-swatch__meta">
+                  <div class="token-swatch__name">bg-surface</div>
+                  <div class="token-swatch__value">Elevated Card</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Functional Spectrum -->
+          <div class="portal-card" style="margin-bottom: 0;">
+            <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--pixel-text-secondary); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+              <span class="material-symbols-outlined" style="font-size: 16px;">hub</span>
+              Functional Spectrum Accents
+            </div>
+            <div class="token-grid" style="grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));">
+              <div class="token-swatch" data-var-name="--pixel-primitive-cyan-500">
+                <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-cyan-500);">
+                  <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #FFFFFF;">content_copy</span></span>
+                </div>
+                <div class="token-swatch__meta">
+                  <div class="token-swatch__name">Cyan 500</div>
+                  <div class="token-swatch__value">#06B6D4 (Telemetry)</div>
+                </div>
+              </div>
+
+              <div class="token-swatch" data-var-name="--pixel-primitive-emerald-600">
+                <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-emerald-600);">
+                  <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #FFFFFF;">content_copy</span></span>
+                </div>
+                <div class="token-swatch__meta">
+                  <div class="token-swatch__name">Emerald 600</div>
+                  <div class="token-swatch__value">#059669 (Healthy)</div>
+                </div>
+              </div>
+
+              <div class="token-swatch" data-var-name="--pixel-primitive-amber-600">
+                <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-amber-600);">
+                  <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #FFFFFF;">content_copy</span></span>
+                </div>
+                <div class="token-swatch__meta">
+                  <div class="token-swatch__name">Amber 600</div>
+                  <div class="token-swatch__value">#D97706 (Warning)</div>
+                </div>
+              </div>
+
+              <div class="token-swatch" data-var-name="--pixel-primitive-rose-600">
+                <div class="token-swatch__preview" style="background-color: var(--pixel-primitive-rose-600);">
+                  <span class="token-swatch__copy-hint"><span class="material-symbols-outlined" style="font-size: 14px; color: #FFFFFF;">content_copy</span></span>
+                </div>
+                <div class="token-swatch__meta">
+                  <div class="token-swatch__name">Rose 600</div>
+                  <div class="token-swatch__value">#E11D48 (Critical)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Accessibility & Contrast Verification Matrix -->
+        <div class="portal-card" style="background-color: var(--md-sys-color-surface-container-low);">
+          <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--pixel-text-brand); margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+            <span class="material-symbols-outlined" style="font-size: 18px;">verified_user</span>
+            Accessibility &amp; WCAG 2.1 Contrast Verification Matrix
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="pixel-data-table" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>Color Role Combination</th>
+                  <th>Foreground Hex</th>
+                  <th>Background Hex</th>
+                  <th>Contrast Ratio</th>
+                  <th>WCAG 2.1 Level</th>
+                  <th>Verification Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Pixel Primary Action (White on Blue 600)</strong></td>
+                  <td><code>#FFFFFF</code></td>
+                  <td><code>#2563EB</code></td>
+                  <td><strong style="color: var(--pixel-primitive-emerald-600);">4.8 : 1</strong></td>
+                  <td><span class="pixel-badge pixel-badge--success">AA Pass (Normal Text)</span></td>
+                  <td><span class="material-symbols-outlined" style="color: #10B981; font-size: 18px;">check_circle</span> Verified</td>
+                </tr>
+                <tr>
+                  <td><strong>High-Contrast Brand Header (Blue 800 on Canvas)</strong></td>
+                  <td><code>#1E40AF</code></td>
+                  <td><code>#FFFFFF</code></td>
+                  <td><strong style="color: var(--pixel-primitive-emerald-600);">8.6 : 1</strong></td>
+                  <td><span class="pixel-badge pixel-badge--success">AAA Pass (Enhanced)</span></td>
+                  <td><span class="material-symbols-outlined" style="color: #10B981; font-size: 18px;">check_circle</span> Verified</td>
+                </tr>
+                <tr>
+                  <td><strong>Dark Mode Primary CTA (Blue 400 on Deep Slate)</strong></td>
+                  <td><code>#60A5FA</code></td>
+                  <td><code>#0B0F19</code></td>
+                  <td><strong style="color: var(--pixel-primitive-emerald-600);">7.4 : 1</strong></td>
+                  <td><span class="pixel-badge pixel-badge--success">AAA Pass (Enhanced)</span></td>
+                  <td><span class="material-symbols-outlined" style="color: #10B981; font-size: 18px;">check_circle</span> Verified</td>
+                </tr>
+                <tr>
+                  <td><strong>Tonal Button Surface (Blue 900 on Blue 100 Container)</strong></td>
+                  <td><code>#1E3A8A</code></td>
+                  <td><code>#DBEAFE</code></td>
+                  <td><strong style="color: var(--pixel-primitive-emerald-600);">7.9 : 1</strong></td>
+                  <td><span class="pixel-badge pixel-badge--success">AAA Pass (Enhanced)</span></td>
+                  <td><div style="display: inline-flex; align-items: center; gap: 6px;"><span class="material-symbols-outlined" style="color: #10B981; font-size: 18px;">check_circle</span><span>Verified</span></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: TYPOGRAPHY, SPACING & FOUNDATIONS -->
+      <section id="typography" class="portal-section">
+        <div class="portal-section-header">
+          <h2 class="portal-section-title">
+            <span class="material-symbols-outlined" style="color: var(--pixel-text-brand);">format_size</span>
+            Typography Scale &amp; 4px/8px Spatial Rhythm
+          </h2>
+          <p class="portal-section-desc">
+            Type hierarchy engineered for high-density enterprise legibility paired with a strict modular spacing scale that eliminates arbitrary pixel values.
+          </p>
+        </div>
+
+        <!-- Typography Card -->
+        <div class="portal-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--pixel-text-secondary);">
+              Inter Type Scale &amp; Hierarchy (Click Any Row to Copy CSS Token)
+            </div>
+            <div style="font-size: 11px; font-family: var(--pixel-font-mono); color: var(--pixel-text-muted);">
+              Font Family: Inter / JetBrains Mono
+            </div>
+          </div>
+
+          <!-- Interactive Live Type Tester Input -->
+          <div style="margin-bottom: 16px;">
+            <label for="type-tester" style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; color: var(--pixel-text-secondary); margin-bottom: 6px;">
+              Live Type Specimen Tester (Edit text below to preview all sizes):
+            </label>
+            <input type="text" id="type-tester" class="type-tester-input" value="Pixel Operations Platform — High Density Telemetry &amp; Node Health" placeholder="Type custom specimen here..."/>
+          </div>
+
+          <!-- Type Scale List -->
+          <div class="type-scale-list" id="type-scale-container">
+            <!-- Display -->
+            <div class="type-scale-item copyable-token" data-token="var(--pixel-text-display)">
+              <div class="type-scale-left">
+                <div class="type-scale-role">
+                  <span>Display</span>
+                  <span class="pixel-badge pixel-badge--info" style="font-size: 10px; padding: 2px 6px;">36px / Bold 700</span>
+                </div>
+                <div class="type-scale-text specimen-text" style="font: var(--pixel-text-display); letter-spacing: -0.02em;">
+                  Pixel Operations Platform — High Density Telemetry &amp; Node Health
+                </div>
+              </div>
+              <div class="type-scale-meta">
+                <span>36px / 44px</span>
+                <span>Tracking -0.02em</span>
+                <code style="color: var(--pixel-text-brand);">--pixel-text-display</code>
+              </div>
+            </div>
+
+            <!-- H1 -->
+            <div class="type-scale-item copyable-token" data-token="var(--pixel-text-h1)">
+              <div class="type-scale-left">
+                <div class="type-scale-role">
+                  <span>H1 (Hero Heading)</span>
+                  <span class="pixel-badge pixel-badge--info" style="font-size: 10px; padding: 2px 6px;">28px / Bold 700</span>
+                </div>
+                <div class="type-scale-text specimen-text" style="font: var(--pixel-text-h1); letter-spacing: -0.015em;">
+                  Pixel Operations Platform — High Density Telemetry &amp; Node Health
+                </div>
+              </div>
+              <div class="type-scale-meta">
+                <span>28px / 36px</span>
+                <span>Tracking -0.015em</span>
+                <code style="color: var(--pixel-text-brand);">--pixel-text-h1</code>
+              </div>
+            </div>
+
+            <!-- H2 -->
+            <div class="type-scale-item copyable-token" data-token="var(--pixel-text-h2)">
+              <div class="type-scale-left">
+                <div class="type-scale-role">
+                  <span>H2 (Section Header)</span>
+                  <span class="pixel-badge pixel-badge--info" style="font-size: 10px; padding: 2px 6px;">22px / Semibold 600</span>
+                </div>
+                <div class="type-scale-text specimen-text" style="font: var(--pixel-text-h2); letter-spacing: -0.01em;">
+                  Pixel Operations Platform — High Density Telemetry &amp; Node Health
+                </div>
+              </div>
+              <div class="type-scale-meta">
+                <span>22px / 28px</span>
+                <span>Tracking -0.01em</span>
+                <code style="color: var(--pixel-text-brand);">--pixel-text-h2</code>
+              </div>
+            </div>
+
+            <!-- H3 -->
+            <div class="type-scale-item copyable-token" data-token="var(--pixel-text-h3)">
+              <div class="type-scale-left">
+                <div class="type-scale-role">
+                  <span>H3 (Card Title)</span>
+                  <span class="pixel-badge pixel-badge--info" style="font-size: 10px; padding: 2px 6px;">18px / Semibold 600</span>
+                </div>
+                <div class="type-scale-text specimen-text" style="font: var(--pixel-text-h3);">
+                  Pixel Operations Platform — High Density Telemetry &amp; Node Health
+                </div>
+              </div>
+              <div class="type-scale-meta">
+                <span>18px / 24px</span>
+                <span>Normal Tracking</span>
+                <code style="color: var(--pixel-text-brand);">--pixel-text-h3</code>
+              </div>
+            </div>
+
+            <!-- Title -->
+            <div class="type-scale-item copyable-token" data-token="var(--pixel-text-title)">
+              <div class="type-scale-left">
+                <div class="type-scale-role">
+                  <span>Title (Subheading)</span>
+                  <span class="pixel-badge pixel-badge--info" style="font-size: 10px; padding: 2px 6px;">15px / Semibold 600</span>
+                </div>
+                <div class="type-scale-text specimen-text" style="font: var(--pixel-text-title);">
+                  Pixel Operations Platform — High Density Telemetry &amp; Node Health
+                </div>
+              </div>
+              <div class="type-scale-meta">
+                <span>15px / 22px</span>
+                <span>Normal Tracking</span>
+                <code style="color: var(--pixel-text-brand);">--pixel-text-title</code>
+              </div>
+            </div>
+
+            <!-- Body Large -->
+            <div class="type-scale-item copyable-token" data-token="var(--pixel-text-body-lg)">
+              <div class="type-scale-left">
+                <div class="type-scale-role">
+                  <span>Body Large (Editorial Lead)</span>
+                  <span class="pixel-badge pixel-badge--info" style="font-size: 10px; padding: 2px 6px;">16px / Regular 400</span>
+                </div>
+                <div class="type-scale-text specimen-text" style="font: var(--pixel-text-body-lg);">
+                  Pixel Operations Platform — High Density Telemetry &amp; Node Health
+                </div>
+              </div>
+              <div class="type-scale-meta">
+                <span>16px / 24px</span>
+                <span>Normal Tracking</span>
+                <code style="color: var(--pixel-text-brand);">--pixel-text-body-lg</code>
+              </div>
+            </div>
+
+            <!-- Body Base -->
+            <div class="type-scale-item copyable-token" data-token="var(--pixel-text-body-md)">
+              <div class="type-scale-left">
+                <div class="type-scale-role">
+                  <span>Body Medium (UI Default)</span>
+                  <span class="pixel-badge pixel-badge--info" style="font-size: 10px; padding: 2px 6px;">14px / Regular 400</span>
+                </div>
+                <div class="type-scale-text specimen-text" style="font: var(--pixel-text-body-md);">
+                  Pixel Operations Platform — High Density Telemetry &amp; Node Health
+                </div>
+              </div>
+              <div class="type-scale-meta">
+                <span>14px / 20px</span>
+                <span>Normal Tracking</span>
+                <code style="color: var(--pixel-text-brand);">--pixel-text-body-md</code>
+              </div>
+            </div>
+
+            <!-- Body Small -->
+            <div class="type-scale-item copyable-token" data-token="var(--pixel-text-body-sm)">
+              <div class="type-scale-left">
+                <div class="type-scale-role">
+                  <span>Body Small (Table Data)</span>
+                  <span class="pixel-badge pixel-badge--info" style="font-size: 10px; padding: 2px 6px;">12px / Regular 400</span>
+                </div>
+                <div class="type-scale-text specimen-text" style="font: var(--pixel-text-body-sm);">
+                  Pixel Operations Platform — High Density Telemetry &amp; Node Health
+                </div>
+              </div>
+              <div class="type-scale-meta">
+                <span>12px / 16px</span>
+                <span>Normal Tracking</span>
+                <code style="color: var(--pixel-text-brand);">--pixel-text-body-sm</code>
+              </div>
+            </div>
+
+            <!-- Caption -->
+            <div class="type-scale-item copyable-token" data-token="var(--pixel-text-caption)">
+              <div class="type-scale-left">
+                <div class="type-scale-role">
+                  <span>Caption (Metadata)</span>
+                  <span class="pixel-badge pixel-badge--info" style="font-size: 10px; padding: 2px 6px;">11px / Medium 500</span>
+                </div>
+                <div class="type-scale-text specimen-text" style="font: var(--pixel-text-caption); letter-spacing: +0.01em;">
+                  Pixel Operations Platform — High Density Telemetry &amp; Node Health
+                </div>
+              </div>
+              <div class="type-scale-meta">
+                <span>11px / 14px</span>
+                <span>Tracking +0.01em</span>
+                <code style="color: var(--pixel-text-brand);">--pixel-text-caption</code>
+              </div>
+            </div>
+
+            <!-- JetBrains Mono -->
+            <div class="type-scale-item copyable-token" data-token="var(--pixel-font-mono)">
+              <div class="type-scale-left">
+                <div class="type-scale-role">
+                  <span>JetBrains Mono (IP &amp; Hashes)</span>
+                  <span class="pixel-badge pixel-badge--info" style="font-size: 10px; padding: 2px 6px;">12px / Mono 500</span>
+                </div>
+                <div class="type-scale-text specimen-text" style="font-family: var(--pixel-font-mono); font-size: 12px; line-height: 16px;">
+                  192.168.1.104 · sha256:7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069
+                </div>
+              </div>
+              <div class="type-scale-meta">
+                <span>12px / 16px</span>
+                <span>Fixed Width</span>
+                <code style="color: var(--pixel-text-brand);">--pixel-font-mono</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spacing Scale Card -->
+        <div class="portal-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--pixel-text-secondary);">
+              Modular Spacing Scale (4px / 8px Grid Rhythm · Click to Copy Token)
+            </div>
+            <div style="font-size: 11px; font-family: var(--pixel-font-mono); color: var(--pixel-text-muted);">
+              Rhythm: 4px, 8px, 12px, 16px, 20px, 24px, 32px, 40px, 48px, 64px, 80px
+            </div>
+          </div>
+
+          <p style="font-size: 13px; color: var(--pixel-text-secondary); margin-bottom: 16px; line-height: 1.5;">
+            Components strictly consume this scale instead of arbitrary pixel values. Click any row to copy its CSS variable to your clipboard:
+          </p>
+
+          <div class="spacing-scale-grid">
+            <div class="spacing-item copyable-token" data-token="var(--pixel-space-1)">
+              <span class="spacing-item__label">space.1</span>
+              <span class="spacing-item__val">4px</span>
+              <div class="spacing-item__bar-track">
+                <div class="spacing-item__bar" style="width: 4px;"></div>
+              </div>
+              <span class="spacing-item__usage">Micro gaps, badge padding</span>
+            </div>
+
+            <div class="spacing-item copyable-token" data-token="var(--pixel-space-2)">
+              <span class="spacing-item__label">space.2</span>
+              <span class="spacing-item__val">8px</span>
+              <div class="spacing-item__bar-track">
+                <div class="spacing-item__bar" style="width: 8px;"></div>
+              </div>
+              <span class="spacing-item__usage">Icon-to-text gap, compact button</span>
+            </div>
+
+            <div class="spacing-item copyable-token" data-token="var(--pixel-space-3)">
+              <span class="spacing-item__label">space.3</span>
+              <span class="spacing-item__val">12px</span>
+              <div class="spacing-item__bar-track">
+                <div class="spacing-item__bar" style="width: 12px;"></div>
+              </div>
+              <span class="spacing-item__usage">Input vertical padding, card gaps</span>
+            </div>
+
+            <div class="spacing-item copyable-token" data-token="var(--pixel-space-4)">
+              <span class="spacing-item__label">space.4</span>
+              <span class="spacing-item__val">16px</span>
+              <div class="spacing-item__bar-track">
+                <div class="spacing-item__bar" style="width: 16px;"></div>
+              </div>
+              <span class="spacing-item__usage">Button horizontal, standard inset</span>
+            </div>
+
+            <div class="spacing-item copyable-token" data-token="var(--pixel-space-5)">
+              <span class="spacing-item__label">space.5</span>
+              <span class="spacing-item__val">20px</span>
+              <div class="spacing-item__bar-track">
+                <div class="spacing-item__bar" style="width: 20px;"></div>
+              </div>
+              <span class="spacing-item__usage">Card internal gutters</span>
+            </div>
+
+            <div class="spacing-item copyable-token" data-token="var(--pixel-space-6)">
+              <span class="spacing-item__label">space.6</span>
+              <span class="spacing-item__val">24px</span>
+              <div class="spacing-item__bar-track">
+                <div class="spacing-item__bar" style="width: 24px;"></div>
+              </div>
+              <span class="spacing-item__usage">Section padding, table outer</span>
+            </div>
+
+            <div class="spacing-item copyable-token" data-token="var(--pixel-space-8)">
+              <span class="spacing-item__label">space.8</span>
+              <span class="spacing-item__val">32px</span>
+              <div class="spacing-item__bar-track">
+                <div class="spacing-item__bar" style="width: 32px;"></div>
+              </div>
+              <span class="spacing-item__usage">Container block gaps</span>
+            </div>
+
+            <div class="spacing-item copyable-token" data-token="var(--pixel-space-10)">
+              <span class="spacing-item__label">space.10</span>
+              <span class="spacing-item__val">40px</span>
+              <div class="spacing-item__bar-track">
+                <div class="spacing-item__bar" style="width: 40px;"></div>
+              </div>
+              <span class="spacing-item__usage">Large component separation</span>
+            </div>
+
+            <div class="spacing-item copyable-token" data-token="var(--pixel-space-12)">
+              <span class="spacing-item__label">space.12</span>
+              <span class="spacing-item__val">48px</span>
+              <div class="spacing-item__bar-track">
+                <div class="spacing-item__bar" style="width: 48px;"></div>
+              </div>
+              <span class="spacing-item__usage">Layout column gutters</span>
+            </div>
+
+            <div class="spacing-item copyable-token" data-token="var(--pixel-space-16)">
+              <span class="spacing-item__label">space.16</span>
+              <span class="spacing-item__val">64px</span>
+              <div class="spacing-item__bar-track">
+                <div class="spacing-item__bar" style="width: 64px;"></div>
+              </div>
+              <span class="spacing-item__usage">Major module separation</span>
+            </div>
+
+            <div class="spacing-item copyable-token" data-token="var(--pixel-space-20)">
+              <span class="spacing-item__label">space.20</span>
+              <span class="spacing-item__val">80px</span>
+              <div class="spacing-item__bar-track">
+                <div class="spacing-item__bar" style="width: 80px;"></div>
+              </div>
+              <span class="spacing-item__usage">Page section rhythm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radius, Border & Elevation Foundations -->
+        <div class="portal-card">
+          <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--pixel-text-secondary); margin-bottom: 16px;">
+            Corner Radius Scale &amp; Elevation Tiers (Click to Copy Token)
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+            <!-- Radius Column -->
+            <div>
+              <div style="font-size: 12px; font-weight: 600; color: var(--pixel-text-primary); margin-bottom: 10px;">
+                Shape Radius Scale
+              </div>
+              <div class="radius-grid">
+                <div class="shape-card copyable-token" data-token="var(--pixel-radius-xs)">
+                  <div class="shape-box-preview" style="border-radius: var(--pixel-radius-xs);"></div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--pixel-text-primary);">radius.xs</div>
+                  <div style="font-size: 10px; color: var(--pixel-text-secondary);">4px</div>
+                </div>
+
+                <div class="shape-card copyable-token" data-token="var(--pixel-radius-sm)">
+                  <div class="shape-box-preview" style="border-radius: var(--pixel-radius-sm);"></div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--pixel-text-primary);">radius.sm</div>
+                  <div style="font-size: 10px; color: var(--pixel-text-secondary);">6px</div>
+                </div>
+
+                <div class="shape-card copyable-token" data-token="var(--pixel-radius-md)">
+                  <div class="shape-box-preview" style="border-radius: var(--pixel-radius-md);"></div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--pixel-text-primary);">radius.md</div>
+                  <div style="font-size: 10px; color: var(--pixel-text-secondary);">8px (Btns/Inputs)</div>
+                </div>
+
+                <div class="shape-card copyable-token" data-token="var(--pixel-radius-lg)">
+                  <div class="shape-box-preview" style="border-radius: var(--pixel-radius-lg);"></div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--pixel-text-primary);">radius.lg</div>
+                  <div style="font-size: 10px; color: var(--pixel-text-secondary);">12px (Cards)</div>
+                </div>
+
+                <div class="shape-card copyable-token" data-token="var(--pixel-radius-full)">
+                  <div class="shape-box-preview" style="border-radius: var(--pixel-radius-full);"></div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--pixel-text-primary);">radius.full</div>
+                  <div style="font-size: 10px; color: var(--pixel-text-secondary);">9999px (Pill/Chips)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Elevation Column -->
+            <div>
+              <div style="font-size: 12px; font-weight: 600; color: var(--pixel-text-primary); margin-bottom: 10px;">
+                Tonal Elevation Tiers
+              </div>
+              <div class="elevation-grid">
+                <div class="shape-card copyable-token" data-token="var(--pixel-elevation-1)">
+                  <div class="elevation-box-preview" style="box-shadow: var(--pixel-elevation-1);"></div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--pixel-text-primary);">elevation-1</div>
+                  <div style="font-size: 10px; color: var(--pixel-text-secondary);">Resting / Ambient</div>
+                </div>
+
+                <div class="shape-card copyable-token" data-token="var(--pixel-elevation-2)">
+                  <div class="elevation-box-preview" style="box-shadow: var(--pixel-elevation-2);"></div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--pixel-text-primary);">elevation-2</div>
+                  <div style="font-size: 10px; color: var(--pixel-text-secondary);">Card Hover</div>
+                </div>
+
+                <div class="shape-card copyable-token" data-token="var(--pixel-elevation-3)">
+                  <div class="elevation-box-preview" style="box-shadow: var(--pixel-elevation-3);"></div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--pixel-text-primary);">elevation-3</div>
+                  <div style="font-size: 10px; color: var(--pixel-text-secondary);">Dropdown / Menu</div>
+                </div>
+
+                <div class="shape-card copyable-token" data-token="var(--pixel-elevation-4)">
+                  <div class="elevation-box-preview" style="box-shadow: var(--pixel-elevation-4);"></div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--pixel-text-primary);">elevation-4</div>
+                  <div style="font-size: 10px; color: var(--pixel-text-secondary);">Modal Dialog</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: BUTTON MASTER PLAYGROUND (8 STATES) -->
+      <section id="playground-actions" class="portal-section">
+        <div class="portal-section-header">
+          <h2 class="portal-section-title">
+            <span class="material-symbols-outlined" style="color: var(--pixel-text-brand);">smart_button</span>
+            Button Case Study &amp; 8-State Simulator
+          </h2>
+          <p class="portal-section-desc">
+            Test how PIXEL components behave across all 8 interactive states. Click the state simulator buttons below to observe state changes across the component matrix.
+          </p>
+        </div>
+
+        <div class="portal-card">
+          <!-- Interactive State Controller Bar -->
+          <div class="state-bar">
+            <span class="state-bar__label">
+              <span class="material-symbols-outlined" style="font-size: 16px;">tune</span>
+              Simulate State:
+            </span>
+            <button class="pixel-btn pixel-btn--ghost pixel-btn--sm is-active" data-target-state="default">1. Default</button>
+            <button class="pixel-btn pixel-btn--ghost pixel-btn--sm" data-target-state="focus">2. Focus-Visible</button>
+            <button class="pixel-btn pixel-btn--ghost pixel-btn--sm" data-target-state="disabled">3. Disabled</button>
+            <button class="pixel-btn pixel-btn--ghost pixel-btn--sm" data-target-state="loading">4. Loading</button>
+            <button class="pixel-btn pixel-btn--ghost pixel-btn--sm" data-target-state="error">5. Error</button>
+          </div>
+
+          <!-- Buttons Matrix -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div>
+              <div style="font-size: 12px; font-weight: 700; color: var(--pixel-text-secondary); text-transform: uppercase; margin-bottom: 10px;">
+                Button Variants (Click Any Button for Feedback)
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <button class="pixel-btn pixel-btn--primary pixel-btn--md playground-target demo-action-btn">
+                  <span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                  <span class="pixel-btn__label">Primary Action</span>
+                </button>
+
+                <button class="pixel-btn pixel-btn--secondary pixel-btn--md playground-target demo-action-btn">
+                  <span class="material-symbols-outlined" style="font-size: 18px;">file_download</span>
+                  <span class="pixel-btn__label">Secondary</span>
+                </button>
+
+                <button class="pixel-btn pixel-btn--tonal pixel-btn--md playground-target demo-action-btn">
+                  <span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
+                  <span class="pixel-btn__label">Tonal Button</span>
+                </button>
+
+                <button class="pixel-btn pixel-btn--outline pixel-btn--md playground-target demo-action-btn">
+                  <span class="material-symbols-outlined" style="font-size: 18px;">open_in_new</span>
+                  <span class="pixel-btn__label">Outline</span>
+                </button>
+
+                <button class="pixel-btn pixel-btn--ghost pixel-btn--md playground-target demo-action-btn">
+                  <span class="material-symbols-outlined" style="font-size: 18px;">more_horiz</span>
+                  <span class="pixel-btn__label">Ghost</span>
+                </button>
+
+                <button class="pixel-btn pixel-btn--danger pixel-btn--md playground-target demo-action-btn">
+                  <span class="material-symbols-outlined" style="font-size: 18px;">delete</span>
+                  <span class="pixel-btn__label">Destructive</span>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size: 12px; font-weight: 700; color: var(--pixel-text-secondary); text-transform: uppercase; margin-bottom: 10px;">
+                Size Scale &amp; Pill Shape
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                <button class="pixel-btn pixel-btn--primary pixel-btn--sm playground-target demo-action-btn">
+                  <span class="pixel-btn__label">Small (32px)</span>
+                </button>
+
+                <button class="pixel-btn pixel-btn--primary pixel-btn--md playground-target demo-action-btn">
+                  <span class="pixel-btn__label">Medium (40px)</span>
+                </button>
+
+                <button class="pixel-btn pixel-btn--primary pixel-btn--lg playground-target demo-action-btn">
+                  <span class="pixel-btn__label">Large (48px)</span>
+                </button>
+
+                <button class="pixel-btn pixel-btn--primary pixel-btn--pill pixel-btn--md playground-target demo-action-btn">
+                  <span class="material-symbols-outlined" style="font-size: 18px;">check</span>
+                  <span class="pixel-btn__label">Pill Action</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: CHIPS & SELECTION CONTROLS -->
+      <section id="playground-chips" class="portal-section">
+        <div class="portal-section-header">
+          <h2 class="portal-section-title">
+            <span class="material-symbols-outlined" style="color: var(--pixel-text-brand);">label</span>
+            Interactive Chips, Switches &amp; Controls
+          </h2>
+          <p class="portal-section-desc">
+            Filter chips with active check indicators and toggle switches with smooth sliding animation.
+          </p>
+        </div>
+
+        <div class="portal-card">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+            <!-- Chips -->
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--pixel-text-primary); margin-bottom: 12px;">
+                Filter Chips (Click to Toggle)
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <div class="pixel-chip pixel-chip--interactive is-active">
+                  <span class="material-symbols-outlined pixel-chip__icon" style="font-size: 16px;" data-default-icon="bolt">check</span>
+                  <span>Active Streams</span>
+                </div>
+
+                <div class="pixel-chip pixel-chip--interactive">
+                  <span class="material-symbols-outlined pixel-chip__icon" style="font-size: 16px;" data-default-icon="cloud">cloud</span>
+                  <span>US-East VPC</span>
+                </div>
+
+                <div class="pixel-chip pixel-chip--interactive">
+                  <span class="material-symbols-outlined pixel-chip__icon" style="font-size: 16px;" data-default-icon="security">security</span>
+                  <span>Critical Only</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Switch & Controls -->
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--pixel-text-primary); margin-bottom: 12px;">
+                Switches &amp; Checkboxes (Click to Toggle)
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div class="pixel-switch is-checked">
+                    <div class="pixel-switch__thumb">
+                      <span class="material-symbols-outlined" style="font-size: 14px;">check</span>
+                    </div>
+                  </div>
+                  <span style="font-size: 14px; font-weight: 500;">Multi-Region Auto-Failover</span>
+                </div>
+
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; font-weight: 500;">
+                  <input type="checkbox" checked style="width: 16px; height: 16px; accent-color: var(--pixel-action-primary);"/>
+                  <span>Require 2-person approval for containment</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: FORM CONTROLS -->
+      <section id="playground-forms" class="portal-section">
+        <div class="portal-section-header">
+          <h2 class="portal-section-title">
+            <span class="material-symbols-outlined" style="color: var(--pixel-text-brand);">edit_note</span>
+            Form Controls &amp; Validation Layout
+          </h2>
+          <p class="portal-section-desc">
+            Inputs with leading Google Material Symbols, clear focus rings, and layout-preserving validation states.
+          </p>
+        </div>
+
+        <div class="portal-card">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            
+            <div class="pixel-field">
+              <label class="pixel-label">
+                <span>Cluster Endpoint Host</span>
+                <span class="pixel-label__required">*</span>
+              </label>
+              <div class="pixel-input-box pixel-input-box--lead">
+                <span class="material-symbols-outlined pixel-input-icon-lead">dns</span>
+                <input type="text" class="pixel-input playground-target" value="srv-prod-us-east-1.internal.net"/>
+              </div>
+              <span class="pixel-helper-text">
+                <span class="material-symbols-outlined" style="font-size: 14px;">info</span>
+                Internal VPC gateway route
+              </span>
+            </div>
+
+            <div class="pixel-field">
+              <label class="pixel-label">
+                <span>Validation Failure State</span>
+                <span class="pixel-label__required">*</span>
+              </label>
+              <div class="pixel-input-box pixel-input-box--lead">
+                <span class="material-symbols-outlined pixel-input-icon-lead" style="color: var(--pixel-primitive-rose-600);">warning</span>
+                <input type="text" class="pixel-input is-error" value="192.168.0.355"/>
+              </div>
+              <span class="pixel-helper-text pixel-helper-text--error">
+                <span class="material-symbols-outlined" style="font-size: 14px;">error</span>
+                Invalid IPv4 octet format: values cannot exceed 255.
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: OPERATIONS CONSOLE (LIVE WORKING PROTOTYPE) -->
+      <section id="operations-prototype" class="portal-section">
+        <div class="portal-section-header">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <span class="pixel-badge pixel-badge--info">Working Product Prototype</span>
+              <h2 class="portal-section-title" style="margin-top: 6px;">
+                Pixel Operations Platform — SOC Command Console
+              </h2>
+              <p class="portal-section-desc">
+                An actual enterprise workflow assembled strictly from PIXEL tokens and components. Test sorting, keyword filtering, row multi-selection, CSV export, and containment approval drawers.
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="pixel-btn pixel-btn--secondary pixel-btn--sm" onclick="exportCSV()">
+                <span class="material-symbols-outlined" style="font-size: 16px;">download</span>
+                <span>Export CSV</span>
+              </button>
+              <button class="pixel-btn pixel-btn--primary pixel-btn--sm" onclick="openApprovalModal('PX-BATCH-ALL', 'Selected Cluster Nodes')">
+                <span class="material-symbols-outlined" style="font-size: 16px;">shield</span>
+                <span>Quarantine Hosts</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI Metrics Bar -->
+        <div class="ops-kpi-grid">
+          <div class="ops-kpi-card">
+            <div class="ops-kpi-header">
+              <span class="ops-kpi-label">Cluster Health</span>
+              <span class="material-symbols-outlined" style="color: var(--pixel-status-success-text);">health_and_safety</span>
+            </div>
+            <div class="ops-kpi-value" style="color: var(--pixel-status-success-text);">99.98%</div>
+            <div class="ops-kpi-delta" style="color: var(--pixel-status-success-text);">
+              <span class="material-symbols-outlined" style="font-size: 14px;">trending_up</span>
+              <span>+0.04% vs 24h SLA</span>
+            </div>
+          </div>
+
+          <div class="ops-kpi-card">
+            <div class="ops-kpi-header">
+              <span class="ops-kpi-label">Active Threats</span>
+              <span class="material-symbols-outlined" style="color: var(--pixel-status-danger-text);">warning</span>
+            </div>
+            <div class="ops-kpi-value" style="color: var(--pixel-status-danger-text);">2</div>
+            <div class="ops-kpi-delta" style="color: var(--pixel-status-danger-text);">
+              <span class="material-symbols-outlined" style="font-size: 14px;">priority_high</span>
+              <span>Immediate review required</span>
+            </div>
+          </div>
+
+          <div class="ops-kpi-card">
+            <div class="ops-kpi-header">
+              <span class="ops-kpi-label">Stream Ingress</span>
+              <span class="material-symbols-outlined" style="color: var(--pixel-text-brand);">sync_alt</span>
+            </div>
+            <div class="ops-kpi-value">1,482</div>
+            <div class="ops-kpi-delta" style="color: var(--pixel-text-secondary);">
+              <span class="material-symbols-outlined" style="font-size: 14px;">speed</span>
+              <span>~ 180 req/sec</span>
+            </div>
+          </div>
+
+          <div class="ops-kpi-card">
+            <div class="ops-kpi-header">
+              <span class="ops-kpi-label">Contained Nodes</span>
+              <span class="material-symbols-outlined" style="color: var(--pixel-primitive-blue-600);">shield</span>
+            </div>
+            <div class="ops-kpi-value" style="color: var(--pixel-primitive-blue-600);">4</div>
+            <div class="ops-kpi-delta" style="color: var(--pixel-primitive-blue-600);">
+              <span class="material-symbols-outlined" style="font-size: 14px;">lock</span>
+              <span>VPC sandbox active</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar Pattern -->
+        <div class="portal-card" style="padding: 14px 16px; margin-bottom: 16px;">
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+            
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; flex: 1; max-width: 620px;">
+              <div class="pixel-input-box pixel-input-box--lead" style="flex: 1; min-width: 220px;">
+                <span class="material-symbols-outlined pixel-input-icon-lead">search</span>
+                <input type="text" id="table-search-input" class="pixel-input" placeholder="Search by ID, Microservice name, or Host DNS..."/>
+              </div>
+
+              <select id="table-status-filter" class="pixel-input" style="width: 170px; cursor: pointer;">
+                <option value="ALL">All Statuses (16)</option>
+                <option value="Operational">Operational</option>
+                <option value="Pending">Pending Review</option>
+                <option value="Failed">Failed (Critical)</option>
+                <option value="Contained">Contained</option>
+              </select>
+            </div>
+
+            <!-- Floating Bulk Actions Indicator -->
+            <div id="bulk-action-bar" style="display: none; align-items: center; gap: 10px;">
+              <span id="selected-count-span" style="font-size: 13px; font-weight: 600; color: var(--pixel-text-brand);">0 rows selected</span>
+              <button class="pixel-btn pixel-btn--danger pixel-btn--sm" onclick="openApprovalModal('SELECTED-BULK', 'Multiple Selected Cluster Nodes')">
+                <span class="material-symbols-outlined" style="font-size: 16px;">shield</span>
+                <span>Quarantine Selected</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- High-Density Enterprise Table -->
+        <div class="pixel-table-container">
+          <table class="pixel-table">
+            <thead>
+              <tr>
+                <th style="width: 44px;">
+                  <input type="checkbox" id="master-checkbox" style="cursor: pointer; width: 16px; height: 16px; accent-color: var(--pixel-action-primary);"/>
+                </th>
+                <th class="is-sortable" onclick="sortTable('id')">
+                  <div style="display: flex; align-items: center; gap: 4px;">
+                    Incident ID
+                    <span class="material-symbols-outlined" style="font-size: 16px;">swap_vert</span>
+                  </div>
+                </th>
+                <th class="is-sortable" onclick="sortTable('entity')">
+                  <div style="display: flex; align-items: center; gap: 4px;">
+                    Microservice Entity
+                    <span class="material-symbols-outlined" style="font-size: 16px;">swap_vert</span>
+                  </div>
+                </th>
+                <th class="is-sortable" onclick="sortTable('host')">
+                  <div style="display: flex; align-items: center; gap: 4px;">
+                    Host DNS
+                    <span class="material-symbols-outlined" style="font-size: 16px;">swap_vert</span>
+                  </div>
+                </th>
+                <th class="is-sortable" onclick="sortTable('status')">
+                  <div style="display: flex; align-items: center; gap: 4px;">
+                    Status
+                    <span class="material-symbols-outlined" style="font-size: 16px;">swap_vert</span>
+                  </div>
+                </th>
+                <th>Observed</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="ops-table-body">
+              <!-- Dynamically populated by pixel-system.js -->
+            </tbody>
+          </table>
+
+          <!-- Working Pagination Footer -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background-color: var(--pixel-bg-surface); border-top: 1px solid var(--pixel-border-subtle); font-size: 13px; color: var(--pixel-text-secondary); flex-wrap: wrap; gap: 10px;">
+            <div id="table-pagination-info">Showing <strong>1 to 5</strong> of <strong>16</strong> records</div>
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <button id="table-prev-btn" class="pixel-btn pixel-btn--secondary pixel-btn--sm" disabled>
+                <span class="material-symbols-outlined" style="font-size: 16px;">chevron_left</span>
+                <span>Prev</span>
+              </button>
+              <div id="table-page-buttons" style="display: flex; gap: 4px; align-items: center;">
+                <!-- Page buttons injected by js -->
+              </div>
+              <button id="table-next-btn" class="pixel-btn pixel-btn--secondary pixel-btn--sm">
+                <span>Next</span>
+                <span class="material-symbols-outlined" style="font-size: 16px;">chevron_right</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: AUDIT BEFORE VS. AFTER STANDARDIZATION -->
+      <section id="audit-before-after" class="portal-section">
+        <div class="portal-section-header">
+          <h2 class="portal-section-title">
+            <span class="material-symbols-outlined" style="color: var(--pixel-text-brand);">compare_arrows</span>
+            System Audit: Before vs. After PIXEL Standardization
+          </h2>
+          <p class="portal-section-desc">
+            The quantifiable transformation from a fragmented legacy enterprise UI into an accessible, token-driven design system.
+          </p>
+        </div>
+
+        <!-- Metric KPI Cards -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px;">
+          <div class="portal-card" style="padding: 18px; margin-bottom: 0; border-top: 3px solid var(--pixel-action-primary);">
+            <div style="font-family: var(--pixel-font-mono); font-size: 28px; font-weight: 700; color: var(--pixel-text-brand);">14 → 1</div>
+            <div style="font-size: 13px; font-weight: 600; color: var(--pixel-text-primary); margin-top: 4px;">Buttons Consolidated</div>
+            <div style="font-size: 11px; color: var(--pixel-text-secondary); margin-top: 2px;">From 14 conflicting variants into 1 master primitive</div>
+          </div>
+
+          <div class="portal-card" style="padding: 18px; margin-bottom: 0; border-top: 3px solid var(--pixel-primitive-emerald-600);">
+            <div style="font-family: var(--pixel-font-mono); font-size: 28px; font-weight: 700; color: var(--pixel-status-success-text);">-42%</div>
+            <div style="font-size: 13px; font-weight: 600; color: var(--pixel-text-primary); margin-top: 4px;">CSS Bundle Reduction</div>
+            <div style="font-size: 11px; color: var(--pixel-text-secondary); margin-top: 2px;">Eliminated 1,400+ lines of redundant CSS overrides</div>
+          </div>
+
+          <div class="portal-card" style="padding: 18px; margin-bottom: 0; border-top: 3px solid var(--pixel-primitive-amber-600);">
+            <div style="font-family: var(--pixel-font-mono); font-size: 28px; font-weight: 700; color: var(--pixel-status-warning-text);">0</div>
+            <div style="font-size: 13px; font-weight: 600; color: var(--pixel-text-primary); margin-top: 4px;">WCAG AA Violations</div>
+            <div style="font-size: 11px; color: var(--pixel-text-secondary); margin-top: 2px;">100% compliant contrast &amp; 3px focus-visible rings</div>
+          </div>
+
+          <div class="portal-card" style="padding: 18px; margin-bottom: 0; border-top: 3px solid var(--pixel-text-brand);">
+            <div style="font-family: var(--pixel-font-mono); font-size: 28px; font-weight: 700; color: var(--pixel-text-brand);">Instant</div>
+            <div style="font-size: 13px; font-weight: 600; color: var(--pixel-text-primary); margin-top: 4px;">Dark Mode Theming</div>
+            <div style="font-size: 11px; color: var(--pixel-text-secondary); margin-top: 2px;">Automated token remapping with zero HTML edits</div>
+          </div>
+        </div>
+
+        <!-- Before vs. After Visual Comparison Table -->
+        <div class="portal-card" style="padding: 0; overflow: hidden;">
+          <div style="padding: 16px 20px; background-color: var(--pixel-bg-surface-subtle); border-bottom: 1px solid var(--pixel-border-subtle); display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--pixel-text-secondary);">
+              Component &amp; Foundation Audit Matrix
+            </div>
+            <span class="pixel-badge pixel-badge--success">Full Audit Certified</span>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table class="pixel-table">
+              <thead>
+                <tr>
+                  <th style="width: 180px;">Dimension</th>
+                  <th style="color: var(--pixel-status-danger-text);">Before (Legacy Fragmented UI)</th>
+                  <th style="color: var(--pixel-status-success-text);">After (PIXEL Design System)</th>
+                  <th>Engineering Impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Action Buttons</strong></td>
+                  <td style="color: var(--pixel-text-secondary); font-size: 13px;">
+                    14 disparate button implementations across 5 repos. Hardcoded hex colors (<code>#1a73e8</code>, <code>#2563eb</code>, <code>#0052cc</code>), 4 arbitrary corner radii (4px, 6px, 8px, 10px).
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--success" style="margin-bottom: 4px;">1 Master Button Primitive</span>
+                    <div style="font-size: 13px; color: var(--pixel-text-primary);">
+                      6 semantic variants, 3 size tiers (32px, 40px, 48px), and strict 8-state coverage.
+                    </div>
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--neutral">Zero Redundancy</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Spatial Rhythm</strong></td>
+                  <td style="color: var(--pixel-text-secondary); font-size: 13px;">
+                    Magic numbers throughout CSS: 7px padding, 13px gaps, 21px margins. No cohesive baseline grid.
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--success" style="margin-bottom: 4px;">4px / 8px Modular Scale</span>
+                    <div style="font-size: 13px; color: var(--pixel-text-primary);">
+                      Tokens <code>space.1</code> (4px) to <code>space.20</code> (80px). Zero arbitrary offsets permitted in code.
+                    </div>
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--neutral">Pixel-Perfect Handoff</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Typography</strong></td>
+                  <td style="color: var(--pixel-text-secondary); font-size: 13px;">
+                    3 divergent font families (Arial, Roboto, Open Sans) with 11 uncoordinated sizes and arbitrary line heights.
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--success" style="margin-bottom: 4px;">Inter + JetBrains Mono Scale</span>
+                    <div style="font-size: 13px; color: var(--pixel-text-primary);">
+                      Mathematical type hierarchy with proportional line heights and fixed-width font pairing for server telemetry.
+                    </div>
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--neutral">Consistent Scannability</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Accessibility (WCAG)</strong></td>
+                  <td style="color: var(--pixel-text-secondary); font-size: 13px;">
+                    No focus indicators (<code>outline: none</code>); low-contrast grey-on-white text (2.8:1) failing WCAG AA.
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--success" style="margin-bottom: 4px;">100% WCAG 2.1 AA/AAA</span>
+                    <div style="font-size: 13px; color: var(--pixel-text-primary);">
+                      >= 14:1 contrast on headings, 3px focus-visible keyboard outlines, full ARIA roles and labels.
+                    </div>
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--neutral">Enterprise Compliance</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Data Tables</strong></td>
+                  <td style="color: var(--pixel-text-secondary); font-size: 13px;">
+                    4 custom table styles; no keyboard sorting, no sticky headers, inconsistent row density causing operator fatigue.
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--success" style="margin-bottom: 4px;">High-Density Operations Table</span>
+                    <div style="font-size: 13px; color: var(--pixel-text-primary);">
+                      Multi-column sorting, real-time search, multi-selection, 4-page client pagination, and CSV telemetry export.
+                    </div>
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--neutral">Operator Velocity</span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Theming &amp; Dark Mode</strong></td>
+                  <td style="color: var(--pixel-text-secondary); font-size: 13px;">
+                    Duplicate stylesheets for dark mode; maintenance nightmare requiring sync across 80+ CSS classes.
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--success" style="margin-bottom: 4px;">3-Tier CSS Custom Properties</span>
+                    <div style="font-size: 13px; color: var(--pixel-text-primary);">
+                      Instant theme switching via <code>[data-theme="dark"]</code> custom property aliasing. Zero DOM changes needed.
+                    </div>
+                  </td>
+                  <td>
+                    <span class="pixel-badge pixel-badge--neutral">Zero Maintenance Drift</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 9: DEVELOPER HANDOFF CODE INSPECTOR -->
+      <section id="code-inspector" class="portal-section">
+        <div class="portal-section-header">
+          <h2 class="portal-section-title">
+            <span class="material-symbols-outlined" style="color: var(--pixel-text-brand);">code</span>
+            Developer Handoff &amp; Code Telemetry
+          </h2>
+          <p class="portal-section-desc">
+            Exact design-to-code mapping for engineering synchronization. Copy tokens directly into frontend production code.
+          </p>
+        </div>
+
+        <div class="portal-card">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="font-weight: 600; font-size: 14px;">CSS Variable Token Contract (`pixel-tokens.css`)</div>
+          </div>
+          <div class="portal-code-box">
+            <button class="portal-copy-btn" data-copy-target="code-snippet-tokens">
+              <span class="material-symbols-outlined" style="font-size: 14px;">content_copy</span>
+              <span>Copy Tokens</span>
+            </button>
+            <pre id="code-snippet-tokens"><code>/* Primary Action Semantic Tokens */
+--pixel-action-primary: var(--pixel-primitive-blue-800); /* #1E40AF */
+--pixel-action-primary-hover: var(--pixel-primitive-blue-700); /* #1D4ED8 */
+--pixel-action-primary-active: var(--pixel-primitive-blue-900); /* #172554 */
+
+/* High-Contrast Focus Ring */
+--pixel-focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.25);
+
+/* Spacing Scale */
+--pixel-space-2: 8px;
+--pixel-space-3: 12px;
+--pixel-space-4: 16px;
+--pixel-radius-md: 8px;</code></pre>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- INTERACTIVE MODAL DIALOG (APPROVAL PATTERN) -->
+  <div id="approval-modal-backdrop" class="pixel-modal-backdrop">
+    <div class="pixel-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="pixel-modal__header">
+        <h3 id="modal-title" class="pixel-modal__title">Authorize Host Quarantine</h3>
+        <button class="pixel-btn pixel-btn--ghost pixel-btn--sm close-modal-trigger" style="font-size: 16px;" aria-label="Close modal">✕</button>
+      </div>
+
+      <div style="font-size: 14px; color: var(--pixel-text-secondary); line-height: 1.6;">
+        You are about to isolate incident entity <strong id="modal-target-id" style="color: var(--pixel-text-brand); font-family: var(--pixel-font-mono);">PX-9042</strong> on host <strong id="modal-target-host" style="color: var(--pixel-text-primary); font-family: var(--pixel-font-mono);">srv-prod-us-east-1</strong>.
+        <div style="margin-top: 14px; padding: 12px 14px; background-color: var(--pixel-status-warning-bg); color: var(--pixel-status-warning-text); border: 1px solid var(--pixel-status-warning-border); border-radius: var(--pixel-radius-sm); display: flex; align-items: flex-start; gap: 8px;">
+          <span class="material-symbols-outlined" style="font-size: 18px;">warning</span>
+          <span>This action terminates public ingress traffic and reroutes active user sessions to the secondary failover cluster.</span>
+        </div>
+      </div>
+
+      <div class="pixel-modal__footer">
+        <button class="pixel-btn pixel-btn--secondary pixel-btn--md close-modal-trigger">Cancel</button>
+        <button id="confirm-quarantine-btn" class="pixel-btn pixel-btn--danger pixel-btn--md">
+          <span class="material-symbols-outlined" style="font-size: 16px;">shield</span>
+          <span>Authorize Quarantine</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
