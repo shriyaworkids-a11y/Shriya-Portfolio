@@ -22,6 +22,34 @@
       "destination": "/Shriya's Remake/privacy-statement.html"
     },
     {
+      "source": "/pixel-design-system",
+      "destination": "/Shriya's Remake/pixel-design-system/index.html"
+    },
+    {
+      "source": "/pixel-design-system/",
+      "destination": "/Shriya's Remake/pixel-design-system/index.html"
+    },
+    {
+      "source": "/pixel-design-system/index.html",
+      "destination": "/Shriya's Remake/pixel-design-system/index.html"
+    },
+    {
+      "source": "/pixel-design-system/css/:path*",
+      "destination": "/Shriya's Remake/pixel-design-system/css/:path*"
+    },
+    {
+      "source": "/pixel-design-system/js/:path*",
+      "destination": "/Shriya's Remake/pixel-design-system/js/:path*"
+    },
+    {
+      "source": "/projecten/pixel-design-system",
+      "destination": "/Shriya's Remake/projecten/pixel-design-system.html"
+    },
+    {
+      "source": "/projecten/pixel-design-system.html",
+      "destination": "/Shriya's Remake/projecten/pixel-design-system.html"
+    },
+    {
       "source": "/((?!Shriya's Remake/).*)",
       "destination": "/Shriya's Remake/$1"
     }

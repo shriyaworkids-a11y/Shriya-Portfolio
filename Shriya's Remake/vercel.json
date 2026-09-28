@@ -1,3 +1,13 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/pixel-design-system",
+      "destination": "/pixel-design-system/index.html"
+    },
+    {
+      "source": "/pixel-design-system/",
+      "destination": "/pixel-design-system/index.html"
+    }
+  ]
 }

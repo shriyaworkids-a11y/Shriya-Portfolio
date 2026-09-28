@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
@@ -14,13 +14,2135 @@
   <!-- Google Material Symbols -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-  <!-- Core System Stylesheets -->
-  <link rel="stylesheet" href="css/pixel-tokens.css"/>
-  <link rel="stylesheet" href="css/pixel-components.css"/>
-  <link rel="stylesheet" href="css/pixel-portal.css"/>
+  <!-- Inlined Core System Stylesheets (Guarantees 100% Styling on Any Host / URL Path) -->
+  <style id="pixel-inlined-tokens">
+/**
+ * GOOGLE MATERIAL DESIGN 3 (M3) — PRODUCTION TOKEN ENGINE
+ * Inspired 1:1 by https://m3.material.io/
+ * Includes full M3 Tonal Palettes, Surface Containers, Shape Scale, and Dynamic Theme Seeds
+ */
 
-  <!-- Interactive System Script -->
-  <script defer src="js/pixel-system.js"></script>
+:root {
+  /* ==========================================================================
+     1. TYPOGRAPHY (M3 SPECIFICATION)
+     ========================================================================== */
+  --md-ref-typeface-brand: 'Plus Jakarta Sans', 'Google Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --md-ref-typeface-plain: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --md-ref-typeface-mono:  'JetBrains Mono', 'Google Sans Mono', monospace;
+
+  --pixel-font-family: var(--md-ref-typeface-plain);
+  --pixel-font-mono:   var(--md-ref-typeface-mono);
+
+  /* M3 Typescale Tokens */
+  --md-sys-typescale-display-large:  400 57px/64px var(--md-ref-typeface-brand);
+  --md-sys-typescale-display-medium: 400 45px/52px var(--md-ref-typeface-brand);
+  --md-sys-typescale-display-small:  400 36px/44px var(--md-ref-typeface-brand);
+
+  --md-sys-typescale-headline-large:  400 32px/40px var(--md-ref-typeface-brand);
+  --md-sys-typescale-headline-medium: 400 28px/36px var(--md-ref-typeface-brand);
+  --md-sys-typescale-headline-small:  400 24px/32px var(--md-ref-typeface-brand);
+
+  --md-sys-typescale-title-large:  400 22px/28px var(--md-ref-typeface-brand);
+  --md-sys-typescale-title-medium: 500 16px/24px var(--md-ref-typeface-plain);
+  --md-sys-typescale-title-small:  500 14px/20px var(--md-ref-typeface-plain);
+
+  --md-sys-typescale-body-large:  400 16px/24px var(--md-ref-typeface-plain);
+  --md-sys-typescale-body-medium: 400 14px/20px var(--md-ref-typeface-plain);
+  --md-sys-typescale-body-small:  400 12px/16px var(--md-ref-typeface-plain);
+
+  --md-sys-typescale-label-large:  500 14px/20px var(--md-ref-typeface-plain);
+  --md-sys-typescale-label-medium: 500 12px/16px var(--md-ref-typeface-plain);
+  --md-sys-typescale-label-small:  500 11px/16px var(--md-ref-typeface-plain);
+
+  /* Legacy Aliases */
+  --pixel-text-display: var(--md-sys-typescale-display-small);
+  --pixel-text-h1:      var(--md-sys-typescale-headline-large);
+  --pixel-text-h2:      var(--md-sys-typescale-headline-medium);
+  --pixel-text-h3:      var(--md-sys-typescale-title-large);
+  --pixel-text-title:   var(--md-sys-typescale-title-medium);
+  --pixel-text-body-lg: var(--md-sys-typescale-body-large);
+  --pixel-text-body-md: var(--md-sys-typescale-body-medium);
+  --pixel-text-body-sm: var(--md-sys-typescale-body-small);
+  --pixel-text-caption: var(--md-sys-typescale-label-small);
+
+  /* ==========================================================================
+     2. M3 SHAPE SCALE
+     ========================================================================== */
+  --md-sys-shape-corner-none:        0px;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small:       8px;
+  --md-sys-shape-corner-medium:      12px;
+  --md-sys-shape-corner-large:       16px;
+  --md-sys-shape-corner-extra-large: 28px;
+  --md-sys-shape-corner-full:        9999px;
+
+  --pixel-radius-none: var(--md-sys-shape-corner-none);
+  --pixel-radius-xs:   var(--md-sys-shape-corner-extra-small);
+  --pixel-radius-sm:   var(--md-sys-shape-corner-small);
+  --pixel-radius-md:   var(--md-sys-shape-corner-medium);
+  --pixel-radius-lg:   var(--md-sys-shape-corner-large);
+  --pixel-radius-xl:   var(--md-sys-shape-corner-extra-large);
+  --pixel-radius-full: var(--md-sys-shape-corner-full);
+
+  /* ==========================================================================
+     3. M3 SPACING SCALE (4px / 8px Grid Rhythm)
+     ========================================================================== */
+  --pixel-space-0:  0px;
+  --pixel-space-1:  4px;
+  --pixel-space-2:  8px;
+  --pixel-space-3:  12px;
+  --pixel-space-4:  16px;
+  --pixel-space-5:  20px;
+  --pixel-space-6:  24px;
+  --pixel-space-8:  32px;
+  --pixel-space-10: 40px;
+  --pixel-space-12: 48px;
+  --pixel-space-16: 64px;
+  --pixel-space-20: 80px;
+
+  /* ==========================================================================
+     4. M3 STATE LAYERS & ELEVATION
+     ========================================================================== */
+  --md-sys-state-hover-opacity:   0.08;
+  --md-sys-state-focus-opacity:   0.12;
+  --md-sys-state-pressed-opacity: 0.12;
+  --md-sys-state-dragged-opacity: 0.16;
+
+  --md-sys-elevation-level0: none;
+  --md-sys-elevation-level1: 0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  --md-sys-elevation-level2: 0 2px 6px 2px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
+  --md-sys-elevation-level3: 0 4px 8px 3px rgba(0, 0, 0, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  --md-sys-elevation-level4: 0 6px 10px 4px rgba(0, 0, 0, 0.08), 0 2px 3px 0 rgba(0, 0, 0, 0.12);
+  --md-sys-elevation-level5: 0 8px 12px 6px rgba(0, 0, 0, 0.08), 0 4px 4px 0 rgba(0, 0, 0, 0.12);
+
+  --pixel-elevation-1: var(--md-sys-elevation-level1);
+  --pixel-elevation-2: var(--md-sys-elevation-level2);
+  --pixel-elevation-3: var(--md-sys-elevation-level3);
+  --pixel-elevation-4: var(--md-sys-elevation-level4);
+
+  --pixel-transition-fast: 150ms cubic-bezier(0.2, 0, 0, 1);
+  --pixel-transition-normal: 250ms cubic-bezier(0.2, 0, 0, 1);
+
+  /* ==========================================================================
+     5. PIXEL FOUNDATIONAL COLOR ROLES — LIGHT THEME (DEFAULT: PIXEL BLUE)
+     ========================================================================== */
+  --md-sys-color-primary:                  #1A73E8;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #D4E3FF;
+  --md-sys-color-on-primary-container:     #001C3B;
+
+  --md-sys-color-secondary:                #0284C7;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #E0F2FE;
+  --md-sys-color-on-secondary-container:   #0369A1;
+
+  --md-sys-color-tertiary:                 #6366F1;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #EEF2FF;
+  --md-sys-color-on-tertiary-container:    #1E1B4B;
+
+  --md-sys-color-error:                    #DC2626;
+  --md-sys-color-on-error:                 #FFFFFF;
+  --md-sys-color-error-container:           #FEE2E2;
+  --md-sys-color-on-error-container:        #7F1D1D;
+
+  --md-sys-color-background:               #F8FAFC;
+  --md-sys-color-on-background:            #0F172A;
+
+  --md-sys-color-surface:                  #FFFFFF;
+  --md-sys-color-on-surface:               #0F172A;
+  --md-sys-color-surface-variant:          #E2E8F0;
+  --md-sys-color-on-surface-variant:       #475569;
+
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #F8FAFC;
+  --md-sys-color-surface-container:        #F1F5F9;
+  --md-sys-color-surface-container-high:   #E2E8F0;
+  --md-sys-color-surface-container-highest:#CBD5E1;
+
+  --md-sys-color-outline:                  #94A3B8;
+  --md-sys-color-outline-variant:          #E2E8F0;
+  --md-sys-color-shadow:                   rgba(15, 23, 42, 0.08);
+  --md-sys-color-scrim:                    rgba(15, 23, 42, 0.6);
+  --md-sys-color-inverse-surface:          #0F172A;
+  --md-sys-color-inverse-on-surface:       #F8FAFC;
+  --md-sys-color-inverse-primary:          #93C5FD;
+
+  /* ==========================================================================
+     PIXEL ORIGINAL BRAND PRIMITIVES (Core Electric Blue DNA)
+     ========================================================================== */
+  --pixel-primitive-blue-50:  #EFF6FF;
+  --pixel-primitive-blue-100: #DBEAFE;
+  --pixel-primitive-blue-200: #BFDBFE;
+  --pixel-primitive-blue-300: #93C5FD;
+  --pixel-primitive-blue-400: #60A5FA;
+  --pixel-primitive-blue-500: #3B82F6;
+  --pixel-primitive-blue-600: #2563EB;
+  --pixel-primitive-blue-700: #1D4ED8;
+  --pixel-primitive-blue-800: #1E40AF;
+  --pixel-primitive-blue-900: #1E3A8A;
+  --pixel-primitive-blue-950: #0F172A;
+
+  --pixel-primitive-cyan-500:    #06B6D4;
+  --pixel-primitive-emerald-600: #059669;
+  --pixel-primitive-amber-600:   #D97706;
+  --pixel-primitive-rose-600:    #E11D48;
+
+  /* Semantic Aliases for Compatibility */
+  --pixel-bg-canvas:         var(--md-sys-color-surface-container-lowest);
+  --pixel-bg-surface:        var(--md-sys-color-surface-container-lowest);
+  --pixel-bg-surface-subtle: var(--md-sys-color-surface-container);
+  --pixel-bg-surface-hover:  var(--md-sys-color-surface-container-high);
+  --pixel-bg-surface-active: var(--md-sys-color-surface-container-highest);
+  --pixel-bg-inverse:        var(--md-sys-color-inverse-surface);
+
+  --pixel-text-primary:      var(--md-sys-color-on-surface);
+  --pixel-text-secondary:    var(--md-sys-color-on-surface-variant);
+  --pixel-text-muted:        var(--md-sys-color-outline);
+  --pixel-text-inverse:      var(--md-sys-color-inverse-on-surface);
+  --pixel-text-brand:        var(--md-sys-color-primary);
+
+  --pixel-border-subtle:     var(--md-sys-color-outline-variant);
+  --pixel-border-default:    var(--md-sys-color-outline-variant);
+  --pixel-border-strong:     var(--md-sys-color-outline);
+  --pixel-border-focus:      var(--md-sys-color-primary);
+  --pixel-focus-ring:        0 0 0 3px color-mix(in srgb, var(--md-sys-color-primary) 30%, transparent);
+
+  --pixel-action-primary:         var(--md-sys-color-primary);
+  --pixel-action-primary-hover:   #1557B0;
+  --pixel-action-primary-active:  #0D47A1;
+  --pixel-action-primary-text:    var(--md-sys-color-on-primary);
+
+  --pixel-action-tonal-bg:        var(--md-sys-color-secondary-container);
+  --pixel-action-tonal-text:      var(--md-sys-color-on-secondary-container);
+  --pixel-action-tonal-hover:     color-mix(in srgb, var(--md-sys-color-secondary-container) 90%, black);
+
+  --pixel-action-secondary-bg:    var(--md-sys-color-surface-container-low);
+  --pixel-action-secondary-border:var(--md-sys-color-outline);
+  --pixel-action-secondary-text:  var(--md-sys-color-on-surface);
+  --pixel-action-secondary-hover: var(--md-sys-color-surface-container-high);
+
+  --pixel-status-success-bg:      #ECFDF5;
+  --pixel-status-success-text:    #065F46;
+  --pixel-status-success-border:  #A7F3D0;
+
+  --pixel-status-warning-bg:      #FFFBEB;
+  --pixel-status-warning-text:    #92400E;
+  --pixel-status-warning-border:  #FDE68A;
+
+  --pixel-status-danger-bg:       var(--md-sys-color-error-container);
+  --pixel-status-danger-text:     var(--md-sys-color-on-error-container);
+  --pixel-status-danger-border:   var(--md-sys-color-error);
+}
+
+/* ==========================================================================
+   DYNAMIC COLOR SEED: PIXEL SIGNATURE BLUE (Default: #1A73E8 / #005FB0)
+   ========================================================================== */
+[data-seed="blue"] {
+  --md-sys-color-primary:                  #1A73E8;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #D4E3FF;
+  --md-sys-color-on-primary-container:     #001C3B;
+
+  --md-sys-color-secondary:                #0284C7;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #E0F2FE;
+  --md-sys-color-on-secondary-container:   #0369A1;
+
+  --md-sys-color-tertiary:                 #6366F1;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #EEF2FF;
+  --md-sys-color-on-tertiary-container:    #1E1B4B;
+
+  --md-sys-color-background:               #F8FAFF;
+  --md-sys-color-surface:                  #F8FAFF;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #F1F4FD;
+  --md-sys-color-surface-container:        #EBF0FA;
+  --md-sys-color-surface-container-high:   #E4EAF5;
+  --md-sys-color-surface-container-highest:#DDE4F0;
+}
+
+/* ==========================================================================
+   DYNAMIC COLOR SEED: CYBER VIOLET (Source: #7C3AED / #6750A4)
+   ========================================================================== */
+[data-seed="purple"] {
+  --md-sys-color-primary:                  #7C3AED;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #EDE9FE;
+  --md-sys-color-on-primary-container:     #2E1065;
+
+  --md-sys-color-secondary:                #6D28D9;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #F5F3FF;
+  --md-sys-color-on-secondary-container:   #3B0764;
+
+  --md-sys-color-tertiary:                 #9333EA;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #FAE8FF;
+  --md-sys-color-on-tertiary-container:    #581C87;
+
+  --md-sys-color-background:               #FAF7FD;
+  --md-sys-color-surface:                  #FAF7FD;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #F5EFFB;
+  --md-sys-color-surface-container:        #EEE5F7;
+  --md-sys-color-surface-container-high:   #E7DCF2;
+  --md-sys-color-surface-container-highest:#E0D3ED;
+}
+
+
+/* ==========================================================================
+   DYNAMIC COLOR SEED: FOREST TEAL (Source: #006A60)
+   ========================================================================== */
+[data-seed="teal"] {
+  --md-sys-color-primary:                  #006A60;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #74F8E5;
+  --md-sys-color-on-primary-container:     #00201C;
+
+  --md-sys-color-secondary:                #4A635F;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #CCE8E2;
+  --md-sys-color-on-secondary-container:   #05201C;
+
+  --md-sys-color-tertiary:                 #456179;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #CCE5FF;
+  --md-sys-color-on-tertiary-container:    #001D32;
+
+  --md-sys-color-background:               #F4FBF7;
+  --md-sys-color-surface:                  #F4FBF7;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #EEF5F2;
+  --md-sys-color-surface-container:        #E8EFEA;
+  --md-sys-color-surface-container-high:   #E2EAE6;
+  --md-sys-color-surface-container-highest:#DCE4E0;
+}
+
+/* ==========================================================================
+   DYNAMIC COLOR SEED: WARM AMBER (Source: #825500)
+   ========================================================================== */
+[data-seed="amber"] {
+  --md-sys-color-primary:                  #825500;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #FFDDB3;
+  --md-sys-color-on-primary-container:     #291800;
+
+  --md-sys-color-secondary:                #6F5B40;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #FADEBC;
+  --md-sys-color-on-secondary-container:   #271904;
+
+  --md-sys-color-tertiary:                 #516440;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #D4EABA;
+  --md-sys-color-on-tertiary-container:    #102004;
+
+  --md-sys-color-background:               #FFF8F4;
+  --md-sys-color-surface:                  #FFF8F4;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #FAF2EB;
+  --md-sys-color-surface-container:        #F4ECE4;
+  --md-sys-color-surface-container-high:   #EEE6DF;
+  --md-sys-color-surface-container-highest:#E8E0D9;
+}
+
+/* ==========================================================================
+   DYNAMIC COLOR SEED: CORAL ROSE (Source: #9C4146)
+   ========================================================================== */
+[data-seed="rose"] {
+  --md-sys-color-primary:                  #9C4146;
+  --md-sys-color-on-primary:               #FFFFFF;
+  --md-sys-color-primary-container:        #FFDADA;
+  --md-sys-color-on-primary-container:     #41000A;
+
+  --md-sys-color-secondary:                #775656;
+  --md-sys-color-on-secondary:             #FFFFFF;
+  --md-sys-color-secondary-container:      #FFDAD9;
+  --md-sys-color-on-secondary-container:   #2C1516;
+
+  --md-sys-color-tertiary:                 #755A2F;
+  --md-sys-color-on-tertiary:              #FFFFFF;
+  --md-sys-color-tertiary-container:       #FFDEAA;
+  --md-sys-color-on-tertiary-container:    #281800;
+
+  --md-sys-color-background:               #FFF8F7;
+  --md-sys-color-surface:                  #FFF8F7;
+  --md-sys-color-surface-container-lowest: #FFFFFF;
+  --md-sys-color-surface-container-low:    #FAF1F0;
+  --md-sys-color-surface-container:        #F4EBEA;
+  --md-sys-color-surface-container-high:   #EFE5E4;
+  --md-sys-color-surface-container-highest:#E9DFDE;
+}
+
+/* ==========================================================================
+   PIXEL DARK THEME — TONAL SURFACE SYSTEM (OLED & ENTERPRISE BLUE)
+   ========================================================================== */
+[data-theme="dark"] {
+  --md-sys-color-primary:                  #60A5FA;
+  --md-sys-color-on-primary:               #031E48;
+  --md-sys-color-primary-container:        #1D4ED8;
+  --md-sys-color-on-primary-container:     #DBEAFE;
+
+  --md-sys-color-secondary:                #38BDF8;
+  --md-sys-color-on-secondary:             #082F49;
+  --md-sys-color-secondary-container:      #0369A1;
+  --md-sys-color-on-secondary-container:   #E0F2FE;
+
+  --md-sys-color-tertiary:                 #818CF8;
+  --md-sys-color-on-tertiary:              #1E1B4B;
+  --md-sys-color-tertiary-container:       #3730A3;
+  --md-sys-color-on-tertiary-container:    #EEF2FF;
+
+  --md-sys-color-error:                    #F87171;
+  --md-sys-color-on-error:                 #450A0A;
+  --md-sys-color-error-container:           #7F1D1D;
+  --md-sys-color-on-error-container:        #FEE2E2;
+
+  --md-sys-color-background:               #0B0F19;
+  --md-sys-color-on-background:            #F8FAFC;
+
+  --md-sys-color-surface:                  #0B0F19;
+  --md-sys-color-on-surface:               #F8FAFC;
+  --md-sys-color-surface-variant:          #1E293B;
+  --md-sys-color-on-surface-variant:       #94A3B8;
+
+  --md-sys-color-surface-container-lowest: #070A10;
+  --md-sys-color-surface-container-low:    #111827;
+  --md-sys-color-surface-container:        #1E293B;
+  --md-sys-color-surface-container-high:   #26354D;
+  --md-sys-color-surface-container-highest:#334155;
+
+  --md-sys-color-outline:                  #64748B;
+  --md-sys-color-outline-variant:          #334155;
+  --md-sys-color-inverse-surface:          #F8FAFC;
+  --md-sys-color-inverse-on-surface:       #0F172A;
+  --md-sys-color-inverse-primary:          #1D4ED8;
+
+  /* Semantic Aliases for Dark Mode */
+  --pixel-bg-canvas:         var(--md-sys-color-background);
+  --pixel-bg-surface:        var(--md-sys-color-surface-container-low);
+  --pixel-bg-surface-subtle: var(--md-sys-color-surface-container);
+  --pixel-bg-surface-hover:  var(--md-sys-color-surface-container-high);
+  --pixel-bg-surface-active: var(--md-sys-color-surface-container-highest);
+  --pixel-bg-inverse:        var(--md-sys-color-inverse-surface);
+
+  --pixel-text-primary:      var(--md-sys-color-on-surface);
+  --pixel-text-secondary:    var(--md-sys-color-on-surface-variant);
+  --pixel-text-muted:        var(--md-sys-color-outline);
+  --pixel-text-inverse:      var(--md-sys-color-inverse-on-surface);
+  --pixel-text-brand:        var(--md-sys-color-primary);
+
+  --pixel-border-subtle:     var(--md-sys-color-outline-variant);
+  --pixel-border-default:    var(--md-sys-color-outline-variant);
+  --pixel-border-strong:     var(--md-sys-color-outline);
+  --pixel-border-focus:      var(--md-sys-color-primary);
+
+  --pixel-action-primary:         var(--md-sys-color-primary);
+  --pixel-action-primary-hover:   color-mix(in srgb, var(--md-sys-color-primary) 90%, white);
+  --pixel-action-primary-active:  color-mix(in srgb, var(--md-sys-color-primary) 80%, white);
+  --pixel-action-primary-text:    var(--md-sys-color-on-primary);
+
+  --pixel-action-tonal-bg:        var(--md-sys-color-secondary-container);
+  --pixel-action-tonal-text:      var(--md-sys-color-on-secondary-container);
+
+  --pixel-status-success-bg:      #1B3A26;
+  --pixel-status-success-text:    #81C784;
+  --pixel-status-success-border:  #2E7D32;
+
+  --pixel-status-warning-bg:      #3E2723;
+  --pixel-status-warning-text:    #FFE082;
+  --pixel-status-warning-border:  #FFB300;
+
+  --pixel-status-danger-bg:       var(--md-sys-color-error-container);
+  --pixel-status-danger-text:     var(--md-sys-color-on-error-container);
+  --pixel-status-danger-border:   var(--md-sys-color-error);
+}
+
+/* Dark Seed Overrides */
+[data-theme="dark"][data-seed="blue"] {
+  --md-sys-color-primary:              #60A5FA;
+  --md-sys-color-on-primary:           #031E48;
+  --md-sys-color-primary-container:    #1D4ED8;
+  --md-sys-color-on-primary-container: #DBEAFE;
+  --md-sys-color-secondary-container:  #0369A1;
+  --md-sys-color-on-secondary-container:#E0F2FE;
+}
+
+[data-theme="dark"][data-seed="purple"] {
+  --md-sys-color-primary:              #D0BCFF;
+  --md-sys-color-on-primary:           #381E72;
+  --md-sys-color-primary-container:    #4F378B;
+  --md-sys-color-on-primary-container: #EADDFF;
+  --md-sys-color-secondary-container:  #4A4458;
+  --md-sys-color-on-secondary-container:#E8DEF8;
+}
+
+[data-theme="dark"][data-seed="teal"] {
+  --md-sys-color-primary:              #53DBC9;
+  --md-sys-color-on-primary:           #003731;
+  --md-sys-color-primary-container:    #005048;
+  --md-sys-color-on-primary-container: #74F8E5;
+  --md-sys-color-secondary-container:  #334B47;
+  --md-sys-color-on-secondary-container:#CCE8E2;
+}
+
+[data-theme="dark"][data-seed="amber"] {
+  --md-sys-color-primary:              #FFBA28;
+  --md-sys-color-on-primary:           #452B00;
+  --md-sys-color-primary-container:    #633F00;
+  --md-sys-color-on-primary-container: #FFDDB3;
+  --md-sys-color-secondary-container:  #56442A;
+  --md-sys-color-on-secondary-container:#FADEBC;
+}
+
+[data-theme="dark"][data-seed="rose"] {
+  --md-sys-color-primary:              #FFB3B4;
+  --md-sys-color-on-primary:           #5F121C;
+  --md-sys-color-primary-container:    #7E2930;
+  --md-sys-color-on-primary-container: #FFDADA;
+  --md-sys-color-secondary-container:  #5D3F40;
+  --md-sys-color-on-secondary-container:#FFDAD9;
+}
+
+  </style>
+  <style id="pixel-inlined-components">
+/**
+ * PIXEL ENTERPRISE DESIGN SYSTEM — PRODUCTION COMPONENT LIBRARY
+ * Full 8-state coverage, WCAG AAA contrast, and high-density telemetry layout.
+ */
+
+/* ==========================================================================
+   0. UNIVERSAL MATERIAL SYMBOLS & ICON ALIGNMENT
+   ========================================================================== */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  flex-shrink: 0;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   1. BUTTON SYSTEM (FILLED, TONAL, ELEVATED, OUTLINED, GHOST, DANGER, FAB)
+   ========================================================================== */
+.pixel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--md-ref-typeface-plain);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  line-height: 1;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: var(--md-sys-shape-corner-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: middle;
+  transition: all var(--pixel-transition-fast);
+  box-sizing: border-box;
+}
+
+.pixel-btn .material-symbols-outlined {
+  font-size: 18px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.pixel-btn span,
+.pixel-btn .pixel-btn__label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* State Layer Overlay */
+.pixel-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: currentColor;
+  opacity: 0;
+  transition: opacity var(--pixel-transition-fast);
+  pointer-events: none;
+  border-radius: inherit;
+}
+.pixel-btn:hover:not(:disabled)::after {
+  opacity: var(--md-sys-state-hover-opacity);
+}
+.pixel-btn:active:not(:disabled)::after {
+  opacity: var(--md-sys-state-pressed-opacity);
+}
+
+/* Button Variants */
+/* Filled (Primary) */
+.pixel-btn--primary {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  box-shadow: var(--md-sys-elevation-level0);
+}
+.pixel-btn--primary:hover:not(:disabled) {
+  box-shadow: var(--md-sys-elevation-level1);
+}
+.pixel-btn--primary:active:not(:disabled) {
+  box-shadow: var(--md-sys-elevation-level0);
+}
+
+/* Filled Tonal (Secondary) */
+.pixel-btn--secondary,
+.pixel-btn--tonal {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+.pixel-btn--secondary:hover:not(:disabled),
+.pixel-btn--tonal:hover:not(:disabled) {
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+/* Elevated */
+.pixel-btn--elevated {
+  background-color: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-primary);
+  box-shadow: var(--md-sys-elevation-level1);
+}
+.pixel-btn--elevated:hover:not(:disabled) {
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+/* Outlined */
+.pixel-btn--outline {
+  background-color: transparent;
+  border-color: var(--md-sys-color-outline);
+  color: var(--md-sys-color-primary);
+}
+.pixel-btn--outline:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 6%, transparent);
+}
+
+/* Text / Ghost */
+.pixel-btn--ghost {
+  background-color: transparent;
+  color: var(--md-sys-color-primary);
+  padding: 0 12px;
+}
+.pixel-btn--ghost:hover:not(:disabled) {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 8%, transparent);
+}
+
+/* Danger / Destructive */
+.pixel-btn--danger {
+  background-color: var(--md-sys-color-error);
+  color: var(--md-sys-color-on-error);
+}
+.pixel-btn--danger:hover:not(:disabled) {
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+/* Sizes */
+.pixel-btn--sm {
+  height: 32px;
+  padding: 0 14px;
+  font-size: 13px;
+  gap: 6px;
+}
+.pixel-btn--sm .material-symbols-outlined {
+  font-size: 16px;
+}
+.pixel-btn--md {
+  height: 40px;
+  padding: 0 20px;
+  font-size: 14px;
+}
+.pixel-btn--lg {
+  height: 48px;
+  padding: 0 26px;
+  font-size: 15px;
+  gap: 10px;
+}
+.pixel-btn--lg .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.pixel-btn--pill {
+  border-radius: var(--md-sys-shape-corner-full);
+}
+
+/* Focus Visible */
+.pixel-btn:focus-visible {
+  outline: 3px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+}
+
+/* Disabled */
+.pixel-btn:disabled, .pixel-btn.is-disabled {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) 12%, transparent) !important;
+  color: color-mix(in srgb, var(--md-sys-color-on-surface) 38%, transparent) !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 8-State Simulator Simulated Target States */
+.playground-target.is-focused {
+  outline: 3px solid var(--md-sys-color-primary) !important;
+  outline-offset: 2px !important;
+}
+.playground-target.is-disabled {
+  opacity: 0.38 !important;
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
+.playground-target.is-loading {
+  position: relative !important;
+  color: transparent !important;
+  pointer-events: none !important;
+}
+.playground-target.is-loading .material-symbols-outlined,
+.playground-target.is-loading .pixel-btn__label {
+  visibility: hidden;
+}
+.playground-target.is-loading::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: pixelSpin 0.7s linear infinite;
+  top: 50%;
+  left: 50%;
+  margin-top: -8px;
+  margin-left: -8px;
+  color: var(--md-sys-color-on-primary);
+}
+.pixel-btn--secondary.is-loading::before,
+.pixel-btn--tonal.is-loading::before,
+.pixel-btn--outline.is-loading::before,
+.pixel-btn--ghost.is-loading::before {
+  color: var(--md-sys-color-primary) !important;
+}
+.playground-target.is-error {
+  border-color: var(--md-sys-color-error) !important;
+  background-color: var(--md-sys-color-error-container) !important;
+  color: var(--md-sys-color-on-error-container) !important;
+}
+@keyframes pixelSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* State Simulator Controller Bar */
+.state-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-medium);
+  margin-bottom: 20px;
+}
+.state-bar__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--pixel-text-secondary);
+  letter-spacing: 0.05em;
+  margin-right: 6px;
+}
+.state-bar button.is-active {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  font-weight: 600;
+}
+
+/* M3 Floating Action Button (FAB) */
+.m3-fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  box-shadow: var(--md-sys-elevation-level3);
+  border: none;
+  cursor: pointer;
+  transition: all var(--pixel-transition-fast);
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.m3-fab:hover {
+  box-shadow: var(--md-sys-elevation-level4);
+  transform: translateY(-2px);
+}
+.m3-fab--extended {
+  width: auto;
+  padding: 0 20px;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 16px;
+}
+
+/* ==========================================================================
+   2. TAGS, BADGES & CHIPS
+   ========================================================================== */
+.pixel-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 24px;
+  line-height: 1;
+  padding: 0 10px;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  vertical-align: middle;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.pixel-badge .material-symbols-outlined {
+  font-size: 14px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+.pixel-badge > span,
+.pixel-badge > strong {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.pixel-badge--info {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+.pixel-badge--success {
+  background-color: #E8F5E9;
+  color: #1B5E20;
+}
+.pixel-badge--warning {
+  background-color: #FFF8E1;
+  color: #F57F17;
+}
+.pixel-badge--danger {
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+}
+.pixel-badge--neutral {
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Chips */
+.pixel-chip-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pixel-chip,
+.pixel-chip--interactive {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 32px;
+  line-height: 1;
+  padding: 0 14px;
+  border-radius: var(--md-sys-shape-corner-small);
+  border: 1px solid var(--md-sys-color-outline);
+  background-color: transparent;
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-ref-typeface-plain);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  transition: all var(--pixel-transition-fast);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.pixel-chip:hover,
+.pixel-chip--interactive:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) var(--md-sys-state-hover-opacity), transparent);
+}
+.pixel-chip.is-selected,
+.pixel-chip--interactive.is-active {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  border-color: transparent;
+  font-weight: 600;
+}
+.pixel-chip .material-symbols-outlined,
+.pixel-chip .chip-check-icon,
+.pixel-chip__icon {
+  font-size: 16px;
+  line-height: 1;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+.pixel-chip span {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   3. SWITCH COMPONENT
+   ========================================================================== */
+.pixel-switch {
+  width: 52px;
+  height: 32px;
+  border-radius: 16px;
+  background-color: var(--md-sys-color-surface-container-highest);
+  border: 2px solid var(--md-sys-color-outline);
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+.pixel-switch__thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--md-sys-color-outline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--md-sys-color-surface);
+  font-size: 14px;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  transform: translateX(0);
+}
+.pixel-switch.is-checked {
+  background-color: var(--md-sys-color-primary);
+  border-color: var(--md-sys-color-primary);
+}
+.pixel-switch.is-checked .pixel-switch__thumb {
+  background-color: var(--md-sys-color-on-primary);
+  color: var(--md-sys-color-primary);
+  transform: translateX(20px);
+}
+
+/* ==========================================================================
+   4. FORM FIELDS & VALIDATION
+   ========================================================================== */
+.pixel-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pixel-label,
+.pixel-input-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  letter-spacing: 0.1px;
+  line-height: 1;
+}
+.pixel-label__required {
+  color: var(--md-sys-color-error);
+  font-weight: 700;
+}
+
+.pixel-input-box,
+.pixel-input-box--lead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 14px;
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  color: var(--md-sys-color-on-surface);
+  transition: all var(--pixel-transition-fast);
+  box-sizing: border-box;
+}
+.pixel-input-box:focus-within,
+.pixel-input-box--lead:focus-within {
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--md-sys-color-primary) 25%, transparent);
+}
+
+.pixel-input-icon-lead {
+  font-size: 18px;
+  color: var(--md-sys-color-on-surface-variant);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.pixel-input,
+.pixel-input-box input {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--md-ref-typeface-plain);
+  font-size: 14px;
+  color: inherit;
+  line-height: normal;
+}
+.pixel-input::placeholder,
+.pixel-input-box input::placeholder {
+  color: var(--md-sys-color-outline);
+}
+
+select.pixel-input {
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  background-color: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  outline: none;
+  font-family: var(--md-ref-typeface-plain);
+  font-size: 13px;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+select.pixel-input:focus {
+  border-color: var(--md-sys-color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--md-sys-color-primary) 25%, transparent);
+}
+
+.pixel-input.is-error {
+  border-color: var(--md-sys-color-error);
+  color: var(--md-sys-color-error);
+}
+
+.pixel-helper-text,
+.pixel-input-help {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+  min-height: 16px;
+  line-height: 1.4;
+}
+.pixel-helper-text--error {
+  color: var(--md-sys-color-error);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   5. OPS KPI METRICS GRID & CARDS
+   ========================================================================== */
+.ops-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.ops-kpi-card {
+  background-color: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 18px 20px;
+  box-shadow: var(--md-sys-elevation-level1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform var(--pixel-transition-fast), box-shadow var(--pixel-transition-fast);
+}
+.ops-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+.ops-kpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ops-kpi-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+.ops-kpi-value {
+  font-size: 26px;
+  font-weight: 700;
+  font-family: var(--md-ref-typeface-mono);
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.2;
+  margin: 2px 0;
+}
+.ops-kpi-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   6. ENTERPRISE DATA TABLE
+   ========================================================================== */
+.pixel-table-container,
+.table-container {
+  overflow-x: auto;
+  border-radius: var(--md-sys-shape-corner-large);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  background-color: var(--md-sys-color-surface-container-lowest);
+  box-shadow: var(--md-sys-elevation-level1);
+}
+
+.pixel-table,
+.pixel-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+.pixel-table th,
+.pixel-data-table th {
+  background-color: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface-variant);
+  padding: 12px 16px;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: middle;
+}
+.pixel-table th.is-sortable,
+.pixel-table th.sortable {
+  cursor: pointer;
+  transition: background-color var(--pixel-transition-fast);
+}
+.pixel-table th.is-sortable:hover,
+.pixel-table th.sortable:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+.pixel-table th.is-sortable > div,
+.pixel-table th.sortable > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+  vertical-align: middle;
+}
+.pixel-table th.is-sortable .material-symbols-outlined,
+.pixel-table th.sortable .material-symbols-outlined {
+  font-size: 16px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.pixel-table td,
+.pixel-data-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  color: var(--md-sys-color-on-surface);
+  vertical-align: middle;
+  line-height: 1.4;
+  transition: background-color var(--pixel-transition-fast);
+}
+.pixel-table td .material-symbols-outlined,
+.pixel-data-table td .material-symbols-outlined {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1;
+}
+.pixel-table tr:last-child td,
+.pixel-data-table tr:last-child td {
+  border-bottom: none;
+}
+.pixel-table tr:hover td {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 4%, transparent);
+}
+.pixel-table tr.is-selected td {
+  background-color: color-mix(in srgb, var(--md-sys-color-primary) 10%, transparent);
+}
+
+.pixel-table td input[type="checkbox"],
+.pixel-table th input[type="checkbox"] {
+  vertical-align: middle;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   7. MODAL DIALOG
+   ========================================================================== */
+.pixel-modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.pixel-modal-backdrop.is-open {
+  display: flex;
+  animation: m3DialogFadeIn 0.25s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+.pixel-modal {
+  width: 100%;
+  max-width: 500px;
+  background-color: var(--md-sys-color-surface-container-high);
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  box-shadow: var(--md-sys-elevation-level3);
+  padding: 24px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.pixel-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--md-sys-color-surface-container-highest);
+}
+.pixel-modal__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.pixel-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--md-sys-color-surface-container-highest);
+}
+
+@keyframes m3DialogFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==========================================================================
+   8. FLOATING TOAST NOTIFICATIONS (M3 SNACKBAR)
+   ========================================================================== */
+.pixel-toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.pixel-toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--md-sys-color-inverse-surface);
+  color: var(--md-sys-color-inverse-on-surface);
+  padding: 10px 16px;
+  border-radius: var(--md-sys-shape-corner-small);
+  box-shadow: var(--md-sys-elevation-level3);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+  pointer-events: auto;
+}
+.pixel-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+  </style>
+  <style id="pixel-inlined-portal">
+/**
+ * GOOGLE MATERIAL DESIGN 3 (M3) — PORTAL ARCHITECTURE & LAYOUT
+ * Exactly modeled after https://m3.material.io/
+ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--md-ref-typeface-plain);
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-surface);
+  line-height: 1.5;
+  transition: background-color var(--pixel-transition-fast), color var(--pixel-transition-fast);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   1. M3 TOP APP BAR
+   ========================================================================== */
+.portal-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 64px;
+  background-color: var(--md-sys-color-surface);
+  border-bottom: 1px solid var(--md-sys-color-surface-container-high);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--pixel-space-6);
+  transition: background-color var(--pixel-transition-fast);
+}
+
+.portal-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pixel-space-3);
+  text-decoration: none;
+  color: var(--md-sys-color-on-surface);
+}
+
+.portal-brand__icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--md-sys-elevation-level1);
+  flex-shrink: 0;
+}
+.portal-brand__icon .material-symbols-outlined {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.portal-brand__title {
+  font-family: var(--md-ref-typeface-brand);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.portal-brand__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  height: 20px;
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  padding: 0 8px;
+  border-radius: var(--md-sys-shape-corner-full);
+  vertical-align: middle;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.portal-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Dynamic Theme Color Palette Seed Picker */
+.m3-seed-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  background-color: var(--md-sys-color-surface-container-high);
+  padding: 0 10px;
+  border-radius: var(--md-sys-shape-corner-full);
+  box-sizing: border-box;
+}
+
+.m3-seed-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 2px;
+}
+
+.m3-seed-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--pixel-transition-fast);
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+.m3-seed-dot:hover {
+  transform: scale(1.15);
+}
+.m3-seed-dot.is-active {
+  border-color: var(--md-sys-color-on-surface);
+  box-shadow: 0 0 0 2px var(--md-sys-color-surface);
+}
+
+.m3-seed-dot--blue   { background-color: #1A73E8; box-shadow: 0 0 8px rgba(26, 115, 232, 0.4); }
+.m3-seed-dot--teal   { background-color: #0284C7; }
+.m3-seed-dot--purple { background-color: #7C3AED; }
+.m3-seed-dot--amber  { background-color: #D97706; }
+.m3-seed-dot--rose   { background-color: #E11D48; }
+
+/* ==========================================================================
+   2. M3 NAVIGATION DRAWER / RAIL (SIDEBAR)
+   ========================================================================== */
+.portal-layout {
+  display: flex;
+  flex: 1;
+  position: relative;
+  min-height: calc(100vh - 64px);
+}
+
+.portal-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background-color: var(--md-sys-color-surface);
+  border-right: 1px solid var(--md-sys-color-surface-container-high);
+  padding: 16px 12px;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 50;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.portal-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.portal-sidebar::-webkit-scrollbar-thumb {
+  background: var(--md-sys-color-outline-variant);
+  border-radius: 4px;
+}
+
+.portal-nav-group-title {
+  font-family: var(--md-ref-typeface-plain);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--md-sys-color-on-surface-variant);
+  padding: 0 16px;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+/* Signature M3 Pill Navigation Link */
+.portal-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 44px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--md-sys-color-on-surface-variant);
+  border-radius: var(--md-sys-shape-corner-full);
+  text-decoration: none;
+  transition: all var(--pixel-transition-fast);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.portal-nav-link .material-symbols-outlined {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.portal-nav-link span:last-child {
+  line-height: 1.2;
+}
+
+.portal-nav-link:hover {
+  background-color: color-mix(in srgb, var(--md-sys-color-on-surface) var(--md-sys-state-hover-opacity), transparent);
+  color: var(--md-sys-color-on-surface);
+}
+
+.portal-nav-link.is-active {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  font-weight: 600;
+}
+.portal-nav-link.is-active .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1;
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/* Sidebar Backdrop on Mobile */
+.portal-sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 45;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.portal-sidebar-backdrop.is-visible {
+  display: block;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   3. M3 CONTENT VIEWPORT & BREADCRUMB TOOLBAR
+   ========================================================================== */
+.portal-content {
+  flex: 1;
+  min-width: 0;
+  padding: 24px 36px 64px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* M3 Sticky Breadcrumb Toolbar */
+.portal-tab-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-full);
+  min-height: 48px;
+  padding: 6px 18px;
+  margin-bottom: var(--pixel-space-6);
+  position: sticky;
+  top: 72px;
+  z-index: 30;
+  backdrop-filter: blur(10px);
+  flex-wrap: wrap;
+  gap: 12px;
+  box-shadow: var(--md-sys-elevation-level1);
+  box-sizing: border-box;
+}
+
+.portal-tab-toolbar__left {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+
+.portal-tab-toolbar__cat {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--md-sys-color-on-surface-variant);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.portal-tab-toolbar__divider {
+  color: var(--md-sys-color-outline-variant);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.portal-tab-toolbar__current {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  line-height: 1;
+}
+
+.portal-tab-toolbar__current .material-symbols-outlined {
+  font-size: 18px;
+  line-height: 1;
+  color: var(--md-sys-color-primary);
+}
+
+.portal-tab-toolbar__badge {
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  height: 22px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--md-sys-shape-corner-full);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  box-sizing: border-box;
+}
+
+.portal-tab-toolbar__nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.portal-tab-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--md-sys-color-on-surface);
+  background-color: var(--md-sys-color-surface-container-high);
+  border: none;
+  border-radius: var(--md-sys-shape-corner-full);
+  cursor: pointer;
+  transition: all var(--pixel-transition-fast);
+  box-sizing: border-box;
+}
+.portal-tab-nav-btn .material-symbols-outlined {
+  font-size: 18px;
+  line-height: 1;
+}
+.portal-tab-nav-btn:hover:not(:disabled) {
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+.portal-tab-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   4. M3 TAB PANELS & MOTIONS
+   ========================================================================== */
+.portal-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(16px);
+  will-change: opacity, transform;
+}
+
+.portal-section.is-active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  animation: m3SectionEntrance 0.35s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+@keyframes m3SectionEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portal-section-header {
+  margin-bottom: var(--pixel-space-6);
+  padding-bottom: var(--pixel-space-4);
+  border-bottom: 1px solid var(--md-sys-color-surface-container-high);
+}
+
+.portal-section-title {
+  font-family: var(--md-ref-typeface-brand);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  letter-spacing: -0.015em;
+}
+
+.portal-section-desc {
+  font-size: 15px;
+  color: var(--md-sys-color-on-surface-variant);
+  line-height: 1.6;
+  max-width: 900px;
+}
+
+/* M3 Card Container */
+.portal-card {
+  background-color: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  padding: 28px;
+  margin-bottom: var(--pixel-space-6);
+  box-shadow: var(--md-sys-elevation-level1);
+  transition: box-shadow var(--pixel-transition-fast), transform var(--pixel-transition-fast);
+}
+.portal-card:hover {
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+/* Tab Footer Pager Navigation */
+.portal-tab-footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--md-sys-color-surface-container-high);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Mobile Toggle in Header */
+.portal-mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: var(--md-sys-color-on-surface);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--pixel-transition-fast);
+}
+.portal-mobile-menu-btn:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+/* ==========================================================================
+   5. M3 COLOR TOKENS EXPLORER & SWATCHES
+   ========================================================================== */
+.token-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.token-swatch {
+  border-radius: var(--md-sys-shape-corner-medium);
+  overflow: hidden;
+  background-color: var(--md-sys-color-surface-container);
+  cursor: pointer;
+  transition: transform var(--pixel-transition-fast), box-shadow var(--pixel-transition-fast);
+  box-shadow: var(--md-sys-elevation-level1);
+}
+.token-swatch:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.token-swatch__preview {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 8px;
+}
+
+.token-swatch__copy-hint {
+  background: rgba(0, 0, 0, 0.4);
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--pixel-transition-fast);
+}
+.token-swatch:hover .token-swatch__copy-hint {
+  opacity: 1;
+}
+
+.token-swatch__meta {
+  padding: 10px 12px;
+}
+.token-swatch__name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+}
+.token-swatch__value {
+  font-size: 11px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-family: var(--md-ref-typeface-mono);
+}
+
+/* ==========================================================================
+   6. M3 TYPOGRAPHY & SPACING SPECIMENS
+   ========================================================================== */
+.type-tester-input {
+  width: 100%;
+  height: 52px;
+  padding: 0 18px;
+  font-family: var(--md-ref-typeface-plain);
+  font-size: 15px;
+  background-color: var(--md-sys-color-surface-container);
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: var(--md-sys-shape-corner-full);
+  color: var(--md-sys-color-on-surface);
+  margin-bottom: 20px;
+  outline: none;
+  transition: all var(--pixel-transition-fast);
+}
+.type-tester-input:focus {
+  border-color: var(--md-sys-color-primary);
+  border-width: 2px;
+}
+
+.type-scale-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.type-scale-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  min-height: 72px;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-large);
+  transition: all var(--pixel-transition-fast);
+  cursor: pointer;
+  box-sizing: border-box;
+  gap: 16px;
+}
+.type-scale-item:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+  transform: translateX(4px);
+}
+
+.type-scale-left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.type-scale-role {
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--md-sys-color-primary);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+}
+
+.type-scale-text {
+  color: var(--md-sys-color-on-surface);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.25;
+}
+
+.type-scale-meta {
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 11px;
+  color: var(--md-sys-color-on-surface-variant);
+  text-align: right;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  line-height: 1.3;
+}
+
+/* Spacing Scale Bars */
+.spacing-scale-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.spacing-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  height: 42px;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-medium);
+  transition: all var(--pixel-transition-fast);
+  cursor: pointer;
+  box-sizing: border-box;
+  gap: 12px;
+}
+.spacing-item:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.spacing-item__label {
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  width: 85px;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.spacing-item__val {
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 11px;
+  color: var(--md-sys-color-primary);
+  width: 55px;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.spacing-item__bar-track {
+  flex: 1;
+  background-color: var(--md-sys-color-surface-container-highest);
+  height: 16px;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: 0 12px;
+}
+
+.spacing-item__bar {
+  background-color: var(--md-sys-color-primary);
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.spacing-item__usage {
+  font-size: 12px;
+  color: var(--md-sys-color-on-surface-variant);
+  width: 200px;
+  text-align: right;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Shape & Elevation Grid */
+.radius-grid, .elevation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.shape-card {
+  padding: 14px;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-large);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--pixel-transition-fast);
+}
+.shape-card:hover {
+  transform: translateY(-2px);
+  background-color: var(--md-sys-color-surface-container-high);
+}
+
+.shape-box-preview {
+  height: 52px;
+  width: 52px;
+  margin: 0 auto 8px;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+.elevation-box-preview {
+  height: 52px;
+  width: 52px;
+  margin: 0 auto 8px;
+  background-color: var(--md-sys-color-surface-container-lowest);
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
+/* ==========================================================================
+   7. CODE SNIPPET INSPECTOR
+   ========================================================================== */
+.portal-code-box {
+  background-color: #141218;
+  color: #E6E1E5;
+  padding: 20px;
+  border-radius: var(--md-sys-shape-corner-large);
+  font-family: var(--md-ref-typeface-mono);
+  font-size: 13px;
+  position: relative;
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+.portal-copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: none;
+  padding: 6px 14px;
+  border-radius: var(--md-sys-shape-corner-full);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--pixel-transition-fast);
+}
+.portal-copy-btn:hover {
+  background-color: rgba(255, 255, 255, 0.24);
+}
+
+/* ==========================================================================
+   8. RESPONSIVE DESIGN (M3 BREAKPOINTS)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .portal-mobile-menu-btn {
+    display: inline-flex;
+  }
+  .portal-sidebar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    bottom: 0;
+    height: calc(100vh - 64px);
+    transform: translateX(-100%);
+    box-shadow: var(--md-sys-elevation-level4);
+  }
+  .portal-sidebar.is-open {
+    transform: translateX(0);
+  }
+  .portal-content {
+    padding: 16px;
+  }
+  .portal-tab-toolbar {
+    top: 64px;
+  }
+  .type-scale-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .type-scale-meta {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .spacing-item__usage {
+    display: none;
+  }
+}
+
+  </style>
 </head>
 <body>
 
@@ -1620,5 +3742,847 @@
     </div>
   </div>
 
+  <!-- Inlined Interactive System Script (Guarantees Full Functionality on Any Host / URL Path) -->
+  <script id="pixel-inlined-system-js">
+/**
+ * PIXEL Enterprise Design System — Interactive Controller (v2.0.0)
+ * Ensures every single click, transition, filter, and state toggle works reliably.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initThemeEngine();
+  initPortalTabs();
+  initStateSwitcher();
+  initSwatchCopy();
+  initChips();
+  initSwitches();
+  initPlaygroundButtons();
+  initDataTable();
+  initModal();
+  initCodeCopy();
+  initTypographyAndSpacing();
+  initM3SeedPicker();
+});
+
+/* ==========================================================================
+   1. FLOATING TOAST NOTIFICATION SYSTEM
+   ========================================================================== */
+function showToast(message, type = 'info') {
+  let container = document.querySelector('.pixel-toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.className = 'pixel-toast-container';
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = 'pixel-toast';
+
+  let iconName = 'info';
+  if (type === 'success') iconName = 'check_circle';
+  if (type === 'warning') iconName = 'warning';
+  if (type === 'danger') iconName = 'error';
+
+  toast.innerHTML = `
+    <span class="material-symbols-outlined" style="font-size: 18px; color: ${type === 'success' ? '#34D399' : '#93C5FD'};">${iconName}</span>
+    <span>${message}</span>
+  `;
+
+  container.appendChild(toast);
+
+  // Trigger animation
+  requestAnimationFrame(() => {
+    toast.classList.add('is-visible');
+  });
+
+  setTimeout(() => {
+    toast.classList.remove('is-visible');
+    setTimeout(() => toast.remove(), 250);
+  }, 2600);
+}
+
+/* ==========================================================================
+   2. LIGHT / DARK THEME ENGINE
+   ========================================================================== */
+function initThemeEngine() {
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  const currentTheme = localStorage.getItem('pixel-theme') || 'light';
+
+  if (currentTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    updateThemeBtn(true);
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    updateThemeBtn(false);
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+
+      if (newTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        updateThemeBtn(true);
+        showToast('Switched to High-Contrast Dark Theme', 'info');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        updateThemeBtn(false);
+        showToast('Switched to Clean Light Theme', 'info');
+      }
+
+      localStorage.setItem('pixel-theme', newTheme);
+    });
+  }
+}
+
+function updateThemeBtn(isDark) {
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  if (!themeToggleBtn) return;
+  themeToggleBtn.innerHTML = `
+    <span class="material-symbols-outlined">${isDark ? 'light_mode' : 'dark_mode'}</span>
+    <span>${isDark ? 'Light Mode' : 'Dark Mode'}</span>
+  `;
+}
+
+/* ==========================================================================
+   3. TABBED VIEW CONTROLLER & NAVIGATION ENGINE
+   ========================================================================== */
+const PORTAL_TABS = [
+  { id: 'overview', title: 'Overview', category: 'Foundations', icon: 'dashboard' },
+  { id: 'token-architecture', title: 'Token Architecture', category: 'Foundations', icon: 'layers' },
+  { id: 'color-tokens', title: 'Color Tokens', category: 'Foundations', icon: 'palette' },
+  { id: 'typography', title: 'Typography & Spacing', category: 'Foundations', icon: 'format_size' },
+  { id: 'playground-actions', title: 'Buttons & 8 States', category: 'Components', icon: 'smart_button' },
+  { id: 'playground-chips', title: 'Chips & Controls', category: 'Components', icon: 'label' },
+  { id: 'playground-forms', title: 'Form Inputs', category: 'Components', icon: 'edit_note' },
+  { id: 'operations-prototype', title: 'Operations Console', category: 'Enterprise Workflows', icon: 'terminal' },
+  { id: 'audit-before-after', title: 'Before vs. After Audit', category: 'Enterprise Workflows', icon: 'compare_arrows' },
+  { id: 'code-inspector', title: 'Developer Handoff', category: 'Developer Tools', icon: 'code' }
+];
+
+let currentTabIndex = 0;
+
+function initPortalTabs() {
+  const sidebar = document.getElementById('portal-sidebar');
+  const backdrop = document.getElementById('portal-sidebar-backdrop');
+  const mobileToggleBtn = document.getElementById('mobile-menu-toggle');
+
+  // Mobile drawer toggle
+  if (mobileToggleBtn && sidebar && backdrop) {
+    mobileToggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('is-open');
+      backdrop.classList.toggle('is-visible');
+    });
+
+    backdrop.addEventListener('click', () => {
+      sidebar.classList.remove('is-open');
+      backdrop.classList.remove('is-visible');
+    });
+  }
+
+  // Intercept all internal anchor clicks for seamless tab switching
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href^="#"]');
+    if (link) {
+      const targetHash = link.getAttribute('href').slice(1);
+      if (PORTAL_TABS.some(t => t.id === targetHash)) {
+        e.preventDefault();
+        switchTab(targetHash);
+      }
+    }
+  });
+
+  // Top toolbar Prev/Next buttons
+  const toolbarPrevBtn = document.getElementById('toolbar-prev-tab-btn');
+  const toolbarNextBtn = document.getElementById('toolbar-next-tab-btn');
+
+  if (toolbarPrevBtn) {
+    toolbarPrevBtn.addEventListener('click', () => {
+      if (currentTabIndex > 0) {
+        switchTab(PORTAL_TABS[currentTabIndex - 1].id);
+      }
+    });
+  }
+
+  if (toolbarNextBtn) {
+    toolbarNextBtn.addEventListener('click', () => {
+      if (currentTabIndex < PORTAL_TABS.length - 1) {
+        switchTab(PORTAL_TABS[currentTabIndex + 1].id);
+      }
+    });
+  }
+
+  // Handle browser back/forward buttons
+  window.addEventListener('popstate', () => {
+    const hash = window.location.hash.slice(1);
+    if (hash && PORTAL_TABS.some(t => t.id === hash)) {
+      switchTab(hash, false);
+    }
+  });
+
+  // Keyboard navigation: Alt+Left (Prev), Alt+Right (Next)
+  window.addEventListener('keydown', (e) => {
+    if (e.altKey && e.key === 'ArrowLeft') {
+      if (currentTabIndex > 0) switchTab(PORTAL_TABS[currentTabIndex - 1].id);
+    } else if (e.altKey && e.key === 'ArrowRight') {
+      if (currentTabIndex < PORTAL_TABS.length - 1) switchTab(PORTAL_TABS[currentTabIndex + 1].id);
+    }
+  });
+
+  // Inject bottom footer navigation into every tab panel
+  PORTAL_TABS.forEach((tab, index) => {
+    const section = document.getElementById(tab.id);
+    if (section && !section.querySelector('.portal-tab-footer-nav')) {
+      const footerNav = document.createElement('div');
+      footerNav.className = 'portal-tab-footer-nav';
+
+      let prevHTML = '';
+      if (index > 0) {
+        const prevTab = PORTAL_TABS[index - 1];
+        prevHTML = `
+          <button class="pixel-btn pixel-btn--secondary pixel-btn--md" onclick="switchTab('${prevTab.id}')">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span>Back: ${prevTab.title}</span>
+          </button>
+        `;
+      } else {
+        prevHTML = `
+          <a href="../index.html" class="pixel-btn pixel-btn--ghost pixel-btn--sm">
+            <span class="material-symbols-outlined">home</span>
+            <span>Portfolio Home</span>
+          </a>
+        `;
+      }
+
+      let nextHTML = '';
+      if (index < PORTAL_TABS.length - 1) {
+        const nextTab = PORTAL_TABS[index + 1];
+        nextHTML = `
+          <button class="pixel-btn pixel-btn--primary pixel-btn--md" onclick="switchTab('${nextTab.id}')">
+            <span>Next: ${nextTab.title}</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        `;
+      } else {
+        nextHTML = `
+          <a href="../projecten/pixel-design-system.html" class="pixel-btn pixel-btn--primary pixel-btn--md">
+            <span>Read Editorial Case Study</span>
+            <span class="material-symbols-outlined">auto_stories</span>
+          </a>
+        `;
+      }
+
+      footerNav.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 8px;">${prevHTML}</div>
+        <div style="font-size: 12px; color: var(--pixel-text-muted); font-family: var(--pixel-font-mono);">
+          Module ${index + 1} of ${PORTAL_TABS.length}
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">${nextHTML}</div>
+      `;
+
+      section.appendChild(footerNav);
+    }
+  });
+
+  // Initial tab activation from URL hash or default
+  const initialHash = window.location.hash.slice(1);
+  const targetId = (initialHash && PORTAL_TABS.some(t => t.id === initialHash)) ? initialHash : 'overview';
+  switchTab(targetId, false);
+}
+
+window.switchTab = function(tabId, pushHistory = true) {
+  let idx = PORTAL_TABS.findIndex(t => t.id === tabId);
+  if (idx === -1) {
+    idx = 0;
+    tabId = PORTAL_TABS[0].id;
+  }
+  currentTabIndex = idx;
+  const currentTab = PORTAL_TABS[idx];
+
+  // 1. Toggle tab panels
+  const allSections = document.querySelectorAll('.portal-section');
+  allSections.forEach(sec => sec.classList.remove('is-active'));
+
+  const targetSection = document.getElementById(tabId);
+  if (targetSection) {
+    targetSection.classList.add('is-active');
+  }
+
+  // 2. Update sidebar links
+  const allNavLinks = document.querySelectorAll('.portal-nav-link');
+  allNavLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === '#' + tabId || link.getAttribute('data-tab-id') === tabId) {
+      link.classList.add('is-active');
+    } else {
+      link.classList.remove('is-active');
+    }
+  });
+
+  // 3. Update sticky toolbar
+  const catBadge = document.getElementById('tab-cat-badge');
+  const currentIcon = document.getElementById('tab-current-icon');
+  const currentTitle = document.getElementById('tab-current-title');
+  const counterBadge = document.getElementById('tab-counter-badge');
+  const toolbarPrevBtn = document.getElementById('toolbar-prev-tab-btn');
+  const toolbarNextBtn = document.getElementById('toolbar-next-tab-btn');
+
+  if (catBadge) catBadge.textContent = currentTab.category;
+  if (currentIcon) currentIcon.textContent = currentTab.icon;
+  if (currentTitle) currentTitle.textContent = currentTab.title;
+  if (counterBadge) counterBadge.textContent = `Tab ${idx + 1} of ${PORTAL_TABS.length}`;
+
+  if (toolbarPrevBtn) {
+    toolbarPrevBtn.disabled = (idx === 0);
+    toolbarPrevBtn.title = idx > 0 ? `Previous: ${PORTAL_TABS[idx - 1].title}` : '';
+  }
+  if (toolbarNextBtn) {
+    toolbarNextBtn.disabled = (idx === PORTAL_TABS.length - 1);
+    toolbarNextBtn.title = idx < PORTAL_TABS.length - 1 ? `Next: ${PORTAL_TABS[idx + 1].title}` : '';
+  }
+
+  // 4. Close mobile drawer if open
+  const sidebar = document.getElementById('portal-sidebar');
+  const backdrop = document.getElementById('portal-sidebar-backdrop');
+  if (sidebar) sidebar.classList.remove('is-open');
+  if (backdrop) backdrop.classList.remove('is-visible');
+
+  // 5. Smooth scroll content to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // 6. Update URL hash
+  if (pushHistory) {
+    history.replaceState(null, null, '#' + tabId);
+  }
+};
+
+/* ==========================================================================
+   4. INTERACTIVE 8-STATE COMPONENT PLAYGROUND
+   ========================================================================== */
+function initStateSwitcher() {
+  const stateBtns = document.querySelectorAll('[data-target-state]');
+  const targets = document.querySelectorAll('.playground-target');
+
+  stateBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      stateBtns.forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+
+      const state = btn.getAttribute('data-target-state');
+
+      targets.forEach(el => {
+        el.classList.remove('is-focused', 'is-disabled', 'is-loading', 'is-error');
+        el.removeAttribute('disabled');
+
+        if (state === 'focus') {
+          el.classList.add('is-focused');
+        } else if (state === 'disabled') {
+          el.classList.add('is-disabled');
+          el.setAttribute('disabled', 'true');
+        } else if (state === 'loading') {
+          el.classList.add('is-loading');
+        } else if (state === 'error') {
+          el.classList.add('is-error');
+        }
+      });
+
+      showToast(`Simulating state: ${state.toUpperCase()}`, 'info');
+    });
+  });
+}
+
+/* ==========================================================================
+   5. COLOR SWATCH CLICK-TO-COPY
+   ========================================================================== */
+function initSwatchCopy() {
+  const swatches = document.querySelectorAll('.token-swatch');
+  swatches.forEach(swatch => {
+    swatch.addEventListener('click', () => {
+      const varName = swatch.getAttribute('data-var-name') || swatch.querySelector('.token-swatch__name')?.textContent.trim();
+      if (varName) {
+        navigator.clipboard.writeText(varName).then(() => {
+          showToast(`Copied ${varName} to clipboard!`, 'success');
+        });
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   6. INTERACTIVE CHIPS & SWITCHES
+   ========================================================================== */
+function initChips() {
+  const chips = document.querySelectorAll('.pixel-chip--interactive, .pixel-chip');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('is-active');
+      chip.classList.toggle('is-selected');
+      const icon = chip.querySelector('.pixel-chip__icon, .chip-check-icon');
+      if (icon) {
+        const isActive = chip.classList.contains('is-active') || chip.classList.contains('is-selected');
+        icon.textContent = isActive ? 'check' : (icon.getAttribute('data-default-icon') || 'tune');
+      }
+      showToast(`Filter chip "${chip.textContent.trim()}" toggled`, 'info');
+    });
+  });
+}
+
+function initSwitches() {
+  const switches = document.querySelectorAll('.pixel-switch');
+  switches.forEach(sw => {
+    sw.addEventListener('click', () => {
+      sw.classList.toggle('is-checked');
+      const isChecked = sw.classList.contains('is-checked');
+      const thumb = sw.querySelector('.pixel-switch__thumb');
+      if (thumb) {
+        thumb.innerHTML = isChecked ? '<span class="material-symbols-outlined" style="font-size: 14px;">check</span>' : '';
+      }
+      showToast(`Configuration toggle set to: ${isChecked ? 'ON' : 'OFF'}`);
+    });
+  });
+}
+
+/* ==========================================================================
+   7. PLAYGROUND BUTTON CLICKS FEEDBACK
+   ========================================================================== */
+function initPlaygroundButtons() {
+  const sampleBtns = document.querySelectorAll('.demo-action-btn');
+  sampleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.disabled || btn.classList.contains('is-loading')) return;
+      const label = btn.querySelector('.pixel-btn__label')?.textContent || btn.textContent.trim();
+      showToast(`Action executed: "${label}"`, 'success');
+    });
+  });
+}
+
+/* ==========================================================================
+   8. REAL-TIME DATA TABLE WITH WORKING PAGINATION & SORTING
+   ========================================================================== */
+const sampleIncidentsData = [
+  { id: "PX-9042", entity: "Payment Gateway Microservice", host: "srv-prod-us-east-1", status: "Failed", date: "2 mins ago" },
+  { id: "PX-9041", entity: "Inventory Rebalancing Queue", host: "worker-batch-04", status: "Operational", date: "14 mins ago" },
+  { id: "PX-9040", entity: "OAuth Identity Broker", host: "auth-core-cluster", status: "Contained", date: "28 mins ago" },
+  { id: "PX-9039", entity: "Enterprise Order Ingress", host: "stream-ingress-02", status: "Operational", date: "1 hour ago" },
+  { id: "PX-9038", entity: "Database Read Replica Sync", host: "db-replica-eu-west", status: "Pending", date: "3 hours ago" },
+  { id: "PX-9037", entity: "Webhook Notification Service", host: "dispatch-cluster-01", status: "Operational", date: "5 hours ago" },
+  { id: "PX-9036", entity: "Audit Log Ingestion Pipeline", host: "elk-logging-node-09", status: "Operational", date: "6 hours ago" },
+  { id: "PX-9035", entity: "Billing Export Dispatcher", host: "finance-batch-01", status: "Failed", date: "8 hours ago" },
+  { id: "PX-9034", entity: "Customer Profile Cache", host: "redis-cluster-primary", status: "Operational", date: "10 hours ago" },
+  { id: "PX-9033", entity: "Asset Storage CDN Proxy", host: "edge-proxy-lon-01", status: "Operational", date: "12 hours ago" },
+  { id: "PX-9032", entity: "SMS Verification Relay", host: "comm-relay-node-03", status: "Pending", date: "14 hours ago" },
+  { id: "PX-9031", entity: "Search Index Elasticsearch", host: "search-cluster-master", status: "Operational", date: "16 hours ago" },
+  { id: "PX-9030", entity: "PDF Invoice Renderer", host: "render-worker-08", status: "Contained", date: "18 hours ago" },
+  { id: "PX-9029", entity: "GraphQL Gateway Router", host: "api-router-us-west", status: "Operational", date: "20 hours ago" },
+  { id: "PX-9028", entity: "Fraud Detection Engine", host: "ai-fraud-eval-02", status: "Operational", date: "22 hours ago" },
+  { id: "PX-9027", entity: "Backup Snapshot Archiver", host: "storage-archive-s3", status: "Operational", date: "24 hours ago" }
+];
+
+let filteredData = [...sampleIncidentsData];
+let selectedRowIds = new Set();
+let currentPage = 1;
+const rowsPerPage = 5;
+let currentSortCol = 'id';
+let isSortAsc = false;
+
+function initDataTable() {
+  const searchInput = document.getElementById('table-search-input');
+  const statusFilter = document.getElementById('table-status-filter');
+  const masterCheckbox = document.getElementById('master-checkbox');
+  const prevBtn = document.getElementById('table-prev-btn');
+  const nextBtn = document.getElementById('table-next-btn');
+
+  function renderTable() {
+    const tableBody = document.getElementById('ops-table-body');
+    const paginationInfo = document.getElementById('table-pagination-info');
+    const pageBtnsContainer = document.getElementById('table-page-buttons');
+    if (!tableBody) return;
+
+    tableBody.innerHTML = '';
+
+    const totalRows = filteredData.length;
+    const totalPages = Math.ceil(totalRows / rowsPerPage) || 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const startIndex = (currentPage - 1) * rowsPerPage;
+    const endIndex = Math.min(startIndex + rowsPerPage, totalRows);
+    const pageItems = filteredData.slice(startIndex, endIndex);
+
+    if (pageItems.length === 0) {
+      tableBody.innerHTML = `
+        <tr>
+          <td colspan="7" style="text-align: center; padding: 40px; color: var(--pixel-text-muted);">
+            <span class="material-symbols-outlined" style="font-size: 36px; margin-bottom: 8px;">search_off</span>
+            <div style="font-weight: 600;">No matching records found</div>
+            <div style="font-size: 12px; margin-top: 4px;">Try searching for a different keyword or reset status filters.</div>
+          </td>
+        </tr>`;
+    } else {
+      pageItems.forEach(item => {
+        const isSelected = selectedRowIds.has(item.id);
+        const row = document.createElement('tr');
+        row.className = isSelected ? 'is-selected' : '';
+
+        let badgeClass = 'pixel-badge--info';
+        let badgeIcon = 'info';
+        if (item.status === 'Operational') {
+          badgeClass = 'pixel-badge--success';
+          badgeIcon = 'check_circle';
+        } else if (item.status === 'Pending') {
+          badgeClass = 'pixel-badge--warning';
+          badgeIcon = 'hourglass_top';
+        } else if (item.status === 'Failed') {
+          badgeClass = 'pixel-badge--danger';
+          badgeIcon = 'error';
+        } else if (item.status === 'Contained') {
+          badgeClass = 'pixel-badge--info';
+          badgeIcon = 'shield';
+        }
+
+        row.innerHTML = `
+          <td style="width: 44px; text-align: center; vertical-align: middle;">
+            <input type="checkbox" class="row-checkbox" data-id="${item.id}" ${isSelected ? 'checked' : ''} style="cursor: pointer; width: 16px; height: 16px; margin: 0 auto; display: block; accent-color: var(--pixel-action-primary);" />
+          </td>
+          <td style="font-family: var(--pixel-font-mono); font-weight: 600; color: var(--pixel-text-brand); vertical-align: middle;">${item.id}</td>
+          <td style="font-weight: 600; vertical-align: middle;">${item.entity}</td>
+          <td style="color: var(--pixel-text-secondary); font-family: var(--pixel-font-mono); font-size: 12px; vertical-align: middle;">${item.host}</td>
+          <td style="vertical-align: middle;">
+            <span class="pixel-badge ${badgeClass}">
+              <span class="material-symbols-outlined" style="font-size: 14px;">${badgeIcon}</span>
+              <span>${item.status}</span>
+            </span>
+          </td>
+          <td style="color: var(--pixel-text-muted); font-size: 12px; vertical-align: middle;">${item.date}</td>
+          <td style="text-align: right; vertical-align: middle;">
+            <button class="pixel-btn pixel-btn--tonal pixel-btn--sm" onclick="openApprovalModal('${item.id}', '${item.host}')">
+              <span class="material-symbols-outlined" style="font-size: 16px;">shield</span>
+              <span>Review</span>
+            </button>
+          </td>
+        `;
+
+        const chk = row.querySelector('.row-checkbox');
+        chk.addEventListener('change', () => {
+          if (chk.checked) {
+            selectedRowIds.add(item.id);
+          } else {
+            selectedRowIds.delete(item.id);
+          }
+          renderTable();
+        });
+
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Update Pagination Footer
+    if (paginationInfo) {
+      paginationInfo.innerHTML = `Showing <strong>${totalRows > 0 ? startIndex + 1 : 0} to ${endIndex}</strong> of <strong>${totalRows}</strong> records`;
+    }
+
+    if (prevBtn) prevBtn.disabled = currentPage <= 1;
+    if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+
+    // Render Page Number Buttons
+    if (pageBtnsContainer) {
+      pageBtnsContainer.innerHTML = '';
+      for (let p = 1; p <= totalPages; p++) {
+        const pBtn = document.createElement('button');
+        pBtn.className = `pixel-btn pixel-btn--sm ${p === currentPage ? 'pixel-btn--primary' : 'pixel-btn--secondary'}`;
+        pBtn.style.minWidth = '32px';
+        pBtn.style.width = '32px';
+        pBtn.style.height = '32px';
+        pBtn.style.padding = '0';
+        pBtn.style.display = 'inline-flex';
+        pBtn.style.alignItems = 'center';
+        pBtn.style.justifyContent = 'center';
+        pBtn.textContent = p;
+        pBtn.addEventListener('click', () => {
+          currentPage = p;
+          renderTable();
+        });
+        pageBtnsContainer.appendChild(pBtn);
+      }
+    }
+
+    updateBulkBar();
+  }
+
+  function updateBulkBar() {
+    const bulkBar = document.getElementById('bulk-action-bar');
+    const countSpan = document.getElementById('selected-count-span');
+    if (!bulkBar) return;
+    if (selectedRowIds.size > 0) {
+      bulkBar.style.display = 'flex';
+      if (countSpan) countSpan.textContent = `${selectedRowIds.size} row${selectedRowIds.size > 1 ? 's' : ''} selected`;
+    } else {
+      bulkBar.style.display = 'none';
+    }
+  }
+
+  // Filter input
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      applyFilters(q, statusFilter ? statusFilter.value : 'ALL');
+    });
+  }
+
+  // Status select
+  if (statusFilter) {
+    statusFilter.addEventListener('change', (e) => {
+      const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      applyFilters(q, e.target.value);
+    });
+  }
+
+  function applyFilters(query, status) {
+    filteredData = sampleIncidentsData.filter(item => {
+      const matchQuery = !query || 
+        item.id.toLowerCase().includes(query) || 
+        item.entity.toLowerCase().includes(query) || 
+        item.host.toLowerCase().includes(query);
+      const matchStatus = status === 'ALL' || item.status === status;
+      return matchQuery && matchStatus;
+    });
+    currentPage = 1;
+    renderTable();
+  }
+
+  // Master Checkbox
+  if (masterCheckbox) {
+    masterCheckbox.addEventListener('change', () => {
+      if (masterCheckbox.checked) {
+        filteredData.forEach(item => selectedRowIds.add(item.id));
+      } else {
+        selectedRowIds.clear();
+      }
+      renderTable();
+    });
+  }
+
+  // Next / Previous Buttons
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderTable();
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      const totalPages = Math.ceil(filteredData.length / rowsPerPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderTable();
+      }
+    });
+  }
+
+  // Column Sorting
+  window.sortTable = function(column) {
+    if (currentSortCol === column) {
+      isSortAsc = !isSortAsc;
+    } else {
+      currentSortCol = column;
+      isSortAsc = true;
+    }
+
+    filteredData.sort((a, b) => {
+      const valA = a[column] || '';
+      const valB = b[column] || '';
+      return isSortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+    });
+
+    renderTable();
+    showToast(`Sorted table by ${column.toUpperCase()} (${isSortAsc ? 'Ascending' : 'Descending'})`, 'info');
+  };
+
+  // CSV Export
+  window.exportCSV = function() {
+    let csv = "Incident ID,Microservice Entity,Host DNS,Status,Observed\n";
+    filteredData.forEach(item => {
+      csv += `"${item.id}","${item.entity}","${item.host}","${item.status}","${item.date}"\n`;
+    });
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", "pixel_operations_telemetry.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast("CSV file successfully exported!", "success");
+  };
+
+  renderTable();
+}
+
+/* ==========================================================================
+   9. MODAL DIALOG CONTROLLER (APPROVAL PATTERN)
+   ========================================================================== */
+function initModal() {
+  const modalBackdrop = document.getElementById('approval-modal-backdrop');
+  const closeTriggers = document.querySelectorAll('.close-modal-trigger');
+  const confirmBtn = document.getElementById('confirm-quarantine-btn');
+
+  closeTriggers.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (modalBackdrop) modalBackdrop.classList.remove('is-open');
+    });
+  });
+
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) {
+        modalBackdrop.classList.remove('is-open');
+      }
+    });
+  }
+
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', () => {
+      const targetId = document.getElementById('modal-target-id')?.textContent;
+      if (targetId) {
+        // Mark as Contained in data
+        const item = sampleIncidentsData.find(i => i.id === targetId);
+        if (item) {
+          item.status = 'Contained';
+        }
+      }
+      if (modalBackdrop) modalBackdrop.classList.remove('is-open');
+      showToast(`Host quarantine successfully enforced for ${targetId}!`, 'success');
+      
+      // Refresh table
+      const searchInput = document.getElementById('table-search-input');
+      const statusFilter = document.getElementById('table-status-filter');
+      const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      const s = statusFilter ? statusFilter.value : 'ALL';
+      filteredData = sampleIncidentsData.filter(item => {
+        const matchQuery = !q || item.id.toLowerCase().includes(q) || item.entity.toLowerCase().includes(q);
+        const matchStatus = s === 'ALL' || item.status === s;
+        return matchQuery && matchStatus;
+      });
+      const tableBody = document.getElementById('ops-table-body');
+      if (tableBody) {
+        window.location.hash = '#operations-prototype';
+      }
+    });
+  }
+}
+
+window.openApprovalModal = function(id, host) {
+  const modalBackdrop = document.getElementById('approval-modal-backdrop');
+  const targetIdSpan = document.getElementById('modal-target-id');
+  const targetHostSpan = document.getElementById('modal-target-host');
+
+  if (targetIdSpan) targetIdSpan.textContent = id;
+  if (targetHostSpan) targetHostSpan.textContent = host;
+
+  if (modalBackdrop) modalBackdrop.classList.add('is-open');
+};
+
+/* ==========================================================================
+   10. CODE SNIPPET CLIPBOARD COPY
+   ========================================================================== */
+function initCodeCopy() {
+  const copyButtons = document.querySelectorAll('.portal-copy-btn');
+  copyButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-copy-target');
+      const codeBlock = document.getElementById(targetId);
+      if (codeBlock) {
+        navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+          const originalHTML = btn.innerHTML;
+          btn.innerHTML = `<span class="material-symbols-outlined" style="font-size: 16px;">check</span><span>Copied!</span>`;
+          btn.style.backgroundColor = 'var(--pixel-primitive-emerald-600)';
+          showToast('Code snippet copied to clipboard!', 'success');
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.backgroundColor = '';
+          }, 1800);
+        });
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   11. TYPOGRAPHY & SPACING INTERACTIVE CONTROLS
+   ========================================================================== */
+function initTypographyAndSpacing() {
+  // 1. Live type specimen tester input
+  const typeTester = document.getElementById('type-tester');
+  if (typeTester) {
+    typeTester.addEventListener('input', (e) => {
+      const val = e.target.value.trim() || 'Pixel Operations Platform — High Density Telemetry & Node Health';
+      const specimens = document.querySelectorAll('#type-scale-container .specimen-text');
+      specimens.forEach(el => {
+        el.textContent = val;
+      });
+    });
+  }
+
+  // 2. Click to copy token strings for typography, spacing, radius, and elevation
+  const copyableTokens = document.querySelectorAll('.copyable-token');
+  copyableTokens.forEach(item => {
+    item.addEventListener('click', () => {
+      const token = item.getAttribute('data-token');
+      if (token) {
+        navigator.clipboard.writeText(token).then(() => {
+          showToast(`Copied token: ${token}`, 'success');
+        }).catch(() => {
+          showToast(`Token: ${token}`, 'info');
+        });
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   12. PIXEL DYNAMIC COLOR PALETTE SEED SWITCHER
+   ========================================================================== */
+function initM3SeedPicker() {
+  const seedDots = document.querySelectorAll('.m3-seed-dot');
+  let savedSeed = localStorage.getItem('pixel-seed');
+  if (!savedSeed || savedSeed === 'purple') {
+    // Default to Pixel's original signature blue
+    savedSeed = 'blue';
+    localStorage.setItem('pixel-seed', 'blue');
+  }
+
+  document.documentElement.setAttribute('data-seed', savedSeed);
+  seedDots.forEach(dot => {
+    if (dot.getAttribute('data-seed') === savedSeed) {
+      dot.classList.add('is-active');
+    } else {
+      dot.classList.remove('is-active');
+    }
+
+    dot.addEventListener('click', () => {
+      const seed = dot.getAttribute('data-seed');
+      document.documentElement.setAttribute('data-seed', seed);
+      localStorage.setItem('pixel-seed', seed);
+
+      seedDots.forEach(d => d.classList.remove('is-active'));
+      dot.classList.add('is-active');
+
+      const seedNames = {
+        blue: 'Pixel Electric Blue (Original Signature)',
+        teal: 'Electric Cyan & Teal',
+        purple: 'Cyber Violet',
+        amber: 'Sunburst Amber',
+        rose: 'Coral Crimson'
+      };
+      showToast(`Dynamic Palette: ${seedNames[seed] || seed}`, 'info');
+    });
+  });
+}
+
+
+  </script>
 </body>
 </html>
