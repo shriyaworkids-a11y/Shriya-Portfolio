@@ -2231,22 +2231,7 @@ body {
           <span>Form Inputs</span>
         </a>
       </div>
-
-      <div>
-        <div class="portal-nav-group-title">Enterprise Workflows</div>
-        <a href="#operations-prototype" class="portal-nav-link" data-tab-id="operations-prototype" style="color: var(--pixel-text-brand); font-weight: 600;">
-          <span class="material-symbols-outlined">terminal</span>
-          <span>Operations Console</span>
-        </a>
-        <a href="#audit-before-after" class="portal-nav-link" data-tab-id="audit-before-after">
-          <span class="material-symbols-outlined">compare_arrows</span>
-          <span>Before vs. After Audit</span>
-        </a>
-        <a href="#code-inspector" class="portal-nav-link" data-tab-id="code-inspector">
-          <span class="material-symbols-outlined">code</span>
-          <span>Developer Handoff</span>
-        </a>
-      </div>
+      <!-- Enterprise Workflows (hidden per user preference) -->
 
       <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid var(--pixel-border-subtle);">
         <a href="../index.html" class="portal-nav-link" style="font-size: 12px; color: var(--pixel-text-muted);">
@@ -3347,7 +3332,7 @@ body {
       </section>
 
       <!-- SECTION 7: OPERATIONS CONSOLE (LIVE WORKING PROTOTYPE) -->
-      <section id="operations-prototype" class="portal-section">
+      <section id="operations-prototype" class="portal-section" style="display: none !important;">
         <div class="portal-section-header">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
             <div>
@@ -3516,7 +3501,7 @@ body {
       </section>
 
       <!-- SECTION 8: AUDIT BEFORE VS. AFTER STANDARDIZATION -->
-      <section id="audit-before-after" class="portal-section">
+      <section id="audit-before-after" class="portal-section" style="display: none !important;">
         <div class="portal-section-header">
           <h2 class="portal-section-title">
             <span class="material-symbols-outlined" style="color: var(--pixel-text-brand);">compare_arrows</span>
@@ -3676,7 +3661,7 @@ body {
       </section>
 
       <!-- SECTION 9: DEVELOPER HANDOFF CODE INSPECTOR -->
-      <section id="code-inspector" class="portal-section">
+      <section id="code-inspector" class="portal-section" style="display: none !important;">
         <div class="portal-section-header">
           <h2 class="portal-section-title">
             <span class="material-symbols-outlined" style="color: var(--pixel-text-brand);">code</span>
@@ -3855,10 +3840,7 @@ const PORTAL_TABS = [
   { id: 'typography', title: 'Typography & Spacing', category: 'Foundations', icon: 'format_size' },
   { id: 'playground-actions', title: 'Buttons & 8 States', category: 'Components', icon: 'smart_button' },
   { id: 'playground-chips', title: 'Chips & Controls', category: 'Components', icon: 'label' },
-  { id: 'playground-forms', title: 'Form Inputs', category: 'Components', icon: 'edit_note' },
-  { id: 'operations-prototype', title: 'Operations Console', category: 'Enterprise Workflows', icon: 'terminal' },
-  { id: 'audit-before-after', title: 'Before vs. After Audit', category: 'Enterprise Workflows', icon: 'compare_arrows' },
-  { id: 'code-inspector', title: 'Developer Handoff', category: 'Developer Tools', icon: 'code' }
+  { id: 'playground-forms', title: 'Form Inputs', category: 'Components', icon: 'edit_note' }
 ];
 
 let currentTabIndex = 0;

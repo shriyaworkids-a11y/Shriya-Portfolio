@@ -1,4 +1,4 @@
-/**
+﻿/**
  * PIXEL Enterprise Design System — Interactive Controller (v2.0.0)
  * Ensures every single click, transition, filter, and state toggle works reliably.
  */
@@ -109,10 +109,7 @@ const PORTAL_TABS = [
   { id: 'typography', title: 'Typography & Spacing', category: 'Foundations', icon: 'format_size' },
   { id: 'playground-actions', title: 'Buttons & 8 States', category: 'Components', icon: 'smart_button' },
   { id: 'playground-chips', title: 'Chips & Controls', category: 'Components', icon: 'label' },
-  { id: 'playground-forms', title: 'Form Inputs', category: 'Components', icon: 'edit_note' },
-  { id: 'operations-prototype', title: 'Operations Console', category: 'Enterprise Workflows', icon: 'terminal' },
-  { id: 'audit-before-after', title: 'Before vs. After Audit', category: 'Enterprise Workflows', icon: 'compare_arrows' },
-  { id: 'code-inspector', title: 'Developer Handoff', category: 'Developer Tools', icon: 'code' }
+  { id: 'playground-forms', title: 'Form Inputs', category: 'Components', icon: 'edit_note' }
 ];
 
 let currentTabIndex = 0;
