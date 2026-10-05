@@ -4683,7 +4683,7 @@ button.main-button-wrapper {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--accent-color);
+  color: #c2410c;
   margin-bottom: 0.6rem;
 }
 
@@ -4761,7 +4761,7 @@ button.main-button-wrapper {
   display: block;
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--accent-color);
+  color: #c2410c;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -5502,8 +5502,9 @@ button.main-button-wrapper {
   letter-spacing: 0.08em;
   padding: 0.3rem 0.65rem;
   border-radius: 6px;
-  background: rgba(255, 94, 56, 0.1);
-  color: #ff5e38;
+  background: rgba(194, 65, 12, 0.08);
+  color: #c2410c;
+  border: 1px solid rgba(194, 65, 12, 0.18);
 }
 
 .cs-craft-card h3 {
@@ -5555,9 +5556,9 @@ button.main-button-wrapper {
 .cs-step-num {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #ff5e38;
+  color: #c2410c;
   padding: 3px 7px;
-  background: rgba(255, 94, 56, 0.1);
+  background: rgba(194, 65, 12, 0.08);
   border-radius: 6px;
   line-height: 1.2;
   flex-shrink: 0;
@@ -5637,7 +5638,7 @@ button.main-button-wrapper {
   border-radius: 10px;
   background: #fbfbfd;
   border: 1px solid var(--border-color);
-  border-left: 3px solid #ff5e38;
+  border-left: 3px solid #c2410c;
 }
 
 .cs-rule-tag {
@@ -5694,9 +5695,10 @@ button.main-button-wrapper {
 
 .cs-chip-info code {
   font-size: 0.74rem;
-  color: var(--grey-dark);
+  color: #1e293b;
+  font-weight: 600;
   font-family: monospace;
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(0, 0, 0, 0.05);
   padding: 1px 5px;
   border-radius: 4px;
   width: fit-content;
@@ -5795,7 +5797,7 @@ button.main-button-wrapper {
 .cs-impact-card h4 {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #ff5e38;
+  color: #c2410c;
   margin: 0;
 }
 
