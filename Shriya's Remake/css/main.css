@@ -4522,8 +4522,8 @@ button.main-button-wrapper {
    ========================================================================== */
 
 .cs-editorial-hero {
-  padding-top: 8.5rem;
-  padding-bottom: 2.5rem;
+  padding-top: clamp(4.25rem, 6vw, 5.25rem);
+  padding-bottom: 2rem;
   background: var(--bg-color, #ffffff);
 }
 
@@ -4535,7 +4535,7 @@ button.main-button-wrapper {
   font-weight: 500;
   color: var(--grey-dark);
   text-decoration: none;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -5804,6 +5804,330 @@ button.main-button-wrapper {
 .cs-impact-card p {
   font-size: 0.9rem;
   color: var(--grey-dark);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ==========================================================================
+   AI-ERA RECRUITER DIGEST & DECISION STORIES
+   ========================================================================== */
+
+/* 15-Second Recruiter Digest Card */
+.cs-exec-summary-wrap {
+  margin-top: 2.5rem;
+}
+
+.cs-exec-summary-card {
+  background: #111217;
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 2.25rem 2.25rem 1.85rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.cs-exec-summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #c2410c 0%, #f97316 40%, #00e599 100%);
+}
+
+.cs-exec-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cs-exec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.12);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(249, 115, 22, 0.25);
+}
+
+.cs-exec-note {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+}
+
+.cs-exec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .cs-exec-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.cs-exec-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.cs-exec-col-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #00e599;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cs-exec-col h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.cs-exec-col p {
+  font-size: 0.86rem;
+  color: #cbd5e1;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.cs-exec-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+.cs-exec-footer strong {
+  color: #f1f5f9;
+}
+
+/* Decision Stories Section */
+.cs-decisions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.cs-decision-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2.25rem 2.25rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cs-decision-card:hover {
+  border-color: rgba(18, 18, 18, 0.2);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+}
+
+.cs-decision-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.cs-decision-num-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(194, 65, 12, 0.08);
+  color: #c2410c;
+  border: 1px solid rgba(194, 65, 12, 0.2);
+}
+
+.cs-decision-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+.cs-decision-body {
+  font-size: 0.94rem;
+  color: var(--grey-dark);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+
+.cs-decision-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 767px) {
+  .cs-decision-split-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-decision-box {
+  padding: 1.35rem 1.4rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background: #fbfbfd;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.cs-decision-box.is-rejected {
+  border-color: rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.02);
+}
+
+.cs-decision-box.is-solution {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.03);
+}
+
+.cs-decision-box-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.cs-decision-box.is-rejected .cs-decision-box-label {
+  color: #ef4444;
+}
+
+.cs-decision-box.is-solution .cs-decision-box-label {
+  color: #059669;
+}
+
+.cs-decision-box strong {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.3;
+}
+
+.cs-decision-box p {
+  font-size: 0.86rem;
+  color: var(--grey-dark);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cs-tradeoff-bar {
+  margin-top: 1.25rem;
+  padding: 0.95rem 1.15rem;
+  border-radius: 12px;
+  background: rgba(18, 18, 18, 0.03);
+  border-left: 3px solid #c2410c;
+  font-size: 0.86rem;
+  color: var(--dark);
+  line-height: 1.5;
+}
+
+.cs-tradeoff-bar strong {
+  font-weight: 600;
+  color: #c2410c;
+}
+
+/* Modern AI Workflow Card */
+.cs-ai-workflow-card {
+  background: linear-gradient(135deg, #181920 0%, #0f1015 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 2.25rem;
+  color: #f1f5f9;
+  margin-top: 2.25rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+}
+
+.cs-ai-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.15rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cs-ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.cs-ai-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .cs-ai-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-ai-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.cs-ai-col strong {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.cs-ai-col p {
+  font-size: 0.85rem;
+  color: #94a3b8;
   line-height: 1.55;
   margin: 0;
 }

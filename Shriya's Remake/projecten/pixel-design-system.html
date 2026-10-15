@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title>Designing PIXEL: A Scalable Enterprise Product Design System | shriya.s</title>
-  <meta content="An enterprise product design system case study for B2B SaaS operations: 3-tier token architecture, 30+ accessible components with 8-state coverage, WCAG 2.1 AA/AAA compliance, and interactive coded prototyping. Designed by Shriya Sharma." name="description"/>
+  <title>PIXEL — UI Design System &amp; Component Library | Shriya Sharma</title>
+  <meta content="A scalable UI design system and component library created in Figma, focusing on reusable design tokens, consistent component states, and clean responsive layout foundations. Designed by Shriya Sharma." name="description"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <link rel="icon" type="image/png" sizes="32x32" href="../images/shriya/shriya-butterfly-logo-cropped.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="../images/shriya/shriya-butterfly-logo-cropped.png"/>
@@ -22,22 +22,18 @@
   <script src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"></script>
 
   <style>
-    /* Google Material Symbols base styling */
     .material-symbols-outlined {
       font-family: 'Material Symbols Outlined' !important;
       font-weight: normal;
       font-style: normal;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       vertical-align: middle;
-      flex-shrink: 0;
       user-select: none;
-      -webkit-font-smoothing: antialiased;
     }
-    /* High-Contrast Accessible Design System Badges */
     .pixel-badge-pill {
       display: inline-flex;
       align-items: center;
@@ -47,81 +43,23 @@
       font-weight: 600;
       line-height: 1;
       border-radius: 9999px;
-      background: rgba(26, 86, 219, 0.08);
+      background: rgba(29, 78, 216, 0.08);
       color: #1D4ED8;
       border: 1px solid rgba(29, 78, 216, 0.25);
       margin-bottom: 12px;
       vertical-align: middle;
-    }
-    .pixel-badge-pill .material-symbols-outlined {
-      font-size: 16px;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .pixel-badge-pill span {
-      display: inline-flex;
-      align-items: center;
-      line-height: 1;
     }
     .pixel-badge-pill--dark {
       background: rgba(56, 189, 248, 0.16) !important;
       color: #7DD3FC !important;
       border: 1px solid rgba(125, 211, 252, 0.4) !important;
     }
-    .pixel-badge-success {
-      background: #ecfdf5 !important;
-      color: #047857 !important;
-      border: 1px solid #a7f3d0 !important;
-    }
-    .pixel-badge-blue {
-      background: #eff6ff !important;
-      color: #1d4ed8 !important;
-      border: 1px solid #bfdbfe !important;
-    }
-    .pixel-badge-amber {
-      background: #fffbeb !important;
-      color: #b45309 !important;
-      border: 1px solid #fde68a !important;
-    }
-    .cs-back-nav {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      line-height: 1;
-      vertical-align: middle;
-      color: var(--grey-dark);
-      text-decoration: none;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-    .cs-back-nav:hover {
-      color: var(--dark);
-      transform: translateX(-3px);
-    }
-    .cs-back-nav .material-symbols-outlined {
-      font-size: 16px;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .cs-back-nav span {
-      display: inline-flex;
-      align-items: center;
-      line-height: 1;
-    }
-    .pixel-stat-highlight {
-      font-family: 'JetBrains Mono', monospace;
-      color: #1A56DB;
-      font-weight: 700;
-    }
     .cs-live-demo-card {
       background: linear-gradient(135deg, #0B1120 0%, #111C44 100%);
       border: 1px solid rgba(147, 197, 253, 0.28);
       border-radius: 24px;
-      padding: 2.75rem;
-      margin: 3rem 0;
+      padding: 2.25rem;
+      margin: 2.5rem 0;
       position: relative;
       overflow: hidden;
       box-shadow: 0 20px 40px -10px rgba(11, 17, 32, 0.45);
@@ -133,262 +71,8 @@
       right: -20%;
       width: 420px;
       height: 420px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.28) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
       pointer-events: none;
-    }
-
-    /* Enterprise System Audit Table */
-    .cs-audit-container {
-      margin-top: 3rem;
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 2.25rem 2rem;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
-      overflow-x: auto;
-    }
-    .cs-audit-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 1.25rem;
-    }
-    .cs-audit-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-    .cs-audit-table th {
-      background: #f8fafc;
-      padding: 14px 16px;
-      text-align: left;
-      font-weight: 600;
-      color: #334155;
-      border-bottom: 2px solid #e2e8f0;
-      font-size: 12.5px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      vertical-align: middle;
-    }
-    .cs-audit-table td {
-      padding: 16px;
-      border-bottom: 1px solid #f1f5f9;
-      color: #334155;
-      line-height: 1.55;
-      vertical-align: middle;
-    }
-    .cs-audit-table tr:last-child td {
-      border-bottom: none;
-    }
-    .cs-audit-table td strong {
-      color: var(--dark);
-      font-weight: 600;
-    }
-    .cs-audit-table td code {
-      background: #f1f5f9;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #0f172a;
-    }
-    .cs-audit-badge-impact {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      background: #ecfdf5;
-      color: #047857;
-      border: 1px solid #a7f3d0;
-      font-size: 12.5px;
-      font-weight: 600;
-      line-height: 1.3;
-    }
-
-    /* 3-Tier Token Architecture Cards */
-    .token-tier-card {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 1.75rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-    .token-tier-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(26, 86, 219, 0.35);
-      box-shadow: 0 10px 28px rgba(26, 86, 219, 0.08);
-    }
-    .token-tier-card .tier-role {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-    .token-tier-card h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--dark);
-      margin-bottom: 8px;
-    }
-    .token-tier-card p {
-      font-size: 13.5px;
-      color: var(--grey-dark);
-      line-height: 1.6;
-    }
-    .token-tier-card code {
-      display: block;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #0f172a;
-      margin-top: 12px;
-    }
-
-    /* Foundations (Typography & Spacing) */
-    .cs-foundations-card {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 1.75rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    }
-    .cs-foundations-card h4 {
-      color: var(--dark);
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin: 10px 0 10px;
-    }
-    .cs-foundations-card p {
-      font-size: 13.5px;
-      color: var(--grey-dark);
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-    }
-    .cs-token-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 12px;
-      background: #f8fafc;
-      border: 1px solid #f1f5f9;
-      border-radius: 8px;
-    }
-    .cs-token-row strong {
-      color: var(--dark);
-      font-size: 12.5px;
-      font-weight: 600;
-    }
-    .cs-token-row .token-val {
-      color: #0369a1;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      font-weight: 500;
-    }
-    .cs-token-row .token-val--mono {
-      color: #047857;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      font-weight: 600;
-    }
-    .cs-token-row .token-desc {
-      color: #475569;
-      font-size: 12px;
-    }
-
-    /* Component Anatomy & Spec Box */
-    .cs-spec-box {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 18px;
-      padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .cs-spec-eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11.5px;
-      font-weight: 700;
-      color: #4338ca;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-    .cs-spec-title {
-      color: var(--dark);
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    .cs-spec-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 13.5px;
-      color: #334155;
-    }
-    .cs-spec-list strong {
-      color: var(--dark);
-    }
-    .cs-spec-list code {
-      background: #f1f5f9;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #0f172a;
-    }
-
-    /* System Portal CTA Card */
-    .cs-prototype-cta {
-      margin-top: 3rem;
-      text-align: center;
-      background: #ffffff;
-      border: 1.5px dashed rgba(26, 86, 219, 0.4);
-      border-radius: 20px;
-      padding: 2.75rem 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    }
-    .cs-prototype-cta h3 {
-      color: var(--dark);
-      font-size: 1.35rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .cs-prototype-cta p {
-      color: var(--grey-dark);
-      font-size: 14px;
-      max-width: 600px;
-      margin: 0 auto 1.5rem;
-      line-height: 1.6;
-    }
-
-    /* Governance & Quality Cards */
-    .cs-gov-card {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 1.75rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    }
-    .cs-gov-card h4 {
-      color: var(--dark);
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin: 10px 0 8px;
-    }
-    .cs-gov-card p {
-      font-size: 13.5px;
-      color: var(--grey-dark);
-      line-height: 1.6;
-      margin: 0;
     }
   </style>
 </head>
@@ -430,30 +114,30 @@
 
           <div class="pixel-badge-pill">
             <span class="material-symbols-outlined" style="font-size: 16px;">auto_awesome</span>
-            <span>Enterprise SaaS Design System · Dynamic Theming &amp; Telemetry</span>
+            <span>UI Design System · Component Library &amp; Tokens</span>
           </div>
-          <h1 class="cs-hero-heading">Designing PIXEL: A Next-Generation Enterprise Product Design System</h1>
+          <h1 class="cs-hero-heading">PIXEL UI Design System &amp; Components</h1>
           <p class="cs-hero-lead">
-            An original, token-driven enterprise design system engineered by Shriya Sharma for complex B2B SaaS operations. Powered by Pixel's signature electric blue palette, multi-tier token architecture, dynamic seed-based theming, 8-state component telemetry, WCAG 2.1 AA/AAA compliance, and an interactive coded operations console.
+            A comprehensive, token-driven UI design system created in Figma to practice building reusable components, consistent color palettes, and structured typography for modern web applications.
           </p>
 
           <!-- Project Details Meta Bar -->
           <dl class="cs-meta-grid-bar" aria-label="Project details">
             <div class="cs-meta-cell">
               <dt>Role</dt>
-              <dd>Lead Design Systems Designer</dd>
+              <dd>UI Designer</dd>
             </div>
             <div class="cs-meta-cell">
               <dt>Scope</dt>
-              <dd>Tokens Architecture, 30+ Components, 8 States, Code Engine</dd>
+              <dd>Tokens, Components &amp; State Logic</dd>
             </div>
             <div class="cs-meta-cell">
-              <dt>Target Product</dt>
-              <dd>Pixel Operations Platform (B2B SaaS / SOC Console)</dd>
+              <dt>Tool</dt>
+              <dd>Figma &amp; CSS Tokens</dd>
             </div>
             <div class="cs-meta-cell">
-              <dt>Status</dt>
-              <dd class="is-live">v2.0.0 Live &amp; Documented · 2026</dd>
+              <dt>Focus</dt>
+              <dd class="is-live">Reusable Component Library</dd>
             </div>
           </dl>
 
@@ -464,11 +148,11 @@
                 <span class="material-symbols-outlined" style="font-size: 16px;">terminal</span>
                 Interactive System Portal &amp; Prototype
               </span>
-              <h2 style="font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: #FFFFFF; margin: 0.5rem 0 1rem; line-height: 1.2;">
-                Explore the Live Coded System &amp; Operations Prototype
+              <h2 style="font-size: clamp(1.6rem, 2.8vw, 2.2rem); font-weight: 700; color: #FFFFFF; margin: 0.5rem 0 1rem; line-height: 1.25;">
+                Explore the Live Coded Component Portal
               </h2>
-              <p style="color: #CBD5E1; font-size: 15px; line-height: 1.6; margin-bottom: 1.8rem;">
-                Recruiters and engineers can interactively test the live system: toggle light/dark modes, stress-test buttons across all 8 states, filter and sort the live enterprise data table, export CSV telemetry, and inspect production CSS token variables.
+              <p style="color: #CBD5E1; font-size: 15px; line-height: 1.6; margin-bottom: 1.6rem;">
+                Test the interactive components live: switch between light and dark modes, test button hover/active/disabled states, filter sample data tables, and inspect design tokens.
               </p>
               <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                 <a href="../pixel-design-system/index.html" target="_blank" class="main-button-wrapper" style="padding: 0.85em 2em; background: #1D4ED8;">
@@ -480,7 +164,7 @@
                 <a href="../pixel-design-system/PIXEL_DESIGN_SYSTEM_FIGMA_SPEC.md" target="_blank" class="main-button-wrapper" style="padding: 0.85em 2em; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25);">
                   <span class="button-text" style="color: #FFFFFF; display: inline-flex; align-items: center; gap: 6px;">
                     <span class="material-symbols-outlined">menu_book</span>
-                    <span>View Design System Specs ❖</span>
+                    <span>View Design Specs ❖</span>
                   </span>
                 </a>
               </div>
@@ -506,396 +190,221 @@
       </div>
     </section>
 
-    <!-- 2. CONTEXT & THE PROBLEM -->
-    <section class="cs-story-section">
+    <!-- 2. PROJECT OVERVIEW & GOALS -->
+    <section id="overview" class="cs-story-section">
       <div class="padding-global">
         <div class="container-large">
           <div class="cs-section-header">
-            <span class="cs-section-tag">01 / Context &amp; Challenge</span>
-            <h2 class="cs-section-title">Scaling Beyond Component Fragmentation</h2>
+            <span class="cs-section-tag">01 / Project Overview</span>
+            <h2 class="cs-section-title">Why I Created PIXEL</h2>
             <p class="cs-section-desc">
-              Why enterprise B2B products fail when they treat a design system as merely a "Figma UI sticker sheet".
+              When designing multiple screens for digital products, inconsistencies quickly creep in—mismatched button sizes, duplicate hex codes, and arbitrary spacing. I created PIXEL to practice building an organized, scalable UI library in Figma, ensuring design decisions are modular, reusable, and predictable.
             </p>
           </div>
 
-          <div class="cs-editorial-split">
-            <div class="cs-editorial-prose">
-              <p class="cs-prose-lead">
-                The <strong>Pixel Operations Platform</strong> serves complex operational roles: System Administrators, Dispatch Managers, and Site Reliability Engineers monitoring mission-critical cluster infrastructure.
-              </p>
-              <p>
-                As rapid feature delivery accelerated across distributed teams, velocity outpaced coordination. New screens introduced ad-hoc colors, divergent button paddings, disparate table densities, and keyboard accessibility gaps.
-              </p>
-              <p>
-                Developers were forced to guess CSS values, leading to a bloated stylesheet and severe UI drift between design concepts and shipped code.
-              </p>
-            </div>
-
-            <div class="cs-stats-column">
-              <div class="cs-stat-block">
-                <span class="cs-stat-number pixel-stat-highlight">14</span>
-                <span class="cs-stat-label">Inconsistent button implementations found during audit</span>
-              </div>
-              <div class="cs-stat-block">
-                <span class="cs-stat-number pixel-stat-highlight">42%</span>
-                <span class="cs-stat-label">CSS bundle reduction achieved after token standardization</span>
-              </div>
-              <div class="cs-stat-block">
-                <span class="cs-stat-number pixel-stat-highlight">0</span>
-                <span class="cs-stat-label">WCAG AA contrast defects remaining across all 30+ components</span>
-              </div>
-            </div>
+          <!-- 3 Clean Focus Cards -->
+          <div class="cs-friction-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <article class="cs-friction-card">
+              <strong>01 · Reusable Master Components</strong>
+              <span>Built flexible components in Figma with Auto Layout and variant properties so changing a primary style propagates across all screens instantly.</span>
+            </article>
+            <article class="cs-friction-card">
+              <strong>02 · Predictable Component States</strong>
+              <span>Defined default, hover, active, focus, and disabled states across interactive controls so developers and users never experience ambiguous interactions.</span>
+            </article>
+            <article class="cs-friction-card">
+              <strong>03 · 8px Spatial Rhythm</strong>
+              <span>Standardized all padding, gaps, and component margins to an 8px grid (4px, 8px, 16px, 24px, 32px) to eliminate guesswork and maintain visual balance.</span>
+            </article>
           </div>
-
-          <!-- Audit Before vs. After Visual Table -->
-          <div class="cs-audit-container">
-            <h3 class="cs-audit-title">System Audit: Before vs. After PIXEL Standardization</h3>
-            <table class="cs-audit-table">
-              <thead>
-                <tr>
-                  <th>Component Dimension</th>
-                  <th>Before (Fragmented Legacy UI)</th>
-                  <th>After (PIXEL Design System)</th>
-                  <th>Measurable Impact</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Action Buttons</strong></td>
-                  <td>14 ad-hoc variations, hardcoded hex codes (<code>#1a73e8</code>, <code>#2563eb</code>, <code>#0052cc</code>), 4 radii.</td>
-                  <td><strong>1 Master Button Primitive</strong> supporting 5 semantic variants, 3 size tiers, and 8 states.</td>
-                  <td><span class="cs-audit-badge-impact"><span class="material-symbols-outlined" style="font-size: 14px;">check_circle</span> Eliminated redundant CSS</span></td>
-                </tr>
-                <tr>
-                  <td><strong>Accessibility &amp; Focus</strong></td>
-                  <td>Zero focus rings; light grey text on white (2.8:1 contrast) failing WCAG AA.</td>
-                  <td><strong>100% WCAG 2.1 AA/AAA compliance</strong> with 3px focus-visible keyboard outlines.</td>
-                  <td><span class="cs-audit-badge-impact"><span class="material-symbols-outlined" style="font-size: 14px;">verified</span> Passed accessibility audit</span></td>
-                </tr>
-                <tr>
-                  <td><strong>Data Tables</strong></td>
-                  <td>4 distinct table structures across orders, hosts, and incident logs.</td>
-                  <td><strong>Unified Enterprise Table Engine</strong> with density tiers (36px, 48px, 56px) and sorting.</td>
-                  <td><span class="cs-audit-badge-impact"><span class="material-symbols-outlined" style="font-size: 14px;">check_circle</span> Consistent scanability</span></td>
-                </tr>
-                <tr>
-                  <td><strong>Dark Mode Theming</strong></td>
-                  <td>Ad-hoc dark theme CSS overrides requiring duplicate stylesheets.</td>
-                  <td><strong>Automated Token Remapping</strong> via <code>[data-theme="dark"]</code> custom properties.</td>
-                  <td><span class="cs-audit-badge-impact"><span class="material-symbols-outlined" style="font-size: 14px;">check_circle</span> Instant theme toggling</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
         </div>
       </div>
     </section>
 
-    <!-- 3. TOKEN ARCHITECTURE & FOUNDATIONS -->
-    <section class="cs-story-section">
+    <!-- 3. VISUAL CRAFT: COLORS & TYPOGRAPHY -->
+    <section id="design-system" class="cs-story-section">
       <div class="padding-global">
         <div class="container-large">
           <div class="cs-section-header">
-            <span class="cs-section-tag">02 / Architecture &amp; Foundations</span>
-            <h2 class="cs-section-title">The 3-Tier Design Token Engine</h2>
+            <span class="cs-section-tag">02 / Visual Style</span>
+            <h2 class="cs-section-title">Colors &amp; Typography</h2>
             <p class="cs-section-desc">
-              Building a single source of truth connecting Figma Variables directly to production CSS variables.
+              A vibrant signature blue identity paired with structured neutrals and high-legibility system typography.
             </p>
           </div>
 
-          <div class="cs-craft-grid">
-            <div class="token-tier-card">
-              <div class="tier-role" style="color: #1D4ED8;">M3 ROLE 01 · TONAL PALETTES</div>
-              <h3>Primary, Secondary &amp; Tertiary Tones</h3>
-              <p>
-                Calibrated Google Material 3 tonal groups providing paired containers: <code>primary</code> &amp; <code>primary-container</code>, <code>secondary</code> for filter chips, and <code>tertiary</code> for system telemetry.
-              </p>
-              <code>
-                --md-sys-color-primary: #1A56DB;
-              </code>
-            </div>
-
-            <div class="token-tier-card">
-              <div class="tier-role" style="color: #047857;">M3 ROLE 02 · SURFACE CONTAINERS</div>
-              <h3>Tonal Elevation Without Harsh Shadows</h3>
-              <p>
-                Replaces arbitrary black drop shadows with 5 Material Surface Container tiers (<code>surface-container-low</code> to <code>surface-container-highest</code>) that naturally tint with primary tones.
-              </p>
-              <code>
-                --md-sys-color-surface-container: #EAEFF5;
-              </code>
-            </div>
-
-            <div class="token-tier-card">
-              <div class="tier-role" style="color: #B45309;">M3 ROLE 03 · STATE LAYERS</div>
-              <h3>Google State Layer Physics</h3>
-              <p>
-                Governed micro-state opacity overlays: 8% hover, 12% focus ring, and 12% pressed down-state applied uniformly across buttons, chips, and table rows.
-              </p>
-              <code>
-                --md-sys-state-hover-opacity: 0.08;
-              </code>
-            </div>
-          </div>
-
-          <!-- Typography & Spacing Logic -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-            <div class="cs-foundations-card">
-              <span class="pixel-badge-pill" style="margin-bottom: 8px;">Foundations 01 · Typography</span>
-              <h4>Inter &amp; JetBrains Mono Mathematical Scale</h4>
-              <p>
-                Calibrated for dense enterprise dashboards. Every font size has a mathematically paired line height to guarantee perfect baseline alignment:
-              </p>
-              <div style="display: flex; flex-direction: column; gap: 8px;">
-                <div class="cs-token-row">
-                  <strong>Display</strong>
-                  <span class="token-val">36px / 44px · Bold 700 (-0.02em)</span>
-                </div>
-                <div class="cs-token-row">
-                  <strong>H1 (Hero)</strong>
-                  <span class="token-val">28px / 36px · Bold 700 (-0.015em)</span>
-                </div>
-                <div class="cs-token-row">
-                  <strong>H2 (Section)</strong>
-                  <span class="token-val">22px / 28px · Semibold 600 (-0.01em)</span>
-                </div>
-                <div class="cs-token-row">
-                  <strong>H3 (Card Title)</strong>
-                  <span class="token-val">18px / 24px · Semibold 600</span>
-                </div>
-                <div class="cs-token-row">
-                  <strong>Body (Base)</strong>
-                  <span class="token-val">14px / 20px · Regular 400</span>
-                </div>
-                <div class="cs-token-row">
-                  <strong>Caption</strong>
-                  <span class="token-val">11px / 14px · Medium 500 (+0.01em)</span>
-                </div>
-                <div class="cs-token-row">
-                  <strong>Mono (Telemetry)</strong>
-                  <span class="token-val--mono">12px / 16px · Fixed Char Width</span>
+          <div class="cs-craft-grid" style="grid-template-columns: 1fr 1fr;">
+            <!-- Typography Card -->
+            <article class="cs-craft-card">
+              <div class="cs-craft-icon-title">
+                <span class="cs-craft-badge">Typeface</span>
+                <h3>Inter &amp; JetBrains Mono</h3>
+              </div>
+              <div class="cs-type-specimen">
+                <div class="cs-type-sample">Aa</div>
+                <div class="cs-type-details">
+                  <span class="cs-font-name">Inter &amp; Mono</span>
+                  <span class="cs-font-meta">Clean UI &amp; Structured Data</span>
                 </div>
               </div>
-            </div>
+              <p class="cs-craft-text">Inter provides crisp, neutral readability for titles, buttons, and form inputs. JetBrains Mono is paired for numerical data, status codes, and telemetry tags where character alignment matters.</p>
+            </article>
 
-            <div class="cs-foundations-card">
-              <span class="pixel-badge-pill" style="margin-bottom: 8px;">Foundations 02 · Spatial Scale</span>
-              <h4>4px / 8px Grid Rhythm Without Arbitrary Offsets</h4>
-              <p>
-                Eliminates designer guesswork and front-end magic numbers. Every layout, card, button padding, and table margin maps to strict mathematical tokens:
-              </p>
-              <div style="display: flex; flex-direction: column; gap: 8px;">
-                <div class="cs-token-row">
-                  <strong>space.1 (4px)</strong>
-                  <span class="token-desc">Micro-gap, badge inline padding</span>
+            <!-- Color Palette Card -->
+            <article class="cs-craft-card">
+              <div class="cs-craft-icon-title">
+                <span class="cs-craft-badge">Palette</span>
+                <h3>Color Tokens</h3>
+              </div>
+              <div class="cs-palette-grid">
+                <div class="cs-palette-chip">
+                  <span class="cs-chip-color" style="background: #1D4ED8;"></span>
+                  <div class="cs-chip-info">
+                    <strong>Signature Blue</strong>
+                    <code>#1D4ED8</code>
+                    <span>Primary interactive accent for buttons, active tabs, and links</span>
+                  </div>
                 </div>
-                <div class="cs-token-row">
-                  <strong>space.2 (8px)</strong>
-                  <span class="token-desc">Icon-to-text gap, compact button</span>
+                <div class="cs-palette-chip">
+                  <span class="cs-chip-color" style="background: #0F172A;"></span>
+                  <div class="cs-chip-info">
+                    <strong>Slate Dark</strong>
+                    <code>#0F172A</code>
+                    <span>High-contrast neutral for primary headings and dark mode surfaces</span>
+                  </div>
                 </div>
-                <div class="cs-token-row">
-                  <strong>space.4 (16px)</strong>
-                  <span class="token-desc">Standard component inset, button padding</span>
-                </div>
-                <div class="cs-token-row">
-                  <strong>space.6 (24px)</strong>
-                  <span class="token-desc">Card internal gutters, table margins</span>
-                </div>
-                <div class="cs-token-row">
-                  <strong>space.8 (32px)</strong>
-                  <span class="token-desc">Module blocks, dashboard card separation</span>
-                </div>
-                <div class="cs-token-row">
-                  <strong>space.12 (48px)</strong>
-                  <span class="token-desc">Major layout column gutters</span>
-                </div>
-                <div class="cs-token-row">
-                  <strong>space.20 (80px)</strong>
-                  <span class="token-desc">Page hero &amp; major section rhythm</span>
+                <div class="cs-palette-chip">
+                  <span class="cs-chip-color" style="background: #64748B;"></span>
+                  <div class="cs-chip-info">
+                    <strong>Cool Grey</strong>
+                    <code>#64748B</code>
+                    <span>Balanced secondary tone for labels, subtle borders, and timestamps</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
-
-
         </div>
       </div>
     </section>
 
-    <!-- 4. COMPONENT ANATOMY & THE 8-STATE RULE -->
-    <section class="cs-story-section">
+    <!-- 3. CORE UI COMPONENTS -->
+    <section id="components" class="cs-story-section">
       <div class="padding-global">
         <div class="container-large">
           <div class="cs-section-header">
-            <span class="cs-section-tag">03 / Component Deep Dive</span>
-            <h2 class="cs-section-title">The Button Case Study &amp; The 8-State Architecture</h2>
+            <span class="cs-section-tag">03 / Component Library</span>
+            <h2 class="cs-section-title">Core UI Components &amp; Variants</h2>
             <p class="cs-section-desc">
-              Why senior design systems are defined by state predictability, not just static visual aesthetics.
+              Every component was built in Figma using Auto Layout and property variants before being translated into clean HTML and CSS tokens.
             </p>
           </div>
 
           <div class="cs-editorial-split">
             <div class="cs-editorial-prose">
               <p>
-                Junior design systems frequently stop at <em>Default</em> and <em>Hover</em>. In mission-critical enterprise environments, an ambiguous state can cause catastrophic errors — such as an operator double-clicking a containment trigger because the loading state failed to indicate ongoing processing.
+                As a UI designer, creating a design system taught me that consistent components are about more than just matching colors. Each component needs predictable sizing, clear states, and responsive resizing rules so other designers and developers can use them effortlessly.
               </p>
               <p>
-                In PIXEL, every interactive control is required to support the universal <strong>8-State Coverage Model</strong>:
+                In PIXEL, I focused on standardizing the most frequently used interface elements:
               </p>
-              <ol style="font-size: 14px; color: #334155; line-height: 1.85; padding-left: 20px;">
-                <li><strong style="color: var(--dark);">Default (Rest)</strong>: Optimized contrast and clear visual boundaries.</li>
-                <li><strong style="color: var(--dark);">Hover</strong>: Pointer focus with subtle elevation and color shift.</li>
-                <li><strong style="color: var(--dark);">Active (Pressed)</strong>: Down-state tactile feedback with <code>transform: scale(0.98)</code>.</li>
-                <li><strong style="color: var(--dark);">Focus-Visible</strong>: 3px high-contrast keyboard navigation ring for WCAG 2.4.7.</li>
-                <li><strong style="color: var(--dark);">Disabled</strong>: Reduced opacity (0.45), <code>cursor: not-allowed</code>, inert pointer events.</li>
-                <li><strong style="color: var(--dark);">Loading</strong>: Preserves exact layout dimensions with integrated animated SVG spinner to eliminate layout shift.</li>
-                <li><strong style="color: var(--dark);">Selected / Checked</strong>: Active toggle or selected table row indication.</li>
-                <li><strong style="color: var(--dark);">Error / Invalid</strong>: Layout-preserving inline error alerts with accessible text.</li>
-              </ol>
             </div>
 
             <div class="cs-spec-box">
-              <div class="cs-spec-eyebrow">AUTO LAYOUT SPECIFICATION</div>
+              <div class="cs-spec-eyebrow">FIGMA COMPONENT SPEC</div>
               <h3 class="cs-spec-title">Button / Primary / Medium (40px)</h3>
               <div class="cs-spec-list">
                 <div><strong>Height:</strong> 40px fixed</div>
-                <div><strong>Padding:</strong> 10px 16px (<code>space.4</code>)</div>
+                <div><strong>Padding:</strong> 10px 16px (Auto Layout)</div>
                 <div><strong>Corner Radius:</strong> 6px (<code>radius.md</code>)</div>
                 <div><strong>Typography:</strong> Inter 14px / 600 Semibold</div>
-                <div><strong>Icon Gap:</strong> 8px (<code>space.2</code>)</div>
-                <div><strong>Loading Mechanism:</strong> CSS keyframe spinner, zero layout shift</div>
+                <div><strong>States:</strong> Default, Hover, Active, Focus, Disabled, Loading</div>
+                <div><strong>Layout:</strong> Hug contents with 8px icon spacing</div>
               </div>
             </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. ENTERPRISE PATTERNS & PROTOTYPE -->
-    <section class="cs-story-section">
-      <div class="padding-global">
-        <div class="container-large">
-          <div class="cs-section-header">
-            <span class="cs-section-tag">04 / Enterprise UX Patterns</span>
-            <h2 class="cs-section-title">Composing Components into Critical Workflows</h2>
-            <p class="cs-section-desc">
-              Moving beyond isolated UI elements to solve complex operational challenges.
-            </p>
-          </div>
-
-          <div class="cs-craft-grid">
+          <div class="cs-craft-grid" style="margin-top: 2rem;">
             <article class="cs-craft-card">
-              <span class="pixel-badge-pill" style="margin-bottom: 8px;">Pattern 01</span>
-              <h3>Search &amp; Multi-Facet Filter Bar</h3>
+              <span class="pixel-badge-pill" style="margin-bottom: 8px;">Component 01</span>
+              <h3>Buttons &amp; State Variants</h3>
               <p class="cs-craft-text">
-                Debounced search input with instant clear controls paired with dynamic status facet dropdowns and floating active chip indicators.
+                Primary, secondary, outline, and ghost variations. Each variant includes full state definitions — hover transitions, active press scaling, high-contrast focus rings, and layout-preserving loading spinners.
               </p>
             </article>
 
             <article class="cs-craft-card">
-              <span class="pixel-badge-pill" style="margin-bottom: 8px;">Pattern 02</span>
-              <h3>High-Density Data Table Engine</h3>
+              <span class="pixel-badge-pill" style="margin-bottom: 8px;">Component 02</span>
+              <h3>Form Inputs &amp; Controls</h3>
               <p class="cs-craft-text">
-                Column sorting with aria-sort telemetry, master/individual row multi-selection, hover row highlights, and floating bulk containment actions.
+                Standardized 40px height text fields, search bars, and dropdown menus with clear top-aligned labels, subtle helper text, and high-visibility focus borders.
               </p>
             </article>
 
             <article class="cs-craft-card">
-              <span class="pixel-badge-pill" style="margin-bottom: 8px;">Pattern 03</span>
-              <h3>Host Containment Approval Drawer</h3>
+              <span class="pixel-badge-pill" style="margin-bottom: 8px;">Component 03</span>
+              <h3>Status Badges &amp; Tags</h3>
               <p class="cs-craft-text">
-                Two-man rule confirmation workflow: Impact assessment warning -&gt; Modal confirmation dialog -&gt; Real-time status update to prevent accidental downtime.
+                Compact status pills with semantic color fills (Success Green, Info Blue, Warning Amber, Neutral Slate) to quickly communicate system statuses in dense layouts.
               </p>
             </article>
-          </div>
 
-          <!-- Direct Embedded Link to Interactive Prototype -->
-          <div class="cs-prototype-cta">
-            <h3>Experience the System in Action</h3>
-            <p>
-              The interactive portal contains the live working Operations Console, dynamic 8-state button simulator, token color visualizer, and code inspector.
-            </p>
-            <a href="../pixel-design-system/index.html" target="_blank" class="main-button-wrapper" style="display: inline-flex; padding: 0.85em 2.2em; background: #1D4ED8;">
-              <span class="button-text" style="color: #FFFFFF;">Open Live System Portal ↗</span>
-            </a>
+            <article class="cs-craft-card">
+              <span class="pixel-badge-pill" style="margin-bottom: 8px;">Component 04</span>
+              <h3>Cards &amp; Data Displays</h3>
+              <p class="cs-craft-text">
+                Modular card containers with consistent 16px/24px padding, subtle border separation, and clear typographic hierarchy for dashboards and content previews.
+              </p>
+            </article>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- 6. ACCESSIBILITY & GOVERNANCE -->
-    <section class="cs-story-section">
+    <!-- 4. LEARNINGS & REFLECTIONS -->
+    <section id="learnings" class="cs-story-section">
       <div class="padding-global">
         <div class="container-large">
           <div class="cs-section-header">
-            <span class="cs-section-tag">05 / Quality &amp; Governance</span>
-            <h2 class="cs-section-title">Accessibility Compliance &amp; System Governance</h2>
+            <span class="cs-section-tag">04 / Reflections</span>
+            <h2 class="cs-section-title">What Building a Design System Taught Me</h2>
             <p class="cs-section-desc">
-              Designing for rigorous standards: WCAG 2.1 AA/AAA compliance and living contribution models.
+              Key takeaways and skills I developed while structuring this system from scratch.
             </p>
           </div>
 
           <div class="cs-craft-grid">
             <div class="cs-gov-card">
-              <span class="pixel-badge-pill pixel-badge-success" style="margin-bottom: 8px;">WCAG 2.1 AA/AAA Audit</span>
-              <h4>Color Contrast &amp; Focus Visibility</h4>
+              <span class="pixel-badge-pill pixel-badge-blue" style="margin-bottom: 8px;">Figma Mastery</span>
+              <h4>Auto Layout &amp; Reusable Components</h4>
               <p>
-                Every foreground/background color pair was audited: Primary headings achieve &gt;= 14:1 (AAA), body text achieves &gt;= 5.8:1 (AA), and all interactive elements maintain a 3px offset focus ring.
+                Building components with Auto Layout and nested variants drastically reduced the time needed to design new screens, while ensuring layouts adapt gracefully to different screen sizes.
               </p>
             </div>
 
             <div class="cs-gov-card">
-              <span class="pixel-badge-pill pixel-badge-blue" style="margin-bottom: 8px;">Living Governance</span>
-              <h4>Contribution &amp; Review Lifecycle</h4>
+              <span class="pixel-badge-pill pixel-badge-success" style="margin-bottom: 8px;">Clarity</span>
+              <h4>Defining Explicit States</h4>
               <p>
-                Established a 6-step contribution lifecycle: Propose -&gt; Evaluate -&gt; Tokenize in Figma -&gt; Accessibility Audit -&gt; Code Handoff -&gt; Release &amp; Changelog.
+                Interfaces shouldn't leave interaction states up to guesswork. Designing clear default, hover, focus, disabled, and loading states ensures front-end developers can implement designs accurately.
               </p>
             </div>
 
             <div class="cs-gov-card">
-              <span class="pixel-badge-pill pixel-badge-amber" style="margin-bottom: 8px;">AI-Assisted Workflow</span>
-              <h4>Figma to Code Acceleration</h4>
+              <span class="pixel-badge-pill pixel-badge-amber" style="margin-bottom: 8px;">Design Consistency</span>
+              <h4>The Power of Consistent Spacing</h4>
               <p>
-                Leveraged AI coding workflows to translate Figma token JSON definitions directly into CSS custom properties, cutting development handoff friction by over 70%.
+                Using a strict 8px spacing scale eliminated random margins and padding across my designs, making every screen feel naturally balanced and polished.
               </p>
             </div>
-          </div>
-
-          <!-- Key Reflections -->
-          <div style="margin-top: 3rem;">
-            <h3 style="color: var(--dark); font-size: 1.35rem; font-weight: 600; margin-bottom: 1.25rem;">Key Product Design Reflections</h3>
-            <ul class="cs-reflection-list">
-              <li class="cs-reflection-item">
-                <span class="cs-reflection-item-num">01</span>
-                <div class="cs-reflection-item-text">
-                  <strong>Tokens are the contract between design and code:</strong>
-                  Without semantic tokens, dark mode and accessibility fixes require tedious manual re-work. With tokens, a palette shift takes seconds.
-                </div>
-              </li>
-              <li class="cs-reflection-item">
-                <span class="cs-reflection-item-num">02</span>
-                <div class="cs-reflection-item-text">
-                  <strong>States prevent critical human error:</strong>
-                  In enterprise tools, loading indicators and clear disabled boundaries are not decorative — they prevent accidental double-execution in production systems.
-                </div>
-              </li>
-              <li class="cs-reflection-item">
-                <span class="cs-reflection-item-num">03</span>
-                <div class="cs-reflection-item-text">
-                  <strong>Constraint breeds velocity:</strong>
-                  Restricting designers to an approved palette and spacing scale increases creative focus on complex workflows rather than reinventing buttons.
-                </div>
-              </li>
           </div>
 
           <!-- Next Project Banner -->
           <div class="cs-next-project-banner" style="margin-top: 4rem;">
             <div>
               <span class="cs-next-label">Next Case Study</span>
-              <div><a href="ids-argus.html" class="cs-next-title">Aegis Health Enterprise Security SOC Platform →</a></div>
+              <div><a href="ids-argus.html" class="cs-next-title">IDS Argus Enterprise Web UI →</a></div>
             </div>
             <a href="../work.html" class="main-button-wrapper" style="padding: 0.8em 1.8em;">
               <span class="button-text">View all work</span>
