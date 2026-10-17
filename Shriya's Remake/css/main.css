@@ -6132,3 +6132,628 @@ button.main-button-wrapper {
   margin: 0;
 }
 
+
+/* ==========================================================================
+   MINIMALIST EDITORIAL CASE STUDY SYSTEM (MATCHING FIGMA SPEC)
+   ========================================================================== */
+
+/* Eyebrows with coral dot */
+.cs-clean-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ea580c;
+  margin-bottom: 0.85rem;
+}
+
+.cs-clean-eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ea580c;
+  display: inline-block;
+}
+
+/* 2-Column Clean Hero */
+.cs-clean-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 960px) {
+  .cs-clean-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.cs-clean-hero-title {
+  font-size: clamp(2.6rem, 4.2vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  margin: 0;
+}
+
+.cs-clean-hero-subtitle {
+  font-size: clamp(1.4rem, 2.2vw, 1.95rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #1e293b;
+  margin: 0.35rem 0 1rem 0;
+}
+
+.cs-clean-hero-lead {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.cs-clean-meta-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.cs-clean-meta-item dt {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  margin-bottom: 0.25rem;
+}
+
+.cs-clean-meta-item dd {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Hero 3-Phones Cluster */
+.cs-clean-hero-phones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.cs-clean-phone-frame {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.16);
+  border: 4px solid #0f172a;
+  background: #000000;
+  transition: transform 0.3s ease;
+}
+
+.cs-clean-phone-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 24px;
+}
+
+.cs-clean-hero-phones .cs-clean-phone-frame:nth-child(2) {
+  transform: translateY(-12px);
+  z-index: 2;
+  box-shadow: 0 28px 55px -12px rgba(0, 0, 0, 0.22);
+}
+
+/* 2-Column Split Section (Overview & Takeaways) */
+.cs-clean-split-section {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 3.5rem;
+  align-items: flex-start;
+}
+
+@media (max-width: 960px) {
+  .cs-clean-split-section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.cs-clean-section-h2 {
+  font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.cs-clean-section-p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #64748b;
+  margin: 0;
+}
+
+/* 3 Overview Cards Row */
+.cs-clean-overview-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .cs-clean-overview-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-clean-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.35rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cs-clean-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.cs-clean-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.cs-clean-card h3, .cs-clean-card h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.45rem 0;
+  letter-spacing: -0.01em;
+}
+
+.cs-clean-card p {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Horizontal Process Flow */
+.cs-clean-process-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 860px) {
+  .cs-clean-process-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+.cs-clean-process-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cs-clean-process-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.cs-clean-process-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+}
+
+.cs-clean-process-title span {
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.cs-clean-process-desc {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #64748b;
+  margin: 0;
+}
+
+.cs-clean-process-arrow {
+  color: #cbd5e1;
+  font-size: 1.25rem;
+  margin-top: 0.85rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+  .cs-clean-process-arrow {
+    display: none;
+  }
+}
+
+/* Visual Design Cards (Type + Palette) */
+.cs-clean-visual-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .cs-clean-visual-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-clean-type-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.cs-clean-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.cs-clean-card-header span {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cs-clean-pill-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.cs-clean-type-giant {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-family: 'Outfit', sans-serif;
+}
+
+.cs-clean-type-fontname {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.cs-clean-type-alpha {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+  line-height: 1.45;
+  font-family: 'Outfit', sans-serif;
+  word-break: break-all;
+}
+
+.cs-clean-palette-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.cs-clean-swatches {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.cs-clean-swatch-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cs-clean-swatch-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.cs-clean-swatch-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #64748b;
+  font-family: monospace;
+}
+
+/* Key Screens Grid (2x2 + wide card) */
+.cs-clean-screens-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 860px) {
+  .cs-clean-screens-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cs-clean-screen-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cs-clean-screen-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+}
+
+.cs-clean-screen-card.wide {
+  grid-column: 1 / -1;
+  gap: 2.5rem;
+}
+
+.cs-clean-screen-thumb {
+  width: 145px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  border: 3px solid #0f172a;
+  background: #000;
+}
+
+.cs-clean-screen-thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cs-clean-screen-thumbs-pair {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.cs-clean-screen-thumbs-pair .cs-clean-screen-thumb {
+  width: 135px;
+}
+
+.cs-clean-screen-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.cs-clean-screen-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ea580c;
+}
+
+.cs-clean-screen-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.cs-clean-screen-desc {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: #64748b;
+  margin: 0 0 0.5rem 0;
+}
+
+.cs-clean-screen-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cs-clean-screen-bullets li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.cs-clean-screen-bullets li::before {
+  content: '✓';
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* 3 Stacked Takeaways Cards */
+.cs-clean-takeaways-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cs-clean-takeaway-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.cs-clean-takeaway-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  flex-shrink: 0;
+}
+
+.cs-clean-takeaway-text h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.35rem 0;
+}
+
+.cs-clean-takeaway-text p {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Next Project Preview Card */
+.cs-clean-next-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 2.25rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 4rem;
+  text-decoration: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.cs-clean-next-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.cs-clean-next-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.cs-clean-next-title {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 0.35rem;
+}
+
+.cs-clean-next-desc {
+  font-size: 0.92rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.cs-clean-next-thumb {
+  width: 220px;
+  height: 110px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.cs-clean-next-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .cs-clean-next-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cs-clean-next-thumb {
+    width: 100%;
+    height: 160px;
+  }
+}
