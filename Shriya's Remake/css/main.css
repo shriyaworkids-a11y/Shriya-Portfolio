@@ -6240,17 +6240,21 @@ button.main-button-wrapper {
 .cs-clean-phone-frame {
   width: 100%;
   max-width: 200px;
+  aspect-ratio: 9 / 19.5;
   border-radius: 28px;
   overflow: hidden;
   box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.16);
   border: 4px solid #0f172a;
   background: #000000;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .cs-clean-phone-frame img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
   display: block;
   border-radius: 24px;
 }
@@ -6559,6 +6563,7 @@ button.main-button-wrapper {
 
 .cs-clean-screen-thumb {
   width: 145px;
+  aspect-ratio: 9 / 19.5;
   flex-shrink: 0;
   border-radius: 20px;
   overflow: hidden;
@@ -6569,7 +6574,9 @@ button.main-button-wrapper {
 
 .cs-clean-screen-thumb img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
   display: block;
 }
 
@@ -6582,6 +6589,14 @@ button.main-button-wrapper {
 
 .cs-clean-screen-thumbs-pair .cs-clean-screen-thumb {
   width: 135px;
+  aspect-ratio: 9 / 19.5;
+}
+
+@media (max-width: 640px) {
+  .cs-clean-screen-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .cs-clean-screen-content {
